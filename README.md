@@ -16,7 +16,7 @@ This is a research/engineering prototype. It is not an operational emergency ser
 
 ## Run
 
-Backend requirements: Node.js 24, npm, Python and a C++ toolchain when SQLite has no prebuilt binary.
+Backend requirements: Node.js 22 LTS (Node.js 24 was also verified locally on macOS), npm, Python and a C++ toolchain when SQLite has no prebuilt binary.
 
 ```sh
 cd backend
