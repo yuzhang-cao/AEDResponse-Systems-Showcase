@@ -1,0 +1,117 @@
+{
+  "schemaVersion": "2.0.0",
+  "agreementVersions": {
+    "patient": "2.0",
+    "volunteerResponder": "2.0"
+  },
+  "safeTestNumber": "+12025550147",
+  "positioningPolicy": {
+    "responseRadiusMeters": 3000,
+    "positionFreshnessSeconds": 600,
+    "maximumAccuracyMeters": 200,
+    "maxClientClockSkewSeconds": 120,
+    "watchFallbackPromotionDelaySeconds": 10,
+    "watchFallbackMinimumUploadIntervalSeconds": 5,
+    "watchFallbackMovementEarlyDistanceMeters": 10,
+    "haversineEarthRadiusMeters": 6371008.8,
+    "inclusiveBoundaries": true
+  },
+  "watchObservation": {
+    "schemaVersion": "2.0",
+    "eventId": "00000000-0000-0000-0000-000000000201",
+    "observationKind": "FALL_CONTEXT",
+    "fallDetectedAt": "2026-08-31T01:02:03.000Z",
+    "patientPositionObservedAt": "2026-08-31T01:02:02.000Z",
+    "fallResolution": "UNRESPONSIVE",
+    "appHelpResponse": "NO_RESPONSE",
+    "callFirstObservedAt": "2026-08-31T01:02:04.000Z",
+    "callObservationSemantics": "FIRST_OBSERVED_OUTGOING_STATE",
+    "patientPosition": {
+      "kind": "P",
+      "latitude": 22.1987,
+      "longitude": 113.5439,
+      "accuracyMeters": 12
+    }
+  },
+  "patient": {
+    "id": "patient-demo-01",
+    "presence": {
+      "availableForResponse": false,
+      "capabilities": {
+        "notificationAuthorized": true,
+        "locationAuthorized": true
+      }
+    },
+    "patientPositionUpdate": {
+      "positionUpdateId": "00000000-0000-0000-0000-000000000102",
+      "observedAt": "2026-08-31T01:02:05.500Z",
+      "patientPosition": {
+        "kind": "P",
+        "latitude": 22.1987,
+        "longitude": 113.5439,
+        "accuracyMeters": 12
+      }
+    },
+    "patientPosition": {
+      "kind": "P",
+      "latitude": 22.1987,
+      "longitude": 113.5439,
+      "accuracyMeters": 12
+    },
+    "patientLocationCard": {
+      "address": "安全测试地点 A",
+      "floor": "1F",
+      "accessNote": "仅供演示，请从正门进入"
+    }
+  },
+  "responders": [
+    { "id": "responder-demo-01", "positionUpdateId": "00000000-0000-0000-0000-000000000111", "observedAt": "2026-08-31T01:02:05.000Z", "agreementsAccepted": true, "availableForResponse": true, "notificationAuthorized": true, "locationAuthorized": true, "responderPosition": { "kind": "R", "latitude": 22.1980, "longitude": 113.5430, "accuracyMeters": 10 } },
+    { "id": "responder-demo-02", "positionUpdateId": "00000000-0000-0000-0000-000000000112", "observedAt": "2026-08-31T01:02:05.000Z", "agreementsAccepted": true, "availableForResponse": true, "notificationAuthorized": true, "locationAuthorized": true, "responderPosition": { "kind": "R", "latitude": 22.1975, "longitude": 113.5415, "accuracyMeters": 10 } },
+    { "id": "responder-demo-03", "positionUpdateId": "00000000-0000-0000-0000-000000000113", "observedAt": "2026-08-31T01:02:05.000Z", "agreementsAccepted": true, "availableForResponse": true, "notificationAuthorized": true, "locationAuthorized": true, "responderPosition": { "kind": "R", "latitude": 22.2010, "longitude": 113.5480, "accuracyMeters": 10 } },
+    { "id": "responder-demo-04", "positionUpdateId": "00000000-0000-0000-0000-000000000114", "observedAt": "2026-08-31T01:02:05.000Z", "agreementsAccepted": true, "availableForResponse": true, "notificationAuthorized": true, "locationAuthorized": true, "responderPosition": { "kind": "R", "latitude": 22.1995, "longitude": 113.5460, "accuracyMeters": 10 } },
+    { "id": "responder-demo-05", "positionUpdateId": "00000000-0000-0000-0000-000000000115", "observedAt": "2026-08-31T01:02:05.000Z", "agreementsAccepted": true, "availableForResponse": true, "notificationAuthorized": true, "locationAuthorized": true, "responderPosition": { "kind": "R", "latitude": 22.1965, "longitude": 113.5400, "accuracyMeters": 10 } }
+  ],
+  "aeds": [
+    {
+      "id": "aed-demo-01",
+      "name": "测试 AED 一号",
+      "aedPosition": { "kind": "A", "latitude": 22.199, "longitude": 113.544 },
+      "openFrom": "00:00",
+      "openUntil": "00:00",
+      "floor": "2F",
+      "floorTransferSeconds": 45,
+      "accessNote": "向测试前台取用",
+      "accessDelaySeconds": 60,
+      "verificationSeconds": 30,
+      "available": true
+    },
+    {
+      "id": "aed-demo-02",
+      "name": "测试 AED 二号",
+      "aedPosition": { "kind": "A", "latitude": 22.2012, "longitude": 113.5472 },
+      "openFrom": "00:00",
+      "openUntil": "00:00",
+      "floor": "1F",
+      "floorTransferSeconds": 0,
+      "accessNote": "从测试大堂取用",
+      "accessDelaySeconds": 45,
+      "verificationSeconds": 30,
+      "available": true
+    }
+  ],
+  "expectedRoleCountsByAcceptedCount": {
+    "1": { "goToPatient": 1, "fetchAed": 0 },
+    "2": { "goToPatient": 1, "fetchAed": 1 },
+    "3": { "goToPatient": 2, "fetchAed": 1 },
+    "4": { "goToPatient": 3, "fetchAed": 1 },
+    "5": { "goToPatient": 3, "fetchAed": 2 }
+  },
+  "expectedAedPathKinds": ["R", "A", "P"],
+  "aedAcquiredReceipt": {
+    "receiptId": "00000000-0000-0000-0000-000000000401",
+    "eventId": "00000000-0000-0000-0000-000000000201",
+    "assignmentId": "00000000-0000-0000-0000-000000000301",
+    "aedId": "aed-demo-01",
+    "acquiredAt": "2026-08-31T01:06:00.000Z"
+  }
+}

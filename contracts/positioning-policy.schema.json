@@ -1,0 +1,51 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://aedresponse.invalid/contracts/positioning-policy.schema.json",
+  "title": "AEDResponse Positioning Policy",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "responseRadiusMeters",
+    "positionFreshnessSeconds",
+    "maximumAccuracyMeters",
+    "maxClientClockSkewSeconds",
+    "watchFallbackPromotionDelaySeconds",
+    "watchFallbackMinimumUploadIntervalSeconds",
+    "watchFallbackMovementEarlyDistanceMeters",
+    "haversineEarthRadiusMeters",
+    "inclusiveBoundaries"
+  ],
+  "properties": {
+    "responseRadiusMeters": {
+      "type": "number",
+      "exclusiveMinimum": 0
+    },
+    "positionFreshnessSeconds": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "maximumAccuracyMeters": {
+      "type": "number",
+      "exclusiveMinimum": 0
+    },
+    "maxClientClockSkewSeconds": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "watchFallbackPromotionDelaySeconds": {
+      "const": 10
+    },
+    "watchFallbackMinimumUploadIntervalSeconds": {
+      "const": 5
+    },
+    "watchFallbackMovementEarlyDistanceMeters": {
+      "const": 10
+    },
+    "haversineEarthRadiusMeters": {
+      "const": 6371008.8
+    },
+    "inclusiveBoundaries": {
+      "const": true
+    }
+  }
+}

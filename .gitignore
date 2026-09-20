@@ -1,0 +1,8 @@
+node_modules/
+dist/
+.build/
+.swiftpm/
+.DS_Store
+*.identity-ledger.jsonl
+*.restore-watermark.json
+.data/

@@ -1,0 +1,31 @@
+{
+  "schemaVersion": "2.0.0",
+  "safeTestNumber": "+12025550147",
+  "dialerMode": "USER_INITIATED_OPEN_ONLY_NEVER_AUTO_CALL",
+  "blockedNormalizedNumbers": [
+    "110",
+    "112",
+    "119",
+    "120",
+    "911",
+    "999"
+  ],
+  "medicalDiagnosisEnabled": false,
+  "realEmergencyDispatchEnabled": false,
+  "publicRegistrationEnabled": false,
+  "manualSOSEnabled": false,
+  "appFalseAlarmCountdownEnabled": false,
+  "mockWearableProductionEntryEnabled": false,
+  "iphoneFallDetectionEnabled": false,
+  "automaticCallingEnabled": false,
+  "bluetoothBusinessTransportEnabled": false,
+  "iphoneTailscaleRequired": false,
+  "iphoneContinuousPositionReportingEnabled": true,
+  "watchContinuousPatientPositionEnabled": false,
+  "watchFallbackPatientPositionEnabled": true,
+  "watchFallbackNetworkRequired": true,
+  "watchFallbackPromotionDelaySeconds": 10,
+  "watchFallbackMovementEarlyDistanceMeters": 10,
+  "watchConnectivityBusinessPayloadEnabled": false,
+  "unboundedPositionHistoryEnabled": false
+}
