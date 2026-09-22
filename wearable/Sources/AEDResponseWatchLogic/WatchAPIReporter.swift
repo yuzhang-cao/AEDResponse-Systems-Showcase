@@ -113,7 +113,7 @@ actor WatchAPIReporter: WatchObservationReporting,
         authSessionStore: any WatchAuthSessionPersisting = WatchKeychainStore(),
         appAttestKeyStore: any WatchAppAttestKeyPersisting = WatchKeychainStore(),
         appAttest: any WatchAppAttestProviding = DeviceCheckAppAttestAdapter(),
-        now: @escaping @Sendable () -> Date = Date.init
+        now: @escaping @Sendable () -> Date = { Date() }
     ) {
         self.configurationStore = configurationStore
         transport = URLSessionWatchAPIHTTPTransport(session: session)
@@ -130,7 +130,7 @@ actor WatchAPIReporter: WatchObservationReporting,
         authSessionStore: any WatchAuthSessionPersisting = WatchKeychainStore(),
         appAttestKeyStore: any WatchAppAttestKeyPersisting = WatchKeychainStore(),
         appAttest: any WatchAppAttestProviding = DeviceCheckAppAttestAdapter(),
-        now: @escaping @Sendable () -> Date = Date.init
+        now: @escaping @Sendable () -> Date = { Date() }
     ) {
         self.configurationStore = configurationStore
         self.transport = transport

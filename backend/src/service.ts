@@ -1802,87 +1802,75 @@ export class AEDResponseService {
   ): Promise<PositionWindowReconciliationRecord | undefined> {
     const reconciliationId = reconciliationIdFor(window.identity, window.startedAt);
     const graceMs = this.positionWindowGraceMs();
-    const snapshot = readEntities(this.store, (view) => {
-      const event = view.get("events", window.identity.eventId);
+    // Derive and save the verdict in one transaction so queued uploads and
+    // concurrent reconciliations cannot overwrite a newer evidence snapshot.
+    const record = await transactState(this.store, (state) => {
+      const event = state.events[window.identity.eventId];
       if (!event) return undefined;
-      const device = view.get("devices", window.identity.deviceInstanceId);
-      const batches = view.select("eventPositionBatchesById",
-        row => row.eventId === window.identity.eventId, Number.MAX_SAFE_INTEGER);
-      const prior = view.get("positionWindowReconciliationsById", reconciliationId);
+      const batches = stateRows(state, "eventPositionBatchesById", "eventId", event.id);
+      const prior = state.positionWindowReconciliationsById[reconciliationId];
       // The window end the server would enforce right now.  A window that is
       // still open must not be reconciled: the seconds between the last fact and
       // "now" are pending, not missing.
-      const fresh = participationWindowFor(event, {
+      const interval = window.identity.kind === "R"
+        ? stateRows(state, "participantIntervalsById", "eventId", event.id)
+          .find(row => row.deviceInstanceId === window.identity.deviceInstanceId
+            && row.userId === window.identity.userId && row.acceptedAt === window.startedAt)
+        : undefined;
+      const effective = participationWindowFor(event, {
         deviceInstanceId: window.identity.deviceInstanceId,
         userId: window.identity.userId,
-        ...(window.identity.kind === "R"
-          ? {
-            interval: view.select("participantIntervalsById",
-              row => row.eventId === window.identity.eventId
-                && row.deviceInstanceId === window.identity.deviceInstanceId
-                && row.userId === window.identity.userId, 1)[0]
-          }
-          : {})
+        ...(interval ? { interval } : {})
       });
-      return { event, device, batches, prior, fresh };
-    });
-    if (!snapshot) return undefined;
-    const effective = snapshot.fresh ?? window;
-    const endedAt = effective.endedAt;
-    if (endedAt === null) return undefined;
+      if (!effective || effective.endedAt === null) return undefined;
+      const endedAt = effective.endedAt;
 
-    const evidence = windowEvidenceFrom(snapshot.batches, effective.identity);
-    const windowEnd = Date.parse(endedAt);
-    const withinGrace = Number.isFinite(windowEnd)
-      ? now.getTime() < windowEnd + graceMs
-      : true;
-    const outcome = reconcileWindow({
-      window: { ...effective, endedAt },
-      evidence,
-      withinGrace
-    });
+      const evidence = windowEvidenceFrom(batches, effective);
+      const windowEnd = Date.parse(endedAt);
+      const withinGrace = Number.isFinite(windowEnd)
+        ? now.getTime() < windowEnd + graceMs
+        : true;
+      const outcome = reconcileWindow({ window: effective, evidence, withinGrace });
 
-    const prior = snapshot.prior;
-    const gaps: PositionWindowReconciliationRecord["gaps"] = outcome.gaps.map(gap => ({
-      slotAt: gap.slotAt,
-      reason: gap.reason,
-      provisional: withinGrace
-    }));
-    // "Corrected by late evidence" means the set of missing SECONDS changed, not
-    // merely that the grace deadline passed and flipped the provisional flags.
-    const correctedByLateEvidence = prior !== undefined
-      && gapSlotsChanged(prior.gaps, gaps);
+      const gaps: PositionWindowReconciliationRecord["gaps"] = outcome.gaps.map(gap => ({
+        slotAt: gap.slotAt,
+        reason: gap.reason,
+        provisional: withinGrace
+      }));
+      // Grace expiry alone does not count as a correction by late evidence.
+      const correctedByLateEvidence = prior !== undefined && gapSlotsChanged(prior.gaps, gaps);
 
-    const record: PositionWindowReconciliationRecord = {
-      reconciliationId,
-      eventId: effective.identity.eventId,
-      userId: effective.identity.userId,
-      deviceInstanceId: effective.identity.deviceInstanceId,
-      kind: effective.identity.kind,
-      windowStartedAt: effective.startedAt,
-      windowEndedAt: endedAt,
-      reconciledAt: now.toISOString(),
-      closedBy,
-      expectedSlotCount: outcome.expectedSlotCount,
-      receivedSlotCount: outcome.receivedSlotCount,
-      receivedRecordCount: outcome.receivedRecordCount,
-      noFixSlotCount: outcome.noFixSlotCount,
-      fixSlotCount: outcome.fixSlotCount,
-      gaps,
-      graceDeadlineAt: Number.isFinite(windowEnd)
-        ? new Date(windowEnd + graceMs).toISOString()
-        : now.toISOString(),
-      final: !withinGrace,
-      revision: (prior?.revision ?? 0) + 1,
-      correctedByLateEvidence
-    };
+      const record: PositionWindowReconciliationRecord = {
+        reconciliationId,
+        eventId: effective.identity.eventId,
+        userId: effective.identity.userId,
+        deviceInstanceId: effective.identity.deviceInstanceId,
+        kind: effective.identity.kind,
+        windowStartedAt: effective.startedAt,
+        windowEndedAt: endedAt,
+        reconciledAt: now.toISOString(),
+        closedBy,
+        expectedSlotCount: outcome.expectedSlotCount,
+        receivedSlotCount: outcome.receivedSlotCount,
+        receivedRecordCount: outcome.receivedRecordCount,
+        noFixSlotCount: outcome.noFixSlotCount,
+        fixSlotCount: outcome.fixSlotCount,
+        gaps,
+        graceDeadlineAt: Number.isFinite(windowEnd)
+          ? new Date(windowEnd + graceMs).toISOString()
+          : now.toISOString(),
+        final: !withinGrace,
+        revision: (prior?.revision ?? 0) + 1,
+        correctedByLateEvidence
+      };
 
-    await transactState(this.store, (state) => {
       state.positionWindowReconciliationsById[reconciliationId] = record;
+      return record;
     });
+    if (!record) return undefined;
     operationMetrics.positionWindowReconciliations += 1;
-    operationMetrics.positionWindowGapsRecorded += gaps.length;
-    if (correctedByLateEvidence) operationMetrics.positionWindowLateCorrections += 1;
+    operationMetrics.positionWindowGapsRecorded += record.gaps.length;
+    if (record.correctedByLateEvidence) operationMetrics.positionWindowLateCorrections += 1;
     return record;
   }
 
@@ -1891,9 +1879,33 @@ export class AEDResponseService {
     if (principal.kind === "ACCOUNT") {
       throw forbidden("Account session cannot read event position audits");
     }
-    if (principal.kind === "DEVICE") requireIPhoneScope(principal, "events:read");
+    const participant = principal.kind === "DEVICE"
+      ? this.requirePositionWindowParticipant(requireIPhoneScope(principal, "events:read"), eventId)
+      : undefined;
     return readEntities(this.store, view => view.select("positionWindowReconciliationsById",
-      row => row.eventId === eventId, Number.MAX_SAFE_INTEGER));
+      row => row.eventId === eventId && (principal.kind === "OPERATOR"
+        || (row.deviceInstanceId === principal.deviceInstanceId && row.userId === participant?.userId)),
+      Number.MAX_SAFE_INTEGER));
+  }
+
+  private requirePositionWindowParticipant(principal: DevicePrincipal, eventId: string) {
+    return readState(this.store, state => {
+      const event = state.events[eventId];
+      if (!event) throw notFound("Event does not exist");
+      const device = state.devices[principal.deviceInstanceId];
+      if (!device) throw forbidden("Device session is no longer registered");
+      const userId = device.userId ?? principal.userId;
+      // Use the same historical-participation rule as event-position uploads;
+      // a pending response offer alone never grants access to recorded evidence.
+      const patient = event.patientDeviceIds.includes(principal.deviceInstanceId)
+        && userId === event.patientUserId;
+      const responder = userId && participantIntervalForDevice(
+        state, eventId, userId, principal.deviceInstanceId);
+      if (!userId || (!patient && !responder)) {
+        throw forbidden("Only a historical event participant can access its position audit");
+      }
+      return { event, userId };
+    });
   }
 
   /**
@@ -1910,18 +1922,17 @@ export class AEDResponseService {
     records: PositionWindowReconciliationRecord[];
   }> {
     const iPhone = requireIPhoneScope(principal, "position:write");
-    const event = readEntities(this.store, view => view.get("events", eventId));
-    if (!event) throw notFound("Event does not exist");
-    const device = readEntities(this.store, view => view.get("devices", iPhone.deviceInstanceId));
-    if (!device) throw forbidden("Device session is no longer registered");
+    const { event, userId } = this.requirePositionWindowParticipant(iPhone, eventId);
     if (event.state === "ACTIVE") {
       // An open window is not reconciled: that would freeze the pending seconds.
       throw conflict("A participation window can only be reconciled after it closes");
     }
-    const records = await this.reconcilePositionWindows({
+    const reconciled = await this.reconcilePositionWindows({
       eventId,
       closedBy: "CLIENT_COMPLETE_SIGNAL"
     });
+    const records = reconciled.filter(record => record.deviceInstanceId === iPhone.deviceInstanceId
+      && record.userId === userId);
     return { reconciled: records.length, records };
   }
 

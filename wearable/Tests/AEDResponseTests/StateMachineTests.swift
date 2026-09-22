@@ -1,6 +1,6 @@
 import Foundation
 import XCTest
-@testable import AEDResponse
+@testable import AEDResponseCore
 
 final class StateMachineTests: XCTestCase {
     private let baseDate = Date(timeIntervalSince1970: 1_788_000_000)
@@ -90,6 +90,17 @@ final class StateMachineTests: XCTestCase {
             acquiredAt: baseDate.addingTimeInterval(1)
         )
         XCTAssertEqual(try machine.record(duplicateBusinessKey), .idempotent(receipt))
+        XCTAssertEqual(try machine.record(duplicateBusinessKey), .idempotent(receipt),
+            "Retrying an already accepted receipt alias must remain idempotent")
+
+        let changedAlias = AedAcquiredReceipt(
+            receiptId: duplicateBusinessKey.receiptId,
+            eventId: duplicateBusinessKey.eventId,
+            assignmentId: duplicateBusinessKey.assignmentId,
+            aedId: duplicateBusinessKey.aedId,
+            acquiredAt: baseDate.addingTimeInterval(2)
+        )
+        XCTAssertThrowsError(try machine.record(changedAlias))
 
         let conflict = AedAcquiredReceipt(
             receiptId: receipt.receiptId,

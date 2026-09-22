@@ -116,10 +116,9 @@ export function participationWindowFor(
 /**
  * The legal slot instants of a window, on the UTC second grid.
  *
- * A slot is identified by its start instant and is legal when the whole second
- * lies inside `[startedAt, endedAt)`.  The write path already accepts a batch
- * only when this holds, so the expected set is exactly the set of instants an
- * upload was allowed to cover.
+ * A slot is legal when its start instant lies inside `[startedAt, endedAt)`.
+ * A terminal partial second is included; any FIX in it must also have been
+ * observed before the window ended, as enforced by the upload path.
  */
 export function expectedSlotInstants(window: ParticipationWindow): number[] {
   if (window.endedAt === null) return [];
@@ -155,8 +154,14 @@ export interface WindowEvidence {
  */
 export function windowEvidenceFrom(
   batches: readonly EventPositionBatchRecord[],
-  identity: WindowIdentity
+  window: ParticipationWindow
 ): WindowEvidence {
+  const { identity } = window;
+  const startedAt = Date.parse(window.startedAt);
+  const endedAt = window.endedAt === null ? Infinity : Date.parse(window.endedAt);
+  if (!Number.isFinite(startedAt) || Number.isNaN(endedAt) || endedAt <= startedAt) {
+    return { facts: [], recordCount: 0 };
+  }
   const bySlot = new Map<number, RecordedSlotFact>();
   let recordCount = 0;
   for (const batch of batches) {
@@ -170,7 +175,7 @@ export function windowEvidenceFrom(
         || record.deviceInstanceId !== identity.deviceInstanceId
         || record.kind !== identity.kind) continue;
       const slotAt = Date.parse(record.slotAt);
-      if (!Number.isFinite(slotAt)) continue;
+      if (!Number.isFinite(slotAt) || slotAt < startedAt || slotAt >= endedAt) continue;
       recordCount += 1;
       // The store rejects a second record for the same slot, so a collision here
       // can only come from historically imported data.  Keep the first and count
@@ -186,28 +191,6 @@ export function windowEvidenceFrom(
     }
   }
   return { facts: [...bySlot.values()].sort((left, right) => left.slotAt - right.slotAt), recordCount };
-}
-
-/**
- * Classifies why one expected second has no recorded fact.
- *
- * Only reasons the server can actually justify are used.  The client's own
- * gap reasons (`NO_FIX` / `APP_NOT_RUNNING`) are not visible from a missing
- * record, so an unexplained absence stays `NEVER_UPLOADED` rather than being
- * dressed up as a cause nobody observed.
- */
-export function classifyGap(input: {
-  slotAt: number;
-  /** Nearest recorded slot strictly below this one, if any. */
-  previousRecordedSlotAt?: number | undefined;
-  /** Nearest recorded slot strictly above this one, if any. */
-  nextRecordedSlotAt?: number | undefined;
-  /** The participant's session lost location capability during this window. */
-  permissionRevoked: boolean;
-}): "NEVER_UPLOADED" | "CLIENT_OFFLINE" | "PERMISSION_REVOKED" {
-  // Neighbouring fixes and a current permission flag do not establish the cause
-  // of a historical gap. Retain the compatible API, but report only absence.
-  return "NEVER_UPLOADED";
 }
 
 export interface ReconciliationOutcome {
@@ -234,32 +217,32 @@ export function reconcileWindow(input: {
   evidence: WindowEvidence;
   /** Whether a late-but-legal upload may still replace a gap right now. */
   withinGrace: boolean;
-  /** The participant's session lost location capability during this window. */
-  permissionRevoked?: boolean | undefined;
 }): ReconciliationOutcome {
   const expected = expectedSlotInstants(input.window);
   const factsBySlot = new Map(input.evidence.facts.map(fact => [fact.slotAt, fact]));
-  const receivedSlots = expected.filter(instant => factsBySlot.has(instant));
   const gaps: ReconciliationOutcome["gaps"] = [];
+  let receivedSlotCount = 0;
+  let fixSlotCount = 0;
   for (const instant of expected) {
-    if (factsBySlot.has(instant)) continue;
+    const fact = factsBySlot.get(instant);
+    if (fact) {
+      receivedSlotCount += 1;
+      if (fact.status === "FIX") fixSlotCount += 1;
+      continue;
+    }
     gaps.push({
       slotAt: new Date(instant).toISOString(),
-      reason: classifyGap({
-        slotAt: instant,
-        permissionRevoked: input.permissionRevoked === true
-      }),
+      // Missing records and present-day permissions cannot establish a cause.
+      reason: "NEVER_UPLOADED",
       provisional: input.withinGrace
     });
   }
-  const fixSlotCount = receivedSlots.filter(instant =>
-    factsBySlot.get(instant)?.status === "FIX").length;
   return {
     expectedSlotCount: expected.length,
-    receivedSlotCount: receivedSlots.length,
+    receivedSlotCount,
     receivedRecordCount: input.evidence.recordCount,
     fixSlotCount,
-    noFixSlotCount: receivedSlots.length - fixSlotCount,
+    noFixSlotCount: receivedSlotCount - fixSlotCount,
     gaps
   };
 }

@@ -1,7 +1,7 @@
 import Foundation
 import Security
 import XCTest
-@testable import AEDResponseWatchLogic
+@testable import AEDResponseCore
 
 private struct BlockingFallbackAdmissionPolicy: WatchFallbackAdmissionPolicy {
     func decision(
@@ -363,12 +363,90 @@ final class WatchFallbackCoordinatorTests: XCTestCase {
             observedAt: start.addingTimeInterval(8)
         )
         XCTAssertEqual(earlyPeriodicResult, .waitingForPosition)
+        harness.position.sample = WatchFallbackPositionSample(
+            patientPosition: moved.patientPosition,
+            observedAt: start.addingTimeInterval(9)
+        )
         let periodicResult = await harness.coordinator.periodicReport(
             connectivity: unavailable,
             networkAvailable: true,
             observedAt: start.addingTimeInterval(9)
         )
         XCTAssertEqual(periodicResult, .positionReported(positionUpdateID: "position-3"))
+    }
+
+    func testPeriodicPollNeverCreatesNewFactsFromAnUnchangedSnapshot() async throws {
+        let harness = makeHarness()
+        let connectivity = WatchConnectivityState(activationState: .inactive, iphoneReachable: false)
+        _ = await harness.coordinator.activate(eventID: eventID, fallDetectedAt: start,
+            connectivity: connectivity, networkAvailable: true, observedAt: start)
+
+        for offset: TimeInterval in [5, 10, 60] {
+            let result = await harness.coordinator.periodicReport(connectivity: connectivity,
+                networkAvailable: true, observedAt: start.addingTimeInterval(offset))
+            XCTAssertEqual(result, .waitingForPosition)
+        }
+        let updates = await harness.reporter.updates()
+        XCTAssertEqual(updates.count, 1)
+    }
+
+    func testOutOfOrderMovedSampleCannotReplaceANewerCollectedSample() async throws {
+        let harness = makeHarness()
+        let connectivity = WatchConnectivityState(activationState: .inactive, iphoneReachable: false)
+        _ = await harness.coordinator.activate(eventID: eventID, fallDetectedAt: start,
+            connectivity: connectivity, networkAvailable: true, observedAt: start)
+        let older = WatchFallbackPositionSample(
+            patientPosition: try PatientPosition(latitude: 22.2, longitude: 113.54, accuracyMeters: 12),
+            observedAt: start.addingTimeInterval(-1), receivedAt: start
+        )
+        let result = await harness.coordinator.significantPositionDidChange(older,
+            connectivity: connectivity, networkAvailable: true)
+        XCTAssertEqual(result, .waitingForPosition)
+        let updates = await harness.reporter.updates()
+        XCTAssertEqual(updates.count, 1)
+    }
+
+    func testRetryingOlderBacklogDoesNotRewindFreshSampleDeduplication() async throws {
+        let harness = makeHarness()
+        let connectivity = WatchConnectivityState(activationState: .inactive, iphoneReachable: false)
+        _ = await harness.coordinator.activate(eventID: eventID, fallDetectedAt: start,
+            connectivity: connectivity, networkAvailable: true, observedAt: start)
+        let newer = WatchFallbackPositionSample(
+            patientPosition: try PatientPosition(latitude: 22.2, longitude: 113.54, accuracyMeters: 12),
+            observedAt: start.addingTimeInterval(10)
+        )
+        _ = await harness.coordinator.significantPositionDidChange(newer,
+            connectivity: connectivity, networkAvailable: true)
+        let old = try makeUpdate(id: "older-queued", observedAt: start.addingTimeInterval(1))
+        try harness.outbox.store(old, sourceBinding: String(repeating: "a", count: 64))
+        _ = await harness.coordinator.periodicReport(connectivity: connectivity,
+            networkAvailable: true, observedAt: start.addingTimeInterval(11))
+
+        let result = await harness.coordinator.significantPositionDidChange(newer,
+            connectivity: connectivity, networkAvailable: true)
+        XCTAssertEqual(result, .waitingForPosition)
+        let updates = await harness.reporter.updates()
+        XCTAssertEqual(updates.map(\.positionUpdateId), ["position-1", "position-2", "older-queued"])
+    }
+
+    func testServerAdmissionRevocationStopsAnAlreadyRunningSampler() async throws {
+        let harness = makeHarness()
+        let connectivity = WatchConnectivityState(activationState: .activated, iphoneReachable: true)
+        await harness.reporter.setEventState(WatchEventStateSnapshot(eventId: eventID, state: .active,
+            createdAt: start, resolvedAt: nil, fallbackAllowed: true))
+        _ = await harness.coordinator.activate(eventID: eventID, fallDetectedAt: start,
+            connectivity: connectivity, networkAvailable: true, observedAt: start)
+        let previousStops = harness.position.stopCount
+        XCTAssertGreaterThan(harness.position.startCount, 0)
+
+        await harness.reporter.setEventState(WatchEventStateSnapshot(eventId: eventID, state: .active,
+            createdAt: start, resolvedAt: nil, fallbackAllowed: false))
+        let result = await harness.coordinator.periodicReport(connectivity: connectivity,
+            networkAvailable: true, observedAt: start.addingTimeInterval(5))
+        XCTAssertEqual(result, .stoppedForIPhoneRecovery)
+        XCTAssertGreaterThan(harness.position.stopCount, previousStops)
+        let updates = await harness.reporter.updates()
+        XCTAssertEqual(updates.count, 1)
     }
 
     func testWANDisconnectRetainsQueuedSampleAndRetriesSameIDWhenRestored() async throws {

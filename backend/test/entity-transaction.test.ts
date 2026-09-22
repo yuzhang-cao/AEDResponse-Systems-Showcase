@@ -13,7 +13,9 @@ import { tmpdir } from "node:os";
 import { join } from "node:path";
 import test from "node:test";
 import { loadConfig } from "../src/config.js";
+import { EntityTransaction } from "../src/entity-transaction.js";
 import { emptyState, type PersistentState } from "../src/models.js";
+import { createStateReadView } from "../src/state-read.js";
 import { MemoryStateStore, SQLiteStateStore, setShadowValidationEnabled } from "../src/store.js";
 import {
   resetMetrics,
@@ -220,6 +222,52 @@ test("sealed transactions reject further mutation", async () => {
     ),
     /sealed/
   );
+});
+
+test("limited transactional selection fills matches after staged removals and updates", () => {
+  const tx = new EntityTransaction(createStateReadView(seedState(5, 0)));
+  tx.remove("devices", uuid(1_000));
+  tx.update("devices", uuid(1_001), draft => { draft.availableForResponse = false; });
+  const available = (device: Readonly<PersistentState["devices"][string]>) => device.availableForResponse;
+  assert.deepEqual(tx.keysWhere("devices", available, 2), [uuid(1_002), uuid(1_003)]);
+  assert.equal(tx.keysWhere("devices", available, Number.MAX_SAFE_INTEGER).length, 3);
+  for (const limit of [0, -1, 1.5, Infinity, NaN]) {
+    assert.throws(() => tx.keysWhere("devices", available, limit), /positive, bounded limit/);
+  }
+});
+
+test("a caught update failure leaves the earlier staged value intact", async () => {
+  const store = new MemoryStateStore(seedState(1, 0));
+  await store.transactEntities(tx => {
+    tx.update("devices", uuid(1_000), draft => { draft.availableForResponse = false; });
+    assert.throws(() => tx.update("devices", uuid(1_000), draft => {
+      draft.availableForResponse = true;
+      throw new Error("update failed");
+    }), /update failed/);
+    assert.equal(tx.get("devices", uuid(1_000))?.availableForResponse, false);
+  });
+  assert.equal(store.read(state => state.devices[uuid(1_000)]?.availableForResponse), false);
+});
+
+test("retained update drafts and change snapshots cannot alter committed state", async () => {
+  const store = new MemoryStateStore(seedState(1, 0));
+  const capturedDrafts: PersistentState["devices"][string][] = [];
+  await store.transactEntities(tx => {
+    for (let repeat = 0; repeat < 2; repeat += 1) {
+      tx.update("devices", uuid(1_000), draft => {
+        draft.availableForResponse = false;
+        capturedDrafts.push(draft);
+      });
+    }
+    for (const draft of capturedDrafts) draft.availableForResponse = true;
+    const pending = tx.pendingChanges()[0]!.after as PersistentState["devices"][string];
+    pending.availableForResponse = true;
+    assert.equal(tx.get("devices", uuid(1_000))?.availableForResponse, false);
+    const sealed = tx.seal()[0]!.after as PersistentState["devices"][string];
+    sealed.availableForResponse = true;
+  });
+  for (const draft of capturedDrafts) draft.availableForResponse = true;
+  assert.equal(store.read(state => state.devices[uuid(1_000)]?.availableForResponse), false);
 });
 
 test("change-set rules still protect evidence and reject illegal writes", async () => {

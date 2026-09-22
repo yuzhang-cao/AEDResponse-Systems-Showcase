@@ -429,6 +429,56 @@ test("transaction: consecutive refreshes in ONE transaction share their writes",
     "exactly one delivery was registered across both refreshes");
 });
 
+test("transaction: a missing identity index still finds a sibling's active assignment", async () => {
+  const state = world();
+  const candidate = uuid(100);
+  const sibling = uuid(101);
+  state.devices[candidate] = device(candidate, uuid(200));
+  state.devices[sibling] = device(sibling, uuid(200));
+  state.assignments[uuid(600)] = {
+    id: uuid(600), eventId: EVENT_ID, deviceInstanceId: sibling,
+    role: "GO_TO_PATIENT", status: "ASSIGNED", revision: 1,
+    createdAt: AT, updatedAt: AT
+  } as never;
+  const store = new MemoryStateStore(state);
+
+  await store.transactEntities!((tx) => {
+    const ctx = txRecruitmentContext(tx, {
+      assignmentIdsForDevice: id => [...store.assignmentIndex().assignmentIdsForDevice(id)]
+    });
+    assert.equal(ctx.hasActiveAssignmentForDevice(ctx.getDevice(candidate)!), true,
+      "an optional missing identity index must not allow the same person to be recruited twice");
+    assert.equal(refreshWith(ctx, tx.get("events", EVENT_ID) as EventRecord).requests.length, 0);
+  });
+});
+
+test("transaction: delivery lookups recheck event membership after a staged update", async () => {
+  const state = world();
+  const candidate = uuid(100);
+  const deliveryId = uuid(500);
+  const otherEvent = uuid(401);
+  state.devices[candidate] = device(candidate, uuid(200));
+  state.deliveries[deliveryId] = {
+    id: deliveryId, eventId: EVENT_ID, deviceInstanceId: candidate,
+    request: offerRequest(deliveryId, candidate, AT),
+    status: "SENT", statusOccurredAt: AT
+  } as never;
+  const store = new MemoryStateStore(state);
+
+  await store.transactEntities!((tx) => {
+    tx.update("deliveries", deliveryId, draft => {
+      draft.eventId = otherEvent;
+      draft.request = offerRequest(deliveryId, candidate, AT, otherEvent) as never;
+    });
+    const ctx = txRecruitmentContext(tx, {
+      deliveryIdsForEvent: id => [...store.deliveryIndex().deliveryIdsForEvent(id)]
+    });
+    assert.deepEqual(ctx.deliveriesOfEvent(EVENT_ID), [],
+      "a committed index hit is only a candidate, not proof of current event membership");
+    assert.equal(ctx.deliveriesOfEvent(otherEvent)[0]?.id, deliveryId);
+  });
+});
+
 test("transaction: a mid-way failure rolls everything back", async () => {
   const state = world();
   const candidate = uuid(100);

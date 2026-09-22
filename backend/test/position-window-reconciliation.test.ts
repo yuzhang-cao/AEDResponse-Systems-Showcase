@@ -32,7 +32,6 @@ import { MemoryStateStore, type StateStore } from "../src/store.js";
 import { emptyState } from "../src/models.js";
 import { operationMetrics, resetMetrics } from "../src/runtime-metrics.js";
 import {
-  classifyGap,
   expectedSlotInstants,
   gapListsMatch,
   participationWindowFor,
@@ -244,6 +243,9 @@ test("the expected seconds are the legal slots of a half-open window", () => {
 
   assert.deepEqual(expectedSlotInstants({ ...window, endedAt: null }), [],
     "an open window has no expected set yet; its pending seconds are not gaps");
+  assert.deepEqual(expectedSlotInstants({ ...window, endedAt: at(1.4) }),
+    [Date.parse(at(0)), Date.parse(at(1))],
+    "the terminal partial second remains legal by its start instant");
 });
 
 test("a complete window yields one fact per second and no gaps", () => {
@@ -283,7 +285,7 @@ test("a complete window yields one fact per second and no gaps", () => {
           : { status: "NO_NEW_FIX" as const, gapReason: "NO_FIX" as const })
       }))
     }
-  ], window.identity);
+  ], window);
 
   const outcome = reconcileWindow({ window, evidence, withinGrace: true });
   assert.equal(outcome.expectedSlotCount, 5);
@@ -331,21 +333,24 @@ test("gaps are classified, and only with reasons the server can justify", () => 
   assert.ok(trailing.gaps.every(gap => !gap.provisional),
     "after the grace deadline the same gaps are the final conclusion");
 
-  // Current permission loss cannot explain a historical missing second.
-  assert.equal(classifyGap({
-    slotAt: Date.parse(at(1)),
-    previousRecordedSlotAt: Date.parse(at(0)),
-    nextRecordedSlotAt: Date.parse(at(2)),
-    permissionRevoked: true
-  }), "NEVER_UPLOADED");
+});
 
-  // Bounded gaps still have no observed connectivity evidence.
-  assert.equal(classifyGap({
-    slotAt: Date.parse(at(1)),
-    previousRecordedSlotAt: Date.parse(at(0)),
-    nextRecordedSlotAt: Date.parse(at(2)),
-    permissionRevoked: false
-  }), "NEVER_UPLOADED");
+test("window evidence counts only its interval and preserves duplicate-record diagnostics", () => {
+  const identity = { eventId: "event", userId: "user", deviceInstanceId: "device", kind: "R" as const };
+  const records = [0, 1, 5, 5, 6, 7].map((second, index) => ({
+    ...identity, recordId: uuid(index), batchId: "batch", slotAt: at(second),
+    serverReceivedAt: at(10), status: "NO_NEW_FIX" as const, gapReason: "NO_FIX" as const,
+    appliedToLatest: false, ignoredAsStale: false
+  }));
+  const batches = [{ ...identity, batchId: "batch", fingerprint: "synthetic", receivedAt: at(10), records }];
+  const window = { identity, startedAt: at(5), endedAt: at(7) };
+  const evidence = windowEvidenceFrom(batches, window);
+  assert.equal(evidence.recordCount, 3, "two records at t=5 still count as two received records");
+  assert.deepEqual(evidence.facts.map(fact => fact.slotAt), [Date.parse(at(5)), Date.parse(at(6))]);
+  const verdict = reconcileWindow({ window, evidence, withinGrace: false });
+  assert.equal(verdict.receivedRecordCount, 3);
+  assert.equal(verdict.receivedSlotCount, 2);
+  assert.deepEqual(verdict.gaps, []);
 });
 
 // ---------------------------------------------------------------------------
@@ -711,8 +716,11 @@ test("the explicit completion signal audits a closed window on demand", async ()
   assert.ok(result.records.every(record => record.closedBy === "EVENT_TERMINAL"
     || record.closedBy === "PARTICIPANT_EXIT"
     || record.closedBy === "CLIENT_COMPLETE_SIGNAL"));
-  assert.equal(verdicts(harness.store, eventId).length, result.reconciled,
-    "the signal recomputes the existing verdicts instead of adding new ones");
+  assert.ok(result.records.every(record => record.deviceInstanceId === harness.responder.deviceInstanceId
+    && record.userId === harness.responder.userId),
+    "the completion signal returns only this device's audit");
+  assert.equal(verdicts(harness.store, eventId).length, 2,
+    "patient and responder verdicts remain stored independently");
 });
 
 test("the completion signal refuses an open window instead of freezing it", async () => {
@@ -794,8 +802,7 @@ test("a long all-missing window reconciles without quadratic neighbour searches"
   const outcome = reconcileWindow({
     window: { identity: { eventId: "synthetic", userId: "synthetic",
       deviceInstanceId: "synthetic", kind: "R" }, startedAt: at(0), endedAt: at(86_400) },
-    evidence: { facts: [], recordCount: 0 }, withinGrace: false,
-    permissionRevoked: true
+    evidence: { facts: [], recordCount: 0 }, withinGrace: false
   });
   assert.equal(outcome.gaps.length, 86_400);
   assert.ok(outcome.gaps.every(gap => gap.reason === "NEVER_UPLOADED" && !gap.provisional));

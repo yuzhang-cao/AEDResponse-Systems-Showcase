@@ -144,10 +144,12 @@ struct AedAcquiredReceiptMachine: Sendable {
             guard existing == receipt else {
                 throw StateTransitionError.conflictingAedReceipt(receipt.receiptId)
             }
-            return .idempotent(existing)
+            return .idempotent(byBusinessKey[existing.businessKey] ?? existing)
         }
         if let existing = byBusinessKey[receipt.businessKey] {
-            byReceiptID[receipt.receiptId] = existing
+            // Preserve the exact request for this ID while returning the
+            // original business receipt for every equivalent request.
+            byReceiptID[receipt.receiptId] = receipt
             return .idempotent(existing)
         }
         byReceiptID[receipt.receiptId] = receipt

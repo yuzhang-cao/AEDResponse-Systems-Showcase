@@ -1,6 +1,6 @@
 import Foundation
 import XCTest
-@testable import AEDResponseWatchLogic
+@testable import AEDResponseCore
 
 @MainActor
 final class WatchCoordinatorContractTests: XCTestCase {

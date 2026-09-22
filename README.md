@@ -28,15 +28,15 @@ npm test
 npm run demo
 ```
 
-Swift requirements: macOS 14+ with a Swift 6 toolchain.
+Swift requirements: macOS 14+ with a Swift 6 toolchain. Open `wearable/Package.swift` in Xcode, or run the tests below. The `AEDResponseCore` module shares one model definition between phone and wearable logic.
 
 ```sh
 cd wearable
 swift test
 ```
 
-Local validation on 2026-09-20: 121 backend tests and 85 Swift tests passed with zero failures. Backend tests and the demo block network access and use synthetic fixtures. Machine-readable results are in [validation.json](docs/validation.json).
+Backend tests and the demo block network access and use synthetic fixtures. Current local test counts and the published baseline are recorded in [validation.json](docs/validation.json).
 
 Production deployment files, signing material, live data, device logs, runtime databases, internal handoffs, and the original repository history are excluded. The selected code demonstrates sensor-driven systems and distributed-device coordination; it does not implement robot actuation, SLAM, policy learning, or vision-language-action models.
 
-The preparation used AI assistance for review, three correctness fixes, extraction, tests, and this English presentation. Physical Watch behavior, real emergency calls, APNs delivery, clinical effectiveness, production capacity, and public deployment are not claimed.
+The preparation used AI assistance for review, correctness fixes, extraction, tests, and this English presentation. Physical Watch behavior, real emergency calls, APNs delivery, clinical effectiveness, production capacity, and public deployment are not claimed.

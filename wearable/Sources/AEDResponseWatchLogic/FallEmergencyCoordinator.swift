@@ -180,7 +180,7 @@ actor FallEmergencyCoordinator {
         outbox: any WatchObservationOutbox,
         reporter: any WatchObservationReporting,
         positionProvider: any WatchPositionSnapshotProviding,
-        now: @escaping @Sendable () -> Date = Date.init
+        now: @escaping @Sendable () -> Date = { Date() }
     ) {
         self.eventState = eventState
         self.outbox = outbox

@@ -236,8 +236,7 @@ actor WatchFallbackCoordinator {
         iphoneReachable: false
     )
     private var latestNetworkAvailable = false
-    private var lastAttemptAt: Date?
-    private var lastSentPosition: PatientPosition?
+    private var lastCollectedSample: WatchFallbackPositionSample?
     private var activeGeneration = 0
     private var recoveredState: WatchEventStateSnapshot?
     private struct EventStateRecoveryProof: Sendable {
@@ -259,7 +258,7 @@ actor WatchFallbackCoordinator {
         positionProvider: any WatchFallbackPositionProviding,
         admissionPolicy: any WatchFallbackAdmissionPolicy = ReachabilityOnlyWatchFallbackAdmissionPolicy(),
         makeID: @escaping @Sendable () -> String = { UUID().uuidString },
-        now: @escaping @Sendable () -> Date = Date.init
+        now: @escaping @Sendable () -> Date = { Date() }
     ) {
         self.stateStore = stateStore
         self.outbox = outbox
@@ -284,8 +283,7 @@ actor WatchFallbackCoordinator {
                 startedAt: fallDetectedAt
             )
             stateStore.setActiveEvent(activeEvent)
-            lastAttemptAt = nil
-            lastSentPosition = nil
+            lastCollectedSample = nil
             activeGeneration += 1
         }
         return await reconcile(
@@ -367,8 +365,6 @@ actor WatchFallbackCoordinator {
 
     func stop() async {
         activeGeneration += 1
-        lastAttemptAt = nil
-        lastSentPosition = nil
         await positionProvider.stopFallbackUpdates()
     }
 
@@ -377,8 +373,7 @@ actor WatchFallbackCoordinator {
         activeEvent = nil
         stateStore.setActiveEvent(nil)
         activeGeneration += 1
-        lastAttemptAt = nil
-        lastSentPosition = nil
+        lastCollectedSample = nil
         await positionProvider.stopFallbackUpdates()
     }
 
@@ -445,8 +440,7 @@ actor WatchFallbackCoordinator {
             if activeEvent?.eventID == eventID {
                 activeEvent = nil
                 stateStore.setActiveEvent(nil)
-                lastAttemptAt = nil
-                lastSentPosition = nil
+                lastCollectedSample = nil
             }
             if wasCurrent { terminalResult = .eventEnded(eventID: eventID) }
             // A terminal state with no trustworthy end timestamp still stops capture, but never erases history.
@@ -475,6 +469,7 @@ actor WatchFallbackCoordinator {
             stateStore.setActiveEvent(activeEvent)
             activeGeneration += 1
             recoveredState = candidate
+            lastCollectedSample = nil
         }
         return terminalResult ?? (activeEvent == nil ? .noActiveEvent : nil)
     }
@@ -550,7 +545,6 @@ actor WatchFallbackCoordinator {
             try outbox.acknowledge(positionUpdateID: update.positionUpdateId)
             authorizationBlocked.removeValue(forKey: update.positionUpdateId)
             retryPlans.removeValue(forKey: update.positionUpdateId)
-            if !historical { lastSentPosition = update.patientPosition }
             return historical ? .historyReported(positionUpdateID: update.positionUpdateId)
                 : .positionReported(positionUpdateID: update.positionUpdateId)
         } catch {
@@ -632,6 +626,7 @@ actor WatchFallbackCoordinator {
         admission = admissionPolicy.decision(connectivity: connectivity, networkAvailable: networkAvailable,
             serverAllowsFallback: recoveredState?.fallbackAllowed == true)
         guard admission == .eligible else {
+            if eligible { await positionProvider.stopFallbackUpdates() }
             return Self.result(for: admission)
         }
 
@@ -652,7 +647,7 @@ actor WatchFallbackCoordinator {
         let mayCollect = contentBlock?.revision != revision
         if mayCollect { await positionProvider.startFallbackUpdates() }
         if let preferredPosition, mayCollect {
-            guard shouldSend(sample: preferredPosition, at: observedAt) else { return .waitingForPosition }
+            guard shouldSend(sample: preferredPosition) else { return .waitingForPosition }
             return await send(sample: preferredPosition, connectivity: connectivity, networkAvailable: networkAvailable,
                 expectedGeneration: generation, expectedAuthorizationRevision: revision, attemptedAt: observedAt)
         }
@@ -680,7 +675,7 @@ actor WatchFallbackCoordinator {
             sample = await positionProvider.fallbackSnapshot()
         }
         guard let sample else { return .waitingForPosition }
-        guard shouldSend(sample: sample, at: observedAt) else { return .waitingForPosition }
+        guard shouldSend(sample: sample) else { return .waitingForPosition }
         return await send(
             sample: sample,
             connectivity: connectivity,
@@ -714,6 +709,9 @@ actor WatchFallbackCoordinator {
             await positionProvider.stopFallbackUpdates()
             return .waitingForServerState
         }
+        // Actor re-entry during authorization checks may have collected a
+        // newer sample. Reserve only fresh facts before the next suspension.
+        guard shouldSend(sample: sample) else { return .waitingForPosition }
         let candidate = WatchFallbackPositionUpdate(
             eventId: activeEvent.eventID,
             positionUpdateId: makeID(),
@@ -728,6 +726,7 @@ actor WatchFallbackCoordinator {
             update = try JSONDecoder.contractDecoder().decode(WatchFallbackPositionUpdate.self,
                 from: JSONEncoder.contractEncoder().encode(candidate))
             try outbox.store(update, sourceBinding: sourceBinding)
+            lastCollectedSample = sample
         } catch {
             return .persistenceFailed(positionUpdateID: candidate.positionUpdateId)
         }
@@ -765,17 +764,14 @@ actor WatchFallbackCoordinator {
             ))
         }
 
-        lastAttemptAt = update.observedAt
         return await upload(update, at: attemptedAt, expectedGeneration: expectedGeneration, historical: false,
             window: existingStateProof?.snapshot,
             proof: existingStateProof)
     }
 
-    private func shouldSend(sample: WatchFallbackPositionSample, at date: Date) -> Bool {
-        // The adapter normally enforces this gate, but keep the coordinator
-        // fail-closed for injected/recovered providers as well.  Historical
-        // samples remain eligible for replay; only malformed or future facts
-        // are rejected here.
+    private func shouldSend(sample: WatchFallbackPositionSample) -> Bool {
+        // Fresh collection must advance the sensor clock. Historical outbox
+        // records use the retry path and do not change this sampling cursor.
         guard LocationFixValidity.isValid(
             latitude: sample.patientPosition.latitude,
             longitude: sample.patientPosition.longitude,
@@ -783,12 +779,12 @@ actor WatchFallbackCoordinator {
             observedAt: sample.observedAt,
             now: sample.receivedAt
         ) else { return false }
-        guard let lastAttemptAt else { return true }
-        if date.timeIntervalSince(lastAttemptAt) >= Self.uploadIntervalSeconds {
+        guard let previous = lastCollectedSample else { return true }
+        guard sample.observedAt > previous.observedAt else { return false }
+        if sample.observedAt.timeIntervalSince(previous.observedAt) >= Self.uploadIntervalSeconds {
             return true
         }
-        guard let lastSentPosition else { return false }
-        return Self.distanceMeters(from: lastSentPosition, to: sample.patientPosition)
+        return Self.distanceMeters(from: previous.patientPosition, to: sample.patientPosition)
             >= Self.movementEarlyDistanceMeters
     }
 

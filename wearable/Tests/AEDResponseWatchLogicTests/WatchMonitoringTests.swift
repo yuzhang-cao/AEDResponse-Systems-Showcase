@@ -1,7 +1,7 @@
 import Foundation
 import Security
 import XCTest
-@testable import AEDResponseWatchLogic
+@testable import AEDResponseCore
 
 @MainActor
 final class WatchMonitoringTests: XCTestCase {

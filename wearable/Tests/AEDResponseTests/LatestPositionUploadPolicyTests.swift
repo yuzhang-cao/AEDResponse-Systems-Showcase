@@ -1,5 +1,5 @@
 import XCTest
-@testable import AEDResponse
+@testable import AEDResponseCore
 
 final class LatestPositionUploadPolicyTests: XCTestCase {
     private let start = Date(timeIntervalSince1970: 1_788_000_000)

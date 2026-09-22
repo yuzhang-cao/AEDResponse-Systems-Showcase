@@ -1,4 +1,4 @@
-// Loaded only by test:business. Keep this suite within service/store calls,
+// Loaded by the showcase tests and demo. Keep execution within service/store calls,
 // even if a future test accidentally imports an HTTP or Socket test harness.
 import net from "node:net";
 import tls from "node:tls";

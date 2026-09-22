@@ -1,25 +1,38 @@
 {
-  "date": "2026-09-20",
+  "date": "2026-09-22",
   "source_commit": "d83cf5516758a833cb0a3e45866c0d2667fb4f7e",
+  "showcase_base_commit": "c7df271136e054a68701380798a989ad4ee508fd",
   "standalone_backend": {
-    "passed": 121,
+    "passed": 135,
     "failed": 0,
     "skipped": 0,
     "network_blocked": true
   },
   "swift_package": {
-    "passed": 85,
+    "passed": 89,
     "failed": 0,
-    "platform": "macOS"
-  },
-  "full_preparation_backend": {
-    "passed": 688,
-    "failed": 0,
-    "skipped": 0
+    "platform": "macOS",
+    "module": "AEDResponseCore"
   },
   "typescript_check": "passed",
   "typescript_build": "passed",
   "synthetic_demo": "passed",
-  "remote_ci": "not_run",
-  "published": false
+  "regressions_covered": [
+    "Transaction query completeness after staged deletions and updates",
+    "Detached transaction drafts and snapshots; throwing updates leave prior state intact",
+    "Bounded expiry heap under repeated and high-frequency position updates",
+    "Window-scoped evidence counts and atomic concurrent reconciliation",
+    "Recruitment eligibility with incomplete indexes and staged membership changes",
+    "Per-device position audit access and response projection",
+    "Stable AED receipt retry aliases",
+    "Monotonic Watch sampling independent of historical retries and server revocation"
+  ],
+  "simplifications": {
+    "duplicate_model_lines_removed": 2241,
+    "new_dependencies": 0
+  },
+  "remote_ci": {
+    "last_verified_commit": "c7df271136e054a68701380798a989ad4ee508fd",
+    "run_url": "https://github.com/yuzhang-cao/AEDResponse-Systems-Showcase/actions/runs/35495969810"
+  }
 }

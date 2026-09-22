@@ -117,8 +117,11 @@ export class EntityTransaction {
       if (staged.after === undefined) {
         throw new Error(`${collection}.${key} was deleted in this transaction`);
       }
-      // staged.after is owned by this transaction; mutating it further is safe.
-      mutate(staged.after as StateEntity<C>);
+      // A failed update must leave earlier staged work intact. Detach again after
+      // the callback so a retained draft cannot mutate a future committed record.
+      const draft = structuredClone(staged.after) as StateEntity<C>;
+      mutate(draft);
+      staged.after = structuredClone(draft);
       return;
     }
     const current = this.view.get(collection, key) as StateEntity<C> | undefined;
@@ -129,7 +132,7 @@ export class EntityTransaction {
     // copy so later mutations cannot alias the recorded prior value.
     const draft = structuredClone(current) as StateEntity<C>;
     mutate(draft);
-    this.pending.set(id, { collection, key, before: current, after: draft,
+    this.pending.set(id, { collection, key, before: current, after: structuredClone(draft),
       mutationOrdinal: this.nextMutationOrdinal++ });
   }
 
@@ -212,25 +215,28 @@ export class EntityTransaction {
     const staged = [...this.pending.values()].filter(change => change.collection === collection);
     // Cap so a caller asking for "all" (MAX_SAFE_INTEGER) cannot overflow into
     // an unsafe integer and be rejected by the bounded view.
-    const requested = Math.min(limit, Number.MAX_SAFE_INTEGER - staged.length);
+    if (!Number.isSafeInteger(limit) || limit <= 0) {
+      throw new Error("keysWhere requires a positive, bounded limit");
+    }
+    const requested = Math.min(limit, Number.MAX_SAFE_INTEGER - staged.length) + staged.length;
     const committed = this.view.keysWhere(collection, predicate, requested);
-    const selected: string[] = [];
+    const selected = new Set<string>();
     for (const key of committed) {
       const change = this.pending.get(changeId(collection, key));
       if (change === undefined) {
-        selected.push(key);
+        selected.add(key);
         continue;
       }
       // The staged value is authoritative: it may no longer match, or match anew.
       if (change.after !== undefined && predicate(change.after as Readonly<StateEntity<C>>)) {
-        selected.push(key);
+        selected.add(key);
       }
     }
     for (const change of staged) {
-      if (change.after === undefined || selected.includes(change.key)) continue;
-      if (predicate(change.after as Readonly<StateEntity<C>>)) selected.push(change.key);
+      if (change.after === undefined || selected.has(change.key)) continue;
+      if (predicate(change.after as Readonly<StateEntity<C>>)) selected.add(change.key);
     }
-    return selected.slice(0, limit);
+    return [...selected].slice(0, limit);
   }
 
   /**
@@ -259,7 +265,10 @@ export class EntityTransaction {
     return keys;
   }
 
-  pendingChanges(): readonly EntityChange[] { this.assertOpen(); return [...this.pending.values()]; }
+  pendingChanges(): readonly EntityChange[] {
+    this.assertOpen();
+    return structuredClone([...this.pending.values()]);
+  }
 
   /** Number of staged changes; useful for assertions in tests. */
   get size(): number {
@@ -276,7 +285,7 @@ export class EntityTransaction {
    */
   seal(): EntityChange[] {
     this.sealed = true;
-    return [...this.pending.values()].sort((left, right) =>
+    return structuredClone([...this.pending.values()]).sort((left, right) =>
       left.collection.localeCompare(right.collection) || left.key.localeCompare(right.key));
   }
 

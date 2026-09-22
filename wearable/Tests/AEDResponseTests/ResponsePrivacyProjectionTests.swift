@@ -1,6 +1,6 @@
 import Foundation
 import XCTest
-@testable import AEDResponse
+@testable import AEDResponseCore
 
 final class ResponsePrivacyProjectionTests: XCTestCase {
     private let eventID = "00000000-0000-0000-0000-000000000801"

@@ -21,10 +21,8 @@
  * Structure: a binary min-heap ordered by `expiresAt`, plus a map from device to
  * the expiry currently recorded for it.  One heap entry is pushed per position
  * write; when an entry surfaces, it is compared against the map and discarded if a
- * newer write has superseded it.  A device that keeps uploading therefore leaves
- * its older entries to be discarded in order, so the heap stays proportional to
- * the number of devices currently holding a position — not to the number of
- * uploads.
+ * newer write has superseded it. Identical deadlines are not reinserted, and
+ * compaction bounds superseded entries even when uploads outpace expiry sweeps.
  */
 
 export interface ExpiryEntry {
@@ -67,12 +65,16 @@ export class PositionExpiryIndex {
   }
 
   upsert(deviceInstanceId: string, expiresAtMs: number): void {
+    if (!Number.isFinite(expiresAtMs)) throw new RangeError("Invalid position expiry");
+    if (this.current.get(deviceInstanceId) === expiresAtMs) return;
     this.current.set(deviceInstanceId, expiresAtMs);
     this.push({ deviceInstanceId, expiresAtMs });
+    this.compactIfNeeded();
   }
 
   remove(deviceInstanceId: string): void {
     this.current.delete(deviceInstanceId);
+    this.compactIfNeeded();
   }
 
   clear(): void {
@@ -114,7 +116,7 @@ export class PositionExpiryIndex {
   /**
    * Removes and returns up to `limit` devices whose expiry has passed and whose
    * recorded expiry is still the authoritative one.  Superseded entries are
-   * discarded in the same pass, which is what keeps the heap bounded.
+   * discarded in the same pass. Compaction also bounds entries not yet due.
    */
   popDue(nowMs: number, limit: number): ExpiryEntry[] {
     const due: ExpiryEntry[] = [];
@@ -129,10 +131,17 @@ export class PositionExpiryIndex {
       this.current.delete(top.deviceInstanceId);
       due.push(top);
     }
+    this.compactIfNeeded();
     return due;
   }
 
   // ---- binary min-heap ----
+
+  private compactIfNeeded(): void {
+    if (this.heap.length <= Math.max(64, this.current.size * 2)) return;
+    this.heap = [...this.current].map(([deviceInstanceId, expiresAtMs]) => ({ deviceInstanceId, expiresAtMs }));
+    this.heapify();
+  }
 
   private push(entry: ExpiryEntry): void {
     const heap = this.heap;

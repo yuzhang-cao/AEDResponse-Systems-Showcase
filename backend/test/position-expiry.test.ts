@@ -103,3 +103,34 @@ test("applyDeviceChanges maintains only the changed devices", () => {
   index.applyDeviceChanges([{ key: "b", after: undefined }]);
   assert.equal(index.size, 0);
 });
+
+test("unchanged position timestamps do not accumulate duplicate heap entries", () => {
+  const index = new PositionExpiryIndex(TTL);
+  for (let iteration = 0; iteration < 10_000; iteration += 1) {
+    index.applyDeviceChanges([{ key: "device", after: device(T0) }]);
+  }
+  assert.equal(index.heapSize, 1);
+  assert.deepEqual(index.popDue(T0 + TTL, 10), [{ deviceInstanceId: "device", expiresAtMs: T0 + TTL }]);
+});
+
+test("rapid refreshes stay bounded before any deadline is due", () => {
+  const index = new PositionExpiryIndex(TTL);
+  index.upsert("earlier", T0 + TTL - 1);
+  for (let iteration = 0; iteration < 10_000; iteration += 1) {
+    index.upsert("device", T0 + TTL + iteration);
+  }
+  assert.equal(index.size, 2);
+  assert.ok(index.heapSize <= 64, "a burst must not retain every superseded deadline");
+  assert.deepEqual(index.popDue(T0 + TTL, 1).map(entry => entry.deviceInstanceId), ["earlier"]);
+  assert.deepEqual(index.popDue(T0 + TTL + 9_998, 10), []);
+  assert.deepEqual(index.popDue(T0 + TTL + 9_999, 10).map(entry => entry.deviceInstanceId), ["device"]);
+});
+
+test("invalid deadlines cannot poison the ordering of valid expiries", () => {
+  const index = new PositionExpiryIndex(TTL);
+  for (const invalid of [NaN, Infinity, -Infinity]) {
+    assert.throws(() => index.upsert("invalid", invalid), RangeError);
+  }
+  index.upsert("valid", T0);
+  assert.deepEqual(index.popDue(T0, 1).map(entry => entry.deviceInstanceId), ["valid"]);
+});

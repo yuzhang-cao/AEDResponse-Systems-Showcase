@@ -113,7 +113,8 @@ export function txRecruitmentContext(
         operationMetrics.deliveryCandidatesVisited += 1;
         return tx.get("deliveries", id) as DeliveryRecord | undefined;
       })
-      .filter((delivery): delivery is DeliveryRecord => delivery !== undefined);
+      .filter((delivery): delivery is DeliveryRecord => delivery !== undefined
+        && delivery.eventId === eventId);
 
   /**
    * Candidate assignments for a device, from the structural index rather than a scan.
@@ -138,8 +139,10 @@ export function txRecruitmentContext(
     const indexed = indexes.assignmentIdsForDevice;
     const siblings = indexes.deviceIdsForIdentity;
     if (indexed) keys.push(...indexed(device.deviceInstanceId));
-    if (indexed && siblings) {
-      for (const siblingId of siblings(identity)) keys.push(...indexed(siblingId));
+    if (indexed) {
+      const siblingIds = siblings?.(identity)
+        ?? tx.keysWhere("devices", candidate => deviceIdentityKey(candidate) === identity, limit);
+      for (const siblingId of siblingIds) keys.push(...indexed(siblingId));
     }
     if (!indexed) {
       // No index configured: the exact predicate still decides, so a bounded scan
