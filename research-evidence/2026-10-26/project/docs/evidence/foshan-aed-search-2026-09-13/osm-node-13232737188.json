@@ -1,0 +1,25 @@
+{
+  "version": "0.6",
+  "generator": "openstreetmap-cgimap 2.1.0 (244698 spike-07.openstreetmap.org)",
+  "copyright": "OpenStreetMap and contributors",
+  "attribution": "http://www.openstreetmap.org/copyright",
+  "license": "http://redacted-host.invalid/licenses/odbl/1-0/",
+  "elements": [
+    {
+      "type": "node",
+      "id": 13232737188,
+      "lat": 23.1498419,
+      "lon": 113.0225249,
+      "timestamp": "2025-11-11T03:33:46Z",
+      "version": 2,
+      "changeset": 174491079,
+      "user": "JimmyWOO",
+      "uid": 22081328,
+      "tags": {
+        "defibrillator:location": "教学楼A 一层;Teaching building A  1F",
+        "emergency": "defibrillator",
+        "indoor": "yes"
+      }
+    }
+  ]
+}

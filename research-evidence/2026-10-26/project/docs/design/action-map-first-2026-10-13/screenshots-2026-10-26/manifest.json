@@ -1,0 +1,47 @@
+[
+  {
+    "file": "task-statistics-light.png",
+    "source": "REDACTED-ID-0004.png",
+    "name": "map-first-accepted-task_0_E3AF7361-B154-4AC4-B969-2F1A310E9790.png"
+  },
+  {
+    "file": "task-light.png",
+    "source": "REDACTED-ID-0005.png",
+    "name": "map-first-task-default_0_4A05A13E-4B16-4790-86F5-1C11D0240D44.png"
+  },
+  {
+    "file": "invitation-light.png",
+    "source": "REDACTED-ID-0006.png",
+    "name": "map-first-invitation-private-position_0_F7384952-0A9A-41E6-8E72-2950559978DD.png"
+  },
+  {
+    "file": "standby-ranges-light.png",
+    "source": "REDACTED-ID-0007.png",
+    "name": "map-first-circles-restored_0_D21E02D6-E544-4989-B5A0-F44BB47101CD.png"
+  },
+  {
+    "file": "standby-ranges-hidden.png",
+    "source": "REDACTED-ID-0008.png",
+    "name": "map-first-circles-hidden-counts-preserved_0_8EFE270A-693F-4A5E-A26F-F09E4C44934E.png"
+  },
+  {
+    "file": "standby-light.png",
+    "source": "REDACTED-ID-0009.png",
+    "name": "map-first-standby_0_4FBE3D96-4490-4B78-9592-18B0914AAF9A.png"
+  },
+  {
+    "file": "task-dark-large.png",
+    "source": "REDACTED-ID-0010.png",
+    "name": "map-first-dark-accessibility-task_0_60FF1026-A43E-4D64-86AD-1D52E6B48E7E.png"
+  },
+  {
+    "file": "invitation-dark-large.png",
+    "source": "REDACTED-ID-0011.png",
+    "name": "map-first-dark-accessibility-invitation_0_0D75312C-EA8E-4E49-B63B-6DDCE4C467A3.png"
+  },
+  {
+    "file": "standby-dark-large.png",
+    "source": "REDACTED-ID-0012.png",
+    "name": "map-first-dark-accessibility-standby_0_858ACCCB-6E02-4605-B5A8-4F8280F07E2D.png"
+  }
+]

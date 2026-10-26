@@ -1,0 +1,1564 @@
+{
+  "devices": [
+    {
+      "architecture": "arm64",
+      "deviceId": "[REDACTED_ENVIRONMENT]",
+      "deviceName": "[REDACTED_ENVIRONMENT]",
+      "modelName": "iPhone 17 Pro",
+      "osBuildNumber": "23E254a",
+      "osVersion": "26.4.1",
+      "platform": "iOS Simulator"
+    }
+  ],
+  "testNodes": [
+    {
+      "children": [
+        {
+          "children": [
+            {
+              "children": [
+                {
+                  "duration": "0.06s",
+                  "durationInSeconds": 0.05972397327423096,
+                  "name": "testAcceptanceIsSentOnceWithTheCurrentPositionAndRefusalKeepsTheTask()",
+                  "nodeIdentifier": "AedRerouteTests/testAcceptanceIsSentOnceWithTheCurrentPositionAndRefusalKeepsTheTask()",
+                  "nodeIdentifierURL": "test://com.apple.xcode/AEDResponse/AEDResponseTests/AedRerouteTests/testAcceptanceIsSentOnceWithTheCurrentPositionAndRefusalKeepsTheTask",
+                  "nodeType": "Test Case",
+                  "result": "Passed"
+                },
+                {
+                  "duration": "0.0032s",
+                  "durationInSeconds": 0.0031909942626953125,
+                  "name": "testAnExpiredQuestionIsDroppedAndNeverAccepted()",
+                  "nodeIdentifier": "AedRerouteTests/testAnExpiredQuestionIsDroppedAndNeverAccepted()",
+                  "nodeIdentifierURL": "test://com.apple.xcode/AEDResponse/AEDResponseTests/AedRerouteTests/testAnExpiredQuestionIsDroppedAndNeverAccepted",
+                  "nodeType": "Test Case",
+                  "result": "Passed"
+                },
+                {
+                  "duration": "0.012s",
+                  "durationInSeconds": 0.012071013450622559,
+                  "name": "testASessionChangeOrTaskChangeDropsTheQuestion()",
+                  "nodeIdentifier": "AedRerouteTests/testASessionChangeOrTaskChangeDropsTheQuestion()",
+                  "nodeIdentifierURL": "test://com.apple.xcode/AEDResponse/AEDResponseTests/AedRerouteTests/testASessionChangeOrTaskChangeDropsTheQuestion",
+                  "nodeType": "Test Case",
+                  "result": "Passed"
+                },
+                {
+                  "duration": "0.2s",
+                  "durationInSeconds": 0.1952420473098755,
+                  "name": "testPendingProposalDecodesAndTheNullCaseIsUnderstood()",
+                  "nodeIdentifier": "AedRerouteTests/testPendingProposalDecodesAndTheNullCaseIsUnderstood()",
+                  "nodeIdentifierURL": "test://com.apple.xcode/AEDResponse/AEDResponseTests/AedRerouteTests/testPendingProposalDecodesAndTheNullCaseIsUnderstood",
+                  "nodeType": "Test Case",
+                  "result": "Passed"
+                }
+              ],
+              "name": "AedRerouteTests",
+              "nodeIdentifierURL": "test://com.apple.xcode/AEDResponse/AEDResponseTests/AedRerouteTests",
+              "nodeType": "Test Suite",
+              "result": "Passed"
+            },
+            {
+              "children": [
+                {
+                  "duration": "0.69s",
+                  "durationInSeconds": 0.694564938545227,
+                  "name": "testAccountBearerCannotBeSentToDifferentIssuer()",
+                  "nodeIdentifier": "AppStoreArchitectureTests/testAccountBearerCannotBeSentToDifferentIssuer()",
+                  "nodeIdentifierURL": "test://com.apple.xcode/AEDResponse/AEDResponseTests/AppStoreArchitectureTests/testAccountBearerCannotBeSentToDifferentIssuer",
+                  "nodeType": "Test Case",
+                  "result": "Passed"
+                },
+                {
+                  "duration": "0.27s",
+                  "durationInSeconds": 0.27420496940612793,
+                  "name": "testAccountDeletionAsksTheServerAndClearsEveryLocalIdentityFact()",
+                  "nodeIdentifier": "AppStoreArchitectureTests/testAccountDeletionAsksTheServerAndClearsEveryLocalIdentityFact()",
+                  "nodeIdentifierURL": "test://com.apple.xcode/AEDResponse/AEDResponseTests/AppStoreArchitectureTests/testAccountDeletionAsksTheServerAndClearsEveryLocalIdentityFact",
+                  "nodeType": "Test Case",
+                  "result": "Passed"
+                },
+                {
+                  "duration": "0.033s",
+                  "durationInSeconds": 0.03287708759307861,
+                  "name": "testAcquiringAedWhileCalculatingDiscardsOldResultAndProgressMessage()",
+                  "nodeIdentifier": "AppStoreArchitectureTests/testAcquiringAedWhileCalculatingDiscardsOldResultAndProgressMessage()",
+                  "nodeIdentifierURL": "test://com.apple.xcode/AEDResponse/AEDResponseTests/AppStoreArchitectureTests/testAcquiringAedWhileCalculatingDiscardsOldResultAndProgressMessage",
+                  "nodeType": "Test Case",
+                  "result": "Passed"
+                },
+                {
+                  "duration": "0.0056s",
+                  "durationInSeconds": 0.005558967590332031,
+                  "name": "testActivePatientAndResponderCannotLogoutOrCloseAccountLocally()",
+                  "nodeIdentifier": "AppStoreArchitectureTests/testActivePatientAndResponderCannotLogoutOrCloseAccountLocally()",
+                  "nodeIdentifierURL": "test://com.apple.xcode/AEDResponse/AEDResponseTests/AppStoreArchitectureTests/testActivePatientAndResponderCannotLogoutOrCloseAccountLocally",
+                  "nodeType": "Test Case",
+                  "result": "Passed"
+                },
+                {
+                  "duration": "0.012s",
+                  "durationInSeconds": 0.01232004165649414,
+                  "name": "testActiveStartOnlyProjectionQuarantinesLegacyFloorSlotInPendingAndOpenDraft()",
+                  "nodeIdentifier": "AppStoreArchitectureTests/testActiveStartOnlyProjectionQuarantinesLegacyFloorSlotInPendingAndOpenDraft()",
+                  "nodeIdentifierURL": "test://com.apple.xcode/AEDResponse/AEDResponseTests/AppStoreArchitectureTests/testActiveStartOnlyProjectionQuarantinesLegacyFloorSlotInPendingAndOpenDraft",
+                  "nodeType": "Test Case",
+                  "result": "Passed"
+                },
+                {
+                  "duration": "0.0034s",
+                  "durationInSeconds": 0.0034409761428833008,
+                  "name": "testAFailedReportIsReportedAndDoesNotCreateALocalCase()",
+                  "nodeIdentifier": "AppStoreArchitectureTests/testAFailedReportIsReportedAndDoesNotCreateALocalCase()",
+                  "nodeIdentifierURL": "test://com.apple.xcode/AEDResponse/AEDResponseTests/AppStoreArchitectureTests/testAFailedReportIsReportedAndDoesNotCreateALocalCase",
+                  "nodeType": "Test Case",
+                  "result": "Passed"
+                },
+                {
+                  "duration": "0.033s",
+                  "durationInSeconds": 0.03265798091888428,
+                  "name": "testARefusedAccountClosureIsReportedAndKeepsTheSessionForRetry()",
+                  "nodeIdentifier": "AppStoreArchitectureTests/testARefusedAccountClosureIsReportedAndKeepsTheSessionForRetry()",
+                  "nodeIdentifierURL": "test://com.apple.xcode/AEDResponse/AEDResponseTests/AppStoreArchitectureTests/testARefusedAccountClosureIsReportedAndKeepsTheSessionForRetry",
+                  "nodeType": "Test Case",
+                  "result": "Passed"
+                },
+                {
+                  "duration": "0.003s",
+                  "durationInSeconds": 0.003049015998840332,
+                  "name": "testAReportedPatientTriggerIsNotPresentedAsFallDetection()",
+                  "nodeIdentifier": "AppStoreArchitectureTests/testAReportedPatientTriggerIsNotPresentedAsFallDetection()",
+                  "nodeIdentifierURL": "test://com.apple.xcode/AEDResponse/AEDResponseTests/AppStoreArchitectureTests/testAReportedPatientTriggerIsNotPresentedAsFallDetection",
+                  "nodeType": "Test Case",
+                  "result": "Passed"
+                },
+                {
+                  "duration": "0.02s",
+                  "durationInSeconds": 0.020428061485290527,
+                  "name": "testAssignmentTimeoutHintAlsoWaitsForNeutralRestWindowBeforeSealing()",
+                  "nodeIdentifier": "AppStoreArchitectureTests/testAssignmentTimeoutHintAlsoWaitsForNeutralRestWindowBeforeSealing()",
+                  "nodeIdentifierURL": "test://com.apple.xcode/AEDResponse/AEDResponseTests/AppStoreArchitectureTests/testAssignmentTimeoutHintAlsoWaitsForNeutralRestWindowBeforeSealing",
+                  "nodeType": "Test Case",
+                  "result": "Passed"
+                },
+                {
+                  "duration": "0.024s",
+                  "durationInSeconds": 0.0242919921875,
+                  "name": "testAStaleAgreementVersionIsTreatedAsIncompleteRatherThanAccepted()",
+                  "nodeIdentifier": "AppStoreArchitectureTests/testAStaleAgreementVersionIsTreatedAsIncompleteRatherThanAccepted()",
+                  "nodeIdentifierURL": "test://com.apple.xcode/AEDResponse/AEDResponseTests/AppStoreArchitectureTests/testAStaleAgreementVersionIsTreatedAsIncompleteRatherThanAccepted",
+                  "nodeType": "Test Case",
+                  "result": "Passed"
+                },
+                {
+                  "duration": "0.028s",
+                  "durationInSeconds": 0.028314948081970215,
+                  "name": "testAuthenticatedBootstrapCarriesFourAgreementsAndNoCredentials()",
+                  "nodeIdentifier": "AppStoreArchitectureTests/testAuthenticatedBootstrapCarriesFourAgreementsAndNoCredentials()",
+                  "nodeIdentifierURL": "test://com.apple.xcode/AEDResponse/AEDResponseTests/AppStoreArchitectureTests/testAuthenticatedBootstrapCarriesFourAgreementsAndNoCredentials",
+                  "nodeType": "Test Case",
+                  "result": "Passed"
+                },
+                {
+                  "duration": "0.0031s",
+                  "durationInSeconds": 0.0030640363693237305,
+                  "name": "testAuthoritativeEndClocksAndSealsValidUnclockedFinalFix()",
+                  "nodeIdentifier": "AppStoreArchitectureTests/testAuthoritativeEndClocksAndSealsValidUnclockedFinalFix()",
+                  "nodeIdentifierURL": "test://com.apple.xcode/AEDResponse/AEDResponseTests/AppStoreArchitectureTests/testAuthoritativeEndClocksAndSealsValidUnclockedFinalFix",
+                  "nodeType": "Test Case",
+                  "result": "Passed"
+                },
+                {
+                  "duration": "0.023s",
+                  "durationInSeconds": 0.022628068923950195,
+                  "name": "testAuthoritativeEndRegroupsPendingLegalRecordsAndQuarantinesSuffix()",
+                  "nodeIdentifier": "AppStoreArchitectureTests/testAuthoritativeEndRegroupsPendingLegalRecordsAndQuarantinesSuffix()",
+                  "nodeIdentifierURL": "test://com.apple.xcode/AEDResponse/AEDResponseTests/AppStoreArchitectureTests/testAuthoritativeEndRegroupsPendingLegalRecordsAndQuarantinesSuffix",
+                  "nodeType": "Test Case",
+                  "result": "Passed"
+                },
+                {
+                  "duration": "0.0025s",
+                  "durationInSeconds": 0.0025249719619750977,
+                  "name": "testAuthoritativeEndSealsOpenLegalPrefixAndQuarantinesInvalidDraftFacts()",
+                  "nodeIdentifier": "AppStoreArchitectureTests/testAuthoritativeEndSealsOpenLegalPrefixAndQuarantinesInvalidDraftFacts()",
+                  "nodeIdentifierURL": "test://com.apple.xcode/AEDResponse/AEDResponseTests/AppStoreArchitectureTests/testAuthoritativeEndSealsOpenLegalPrefixAndQuarantinesInvalidDraftFacts",
+                  "nodeType": "Test Case",
+                  "result": "Passed"
+                },
+                {
+                  "duration": "0.1s",
+                  "durationInSeconds": 0.10073506832122803,
+                  "name": "testAutomaticConnectionCancelledByImmediateLogout()",
+                  "nodeIdentifier": "AppStoreArchitectureTests/testAutomaticConnectionCancelledByImmediateLogout()",
+                  "nodeIdentifierURL": "test://com.apple.xcode/AEDResponse/AEDResponseTests/AppStoreArchitectureTests/testAutomaticConnectionCancelledByImmediateLogout",
+                  "nodeType": "Test Case",
+                  "result": "Passed"
+                },
+                {
+                  "duration": "0.12s",
+                  "durationInSeconds": 0.11584889888763428,
+                  "name": "testAutomaticConnectionCannotOpenSocketAfterLogoutDuringBootstrap()",
+                  "nodeIdentifier": "AppStoreArchitectureTests/testAutomaticConnectionCannotOpenSocketAfterLogoutDuringBootstrap()",
+                  "nodeIdentifierURL": "test://com.apple.xcode/AEDResponse/AEDResponseTests/AppStoreArchitectureTests/testAutomaticConnectionCannotOpenSocketAfterLogoutDuringBootstrap",
+                  "nodeType": "Test Case",
+                  "result": "Passed"
+                },
+                {
+                  "duration": "0.3s",
+                  "durationInSeconds": 0.3036220073699951,
+                  "name": "testAutomaticConnectionPreservesAllGatesAndOfflineIsolation()",
+                  "nodeIdentifier": "AppStoreArchitectureTests/testAutomaticConnectionPreservesAllGatesAndOfflineIsolation()",
+                  "nodeIdentifierURL": "test://com.apple.xcode/AEDResponse/AEDResponseTests/AppStoreArchitectureTests/testAutomaticConnectionPreservesAllGatesAndOfflineIsolation",
+                  "nodeType": "Test Case",
+                  "result": "Passed"
+                },
+                {
+                  "duration": "3秒",
+                  "durationInSeconds": 3.8697469234466553,
+                  "name": "testAutomaticConnectionRetriesInitialFailureWithoutForegroundDuplicates()",
+                  "nodeIdentifier": "AppStoreArchitectureTests/testAutomaticConnectionRetriesInitialFailureWithoutForegroundDuplicates()",
+                  "nodeIdentifierURL": "test://com.apple.xcode/AEDResponse/AEDResponseTests/AppStoreArchitectureTests/testAutomaticConnectionRetriesInitialFailureWithoutForegroundDuplicates",
+                  "nodeType": "Test Case",
+                  "result": "Passed"
+                },
+                {
+                  "duration": "0.027s",
+                  "durationInSeconds": 0.026986002922058105,
+                  "name": "testAutomaticConnectionStartsAfterPermissionBecomesEligible()",
+                  "nodeIdentifier": "AppStoreArchitectureTests/testAutomaticConnectionStartsAfterPermissionBecomesEligible()",
+                  "nodeIdentifierURL": "test://com.apple.xcode/AEDResponse/AEDResponseTests/AppStoreArchitectureTests/testAutomaticConnectionStartsAfterPermissionBecomesEligible",
+                  "nodeType": "Test Case",
+                  "result": "Passed"
+                },
+                {
+                  "duration": "0.13s",
+                  "durationInSeconds": 0.13150203227996826,
+                  "name": "testAutomaticConnectionStartsOnceWithoutManualConnect()",
+                  "nodeIdentifier": "AppStoreArchitectureTests/testAutomaticConnectionStartsOnceWithoutManualConnect()",
+                  "nodeIdentifierURL": "test://com.apple.xcode/AEDResponse/AEDResponseTests/AppStoreArchitectureTests/testAutomaticConnectionStartsOnceWithoutManualConnect",
+                  "nodeType": "Test Case",
+                  "result": "Passed"
+                },
+                {
+                  "duration": "0.074s",
+                  "durationInSeconds": 0.07410800457000732,
+                  "name": "testBackendSoleResponder409ReopensThreeConfirmationsWithoutAutomaticRetry()",
+                  "nodeIdentifier": "AppStoreArchitectureTests/testBackendSoleResponder409ReopensThreeConfirmationsWithoutAutomaticRetry()",
+                  "nodeIdentifierURL": "test://com.apple.xcode/AEDResponse/AEDResponseTests/AppStoreArchitectureTests/testBackendSoleResponder409ReopensThreeConfirmationsWithoutAutomaticRetry",
+                  "nodeType": "Test Case",
+                  "result": "Passed"
+                },
+                {
+                  "duration": "0.028s",
+                  "durationInSeconds": 0.027854084968566895,
+                  "name": "testClientMapKitCalculationOnlyAppliesTheServerConfirmedAssignment()",
+                  "nodeIdentifier": "AppStoreArchitectureTests/testClientMapKitCalculationOnlyAppliesTheServerConfirmedAssignment()",
+                  "nodeIdentifierURL": "test://com.apple.xcode/AEDResponse/AEDResponseTests/AppStoreArchitectureTests/testClientMapKitCalculationOnlyAppliesTheServerConfirmedAssignment",
+                  "nodeType": "Test Case",
+                  "result": "Passed"
+                },
+                {
+                  "duration": "0.015s",
+                  "durationInSeconds": 0.01500999927520752,
+                  "name": "testClientRouteScheduleFollowsSceneAndAuthoritativeTaskLifecycle()",
+                  "nodeIdentifier": "AppStoreArchitectureTests/testClientRouteScheduleFollowsSceneAndAuthoritativeTaskLifecycle()",
+                  "nodeIdentifierURL": "test://com.apple.xcode/AEDResponse/AEDResponseTests/AppStoreArchitectureTests/testClientRouteScheduleFollowsSceneAndAuthoritativeTaskLifecycle",
+                  "nodeType": "Test Case",
+                  "result": "Passed"
+                },
+                {
+                  "duration": "1秒",
+                  "durationInSeconds": 1.8006939888000488,
+                  "name": "testCompanionTicketIsRequestedOnlyAfterDeviceSessionAndReachableWatch()",
+                  "nodeIdentifier": "AppStoreArchitectureTests/testCompanionTicketIsRequestedOnlyAfterDeviceSessionAndReachableWatch()",
+                  "nodeIdentifierURL": "test://com.apple.xcode/AEDResponse/AEDResponseTests/AppStoreArchitectureTests/testCompanionTicketIsRequestedOnlyAfterDeviceSessionAndReachableWatch",
+                  "nodeType": "Test Case",
+                  "result": "Passed"
+                },
+                {
+                  "children": [
+                    {
+                      "name": "AppStoreArchitectureTests.swift:4745: failed - 等待异步 REST 对账超时。",
+                      "nodeType": "Failure Message"
+                    }
+                  ],
+                  "duration": "8秒",
+                  "durationInSeconds": 8.674385905265808,
+                  "name": "testConnectAndLocationChangesPublishStrictResponderPositionThroughRest()",
+                  "nodeIdentifier": "AppStoreArchitectureTests/testConnectAndLocationChangesPublishStrictResponderPositionThroughRest()",
+                  "nodeIdentifierURL": "test://com.apple.xcode/AEDResponse/AEDResponseTests/AppStoreArchitectureTests/testConnectAndLocationChangesPublishStrictResponderPositionThroughRest",
+                  "nodeType": "Test Case",
+                  "result": "Failed"
+                },
+                {
+                  "duration": "0.037s",
+                  "durationInSeconds": 0.036656975746154785,
+                  "name": "testConsentGateExposesReadableDocumentsWhenPresent()",
+                  "nodeIdentifier": "AppStoreArchitectureTests/testConsentGateExposesReadableDocumentsWhenPresent()",
+                  "nodeIdentifierURL": "test://com.apple.xcode/AEDResponse/AEDResponseTests/AppStoreArchitectureTests/testConsentGateExposesReadableDocumentsWhenPresent",
+                  "nodeType": "Test Case",
+                  "result": "Passed"
+                },
+                {
+                  "duration": "0.0018s",
+                  "durationInSeconds": 0.0017910003662109375,
+                  "name": "testConsentGateFailsClosedWithoutReadableDocuments()",
+                  "nodeIdentifier": "AppStoreArchitectureTests/testConsentGateFailsClosedWithoutReadableDocuments()",
+                  "nodeIdentifierURL": "test://com.apple.xcode/AEDResponse/AEDResponseTests/AppStoreArchitectureTests/testConsentGateFailsClosedWithoutReadableDocuments",
+                  "nodeType": "Test Case",
+                  "result": "Passed"
+                },
+                {
+                  "duration": "0.096s",
+                  "durationInSeconds": 0.09647893905639648,
+                  "name": "testDelayedAedUnavailableHTTPCompletionCannotOverwriteSocketReplacement()",
+                  "nodeIdentifier": "AppStoreArchitectureTests/testDelayedAedUnavailableHTTPCompletionCannotOverwriteSocketReplacement()",
+                  "nodeIdentifierURL": "test://com.apple.xcode/AEDResponse/AEDResponseTests/AppStoreArchitectureTests/testDelayedAedUnavailableHTTPCompletionCannotOverwriteSocketReplacement",
+                  "nodeType": "Test Case",
+                  "result": "Passed"
+                },
+                {
+                  "duration": "0.21s",
+                  "durationInSeconds": 0.21224188804626465,
+                  "name": "testDelayedRestProjectionStartsAtAuthorityAndRetainsCompletedSlots()",
+                  "nodeIdentifier": "AppStoreArchitectureTests/testDelayedRestProjectionStartsAtAuthorityAndRetainsCompletedSlots()",
+                  "nodeIdentifierURL": "test://com.apple.xcode/AEDResponse/AEDResponseTests/AppStoreArchitectureTests/testDelayedRestProjectionStartsAtAuthorityAndRetainsCompletedSlots",
+                  "nodeType": "Test Case",
+                  "result": "Passed"
+                },
+                {
+                  "duration": "0.19s",
+                  "durationInSeconds": 0.19092905521392822,
+                  "name": "testDeliveryReceiptSurvivesAppStoreRestartAndDrainsFromSameProtectedQueue()",
+                  "nodeIdentifier": "AppStoreArchitectureTests/testDeliveryReceiptSurvivesAppStoreRestartAndDrainsFromSameProtectedQueue()",
+                  "nodeIdentifierURL": "test://com.apple.xcode/AEDResponse/AEDResponseTests/AppStoreArchitectureTests/testDeliveryReceiptSurvivesAppStoreRestartAndDrainsFromSameProtectedQueue",
+                  "nodeType": "Test Case",
+                  "result": "Passed"
+                },
+                {
+                  "duration": "0.0035s",
+                  "durationInSeconds": 0.003459930419921875,
+                  "name": "testDeniedNotificationsCannotOpenBusinessGate()",
+                  "nodeIdentifier": "AppStoreArchitectureTests/testDeniedNotificationsCannotOpenBusinessGate()",
+                  "nodeIdentifierURL": "test://com.apple.xcode/AEDResponse/AEDResponseTests/AppStoreArchitectureTests/testDeniedNotificationsCannotOpenBusinessGate",
+                  "nodeType": "Test Case",
+                  "result": "Passed"
+                },
+                {
+                  "duration": "0.17s",
+                  "durationInSeconds": 0.16809594631195068,
+                  "name": "testEndRetryPreservesOperationIdentity()",
+                  "nodeIdentifier": "AppStoreArchitectureTests/testEndRetryPreservesOperationIdentity()",
+                  "nodeIdentifierURL": "test://com.apple.xcode/AEDResponse/AEDResponseTests/AppStoreArchitectureTests/testEndRetryPreservesOperationIdentity",
+                  "nodeType": "Test Case",
+                  "result": "Passed"
+                },
+                {
+                  "duration": "0.016s",
+                  "durationInSeconds": 0.01571500301361084,
+                  "name": "testEventParticipantCapturesNoNewFixWithoutCopyingOldCoordinate()",
+                  "nodeIdentifier": "AppStoreArchitectureTests/testEventParticipantCapturesNoNewFixWithoutCopyingOldCoordinate()",
+                  "nodeIdentifierURL": "test://com.apple.xcode/AEDResponse/AEDResponseTests/AppStoreArchitectureTests/testEventParticipantCapturesNoNewFixWithoutCopyingOldCoordinate",
+                  "nodeType": "Test Case",
+                  "result": "Passed"
+                },
+                {
+                  "duration": "0.03s",
+                  "durationInSeconds": 0.029505014419555664,
+                  "name": "testEventParticipantFlushesFiveSecondBatchAndAcknowledgementRemovesIt()",
+                  "nodeIdentifier": "AppStoreArchitectureTests/testEventParticipantFlushesFiveSecondBatchAndAcknowledgementRemovesIt()",
+                  "nodeIdentifierURL": "test://com.apple.xcode/AEDResponse/AEDResponseTests/AppStoreArchitectureTests/testEventParticipantFlushesFiveSecondBatchAndAcknowledgementRemovesIt",
+                  "nodeType": "Test Case",
+                  "result": "Passed"
+                },
+                {
+                  "duration": "0.067s",
+                  "durationInSeconds": 0.06665599346160889,
+                  "name": "testEventParticipantSendsEarlyAfterTenMetersAndDoesNotUseStandbyEndpoint()",
+                  "nodeIdentifier": "AppStoreArchitectureTests/testEventParticipantSendsEarlyAfterTenMetersAndDoesNotUseStandbyEndpoint()",
+                  "nodeIdentifierURL": "test://com.apple.xcode/AEDResponse/AEDResponseTests/AppStoreArchitectureTests/testEventParticipantSendsEarlyAfterTenMetersAndDoesNotUseStandbyEndpoint",
+                  "nodeType": "Test Case",
+                  "result": "Passed"
+                },
+                {
+                  "duration": "0.43s",
+                  "durationInSeconds": 0.42846202850341797,
+                  "name": "testEventPositionBatchFailureRetainsBatchUntilLaterACK()",
+                  "nodeIdentifier": "AppStoreArchitectureTests/testEventPositionBatchFailureRetainsBatchUntilLaterACK()",
+                  "nodeIdentifierURL": "test://com.apple.xcode/AEDResponse/AEDResponseTests/AppStoreArchitectureTests/testEventPositionBatchFailureRetainsBatchUntilLaterACK",
+                  "nodeType": "Test Case",
+                  "result": "Passed"
+                },
+                {
+                  "duration": "0.044s",
+                  "durationInSeconds": 0.044129014015197754,
+                  "name": "testEventPositionGroupsBatchCallbackBySecondAndKeepsLatestFixPerSlot()",
+                  "nodeIdentifier": "AppStoreArchitectureTests/testEventPositionGroupsBatchCallbackBySecondAndKeepsLatestFixPerSlot()",
+                  "nodeIdentifierURL": "test://com.apple.xcode/AEDResponse/AEDResponseTests/AppStoreArchitectureTests/testEventPositionGroupsBatchCallbackBySecondAndKeepsLatestFixPerSlot",
+                  "nodeType": "Test Case",
+                  "result": "Passed"
+                },
+                {
+                  "duration": "0.094s",
+                  "durationInSeconds": 0.09413695335388184,
+                  "name": "testEventPositionLateFixCannotOverwriteFinalizedSlot()",
+                  "nodeIdentifier": "AppStoreArchitectureTests/testEventPositionLateFixCannotOverwriteFinalizedSlot()",
+                  "nodeIdentifierURL": "test://com.apple.xcode/AEDResponse/AEDResponseTests/AppStoreArchitectureTests/testEventPositionLateFixCannotOverwriteFinalizedSlot",
+                  "nodeType": "Test Case",
+                  "result": "Passed"
+                },
+                {
+                  "duration": "0.13s",
+                  "durationInSeconds": 0.13090002536773682,
+                  "name": "testEventPositionPersistenceFailureDoesNotClaimQueuedOrSend()",
+                  "nodeIdentifier": "AppStoreArchitectureTests/testEventPositionPersistenceFailureDoesNotClaimQueuedOrSend()",
+                  "nodeIdentifierURL": "test://com.apple.xcode/AEDResponse/AEDResponseTests/AppStoreArchitectureTests/testEventPositionPersistenceFailureDoesNotClaimQueuedOrSend",
+                  "nodeType": "Test Case",
+                  "result": "Passed"
+                },
+                {
+                  "duration": "0.029s",
+                  "durationInSeconds": 0.028789997100830078,
+                  "name": "testEventSamplingContinuesOfflineAndKeepsBatchForReconnect()",
+                  "nodeIdentifier": "AppStoreArchitectureTests/testEventSamplingContinuesOfflineAndKeepsBatchForReconnect()",
+                  "nodeIdentifierURL": "test://com.apple.xcode/AEDResponse/AEDResponseTests/AppStoreArchitectureTests/testEventSamplingContinuesOfflineAndKeepsBatchForReconnect",
+                  "nodeType": "Test Case",
+                  "result": "Passed"
+                },
+                {
+                  "duration": "0.029s",
+                  "durationInSeconds": 0.029049038887023926,
+                  "name": "testEverySocketStateMutationSchedulesRestReconciliation()",
+                  "nodeIdentifier": "AppStoreArchitectureTests/testEverySocketStateMutationSchedulesRestReconciliation()",
+                  "nodeIdentifierURL": "test://com.apple.xcode/AEDResponse/AEDResponseTests/AppStoreArchitectureTests/testEverySocketStateMutationSchedulesRestReconciliation",
+                  "nodeType": "Test Case",
+                  "result": "Passed"
+                },
+                {
+                  "duration": "0.055s",
+                  "durationInSeconds": 0.055187106132507324,
+                  "name": "testExitACKAtWindowBoundaryRecoversAfterTemporaryQueueSaveFailure()",
+                  "nodeIdentifier": "AppStoreArchitectureTests/testExitACKAtWindowBoundaryRecoversAfterTemporaryQueueSaveFailure()",
+                  "nodeIdentifierURL": "test://com.apple.xcode/AEDResponse/AEDResponseTests/AppStoreArchitectureTests/testExitACKAtWindowBoundaryRecoversAfterTemporaryQueueSaveFailure",
+                  "nodeType": "Test Case",
+                  "result": "Passed"
+                },
+                {
+                  "duration": "0.039s",
+                  "durationInSeconds": 0.039234042167663574,
+                  "name": "testExitNetworkFailureRetriesTheExactSameDeclarationAndACKClearsTask()",
+                  "nodeIdentifier": "AppStoreArchitectureTests/testExitNetworkFailureRetriesTheExactSameDeclarationAndACKClearsTask()",
+                  "nodeIdentifierURL": "test://com.apple.xcode/AEDResponse/AEDResponseTests/AppStoreArchitectureTests/testExitNetworkFailureRetriesTheExactSameDeclarationAndACKClearsTask",
+                  "nodeType": "Test Case",
+                  "result": "Passed"
+                },
+                {
+                  "duration": "0.068s",
+                  "durationInSeconds": 0.0677720308303833,
+                  "name": "testFailedAccountDeletionKeepsTheSessionAndReportsTheFailure()",
+                  "nodeIdentifier": "AppStoreArchitectureTests/testFailedAccountDeletionKeepsTheSessionAndReportsTheFailure()",
+                  "nodeIdentifierURL": "test://com.apple.xcode/AEDResponse/AEDResponseTests/AppStoreArchitectureTests/testFailedAccountDeletionKeepsTheSessionAndReportsTheFailure",
+                  "nodeType": "Test Case",
+                  "result": "Passed"
+                },
+                {
+                  "duration": "0.016s",
+                  "durationInSeconds": 0.01634204387664795,
+                  "name": "testFailedRestReceiptRemainsPendingAndBlocksDecision()",
+                  "nodeIdentifier": "AppStoreArchitectureTests/testFailedRestReceiptRemainsPendingAndBlocksDecision()",
+                  "nodeIdentifierURL": "test://com.apple.xcode/AEDResponse/AEDResponseTests/AppStoreArchitectureTests/testFailedRestReceiptRemainsPendingAndBlocksDecision",
+                  "nodeType": "Test Case",
+                  "result": "Passed"
+                },
+                {
+                  "duration": "0.013s",
+                  "durationInSeconds": 0.013293981552124023,
+                  "name": "testForegroundNotificationRevocationStopsLiveBusiness()",
+                  "nodeIdentifier": "AppStoreArchitectureTests/testForegroundNotificationRevocationStopsLiveBusiness()",
+                  "nodeIdentifierURL": "test://com.apple.xcode/AEDResponse/AEDResponseTests/AppStoreArchitectureTests/testForegroundNotificationRevocationStopsLiveBusiness",
+                  "nodeType": "Test Case",
+                  "result": "Passed"
+                },
+                {
+                  "duration": "0.014s",
+                  "durationInSeconds": 0.014462947845458984,
+                  "name": "testFractionalParticipationStartSkipsPartialFirstSecond()",
+                  "nodeIdentifier": "AppStoreArchitectureTests/testFractionalParticipationStartSkipsPartialFirstSecond()",
+                  "nodeIdentifierURL": "test://com.apple.xcode/AEDResponse/AEDResponseTests/AppStoreArchitectureTests/testFractionalParticipationStartSkipsPartialFirstSecond",
+                  "nodeType": "Test Case",
+                  "result": "Passed"
+                },
+                {
+                  "duration": "0.0017s",
+                  "durationInSeconds": 0.0016930103302001953,
+                  "name": "testIPhoneDoesNotActivateCompanionBeforeAllOnboardingGates()",
+                  "nodeIdentifier": "AppStoreArchitectureTests/testIPhoneDoesNotActivateCompanionBeforeAllOnboardingGates()",
+                  "nodeIdentifierURL": "test://com.apple.xcode/AEDResponse/AEDResponseTests/AppStoreArchitectureTests/testIPhoneDoesNotActivateCompanionBeforeAllOnboardingGates",
+                  "nodeType": "Test Case",
+                  "result": "Passed"
+                },
+                {
+                  "duration": "1秒",
+                  "durationInSeconds": 1.012781023979187,
+                  "name": "testLatestPositionUploadCoordinatorOwnsStableRetryIdentity()",
+                  "nodeIdentifier": "AppStoreArchitectureTests/testLatestPositionUploadCoordinatorOwnsStableRetryIdentity()",
+                  "nodeIdentifierURL": "test://com.apple.xcode/AEDResponse/AEDResponseTests/AppStoreArchitectureTests/testLatestPositionUploadCoordinatorOwnsStableRetryIdentity",
+                  "nodeType": "Test Case",
+                  "result": "Passed"
+                },
+                {
+                  "duration": "0.19s",
+                  "durationInSeconds": 0.1870189905166626,
+                  "name": "testLiveRoleTransitionInvalidatesResponderModeBeforePublishingPatientSample()",
+                  "nodeIdentifier": "AppStoreArchitectureTests/testLiveRoleTransitionInvalidatesResponderModeBeforePublishingPatientSample()",
+                  "nodeIdentifierURL": "test://com.apple.xcode/AEDResponse/AEDResponseTests/AppStoreArchitectureTests/testLiveRoleTransitionInvalidatesResponderModeBeforePublishingPatientSample",
+                  "nodeType": "Test Case",
+                  "result": "Passed"
+                },
+                {
+                  "duration": "0.29s",
+                  "durationInSeconds": 0.29225897789001465,
+                  "name": "testLocalOfferExpiryReleasesBusyAndIgnoresLateDecision()",
+                  "nodeIdentifier": "AppStoreArchitectureTests/testLocalOfferExpiryReleasesBusyAndIgnoresLateDecision()",
+                  "nodeIdentifierURL": "test://com.apple.xcode/AEDResponse/AEDResponseTests/AppStoreArchitectureTests/testLocalOfferExpiryReleasesBusyAndIgnoresLateDecision",
+                  "nodeType": "Test Case",
+                  "result": "Passed"
+                },
+                {
+                  "duration": "0.011s",
+                  "durationInSeconds": 0.011108040809631348,
+                  "name": "testLocalTestHostScenarioCannotConnectOrBootstrapBackend()",
+                  "nodeIdentifier": "AppStoreArchitectureTests/testLocalTestHostScenarioCannotConnectOrBootstrapBackend()",
+                  "nodeIdentifierURL": "test://com.apple.xcode/AEDResponse/AEDResponseTests/AppStoreArchitectureTests/testLocalTestHostScenarioCannotConnectOrBootstrapBackend",
+                  "nodeType": "Test Case",
+                  "result": "Passed"
+                },
+                {
+                  "duration": "0.0027s",
+                  "durationInSeconds": 0.002696990966796875,
+                  "name": "testLocalTestHostScenarioCannotStartAfterLiveConnectionAttempt()",
+                  "nodeIdentifier": "AppStoreArchitectureTests/testLocalTestHostScenarioCannotStartAfterLiveConnectionAttempt()",
+                  "nodeIdentifierURL": "test://com.apple.xcode/AEDResponse/AEDResponseTests/AppStoreArchitectureTests/testLocalTestHostScenarioCannotStartAfterLiveConnectionAttempt",
+                  "nodeType": "Test Case",
+                  "result": "Passed"
+                },
+                {
+                  "duration": "0.048s",
+                  "durationInSeconds": 0.048078060150146484,
+                  "name": "testLocalTestHostScenariosDerivePatientAndResponderRoles()",
+                  "nodeIdentifier": "AppStoreArchitectureTests/testLocalTestHostScenariosDerivePatientAndResponderRoles()",
+                  "nodeIdentifierURL": "test://com.apple.xcode/AEDResponse/AEDResponseTests/AppStoreArchitectureTests/testLocalTestHostScenariosDerivePatientAndResponderRoles",
+                  "nodeType": "Test Case",
+                  "result": "Passed"
+                },
+                {
+                  "duration": "0.04s",
+                  "durationInSeconds": 0.04025399684906006,
+                  "name": "testLocationAuthorizationDowngradeStopsLiveBusinessImmediately()",
+                  "nodeIdentifier": "AppStoreArchitectureTests/testLocationAuthorizationDowngradeStopsLiveBusinessImmediately()",
+                  "nodeIdentifierURL": "test://com.apple.xcode/AEDResponse/AEDResponseTests/AppStoreArchitectureTests/testLocationAuthorizationDowngradeStopsLiveBusinessImmediately",
+                  "nodeType": "Test Case",
+                  "result": "Passed"
+                },
+                {
+                  "duration": "0.014s",
+                  "durationInSeconds": 0.014223098754882812,
+                  "name": "testLogoutStopsLiveBusinessAndClearsIdentityState()",
+                  "nodeIdentifier": "AppStoreArchitectureTests/testLogoutStopsLiveBusinessAndClearsIdentityState()",
+                  "nodeIdentifierURL": "test://com.apple.xcode/AEDResponse/AEDResponseTests/AppStoreArchitectureTests/testLogoutStopsLiveBusinessAndClearsIdentityState",
+                  "nodeType": "Test Case",
+                  "result": "Passed"
+                },
+                {
+                  "duration": "0.0072s",
+                  "durationInSeconds": 0.0071669816970825195,
+                  "name": "testOfferExpiryClearsOnlyMatchingEventAndDelivery()",
+                  "nodeIdentifier": "AppStoreArchitectureTests/testOfferExpiryClearsOnlyMatchingEventAndDelivery()",
+                  "nodeIdentifierURL": "test://com.apple.xcode/AEDResponse/AEDResponseTests/AppStoreArchitectureTests/testOfferExpiryClearsOnlyMatchingEventAndDelivery",
+                  "nodeType": "Test Case",
+                  "result": "Passed"
+                },
+                {
+                  "duration": "0.0076s",
+                  "durationInSeconds": 0.007606983184814453,
+                  "name": "testOfflineFixtureAcceptsWithoutUploadingOrAcknowledgingRealReceipts()",
+                  "nodeIdentifier": "AppStoreArchitectureTests/testOfflineFixtureAcceptsWithoutUploadingOrAcknowledgingRealReceipts()",
+                  "nodeIdentifierURL": "test://com.apple.xcode/AEDResponse/AEDResponseTests/AppStoreArchitectureTests/testOfflineFixtureAcceptsWithoutUploadingOrAcknowledgingRealReceipts",
+                  "nodeType": "Test Case",
+                  "result": "Passed"
+                },
+                {
+                  "duration": "0.031s",
+                  "durationInSeconds": 0.031219005584716797,
+                  "name": "testOlderDifferentAssignmentCreatedAndUpdatedCannotOverrideReplacementOrPause()",
+                  "nodeIdentifier": "AppStoreArchitectureTests/testOlderDifferentAssignmentCreatedAndUpdatedCannotOverrideReplacementOrPause()",
+                  "nodeIdentifierURL": "test://com.apple.xcode/AEDResponse/AEDResponseTests/AppStoreArchitectureTests/testOlderDifferentAssignmentCreatedAndUpdatedCannotOverrideReplacementOrPause",
+                  "nodeType": "Test Case",
+                  "result": "Passed"
+                },
+                {
+                  "duration": "0.32s",
+                  "durationInSeconds": 0.32499098777770996,
+                  "name": "testOldResponseDecisionCannotReleaseNewSessionSubmission()",
+                  "nodeIdentifier": "AppStoreArchitectureTests/testOldResponseDecisionCannotReleaseNewSessionSubmission()",
+                  "nodeIdentifierURL": "test://com.apple.xcode/AEDResponse/AEDResponseTests/AppStoreArchitectureTests/testOldResponseDecisionCannotReleaseNewSessionSubmission",
+                  "nodeType": "Test Case",
+                  "result": "Passed"
+                },
+                {
+                  "duration": "0.13s",
+                  "durationInSeconds": 0.12567901611328125,
+                  "name": "testOnboardingPersistsFourConsentsAndRequestsPermissions()",
+                  "nodeIdentifier": "AppStoreArchitectureTests/testOnboardingPersistsFourConsentsAndRequestsPermissions()",
+                  "nodeIdentifierURL": "test://com.apple.xcode/AEDResponse/AEDResponseTests/AppStoreArchitectureTests/testOnboardingPersistsFourConsentsAndRequestsPermissions",
+                  "nodeType": "Test Case",
+                  "result": "Passed"
+                },
+                {
+                  "duration": "0.078s",
+                  "durationInSeconds": 0.07783102989196777,
+                  "name": "testOnboardingRequiresSeparateAgreementAcceptance()",
+                  "nodeIdentifier": "AppStoreArchitectureTests/testOnboardingRequiresSeparateAgreementAcceptance()",
+                  "nodeIdentifierURL": "test://com.apple.xcode/AEDResponse/AEDResponseTests/AppStoreArchitectureTests/testOnboardingRequiresSeparateAgreementAcceptance",
+                  "nodeType": "Test Case",
+                  "result": "Passed"
+                },
+                {
+                  "duration": "0.0031s",
+                  "durationInSeconds": 0.0031179189682006836,
+                  "name": "testPartialAgreementKeepsAccountControlsReachableAndBusinessClosed()",
+                  "nodeIdentifier": "AppStoreArchitectureTests/testPartialAgreementKeepsAccountControlsReachableAndBusinessClosed()",
+                  "nodeIdentifierURL": "test://com.apple.xcode/AEDResponse/AEDResponseTests/AppStoreArchitectureTests/testPartialAgreementKeepsAccountControlsReachableAndBusinessClosed",
+                  "nodeType": "Test Case",
+                  "result": "Passed"
+                },
+                {
+                  "duration": "0.032s",
+                  "durationInSeconds": 0.031984925270080566,
+                  "name": "testPatientActivationImmediatelyOverridesResponseAndAssignment()",
+                  "nodeIdentifier": "AppStoreArchitectureTests/testPatientActivationImmediatelyOverridesResponseAndAssignment()",
+                  "nodeIdentifierURL": "test://com.apple.xcode/AEDResponse/AEDResponseTests/AppStoreArchitectureTests/testPatientActivationImmediatelyOverridesResponseAndAssignment",
+                  "nodeType": "Test Case",
+                  "result": "Passed"
+                },
+                {
+                  "duration": "0.083s",
+                  "durationInSeconds": 0.08334898948669434,
+                  "name": "testPatientActivationReleasesBusyAndPreventsLateAcceptance()",
+                  "nodeIdentifier": "AppStoreArchitectureTests/testPatientActivationReleasesBusyAndPreventsLateAcceptance()",
+                  "nodeIdentifierURL": "test://com.apple.xcode/AEDResponse/AEDResponseTests/AppStoreArchitectureTests/testPatientActivationReleasesBusyAndPreventsLateAcceptance",
+                  "nodeType": "Test Case",
+                  "result": "Passed"
+                },
+                {
+                  "duration": "0.063s",
+                  "durationInSeconds": 0.0629270076751709,
+                  "name": "testPatientCanSubmitContinueForRestStatusConfirmation()",
+                  "nodeIdentifier": "AppStoreArchitectureTests/testPatientCanSubmitContinueForRestStatusConfirmation()",
+                  "nodeIdentifierURL": "test://com.apple.xcode/AEDResponse/AEDResponseTests/AppStoreArchitectureTests/testPatientCanSubmitContinueForRestStatusConfirmation",
+                  "nodeType": "Test Case",
+                  "result": "Passed"
+                },
+                {
+                  "duration": "0.03s",
+                  "durationInSeconds": 0.029610037803649902,
+                  "name": "testPatientPriorityReadOnlyPhoneClosesOldResponderButNeverStartsPatientPublishing()",
+                  "nodeIdentifier": "AppStoreArchitectureTests/testPatientPriorityReadOnlyPhoneClosesOldResponderButNeverStartsPatientPublishing()",
+                  "nodeIdentifierURL": "test://com.apple.xcode/AEDResponse/AEDResponseTests/AppStoreArchitectureTests/testPatientPriorityReadOnlyPhoneClosesOldResponderButNeverStartsPatientPublishing",
+                  "nodeType": "Test Case",
+                  "result": "Passed"
+                },
+                {
+                  "duration": "0.027s",
+                  "durationInSeconds": 0.026522040367126465,
+                  "name": "testPatientPriorityRestSnapshotClosesMissingResponderContextAndStartsNewPatientStream()",
+                  "nodeIdentifier": "AppStoreArchitectureTests/testPatientPriorityRestSnapshotClosesMissingResponderContextAndStartsNewPatientStream()",
+                  "nodeIdentifierURL": "test://com.apple.xcode/AEDResponse/AEDResponseTests/AppStoreArchitectureTests/testPatientPriorityRestSnapshotClosesMissingResponderContextAndStartsNewPatientStream",
+                  "nodeType": "Test Case",
+                  "result": "Passed"
+                },
+                {
+                  "duration": "0.08s",
+                  "durationInSeconds": 0.08042097091674805,
+                  "name": "testPatientResolutionPerformsFullVisibleEventReconciliation()",
+                  "nodeIdentifier": "AppStoreArchitectureTests/testPatientResolutionPerformsFullVisibleEventReconciliation()",
+                  "nodeIdentifierURL": "test://com.apple.xcode/AEDResponse/AEDResponseTests/AppStoreArchitectureTests/testPatientResolutionPerformsFullVisibleEventReconciliation",
+                  "nodeType": "Test Case",
+                  "result": "Passed"
+                },
+                {
+                  "duration": "0.031s",
+                  "durationInSeconds": 0.030853986740112305,
+                  "name": "testPermanentlyRejectedReceiptIsIsolatedAndDoesNotBlockLaterReceipts()",
+                  "nodeIdentifier": "AppStoreArchitectureTests/testPermanentlyRejectedReceiptIsIsolatedAndDoesNotBlockLaterReceipts()",
+                  "nodeIdentifierURL": "test://com.apple.xcode/AEDResponse/AEDResponseTests/AppStoreArchitectureTests/testPermanentlyRejectedReceiptIsIsolatedAndDoesNotBlockLaterReceipts",
+                  "nodeType": "Test Case",
+                  "result": "Passed"
+                },
+                {
+                  "duration": "0.036s",
+                  "durationInSeconds": 0.0363469123840332,
+                  "name": "testPermanentRejectedBatchDoesNotBlockFollowingLegalBatch()",
+                  "nodeIdentifier": "AppStoreArchitectureTests/testPermanentRejectedBatchDoesNotBlockFollowingLegalBatch()",
+                  "nodeIdentifierURL": "test://com.apple.xcode/AEDResponse/AEDResponseTests/AppStoreArchitectureTests/testPermanentRejectedBatchDoesNotBlockFollowingLegalBatch",
+                  "nodeType": "Test Case",
+                  "result": "Passed"
+                },
+                {
+                  "duration": "1秒",
+                  "durationInSeconds": 1.0766969919204712,
+                  "name": "testPositionRetryReusesStableUpdateIDWhenNoNewerSampleExists()",
+                  "nodeIdentifier": "AppStoreArchitectureTests/testPositionRetryReusesStableUpdateIDWhenNoNewerSampleExists()",
+                  "nodeIdentifierURL": "test://com.apple.xcode/AEDResponse/AEDResponseTests/AppStoreArchitectureTests/testPositionRetryReusesStableUpdateIDWhenNoNewerSampleExists",
+                  "nodeType": "Test Case",
+                  "result": "Passed"
+                },
+                {
+                  "duration": "1秒",
+                  "durationInSeconds": 1.5167460441589355,
+                  "name": "testPositionUploadRetriesLatestCoordinateAfterTransientFailure()",
+                  "nodeIdentifier": "AppStoreArchitectureTests/testPositionUploadRetriesLatestCoordinateAfterTransientFailure()",
+                  "nodeIdentifierURL": "test://com.apple.xcode/AEDResponse/AEDResponseTests/AppStoreArchitectureTests/testPositionUploadRetriesLatestCoordinateAfterTransientFailure",
+                  "nodeType": "Test Case",
+                  "result": "Passed"
+                },
+                {
+                  "duration": "0.0065s",
+                  "durationInSeconds": 0.006492018699645996,
+                  "name": "testProductionStateNeverFallsBackToDemoLocationOrResponderPosition()",
+                  "nodeIdentifier": "AppStoreArchitectureTests/testProductionStateNeverFallsBackToDemoLocationOrResponderPosition()",
+                  "nodeIdentifierURL": "test://com.apple.xcode/AEDResponse/AEDResponseTests/AppStoreArchitectureTests/testProductionStateNeverFallsBackToDemoLocationOrResponderPosition",
+                  "nodeType": "Test Case",
+                  "result": "Passed"
+                },
+                {
+                  "duration": "0.03s",
+                  "durationInSeconds": 0.02989792823791504,
+                  "name": "testPushRegistrationFailureIsNonblockingAndClearsOnlyAfterServerRegistration()",
+                  "nodeIdentifier": "AppStoreArchitectureTests/testPushRegistrationFailureIsNonblockingAndClearsOnlyAfterServerRegistration()",
+                  "nodeIdentifierURL": "test://com.apple.xcode/AEDResponse/AEDResponseTests/AppStoreArchitectureTests/testPushRegistrationFailureIsNonblockingAndClearsOnlyAfterServerRegistration",
+                  "nodeType": "Test Case",
+                  "result": "Passed"
+                },
+                {
+                  "duration": "0.017s",
+                  "durationInSeconds": 0.01709294319152832,
+                  "name": "testPushTapReadsServerRouteWithoutAcceptingAnOffer()",
+                  "nodeIdentifier": "AppStoreArchitectureTests/testPushTapReadsServerRouteWithoutAcceptingAnOffer()",
+                  "nodeIdentifierURL": "test://com.apple.xcode/AEDResponse/AEDResponseTests/AppStoreArchitectureTests/testPushTapReadsServerRouteWithoutAcceptingAnOffer",
+                  "nodeType": "Test Case",
+                  "result": "Passed"
+                },
+                {
+                  "duration": "0.071s",
+                  "durationInSeconds": 0.07096207141876221,
+                  "name": "testPushTokenIsGatedByDeviceSessionAndStopsAtLogout()",
+                  "nodeIdentifier": "AppStoreArchitectureTests/testPushTokenIsGatedByDeviceSessionAndStopsAtLogout()",
+                  "nodeIdentifierURL": "test://com.apple.xcode/AEDResponse/AEDResponseTests/AppStoreArchitectureTests/testPushTokenIsGatedByDeviceSessionAndStopsAtLogout",
+                  "nodeType": "Test Case",
+                  "result": "Passed"
+                },
+                {
+                  "duration": "0.0026s",
+                  "durationInSeconds": 0.002605915069580078,
+                  "name": "testReceivingRequestDoesNotMakeUserResponderBeforeAcceptance()",
+                  "nodeIdentifier": "AppStoreArchitectureTests/testReceivingRequestDoesNotMakeUserResponderBeforeAcceptance()",
+                  "nodeIdentifierURL": "test://com.apple.xcode/AEDResponse/AEDResponseTests/AppStoreArchitectureTests/testReceivingRequestDoesNotMakeUserResponderBeforeAcceptance",
+                  "nodeType": "Test Case",
+                  "result": "Passed"
+                },
+                {
+                  "duration": "1秒",
+                  "durationInSeconds": 1.2374889850616455,
+                  "name": "testReconnectRestoresEventSnapshotBeforeResumingPatientPosition()",
+                  "nodeIdentifier": "AppStoreArchitectureTests/testReconnectRestoresEventSnapshotBeforeResumingPatientPosition()",
+                  "nodeIdentifierURL": "test://com.apple.xcode/AEDResponse/AEDResponseTests/AppStoreArchitectureTests/testReconnectRestoresEventSnapshotBeforeResumingPatientPosition",
+                  "nodeType": "Test Case",
+                  "result": "Passed"
+                },
+                {
+                  "duration": "0.0094s",
+                  "durationInSeconds": 0.009351015090942383,
+                  "name": "testRecoveredConnectionClearsOnlyItsOwnFailure()",
+                  "nodeIdentifier": "AppStoreArchitectureTests/testRecoveredConnectionClearsOnlyItsOwnFailure()",
+                  "nodeIdentifierURL": "test://com.apple.xcode/AEDResponse/AEDResponseTests/AppStoreArchitectureTests/testRecoveredConnectionClearsOnlyItsOwnFailure",
+                  "nodeType": "Test Case",
+                  "result": "Passed"
+                },
+                {
+                  "duration": "0.0042s",
+                  "durationInSeconds": 0.004166960716247559,
+                  "name": "testRecoveredConnectionDoesNotDismissANewerErrorWithTheSameMessage()",
+                  "nodeIdentifier": "AppStoreArchitectureTests/testRecoveredConnectionDoesNotDismissANewerErrorWithTheSameMessage()",
+                  "nodeIdentifierURL": "test://com.apple.xcode/AEDResponse/AEDResponseTests/AppStoreArchitectureTests/testRecoveredConnectionDoesNotDismissANewerErrorWithTheSameMessage",
+                  "nodeType": "Test Case",
+                  "result": "Passed"
+                },
+                {
+                  "duration": "0.016s",
+                  "durationInSeconds": 0.015926003456115723,
+                  "name": "testRecoveryDoesNotDependOnInternalTimelineAvailability()",
+                  "nodeIdentifier": "AppStoreArchitectureTests/testRecoveryDoesNotDependOnInternalTimelineAvailability()",
+                  "nodeIdentifierURL": "test://com.apple.xcode/AEDResponse/AEDResponseTests/AppStoreArchitectureTests/testRecoveryDoesNotDependOnInternalTimelineAvailability",
+                  "nodeType": "Test Case",
+                  "result": "Passed"
+                },
+                {
+                  "duration": "0.019s",
+                  "durationInSeconds": 0.019269943237304688,
+                  "name": "testRecoveryKeepsExistingClockedGapsAsNoFixAndMarksOnlyDowntimeSlots()",
+                  "nodeIdentifier": "AppStoreArchitectureTests/testRecoveryKeepsExistingClockedGapsAsNoFixAndMarksOnlyDowntimeSlots()",
+                  "nodeIdentifierURL": "test://com.apple.xcode/AEDResponse/AEDResponseTests/AppStoreArchitectureTests/testRecoveryKeepsExistingClockedGapsAsNoFixAndMarksOnlyDowntimeSlots",
+                  "nodeType": "Test Case",
+                  "result": "Passed"
+                },
+                {
+                  "duration": "0.03s",
+                  "durationInSeconds": 0.03046894073486328,
+                  "name": "testReducedAccuracyCannotOpenBusinessGate()",
+                  "nodeIdentifier": "AppStoreArchitectureTests/testReducedAccuracyCannotOpenBusinessGate()",
+                  "nodeIdentifierURL": "test://com.apple.xcode/AEDResponse/AEDResponseTests/AppStoreArchitectureTests/testReducedAccuracyCannotOpenBusinessGate",
+                  "nodeType": "Test Case",
+                  "result": "Passed"
+                },
+                {
+                  "duration": "0.0063s",
+                  "durationInSeconds": 0.006271958351135254,
+                  "name": "testRepeatedConnectTearsDownOldSessionAndWaitsForSocketReady()",
+                  "nodeIdentifier": "AppStoreArchitectureTests/testRepeatedConnectTearsDownOldSessionAndWaitsForSocketReady()",
+                  "nodeIdentifierURL": "test://com.apple.xcode/AEDResponse/AEDResponseTests/AppStoreArchitectureTests/testRepeatedConnectTearsDownOldSessionAndWaitsForSocketReady",
+                  "nodeType": "Test Case",
+                  "result": "Passed"
+                },
+                {
+                  "duration": "0.084s",
+                  "durationInSeconds": 0.08445596694946289,
+                  "name": "testReplacingOfferReleasesBusyAndIgnoresOldDecision()",
+                  "nodeIdentifier": "AppStoreArchitectureTests/testReplacingOfferReleasesBusyAndIgnoresOldDecision()",
+                  "nodeIdentifierURL": "test://com.apple.xcode/AEDResponse/AEDResponseTests/AppStoreArchitectureTests/testReplacingOfferReleasesBusyAndIgnoresOldDecision",
+                  "nodeType": "Test Case",
+                  "result": "Passed"
+                },
+                {
+                  "duration": "0.0054s",
+                  "durationInSeconds": 0.00538790225982666,
+                  "name": "testReportingAFoundPatientUsesTheReturnedCaseAndTheCurrentPosition()",
+                  "nodeIdentifier": "AppStoreArchitectureTests/testReportingAFoundPatientUsesTheReturnedCaseAndTheCurrentPosition()",
+                  "nodeIdentifierURL": "test://com.apple.xcode/AEDResponse/AEDResponseTests/AppStoreArchitectureTests/testReportingAFoundPatientUsesTheReturnedCaseAndTheCurrentPosition",
+                  "nodeType": "Test Case",
+                  "result": "Passed"
+                },
+                {
+                  "duration": "0.0041s",
+                  "durationInSeconds": 0.004063010215759277,
+                  "name": "testReportingAFoundPatientWithoutAPositionIsRefusedLocallyAndNeverSent()",
+                  "nodeIdentifier": "AppStoreArchitectureTests/testReportingAFoundPatientWithoutAPositionIsRefusedLocallyAndNeverSent()",
+                  "nodeIdentifierURL": "test://com.apple.xcode/AEDResponse/AEDResponseTests/AppStoreArchitectureTests/testReportingAFoundPatientWithoutAPositionIsRefusedLocallyAndNeverSent",
+                  "nodeType": "Test Case",
+                  "result": "Passed"
+                },
+                {
+                  "duration": "0.064s",
+                  "durationInSeconds": 0.06375300884246826,
+                  "name": "testResponseDecisionDoubleTapSubmitsOnlyOneAccept()",
+                  "nodeIdentifier": "AppStoreArchitectureTests/testResponseDecisionDoubleTapSubmitsOnlyOneAccept()",
+                  "nodeIdentifierURL": "test://com.apple.xcode/AEDResponse/AEDResponseTests/AppStoreArchitectureTests/testResponseDecisionDoubleTapSubmitsOnlyOneAccept",
+                  "nodeType": "Test Case",
+                  "result": "Passed"
+                },
+                {
+                  "duration": "0.19s",
+                  "durationInSeconds": 0.18702197074890137,
+                  "name": "testResponseDecisionFailureReleasesBusyAndAllowsRetry()",
+                  "nodeIdentifier": "AppStoreArchitectureTests/testResponseDecisionFailureReleasesBusyAndAllowsRetry()",
+                  "nodeIdentifierURL": "test://com.apple.xcode/AEDResponse/AEDResponseTests/AppStoreArchitectureTests/testResponseDecisionFailureReleasesBusyAndAllowsRetry",
+                  "nodeType": "Test Case",
+                  "result": "Passed"
+                },
+                {
+                  "duration": "0.053s",
+                  "durationInSeconds": 0.053330063819885254,
+                  "name": "testRestoredContextCannotPersistNewFixBeforeActiveRestAuthority()",
+                  "nodeIdentifier": "AppStoreArchitectureTests/testRestoredContextCannotPersistNewFixBeforeActiveRestAuthority()",
+                  "nodeIdentifierURL": "test://com.apple.xcode/AEDResponse/AEDResponseTests/AppStoreArchitectureTests/testRestoredContextCannotPersistNewFixBeforeActiveRestAuthority",
+                  "nodeType": "Test Case",
+                  "result": "Passed"
+                },
+                {
+                  "duration": "0.029s",
+                  "durationInSeconds": 0.028821945190429688,
+                  "name": "testRestoredContextFillsMissingSlotsAsAppNotRunningAfterHistoricalFixGrace()",
+                  "nodeIdentifier": "AppStoreArchitectureTests/testRestoredContextFillsMissingSlotsAsAppNotRunningAfterHistoricalFixGrace()",
+                  "nodeIdentifierURL": "test://com.apple.xcode/AEDResponse/AEDResponseTests/AppStoreArchitectureTests/testRestoredContextFillsMissingSlotsAsAppNotRunningAfterHistoricalFixGrace",
+                  "nodeType": "Test Case",
+                  "result": "Passed"
+                },
+                {
+                  "duration": "0.034s",
+                  "durationInSeconds": 0.03384292125701904,
+                  "name": "testRESTSnapshotAndQueuedPushTapDoNotWaitForSocketReady()",
+                  "nodeIdentifier": "AppStoreArchitectureTests/testRESTSnapshotAndQueuedPushTapDoNotWaitForSocketReady()",
+                  "nodeIdentifierURL": "test://com.apple.xcode/AEDResponse/AEDResponseTests/AppStoreArchitectureTests/testRESTSnapshotAndQueuedPushTapDoNotWaitForSocketReady",
+                  "nodeType": "Test Case",
+                  "result": "Passed"
+                },
+                {
+                  "duration": "0.03s",
+                  "durationInSeconds": 0.029834985733032227,
+                  "name": "testSecondaryPatientProjectionWithCanPublishFalseNeverStartsEventPositionSampling()",
+                  "nodeIdentifier": "AppStoreArchitectureTests/testSecondaryPatientProjectionWithCanPublishFalseNeverStartsEventPositionSampling()",
+                  "nodeIdentifierURL": "test://com.apple.xcode/AEDResponse/AEDResponseTests/AppStoreArchitectureTests/testSecondaryPatientProjectionWithCanPublishFalseNeverStartsEventPositionSampling",
+                  "nodeType": "Test Case",
+                  "result": "Passed"
+                },
+                {
+                  "duration": "0.024s",
+                  "durationInSeconds": 0.024322032928466797,
+                  "name": "testSnapshotSelectsOnlyActiveNonterminalResponderAssignment()",
+                  "nodeIdentifier": "AppStoreArchitectureTests/testSnapshotSelectsOnlyActiveNonterminalResponderAssignment()",
+                  "nodeIdentifierURL": "test://com.apple.xcode/AEDResponse/AEDResponseTests/AppStoreArchitectureTests/testSnapshotSelectsOnlyActiveNonterminalResponderAssignment",
+                  "nodeType": "Test Case",
+                  "result": "Passed"
+                },
+                {
+                  "duration": "1秒",
+                  "durationInSeconds": 1.4661469459533691,
+                  "name": "testSocketDisconnectRebootstrapsAuthenticatedSessionBeforeReconnect()",
+                  "nodeIdentifier": "AppStoreArchitectureTests/testSocketDisconnectRebootstrapsAuthenticatedSessionBeforeReconnect()",
+                  "nodeIdentifierURL": "test://com.apple.xcode/AEDResponse/AEDResponseTests/AppStoreArchitectureTests/testSocketDisconnectRebootstrapsAuthenticatedSessionBeforeReconnect",
+                  "nodeType": "Test Case",
+                  "result": "Passed"
+                },
+                {
+                  "duration": "3秒",
+                  "durationInSeconds": 3.103201985359192,
+                  "name": "testSocketOfferExpiredClearsThroughTypedEventWithoutPatientData()",
+                  "nodeIdentifier": "AppStoreArchitectureTests/testSocketOfferExpiredClearsThroughTypedEventWithoutPatientData()",
+                  "nodeIdentifierURL": "test://com.apple.xcode/AEDResponse/AEDResponseTests/AppStoreArchitectureTests/testSocketOfferExpiredClearsThroughTypedEventWithoutPatientData",
+                  "nodeType": "Test Case",
+                  "result": "Passed"
+                },
+                {
+                  "duration": "0.044s",
+                  "durationInSeconds": 0.044400930404663086,
+                  "name": "testSocketPositionAndCoordinationHintsDecodeBeforeRestReconciliation()",
+                  "nodeIdentifier": "AppStoreArchitectureTests/testSocketPositionAndCoordinationHintsDecodeBeforeRestReconciliation()",
+                  "nodeIdentifierURL": "test://com.apple.xcode/AEDResponse/AEDResponseTests/AppStoreArchitectureTests/testSocketPositionAndCoordinationHintsDecodeBeforeRestReconciliation",
+                  "nodeType": "Test Case",
+                  "result": "Passed"
+                },
+                {
+                  "duration": "0.092s",
+                  "durationInSeconds": 0.09223496913909912,
+                  "name": "testSocketResponseRequestUsesOnlyCoarseAllowlistedFields()",
+                  "nodeIdentifier": "AppStoreArchitectureTests/testSocketResponseRequestUsesOnlyCoarseAllowlistedFields()",
+                  "nodeIdentifierURL": "test://com.apple.xcode/AEDResponse/AEDResponseTests/AppStoreArchitectureTests/testSocketResponseRequestUsesOnlyCoarseAllowlistedFields",
+                  "nodeType": "Test Case",
+                  "result": "Passed"
+                },
+                {
+                  "duration": "0.15s",
+                  "durationInSeconds": 0.15015792846679688,
+                  "name": "testSocketStateHintReconcilesThroughRestAndRestTruthWins()",
+                  "nodeIdentifier": "AppStoreArchitectureTests/testSocketStateHintReconcilesThroughRestAndRestTruthWins()",
+                  "nodeIdentifierURL": "test://com.apple.xcode/AEDResponse/AEDResponseTests/AppStoreArchitectureTests/testSocketStateHintReconcilesThroughRestAndRestTruthWins",
+                  "nodeType": "Test Case",
+                  "result": "Passed"
+                },
+                {
+                  "duration": "0.01s",
+                  "durationInSeconds": 0.010452985763549805,
+                  "name": "testSocketStatusConfirmationRequestStrictlyParsesHint()",
+                  "nodeIdentifier": "AppStoreArchitectureTests/testSocketStatusConfirmationRequestStrictlyParsesHint()",
+                  "nodeIdentifierURL": "test://com.apple.xcode/AEDResponse/AEDResponseTests/AppStoreArchitectureTests/testSocketStatusConfirmationRequestStrictlyParsesHint",
+                  "nodeType": "Test Case",
+                  "result": "Passed"
+                },
+                {
+                  "duration": "0.079s",
+                  "durationInSeconds": 0.07918500900268555,
+                  "name": "testSocketStrictlyParsesAssignmentAndAedPayloads()",
+                  "nodeIdentifier": "AppStoreArchitectureTests/testSocketStrictlyParsesAssignmentAndAedPayloads()",
+                  "nodeIdentifierURL": "test://com.apple.xcode/AEDResponse/AEDResponseTests/AppStoreArchitectureTests/testSocketStrictlyParsesAssignmentAndAedPayloads",
+                  "nodeType": "Test Case",
+                  "result": "Passed"
+                },
+                {
+                  "duration": "0.019s",
+                  "durationInSeconds": 0.018702983856201172,
+                  "name": "testSocketTerminalEventsRequireCanonicalStatePairs()",
+                  "nodeIdentifier": "AppStoreArchitectureTests/testSocketTerminalEventsRequireCanonicalStatePairs()",
+                  "nodeIdentifierURL": "test://com.apple.xcode/AEDResponse/AEDResponseTests/AppStoreArchitectureTests/testSocketTerminalEventsRequireCanonicalStatePairs",
+                  "nodeType": "Test Case",
+                  "result": "Passed"
+                },
+                {
+                  "duration": "0.0085s",
+                  "durationInSeconds": 0.00851893424987793,
+                  "name": "testSocketV2EnvelopeRejectsMalformedMessagesAndUsesBoundedDeduplication()",
+                  "nodeIdentifier": "AppStoreArchitectureTests/testSocketV2EnvelopeRejectsMalformedMessagesAndUsesBoundedDeduplication()",
+                  "nodeIdentifierURL": "test://com.apple.xcode/AEDResponse/AEDResponseTests/AppStoreArchitectureTests/testSocketV2EnvelopeRejectsMalformedMessagesAndUsesBoundedDeduplication",
+                  "nodeType": "Test Case",
+                  "result": "Passed"
+                },
+                {
+                  "duration": "0.045s",
+                  "durationInSeconds": 0.044523000717163086,
+                  "name": "testSoleResponderExitDoesNotCallRESTUntilThirdConfirmationAndClearsStaleSnapshot()",
+                  "nodeIdentifier": "AppStoreArchitectureTests/testSoleResponderExitDoesNotCallRESTUntilThirdConfirmationAndClearsStaleSnapshot()",
+                  "nodeIdentifierURL": "test://com.apple.xcode/AEDResponse/AEDResponseTests/AppStoreArchitectureTests/testSoleResponderExitDoesNotCallRESTUntilThirdConfirmationAndClearsStaleSnapshot",
+                  "nodeType": "Test Case",
+                  "result": "Passed"
+                },
+                {
+                  "duration": "0.029s",
+                  "durationInSeconds": 0.028645992279052734,
+                  "name": "testStaleStatusConfirmationResponseCannotUpdateAfterDisconnect()",
+                  "nodeIdentifier": "AppStoreArchitectureTests/testStaleStatusConfirmationResponseCannotUpdateAfterDisconnect()",
+                  "nodeIdentifierURL": "test://com.apple.xcode/AEDResponse/AEDResponseTests/AppStoreArchitectureTests/testStaleStatusConfirmationResponseCannotUpdateAfterDisconnect",
+                  "nodeType": "Test Case",
+                  "result": "Passed"
+                },
+                {
+                  "duration": "0.019s",
+                  "durationInSeconds": 0.018911004066467285,
+                  "name": "testStaleTerminalAssignmentUpdateDoesNotPauseNewerActiveRevision()",
+                  "nodeIdentifier": "AppStoreArchitectureTests/testStaleTerminalAssignmentUpdateDoesNotPauseNewerActiveRevision()",
+                  "nodeIdentifierURL": "test://com.apple.xcode/AEDResponse/AEDResponseTests/AppStoreArchitectureTests/testStaleTerminalAssignmentUpdateDoesNotPauseNewerActiveRevision",
+                  "nodeType": "Test Case",
+                  "result": "Passed"
+                },
+                {
+                  "duration": "0.015s",
+                  "durationInSeconds": 0.015123963356018066,
+                  "name": "testTerminalAssignmentUpdatedPausesCurrentResponderDraftUntilRest()",
+                  "nodeIdentifier": "AppStoreArchitectureTests/testTerminalAssignmentUpdatedPausesCurrentResponderDraftUntilRest()",
+                  "nodeIdentifierURL": "test://com.apple.xcode/AEDResponse/AEDResponseTests/AppStoreArchitectureTests/testTerminalAssignmentUpdatedPausesCurrentResponderDraftUntilRest",
+                  "nodeType": "Test Case",
+                  "result": "Passed"
+                },
+                {
+                  "duration": "0.022s",
+                  "durationInSeconds": 0.02190399169921875,
+                  "name": "testTerminalEventDrainsLateBatchWithoutChangingStandbyMode()",
+                  "nodeIdentifier": "AppStoreArchitectureTests/testTerminalEventDrainsLateBatchWithoutChangingStandbyMode()",
+                  "nodeIdentifierURL": "test://com.apple.xcode/AEDResponse/AEDResponseTests/AppStoreArchitectureTests/testTerminalEventDrainsLateBatchWithoutChangingStandbyMode",
+                  "nodeType": "Test Case",
+                  "result": "Passed"
+                },
+                {
+                  "duration": "0.19s",
+                  "durationInSeconds": 0.19284701347351074,
+                  "name": "testTerminalSocketQueuesImmediateRestoreWhileInitialRestoreIsInFlight()",
+                  "nodeIdentifier": "AppStoreArchitectureTests/testTerminalSocketQueuesImmediateRestoreWhileInitialRestoreIsInFlight()",
+                  "nodeIdentifierURL": "test://com.apple.xcode/AEDResponse/AEDResponseTests/AppStoreArchitectureTests/testTerminalSocketQueuesImmediateRestoreWhileInitialRestoreIsInFlight",
+                  "nodeType": "Test Case",
+                  "result": "Passed"
+                },
+                {
+                  "duration": "0.0021s",
+                  "durationInSeconds": 0.0021489858627319336,
+                  "name": "testTestHostProductionEnvironmentCannotStartAnyLiveTransport()",
+                  "nodeIdentifier": "AppStoreArchitectureTests/testTestHostProductionEnvironmentCannotStartAnyLiveTransport()",
+                  "nodeIdentifierURL": "test://com.apple.xcode/AEDResponse/AEDResponseTests/AppStoreArchitectureTests/testTestHostProductionEnvironmentCannotStartAnyLiveTransport",
+                  "nodeType": "Test Case",
+                  "result": "Passed"
+                },
+                {
+                  "duration": "0.0016s",
+                  "durationInSeconds": 0.0016089677810668945,
+                  "name": "testUnauthenticatedStoreDoesNotStartBusinessServices()",
+                  "nodeIdentifier": "AppStoreArchitectureTests/testUnauthenticatedStoreDoesNotStartBusinessServices()",
+                  "nodeIdentifierURL": "test://com.apple.xcode/AEDResponse/AEDResponseTests/AppStoreArchitectureTests/testUnauthenticatedStoreDoesNotStartBusinessServices",
+                  "nodeType": "Test Case",
+                  "result": "Passed"
+                },
+                {
+                  "duration": "0.05s",
+                  "durationInSeconds": 0.0502849817276001,
+                  "name": "testUnconfirmedCloseSocketHintPausesWithoutSealingUntilRestWindowArrives()",
+                  "nodeIdentifier": "AppStoreArchitectureTests/testUnconfirmedCloseSocketHintPausesWithoutSealingUntilRestWindowArrives()",
+                  "nodeIdentifierURL": "test://com.apple.xcode/AEDResponse/AEDResponseTests/AppStoreArchitectureTests/testUnconfirmedCloseSocketHintPausesWithoutSealingUntilRestWindowArrives",
+                  "nodeType": "Test Case",
+                  "result": "Passed"
+                },
+                {
+                  "duration": "0.15s",
+                  "durationInSeconds": 0.15087199211120605,
+                  "name": "testUnconfirmedEndCannotBeBypassedByLogout()",
+                  "nodeIdentifier": "AppStoreArchitectureTests/testUnconfirmedEndCannotBeBypassedByLogout()",
+                  "nodeIdentifierURL": "test://com.apple.xcode/AEDResponse/AEDResponseTests/AppStoreArchitectureTests/testUnconfirmedEndCannotBeBypassedByLogout",
+                  "nodeType": "Test Case",
+                  "result": "Passed"
+                },
+                {
+                  "duration": "0.075s",
+                  "durationInSeconds": 0.07538890838623047,
+                  "name": "testUnconfirmedPatientHintIsDiscardedByInitialRestSnapshot()",
+                  "nodeIdentifier": "AppStoreArchitectureTests/testUnconfirmedPatientHintIsDiscardedByInitialRestSnapshot()",
+                  "nodeIdentifierURL": "test://com.apple.xcode/AEDResponse/AEDResponseTests/AppStoreArchitectureTests/testUnconfirmedPatientHintIsDiscardedByInitialRestSnapshot",
+                  "nodeType": "Test Case",
+                  "result": "Passed"
+                },
+                {
+                  "duration": "0.033s",
+                  "durationInSeconds": 0.03308403491973877,
+                  "name": "testWhenInUseLocationCannotOpenBusinessGate()",
+                  "nodeIdentifier": "AppStoreArchitectureTests/testWhenInUseLocationCannotOpenBusinessGate()",
+                  "nodeIdentifierURL": "test://com.apple.xcode/AEDResponse/AEDResponseTests/AppStoreArchitectureTests/testWhenInUseLocationCannotOpenBusinessGate",
+                  "nodeType": "Test Case",
+                  "result": "Passed"
+                }
+              ],
+              "name": "AppStoreArchitectureTests",
+              "nodeIdentifierURL": "test://com.apple.xcode/AEDResponse/AEDResponseTests/AppStoreArchitectureTests",
+              "nodeType": "Test Suite",
+              "result": "Failed"
+            },
+            {
+              "children": [
+                {
+                  "duration": "0.05s",
+                  "durationInSeconds": 0.05007195472717285,
+                  "name": "testEventAssignmentAndConnectionChangesReplaceTheSchedule()",
+                  "nodeIdentifier": "ClientRouteRefreshCoordinatorTests/testEventAssignmentAndConnectionChangesReplaceTheSchedule()",
+                  "nodeIdentifierURL": "test://com.apple.xcode/AEDResponse/AEDResponseTests/ClientRouteRefreshCoordinatorTests/testEventAssignmentAndConnectionChangesReplaceTheSchedule",
+                  "nodeType": "Test Case",
+                  "result": "Passed"
+                },
+                {
+                  "duration": "0.0015s",
+                  "durationInSeconds": 0.0014870166778564453,
+                  "name": "testRefreshCanStopItsOwnScheduleWithoutStartingAnotherWait()",
+                  "nodeIdentifier": "ClientRouteRefreshCoordinatorTests/testRefreshCanStopItsOwnScheduleWithoutStartingAnotherWait()",
+                  "nodeIdentifierURL": "test://com.apple.xcode/AEDResponse/AEDResponseTests/ClientRouteRefreshCoordinatorTests/testRefreshCanStopItsOwnScheduleWithoutStartingAnotherWait",
+                  "nodeType": "Test Case",
+                  "result": "Passed"
+                },
+                {
+                  "duration": "0.016s",
+                  "durationInSeconds": 0.0156480073928833,
+                  "name": "testRepeatedContextKeepsTheExistingCadence()",
+                  "nodeIdentifier": "ClientRouteRefreshCoordinatorTests/testRepeatedContextKeepsTheExistingCadence()",
+                  "nodeIdentifierURL": "test://com.apple.xcode/AEDResponse/AEDResponseTests/ClientRouteRefreshCoordinatorTests/testRepeatedContextKeepsTheExistingCadence",
+                  "nodeType": "Test Case",
+                  "result": "Passed"
+                },
+                {
+                  "duration": "0.0011s",
+                  "durationInSeconds": 0.0010570287704467773,
+                  "name": "testStopAndRestartRejectsTheOldWaitEvenWhenSleepIgnoresCancellation()",
+                  "nodeIdentifier": "ClientRouteRefreshCoordinatorTests/testStopAndRestartRejectsTheOldWaitEvenWhenSleepIgnoresCancellation()",
+                  "nodeIdentifierURL": "test://com.apple.xcode/AEDResponse/AEDResponseTests/ClientRouteRefreshCoordinatorTests/testStopAndRestartRejectsTheOldWaitEvenWhenSleepIgnoresCancellation",
+                  "nodeType": "Test Case",
+                  "result": "Passed"
+                },
+                {
+                  "duration": "0.00087s",
+                  "durationInSeconds": 0.0008690357208251953,
+                  "name": "testWaitingTaskDoesNotRetainItsOwner()",
+                  "nodeIdentifier": "ClientRouteRefreshCoordinatorTests/testWaitingTaskDoesNotRetainItsOwner()",
+                  "nodeIdentifierURL": "test://com.apple.xcode/AEDResponse/AEDResponseTests/ClientRouteRefreshCoordinatorTests/testWaitingTaskDoesNotRetainItsOwner",
+                  "nodeType": "Test Case",
+                  "result": "Passed"
+                }
+              ],
+              "name": "ClientRouteRefreshCoordinatorTests",
+              "nodeIdentifierURL": "test://com.apple.xcode/AEDResponse/AEDResponseTests/ClientRouteRefreshCoordinatorTests",
+              "nodeType": "Test Suite",
+              "result": "Passed"
+            },
+            {
+              "children": [
+                {
+                  "duration": "0.11s",
+                  "durationInSeconds": 0.11152493953704834,
+                  "name": "testActiveStateIsNotPresentedAsAnOutcome()",
+                  "nodeIdentifier": "EventOutcomePresentationTests/testActiveStateIsNotPresentedAsAnOutcome()",
+                  "nodeIdentifierURL": "test://com.apple.xcode/AEDResponse/AEDResponseTests/EventOutcomePresentationTests/testActiveStateIsNotPresentedAsAnOutcome",
+                  "nodeType": "Test Case",
+                  "result": "Passed"
+                },
+                {
+                  "duration": "0.0015s",
+                  "durationInSeconds": 0.0014960765838623047,
+                  "name": "testCancellationAndFalseAlarmReadDifferentlyForBothRoles()",
+                  "nodeIdentifier": "EventOutcomePresentationTests/testCancellationAndFalseAlarmReadDifferentlyForBothRoles()",
+                  "nodeIdentifierURL": "test://com.apple.xcode/AEDResponse/AEDResponseTests/EventOutcomePresentationTests/testCancellationAndFalseAlarmReadDifferentlyForBothRoles",
+                  "nodeType": "Test Case",
+                  "result": "Passed"
+                },
+                {
+                  "duration": "0.0011s",
+                  "durationInSeconds": 0.0011479854583740234,
+                  "name": "testEveryTerminalFactHasItsOwnPatientFacingTitle()",
+                  "nodeIdentifier": "EventOutcomePresentationTests/testEveryTerminalFactHasItsOwnPatientFacingTitle()",
+                  "nodeIdentifierURL": "test://com.apple.xcode/AEDResponse/AEDResponseTests/EventOutcomePresentationTests/testEveryTerminalFactHasItsOwnPatientFacingTitle",
+                  "nodeType": "Test Case",
+                  "result": "Passed"
+                },
+                {
+                  "duration": "0.0005s",
+                  "durationInSeconds": 0.000496983528137207,
+                  "name": "testOnlyResolutionClaimsTheEmergencyWasResolved()",
+                  "nodeIdentifier": "EventOutcomePresentationTests/testOnlyResolutionClaimsTheEmergencyWasResolved()",
+                  "nodeIdentifierURL": "test://com.apple.xcode/AEDResponse/AEDResponseTests/EventOutcomePresentationTests/testOnlyResolutionClaimsTheEmergencyWasResolved",
+                  "nodeType": "Test Case",
+                  "result": "Passed"
+                },
+                {
+                  "duration": "0.0004s",
+                  "durationInSeconds": 0.00039899349212646484,
+                  "name": "testResponderTaskEndAndEventOutcomeAreSeparateStatements()",
+                  "nodeIdentifier": "EventOutcomePresentationTests/testResponderTaskEndAndEventOutcomeAreSeparateStatements()",
+                  "nodeIdentifierURL": "test://com.apple.xcode/AEDResponse/AEDResponseTests/EventOutcomePresentationTests/testResponderTaskEndAndEventOutcomeAreSeparateStatements",
+                  "nodeType": "Test Case",
+                  "result": "Passed"
+                }
+              ],
+              "name": "EventOutcomePresentationTests",
+              "nodeIdentifierURL": "test://com.apple.xcode/AEDResponse/AEDResponseTests/EventOutcomePresentationTests",
+              "nodeType": "Test Suite",
+              "result": "Passed"
+            },
+            {
+              "children": [
+                {
+                  "duration": "0.0042s",
+                  "durationInSeconds": 0.004222989082336426,
+                  "name": "testBoundaryRadiiAndIntegerCountsAreAccepted()",
+                  "nodeIdentifier": "NearbyVolunteerSummaryTests/testBoundaryRadiiAndIntegerCountsAreAccepted()",
+                  "nodeIdentifierURL": "test://com.apple.xcode/AEDResponse/AEDResponseTests/NearbyVolunteerSummaryTests/testBoundaryRadiiAndIntegerCountsAreAccepted",
+                  "nodeType": "Test Case",
+                  "result": "Passed"
+                },
+                {
+                  "duration": "0.24s",
+                  "durationInSeconds": 0.23914802074432373,
+                  "name": "testConstructorRejectsDuplicateMissingExtraOrMisorderedRadii()",
+                  "nodeIdentifier": "NearbyVolunteerSummaryTests/testConstructorRejectsDuplicateMissingExtraOrMisorderedRadii()",
+                  "nodeIdentifierURL": "test://com.apple.xcode/AEDResponse/AEDResponseTests/NearbyVolunteerSummaryTests/testConstructorRejectsDuplicateMissingExtraOrMisorderedRadii",
+                  "nodeType": "Test Case",
+                  "result": "Passed"
+                },
+                {
+                  "duration": "0.052s",
+                  "durationInSeconds": 0.05238795280456543,
+                  "name": "testConstructorRejectsNegativeAndDecreasingCumulativeCounts()",
+                  "nodeIdentifier": "NearbyVolunteerSummaryTests/testConstructorRejectsNegativeAndDecreasingCumulativeCounts()",
+                  "nodeIdentifierURL": "test://com.apple.xcode/AEDResponse/AEDResponseTests/NearbyVolunteerSummaryTests/testConstructorRejectsNegativeAndDecreasingCumulativeCounts",
+                  "nodeType": "Test Case",
+                  "result": "Passed"
+                },
+                {
+                  "duration": "0.13s",
+                  "durationInSeconds": 0.12925004959106445,
+                  "name": "testDecodeRejectsInvalidRangeShapesAndValues()",
+                  "nodeIdentifier": "NearbyVolunteerSummaryTests/testDecodeRejectsInvalidRangeShapesAndValues()",
+                  "nodeIdentifierURL": "test://com.apple.xcode/AEDResponse/AEDResponseTests/NearbyVolunteerSummaryTests/testDecodeRejectsInvalidRangeShapesAndValues",
+                  "nodeType": "Test Case",
+                  "result": "Passed"
+                },
+                {
+                  "duration": "0.059s",
+                  "durationInSeconds": 0.058753013610839844,
+                  "name": "testEncodingContainsOnlyContractFields()",
+                  "nodeIdentifier": "NearbyVolunteerSummaryTests/testEncodingContainsOnlyContractFields()",
+                  "nodeIdentifierURL": "test://com.apple.xcode/AEDResponse/AEDResponseTests/NearbyVolunteerSummaryTests/testEncodingContainsOnlyContractFields",
+                  "nodeType": "Test Case",
+                  "result": "Passed"
+                },
+                {
+                  "duration": "0.001s",
+                  "durationInSeconds": 0.0010260343551635742,
+                  "name": "testFreshnessAcceptsBoundariesAndDoesNotZeroExpiredCounts()",
+                  "nodeIdentifier": "NearbyVolunteerSummaryTests/testFreshnessAcceptsBoundariesAndDoesNotZeroExpiredCounts()",
+                  "nodeIdentifierURL": "test://com.apple.xcode/AEDResponse/AEDResponseTests/NearbyVolunteerSummaryTests/testFreshnessAcceptsBoundariesAndDoesNotZeroExpiredCounts",
+                  "nodeType": "Test Case",
+                  "result": "Passed"
+                },
+                {
+                  "duration": "0.0019s",
+                  "durationInSeconds": 0.0019249916076660156,
+                  "name": "testValidSummaryAndZeroPeoplePreserveFixedCumulativeRanges()",
+                  "nodeIdentifier": "NearbyVolunteerSummaryTests/testValidSummaryAndZeroPeoplePreserveFixedCumulativeRanges()",
+                  "nodeIdentifierURL": "test://com.apple.xcode/AEDResponse/AEDResponseTests/NearbyVolunteerSummaryTests/testValidSummaryAndZeroPeoplePreserveFixedCumulativeRanges",
+                  "nodeType": "Test Case",
+                  "result": "Passed"
+                }
+              ],
+              "name": "NearbyVolunteerSummaryTests",
+              "nodeIdentifierURL": "test://com.apple.xcode/AEDResponse/AEDResponseTests/NearbyVolunteerSummaryTests",
+              "nodeType": "Test Suite",
+              "result": "Passed"
+            },
+            {
+              "children": [
+                {
+                  "duration": "0.0047s",
+                  "durationInSeconds": 0.004698991775512695,
+                  "name": "testAllRescueCancellationFlowsCanRequireThreeClicksWithoutSoleResponderWording()",
+                  "nodeIdentifier": "ResponderExitTests/testAllRescueCancellationFlowsCanRequireThreeClicksWithoutSoleResponderWording()",
+                  "nodeIdentifierURL": "test://com.apple.xcode/AEDResponse/AEDResponseTests/ResponderExitTests/testAllRescueCancellationFlowsCanRequireThreeClicksWithoutSoleResponderWording",
+                  "nodeType": "Test Case",
+                  "result": "Passed"
+                },
+                {
+                  "duration": "0.00095s",
+                  "durationInSeconds": 0.0009530782699584961,
+                  "name": "testBackendSoleRequirementStaysStickyAgainstStaleN()",
+                  "nodeIdentifier": "ResponderExitTests/testBackendSoleRequirementStaysStickyAgainstStaleN()",
+                  "nodeIdentifierURL": "test://com.apple.xcode/AEDResponse/AEDResponseTests/ResponderExitTests/testBackendSoleRequirementStaysStickyAgainstStaleN",
+                  "nodeType": "Test Case",
+                  "result": "Passed"
+                },
+                {
+                  "duration": "0.00076s",
+                  "durationInSeconds": 0.000764012336730957,
+                  "name": "testCancelResetsSequenceAndInvalidatesStalePrompt()",
+                  "nodeIdentifier": "ResponderExitTests/testCancelResetsSequenceAndInvalidatesStalePrompt()",
+                  "nodeIdentifierURL": "test://com.apple.xcode/AEDResponse/AEDResponseTests/ResponderExitTests/testCancelResetsSequenceAndInvalidatesStalePrompt",
+                  "nodeType": "Test Case",
+                  "result": "Passed"
+                },
+                {
+                  "duration": "0.00048s",
+                  "durationInSeconds": 0.0004769563674926758,
+                  "name": "testInvalidResponderCountCannotSubmit()",
+                  "nodeIdentifier": "ResponderExitTests/testInvalidResponderCountCannotSubmit()",
+                  "nodeIdentifierURL": "test://com.apple.xcode/AEDResponse/AEDResponseTests/ResponderExitTests/testInvalidResponderCountCannotSubmit",
+                  "nodeType": "Test Case",
+                  "result": "Passed"
+                },
+                {
+                  "duration": "0.00062s",
+                  "durationInSeconds": 0.0006220340728759766,
+                  "name": "testMultiResponderUsesOneConfirmationWithoutSoleFlag()",
+                  "nodeIdentifier": "ResponderExitTests/testMultiResponderUsesOneConfirmationWithoutSoleFlag()",
+                  "nodeIdentifierURL": "test://com.apple.xcode/AEDResponse/AEDResponseTests/ResponderExitTests/testMultiResponderUsesOneConfirmationWithoutSoleFlag",
+                  "nodeType": "Test Case",
+                  "result": "Passed"
+                },
+                {
+                  "duration": "0.0024s",
+                  "durationInSeconds": 0.0024220943450927734,
+                  "name": "testOrdinaryExitOmitsSoleResponderFlagAndTrueIsEncoded()",
+                  "nodeIdentifier": "ResponderExitTests/testOrdinaryExitOmitsSoleResponderFlagAndTrueIsEncoded()",
+                  "nodeIdentifierURL": "test://com.apple.xcode/AEDResponse/AEDResponseTests/ResponderExitTests/testOrdinaryExitOmitsSoleResponderFlagAndTrueIsEncoded",
+                  "nodeType": "Test Case",
+                  "result": "Passed"
+                },
+                {
+                  "duration": "0.0029s",
+                  "durationInSeconds": 0.0029178857803344727,
+                  "name": "testSoleResponderRequiresThreeExplicitClicksAndOpeningDoesNotCount()",
+                  "nodeIdentifier": "ResponderExitTests/testSoleResponderRequiresThreeExplicitClicksAndOpeningDoesNotCount()",
+                  "nodeIdentifierURL": "test://com.apple.xcode/AEDResponse/AEDResponseTests/ResponderExitTests/testSoleResponderRequiresThreeExplicitClicksAndOpeningDoesNotCount",
+                  "nodeType": "Test Case",
+                  "result": "Passed"
+                }
+              ],
+              "name": "ResponderExitTests",
+              "nodeIdentifierURL": "test://com.apple.xcode/AEDResponse/AEDResponseTests/ResponderExitTests",
+              "nodeType": "Test Suite",
+              "result": "Passed"
+            },
+            {
+              "children": [
+                {
+                  "duration": "0.05s",
+                  "durationInSeconds": 0.04973602294921875,
+                  "name": "testAcceptedResponderProjectionDecodesExactPatientDataAndCoordination()",
+                  "nodeIdentifier": "ResponsePrivacyProjectionTests/testAcceptedResponderProjectionDecodesExactPatientDataAndCoordination()",
+                  "nodeIdentifierURL": "test://com.apple.xcode/AEDResponse/AEDResponseTests/ResponsePrivacyProjectionTests/testAcceptedResponderProjectionDecodesExactPatientDataAndCoordination",
+                  "nodeType": "Test Case",
+                  "result": "Passed"
+                },
+                {
+                  "duration": "0.013s",
+                  "durationInSeconds": 0.013157963752746582,
+                  "name": "testEmergencyEventRequiresBothNullableParticipationWindowKeys()",
+                  "nodeIdentifier": "ResponsePrivacyProjectionTests/testEmergencyEventRequiresBothNullableParticipationWindowKeys()",
+                  "nodeIdentifierURL": "test://com.apple.xcode/AEDResponse/AEDResponseTests/ResponsePrivacyProjectionTests/testEmergencyEventRequiresBothNullableParticipationWindowKeys",
+                  "nodeType": "Test Case",
+                  "result": "Passed"
+                },
+                {
+                  "duration": "0.0013s",
+                  "durationInSeconds": 0.0013190507888793945,
+                  "name": "testEmergencyEventRequiresCanPublishEventPositionField()",
+                  "nodeIdentifier": "ResponsePrivacyProjectionTests/testEmergencyEventRequiresCanPublishEventPositionField()",
+                  "nodeIdentifierURL": "test://com.apple.xcode/AEDResponse/AEDResponseTests/ResponsePrivacyProjectionTests/testEmergencyEventRequiresCanPublishEventPositionField",
+                  "nodeType": "Test Case",
+                  "result": "Passed"
+                },
+                {
+                  "duration": "0.0014s",
+                  "durationInSeconds": 0.001350998878479004,
+                  "name": "testMinimalTerminalProjectionDecodesWithoutConditionalFields()",
+                  "nodeIdentifier": "ResponsePrivacyProjectionTests/testMinimalTerminalProjectionDecodesWithoutConditionalFields()",
+                  "nodeIdentifierURL": "test://com.apple.xcode/AEDResponse/AEDResponseTests/ResponsePrivacyProjectionTests/testMinimalTerminalProjectionDecodesWithoutConditionalFields",
+                  "nodeType": "Test Case",
+                  "result": "Passed"
+                },
+                {
+                  "duration": "0.066s",
+                  "durationInSeconds": 0.0664139986038208,
+                  "name": "testOfferExpiryBoundaryIsInclusiveAtExpiresAtAndExpiredAfterward()",
+                  "nodeIdentifier": "ResponsePrivacyProjectionTests/testOfferExpiryBoundaryIsInclusiveAtExpiresAtAndExpiredAfterward()",
+                  "nodeIdentifierURL": "test://com.apple.xcode/AEDResponse/AEDResponseTests/ResponsePrivacyProjectionTests/testOfferExpiryBoundaryIsInclusiveAtExpiresAtAndExpiredAfterward",
+                  "nodeType": "Test Case",
+                  "result": "Passed"
+                },
+                {
+                  "duration": "0.22s",
+                  "durationInSeconds": 0.2190990447998047,
+                  "name": "testPatientProjectionDecodesTriggerExactPatientAndCoordination()",
+                  "nodeIdentifier": "ResponsePrivacyProjectionTests/testPatientProjectionDecodesTriggerExactPatientAndCoordination()",
+                  "nodeIdentifierURL": "test://com.apple.xcode/AEDResponse/AEDResponseTests/ResponsePrivacyProjectionTests/testPatientProjectionDecodesTriggerExactPatientAndCoordination",
+                  "nodeType": "Test Case",
+                  "result": "Passed"
+                },
+                {
+                  "duration": "0.0044s",
+                  "durationInSeconds": 0.004359006881713867,
+                  "name": "testPendingResponderProjectionDecodesWithoutExactPatientOrCoordination()",
+                  "nodeIdentifier": "ResponsePrivacyProjectionTests/testPendingResponderProjectionDecodesWithoutExactPatientOrCoordination()",
+                  "nodeIdentifierURL": "test://com.apple.xcode/AEDResponse/AEDResponseTests/ResponsePrivacyProjectionTests/testPendingResponderProjectionDecodesWithoutExactPatientOrCoordination",
+                  "nodeType": "Test Case",
+                  "result": "Passed"
+                },
+                {
+                  "duration": "0.002s",
+                  "durationInSeconds": 0.0020209550857543945,
+                  "name": "testPendingResponseRequestRejectsPatientPositionAndOtherSensitiveFields()",
+                  "nodeIdentifier": "ResponsePrivacyProjectionTests/testPendingResponseRequestRejectsPatientPositionAndOtherSensitiveFields()",
+                  "nodeIdentifierURL": "test://com.apple.xcode/AEDResponse/AEDResponseTests/ResponsePrivacyProjectionTests/testPendingResponseRequestRejectsPatientPositionAndOtherSensitiveFields",
+                  "nodeType": "Test Case",
+                  "result": "Passed"
+                },
+                {
+                  "duration": "0.0022s",
+                  "durationInSeconds": 0.0022139549255371094,
+                  "name": "testSecondarySameUserPatientProjectionIsExplicitlyReadOnly()",
+                  "nodeIdentifier": "ResponsePrivacyProjectionTests/testSecondarySameUserPatientProjectionIsExplicitlyReadOnly()",
+                  "nodeIdentifierURL": "test://com.apple.xcode/AEDResponse/AEDResponseTests/ResponsePrivacyProjectionTests/testSecondarySameUserPatientProjectionIsExplicitlyReadOnly",
+                  "nodeType": "Test Case",
+                  "result": "Passed"
+                },
+                {
+                  "duration": "0.024s",
+                  "durationInSeconds": 0.024148941040039062,
+                  "name": "testSimulationOfferMarkerIsEventBoundAndDoesNotPermitPrivateFields()",
+                  "nodeIdentifier": "ResponsePrivacyProjectionTests/testSimulationOfferMarkerIsEventBoundAndDoesNotPermitPrivateFields()",
+                  "nodeIdentifierURL": "test://com.apple.xcode/AEDResponse/AEDResponseTests/ResponsePrivacyProjectionTests/testSimulationOfferMarkerIsEventBoundAndDoesNotPermitPrivateFields",
+                  "nodeType": "Test Case",
+                  "result": "Passed"
+                },
+                {
+                  "duration": "0.03s",
+                  "durationInSeconds": 0.02994096279144287,
+                  "name": "testSimulationPatientIsExplicitAndContainsNoFallEvidence()",
+                  "nodeIdentifier": "ResponsePrivacyProjectionTests/testSimulationPatientIsExplicitAndContainsNoFallEvidence()",
+                  "nodeIdentifierURL": "test://com.apple.xcode/AEDResponse/AEDResponseTests/ResponsePrivacyProjectionTests/testSimulationPatientIsExplicitAndContainsNoFallEvidence",
+                  "nodeType": "Test Case",
+                  "result": "Passed"
+                },
+                {
+                  "duration": "0.0018s",
+                  "durationInSeconds": 0.001764059066772461,
+                  "name": "testWritableEventRequiresNonNullParticipationStart()",
+                  "nodeIdentifier": "ResponsePrivacyProjectionTests/testWritableEventRequiresNonNullParticipationStart()",
+                  "nodeIdentifierURL": "test://com.apple.xcode/AEDResponse/AEDResponseTests/ResponsePrivacyProjectionTests/testWritableEventRequiresNonNullParticipationStart",
+                  "nodeType": "Test Case",
+                  "result": "Passed"
+                }
+              ],
+              "name": "ResponsePrivacyProjectionTests",
+              "nodeIdentifierURL": "test://com.apple.xcode/AEDResponse/AEDResponseTests/ResponsePrivacyProjectionTests",
+              "nodeType": "Test Suite",
+              "result": "Passed"
+            },
+            {
+              "children": [
+                {
+                  "duration": "0.0031s",
+                  "durationInSeconds": 0.0031110048294067383,
+                  "name": "testAedAcquiredReceiptIsIdempotentAndRejectsConflictingReceiptID()",
+                  "nodeIdentifier": "StateMachineTests/testAedAcquiredReceiptIsIdempotentAndRejectsConflictingReceiptID()",
+                  "nodeIdentifierURL": "test://com.apple.xcode/AEDResponse/AEDResponseTests/StateMachineTests/testAedAcquiredReceiptIsIdempotentAndRejectsConflictingReceiptID",
+                  "nodeType": "Test Case",
+                  "result": "Passed"
+                },
+                {
+                  "duration": "0.0018s",
+                  "durationInSeconds": 0.0018340349197387695,
+                  "name": "testAssignmentFormulaForOneThroughFiveAcceptedResponders()",
+                  "nodeIdentifier": "StateMachineTests/testAssignmentFormulaForOneThroughFiveAcceptedResponders()",
+                  "nodeIdentifierURL": "test://com.apple.xcode/AEDResponse/AEDResponseTests/StateMachineTests/testAssignmentFormulaForOneThroughFiveAcceptedResponders",
+                  "nodeType": "Test Case",
+                  "result": "Passed"
+                },
+                {
+                  "duration": "0.0041s",
+                  "durationInSeconds": 0.004077911376953125,
+                  "name": "testPassiveRecoverySignalsNeverEndActiveEvent()",
+                  "nodeIdentifier": "StateMachineTests/testPassiveRecoverySignalsNeverEndActiveEvent()",
+                  "nodeIdentifierURL": "test://com.apple.xcode/AEDResponse/AEDResponseTests/StateMachineTests/testPassiveRecoverySignalsNeverEndActiveEvent",
+                  "nodeType": "Test Case",
+                  "result": "Passed"
+                },
+                {
+                  "duration": "0.00081s",
+                  "durationInSeconds": 0.0008109807968139648,
+                  "name": "testPostCallFalseAlarmRequiresExplicitPatientAction()",
+                  "nodeIdentifier": "StateMachineTests/testPostCallFalseAlarmRequiresExplicitPatientAction()",
+                  "nodeIdentifierURL": "test://com.apple.xcode/AEDResponse/AEDResponseTests/StateMachineTests/testPostCallFalseAlarmRequiresExplicitPatientAction",
+                  "nodeType": "Test Case",
+                  "result": "Passed"
+                },
+                {
+                  "duration": "0.00088s",
+                  "durationInSeconds": 0.0008779764175415039,
+                  "name": "testRealEventRequiresExplicitAuthorizedResolution()",
+                  "nodeIdentifier": "StateMachineTests/testRealEventRequiresExplicitAuthorizedResolution()",
+                  "nodeIdentifierURL": "test://com.apple.xcode/AEDResponse/AEDResponseTests/StateMachineTests/testRealEventRequiresExplicitAuthorizedResolution",
+                  "nodeType": "Test Case",
+                  "result": "Passed"
+                },
+                {
+                  "duration": "0.084s",
+                  "durationInSeconds": 0.08394110202789307,
+                  "name": "testReceiptMustAdvanceWithoutSkippingOrGoingBack()",
+                  "nodeIdentifier": "StateMachineTests/testReceiptMustAdvanceWithoutSkippingOrGoingBack()",
+                  "nodeIdentifierURL": "test://com.apple.xcode/AEDResponse/AEDResponseTests/StateMachineTests/testReceiptMustAdvanceWithoutSkippingOrGoingBack",
+                  "nodeType": "Test Case",
+                  "result": "Passed"
+                }
+              ],
+              "name": "StateMachineTests",
+              "nodeIdentifierURL": "test://com.apple.xcode/AEDResponse/AEDResponseTests/StateMachineTests",
+              "nodeType": "Test Suite",
+              "result": "Passed"
+            }
+          ],
+          "name": "AEDResponseTests",
+          "nodeIdentifierURL": "test://com.apple.xcode/AEDResponse/AEDResponseTests",
+          "nodeType": "Unit test bundle",
+          "result": "Failed"
+        }
+      ],
+      "name": "AEDResponseTestHost",
+      "nodeType": "Test Plan",
+      "result": "Failed"
+    }
+  ],
+  "testPlanConfigurations": [
+    {
+      "configurationId": "1",
+      "configurationName": "Test Scheme Action"
+    }
+  ]
+}

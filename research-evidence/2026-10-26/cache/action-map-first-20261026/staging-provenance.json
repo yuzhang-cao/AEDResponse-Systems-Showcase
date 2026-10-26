@@ -1,0 +1,7 @@
+{
+  "baseline": "/tmp/aed-tab-refresh-20261026.5eiB0S/Source",
+  "staging": "[BUILD_CACHE]/action-map-first-20261026.hkwuih3c/Source",
+  "cached_noncode_resources": "unchanged build12 Login.strings and test entitlement cached by map-refresh build13",
+  "dependencies": "same pinned SocketIO 16.1.1 and Starscream 4.0.8, local exported source; only staging manifest uses local path",
+  "swift_overlay": "pending final current-worktree overlay before build"
+}

@@ -1,0 +1,513 @@
+Command line invocation:
+    /Applications/Xcode.app/Contents/Developer/usr/bin/xcodebuild -xctestrun [BUILD_CACHE]/action-map-first-20261026.hkwuih3c/Simulator/Build/Products/AEDResponseTestHost_iphonesimulator26.5-arm64.xctestrun -destination "platform=iOS Simulator,id=REDACTED-ID-0075" -parallel-testing-enabled NO test-without-building -resultBundlePath [BUILD_CACHE]/action-map-first-20261026.hkwuih3c/ui-final-normal.xcresult "-only-testing:AEDResponseUITests/AEDResponseUITests/testStandbyMapFillsActionPageAndShowsAggregateCounts" "-only-testing:AEDResponseUITests/AEDResponseUITests/testSettingsRangePreferenceOnlyHidesCirclesAndPreservesCounts" "-only-testing:AEDResponseUITests/AEDResponseUITests/testNearbyFixtureShowsCurrentOfferAndAcceptsLocally"
+
+2026-10-26 02:57:39.226 xcodebuild[84848:6360942] [MT] IDERunDestination: Supported platforms for the buildables in the current scheme is empty.
+Writing result bundle at path:
+	[BUILD_CACHE]/action-map-first-20261026.hkwuih3c/ui-final-normal.xcresult
+
+2026-10-26 02:57:39.234 xcodebuild[84848:6360942] [MT] IDERunDestination: Supported platforms for the buildables in the current scheme is empty.
+2026-10-26 02:57:40.859 xcodebuild[84848:6360942] [MT] IDERunDestination: Supported platforms for the buildables in the current scheme is empty.
+2026-10-26 02:57:45.067180+0800 AEDResponseUITests-Runner[84897:6361453] [Default] Running tests...
+    t =      nans Interface orientation changed to Portrait
+Test Suite 'Selected tests' started at 2026-10-26 02:57:46.738.
+Test Suite 'AEDResponseUITests.xctest' started at 2026-10-26 02:57:46.762.
+Test Suite 'AEDResponseUITests' started at 2026-10-26 02:57:46.763.
+Test Case '-[AEDResponseUITests.AEDResponseUITests testNearbyFixtureShowsCurrentOfferAndAcceptsLocally]' started.
+    t =     0.02s Start Test at 2026-10-26 02:57:46.780
+    t =     0.20s Set Up
+    t =     0.22s Open dev.codex.aedresponse.testhost
+    t =     0.22s     Launch dev.codex.aedresponse.testhost
+2026-10-26 02:57:47.275 xcodebuild[84848:6360942] [MT] IDELaunchParametersSnapshot: The operation couldn’t be completed. (DebuggerLLDB.DebuggerVersionStore.StoreError error 0.)
+2026-10-26 02:57:47.275 xcodebuild[84848:6360942] [MT] IDELaunchParametersSnapshot: no debugger version
+objc[84897]: Class UIAccessibilityLoaderWebShared is implemented in both /Library/Developer/CoreSimulator/Volumes/iOS_23E254a/Library/Developer/CoreSimulator/Profiles/Runtimes/iOS 26.4.simruntime/Contents/Resources/RuntimeRoot/System/Library/AccessibilityBundles/WebCore.axbundle/WebCore (0x108d98310) and /Library/Developer/CoreSimulator/Volumes/iOS_23E254a/Library/Developer/CoreSimulator/Profiles/Runtimes/iOS 26.4.simruntime/Contents/Resources/RuntimeRoot/System/Library/AccessibilityBundles/WebKit.axbundle/WebKit (0x108b30398). This may cause spurious casting failures and mysterious crashes. One of the duplicates must be removed or renamed.
+    t =     5.35s         Setting up automation session
+    t =     7.32s         Wait for dev.codex.aedresponse.testhost to idle
+    t =    11.53s Waiting 3.0s for "测试" Button to exist
+    t =    12.72s     Checking `Expect predicate `existsNoRetry == 1` for object "测试" Button`
+    t =    12.78s         Checking existence of `"测试" Button`
+    t =    13.38s Tap "测试" Button
+    t =    13.38s     Wait for dev.codex.aedresponse.testhost to idle
+    t =    13.38s     Find the "测试" Button
+    t =    13.41s     Check for interrupting elements affecting "测试" Button
+    t =    13.52s     Synthesize event
+    t =    13.86s     Wait for dev.codex.aedresponse.testhost to idle
+    t =    15.69s Waiting 5.0s for "local-test-scenario-responseRequest" Button to exist
+    t =    16.76s     Checking `Expect predicate `existsNoRetry == 1` for object "local-test-scenario-responseRequest" Button`
+    t =    16.77s         Checking existence of `"local-test-scenario-responseRequest" Button`
+    t =    16.94s Checking existence of `"local-test-scenario-responseRequest" Button`
+    t =    16.97s Find the "local-test-scenario-responseRequest" Button
+    t =    17.02s Waiting 5.0s for "local-test-scenario-responseRequest" Button to exist
+    t =    18.09s     Checking `Expect predicate `existsNoRetry == 1` for object "local-test-scenario-responseRequest" Button`
+    t =    18.09s         Checking existence of `"local-test-scenario-responseRequest" Button`
+    t =    18.13s Find the "local-test-scenario-responseRequest" Button
+    t =    18.17s Tap "local-test-scenario-responseRequest" Button
+    t =    18.17s     Wait for dev.codex.aedresponse.testhost to idle
+    t =    18.17s     Find the "local-test-scenario-responseRequest" Button
+    t =    18.20s     Check for interrupting elements affecting "local-test-scenario-responseRequest" Button
+    t =    18.29s     Synthesize event
+    t =    18.60s     Wait for dev.codex.aedresponse.testhost to idle
+    t =    21.52s Checking `Expect predicate `selected == 1` for object "行动" Button`
+    t =    21.53s     Find the "行动" Button
+    t =    22.70s Checking `Expect predicate `selected == 1` for object "行动" Button`
+    t =    22.70s     Find the "行动" Button
+    t =    22.75s Waiting 3.0s for "local-test-scenario-banner" Any to exist
+    t =    23.83s     Checking `Expect predicate `existsNoRetry == 1` for object "local-test-scenario-banner" Any`
+    t =    23.84s         Checking existence of `"local-test-scenario-banner" Any`
+    t =    23.88s Checking existence of `"行动" Button`
+    t =    23.91s Waiting 3.0s for "response-request-card" Any to exist
+    t =    24.98s     Checking `Expect predicate `existsNoRetry == 1` for object "response-request-card" Any`
+    t =    24.98s         Checking existence of `"response-request-card" Any`
+    t =    25.06s Checking existence of `"跌倒救助" StaticText`
+    t =    25.08s Checking existence of `"accept-response-button" Button`
+    t =    25.10s Waiting 5.0s for "action-map-canvas" Any to exist
+    t =    26.16s     Checking `Expect predicate `existsNoRetry == 1` for object "action-map-canvas" Any`
+    t =    26.17s         Checking existence of `"action-map-canvas" Any`
+    t =    26.25s Find the "action-map-canvas" Any
+    t =    26.34s Find the "action-map-canvas" Other
+    t =    26.39s Find the Target Application 'dev.codex.aedresponse.testhost'
+    t =    26.41s Checking existence of `"安全测试地点 A" StaticText`
+    t =    26.43s Checking existence of `"task-location-details" Any`
+    t =    26.45s Checking existence of `"test-route-canvas" Any`
+    t =    26.47s Checking existence of `"live-route-map" Any`
+    t =    26.49s Checking existence of `"offline-range-circles" Any`
+    t =    26.51s Checking existence of `"nearby-map-count-1000" Any`
+    t =    26.53s Checking existence of `"report-found-patient-button" Button`
+    t =    26.55s Waiting 5.0s for "action-map-panel" Any to exist
+    t =    27.62s     Checking `Expect predicate `existsNoRetry == 1` for object "action-map-panel" Any`
+    t =    27.62s         Checking existence of `"action-map-panel" Any`
+    t =    27.69s Checking existence of `"accept-response-button" Button`
+    t =    27.71s Find the "accept-response-button" Button
+    t =    27.77s Find the "accept-response-button" Button
+    t =    27.79s Find the "action-map-panel" Any
+    t =    27.85s Find the "accept-response-button" Button
+    t =    27.87s Find the "action-map-panel" ScrollView
+    t =    27.92s Checking existence of `"action-map-panel" Any`
+    t =    27.97s Find the "accept-response-button" Button
+    t =    27.99s Find the "accept-response-button" Button
+    t =    28.02s Find the "accept-response-button" Button
+    t =    28.04s Find the "action-map-panel" Any
+    t =    28.09s Find the "accept-response-button" Button
+    t =    28.11s Find the "action-map-panel" ScrollView
+    t =    28.16s Get all elements bound by index for: Descendants matching type TabBar
+    t =    28.18s Checking existence of `TabBar (Element at index 0)`
+    t =    28.20s Find the TabBar (Element at index 0)
+    t =    28.22s Find the "accept-response-button" Button
+    t =    28.24s Find the "标签页栏" TabBar
+    t =    28.26s Find the Target Application 'dev.codex.aedresponse.testhost'
+    t =    28.48s Added attachment named 'map-first-invitation-private-position'
+    t =    28.49s Waiting 5.0s for "action-map-panel" Any to exist
+    t =    29.56s     Checking `Expect predicate `existsNoRetry == 1` for object "action-map-panel" Any`
+    t =    29.57s         Checking existence of `"action-map-panel" Any`
+    t =    29.62s Checking existence of `"accept-response-button" Button`
+    t =    29.64s Find the "accept-response-button" Button
+    t =    29.67s Find the "accept-response-button" Button
+    t =    29.69s Find the "action-map-panel" Any
+    t =    29.76s Find the "accept-response-button" Button
+    t =    29.79s Find the "action-map-panel" ScrollView
+    t =    29.86s Tap "accept-response-button" Button
+    t =    29.86s     Wait for dev.codex.aedresponse.testhost to idle
+    t =    29.87s     Find the "accept-response-button" Button
+    t =    29.91s     Check for interrupting elements affecting "accept-response-button" Button
+    t =    30.02s     Synthesize event
+    t =    30.39s     Wait for dev.codex.aedresponse.testhost to idle
+    t =    30.88s Waiting 3.0s for "responder-navigation-view" Any to exist
+    t =    31.95s     Checking `Expect predicate `existsNoRetry == 1` for object "responder-navigation-view" Any`
+    t =    31.95s         Checking existence of `"responder-navigation-view" Any`
+    t =    32.02s Find the Target Application 'dev.codex.aedresponse.testhost'
+    t =    32.15s Added attachment named 'map-first-task-default'
+    t =    32.15s Waiting 5.0s for "action-map-panel" Any to exist
+    t =    33.22s     Checking `Expect predicate `existsNoRetry == 1` for object "action-map-panel" Any`
+    t =    33.23s         Checking existence of `"action-map-panel" Any`
+    t =    33.41s Checking existence of `"响应状态" Button`
+    t =    33.44s Find the "响应状态" Button
+    t =    33.50s Checking existence of `"响应状态" Button`
+    t =    33.53s Find the "响应状态" Button
+    t =    33.55s Find the "action-map-panel" Any
+    t =    33.61s Press "action-map-panel" ScrollView[0.50, 0.80] for 0.1 seconds, then drag to "action-map-panel" ScrollView[0.50, 0.30] with velocity of 500.00 pixels per second, and then hold for 0.0 seconds 
+    t =    33.61s     Wait for dev.codex.aedresponse.testhost to idle
+    t =    33.61s     Find the "action-map-panel" ScrollView
+    t =    33.66s     Check for interrupting elements affecting "action-map-panel" ScrollView
+    t =    33.70s     Synthesize event
+    t =    33.70s         Find the "action-map-panel" ScrollView
+    t =    33.75s         Find the "action-map-panel" ScrollView
+    t =    33.80s         Find the "action-map-panel" ScrollView
+    t =    33.85s         Find the "action-map-panel" ScrollView
+    t =    33.91s         Find the "action-map-panel" ScrollView
+    t =    34.62s     Wait for dev.codex.aedresponse.testhost to idle
+    t =    35.03s Checking existence of `"响应状态" Button`
+    t =    35.07s Find the "响应状态" Button
+    t =    35.11s Find the "响应状态" Button
+    t =    35.14s Find the "action-map-panel" ScrollView
+    t =    35.19s Find the "响应状态" Button
+    t =    35.21s Find the "action-map-panel" ScrollView
+    t =    35.27s Tap "响应状态" Button
+    t =    35.27s     Wait for dev.codex.aedresponse.testhost to idle
+    t =    35.27s     Find the "响应状态" Button
+    t =    35.29s     Check for interrupting elements affecting "响应状态" Button
+    t =    35.31s     Synthesize event
+    t =    35.61s     Wait for dev.codex.aedresponse.testhost to idle
+    t =    35.65s Waiting 3.0s for "response-status-card" Any to exist
+    t =    36.72s     Checking `Expect predicate `existsNoRetry == 1` for object "response-status-card" Any`
+    t =    36.73s         Checking existence of `"response-status-card" Any`
+    t =    36.78s Waiting 3.0s for "advance-assignment-button" Button to exist
+    t =    37.85s     Checking `Expect predicate `existsNoRetry == 1` for object "advance-assignment-button" Button`
+    t =    37.85s         Checking existence of `"advance-assignment-button" Button`
+    t =    37.90s Find the "advance-assignment-button" Button
+    t =    37.94s Waiting 5.0s for "action-map-panel" Any to exist
+    t =    39.01s     Checking `Expect predicate `existsNoRetry == 1` for object "action-map-panel" Any`
+    t =    39.01s         Checking existence of `"action-map-panel" Any`
+    t =    39.09s Checking existence of `"advance-assignment-button" Button`
+    t =    39.11s Find the "advance-assignment-button" Button
+    t =    39.15s Find the "advance-assignment-button" Button
+    t =    39.18s Find the "action-map-panel" Any
+    t =    39.23s Find the "advance-assignment-button" Button
+    t =    39.26s Find the "action-map-panel" ScrollView
+    t =    39.31s Checking existence of `"action-map-panel" Any`
+    t =    39.36s Find the "advance-assignment-button" Button
+    t =    39.39s Find the "advance-assignment-button" Button
+    t =    39.42s Find the "advance-assignment-button" Button
+    t =    39.45s Find the "action-map-panel" Any
+    t =    39.50s Find the "advance-assignment-button" Button
+    t =    39.53s Find the "action-map-panel" ScrollView
+    t =    39.58s Get all elements bound by index for: Descendants matching type TabBar
+    t =    39.60s Checking existence of `TabBar (Element at index 0)`
+    t =    39.62s Find the TabBar (Element at index 0)
+    t =    39.64s Find the "advance-assignment-button" Button
+    t =    39.67s Find the "标签页栏" TabBar
+    t =    39.69s Waiting 5.0s for "action-map-canvas" Any to exist
+    t =    40.76s     Checking `Expect predicate `existsNoRetry == 1` for object "action-map-canvas" Any`
+    t =    40.76s         Checking existence of `"action-map-canvas" Any`
+    t =    40.81s Find the "action-map-canvas" Any
+    t =    40.86s Find the "action-map-canvas" Other
+    t =    40.94s Find the Target Application 'dev.codex.aedresponse.testhost'
+    t =    40.96s Checking existence of `"test-route-canvas" Any`
+    t =    40.99s Checking existence of `"live-route-map" Any`
+    t =    41.03s Find the Target Application 'dev.codex.aedresponse.testhost'
+    t =    41.27s Added attachment named 'map-first-accepted-task'
+    t =    41.28s Tear Down
+Test Case '-[AEDResponseUITests.AEDResponseUITests testNearbyFixtureShowsCurrentOfferAndAcceptsLocally]' passed (41.753 seconds).
+Test Case '-[AEDResponseUITests.AEDResponseUITests testSettingsRangePreferenceOnlyHidesCirclesAndPreservesCounts]' started.
+    t =     0.00s Start Test at 2026-10-26 02:58:28.536
+    t =     0.07s Set Up
+    t =     0.07s Open dev.codex.aedresponse.testhost
+    t =     0.07s     Launch dev.codex.aedresponse.testhost
+    t =     0.07s         Terminate dev.codex.aedresponse.testhost:84931
+2026-10-26 02:58:29.693 xcodebuild[84848:6360942] [MT] IDELaunchParametersSnapshot: The operation couldn’t be completed. (DebuggerLLDB.DebuggerVersionStore.StoreError error 0.)
+2026-10-26 02:58:29.693 xcodebuild[84848:6360942] [MT] IDELaunchParametersSnapshot: no debugger version
+    t =     1.58s         Setting up automation session
+    t =     4.02s         Wait for dev.codex.aedresponse.testhost to idle
+    t =     7.06s Waiting 3.0s for "测试" Button to exist
+    t =     8.13s     Checking `Expect predicate `existsNoRetry == 1` for object "测试" Button`
+    t =     8.13s         Checking existence of `"测试" Button`
+    t =     8.38s Tap "测试" Button
+    t =     8.38s     Wait for dev.codex.aedresponse.testhost to idle
+    t =     8.38s     Find the "测试" Button
+    t =     8.40s     Check for interrupting elements affecting "测试" Button
+    t =     8.48s     Synthesize event
+    t =     8.79s     Wait for dev.codex.aedresponse.testhost to idle
+    t =    10.60s Waiting 5.0s for "local-test-scenario-neutral" Button to exist
+    t =    11.67s     Checking `Expect predicate `existsNoRetry == 1` for object "local-test-scenario-neutral" Button`
+    t =    11.68s         Checking existence of `"local-test-scenario-neutral" Button`
+    t =    11.81s Checking existence of `"local-test-scenario-neutral" Button`
+    t =    11.84s Find the "local-test-scenario-neutral" Button
+    t =    11.88s Waiting 5.0s for "local-test-scenario-neutral" Button to exist
+    t =    12.95s     Checking `Expect predicate `existsNoRetry == 1` for object "local-test-scenario-neutral" Button`
+    t =    12.95s         Checking existence of `"local-test-scenario-neutral" Button`
+    t =    13.01s Find the "local-test-scenario-neutral" Button
+    t =    13.05s Tap "local-test-scenario-neutral" Button
+    t =    13.05s     Wait for dev.codex.aedresponse.testhost to idle
+    t =    13.05s     Find the "local-test-scenario-neutral" Button
+    t =    13.08s     Check for interrupting elements affecting "local-test-scenario-neutral" Button
+    t =    13.12s     Synthesize event
+    t =    13.41s     Wait for dev.codex.aedresponse.testhost to idle
+    t =    15.98s Checking `Expect predicate `selected == 1` for object "行动" Button`
+    t =    15.98s     Find the "行动" Button
+    t =    17.04s Checking `Expect predicate `selected == 1` for object "行动" Button`
+    t =    17.04s     Find the "行动" Button
+    t =    17.09s Waiting 3.0s for "local-test-scenario-banner" Any to exist
+    t =    18.16s     Checking `Expect predicate `existsNoRetry == 1` for object "local-test-scenario-banner" Any`
+    t =    18.16s         Checking existence of `"local-test-scenario-banner" Any`
+    t =    18.21s Checking existence of `"行动" Button`
+    t =    18.23s Waiting 5.0s for "nearby-map-count-1000" Any to exist
+    t =    19.25s     Checking `Expect predicate `existsNoRetry == 1` for object "nearby-map-count-1000" Any`
+    t =    19.25s         Checking existence of `"nearby-map-count-1000" Any`
+    t =    19.34s Find the "nearby-map-count-1000" Any
+    t =    19.44s Waiting 5.0s for "nearby-map-count-1500" Any to exist
+    t =    20.48s     Checking `Expect predicate `existsNoRetry == 1` for object "nearby-map-count-1500" Any`
+    t =    20.48s         Checking existence of `"nearby-map-count-1500" Any`
+    t =    20.57s Find the "nearby-map-count-1500" Any
+    t =    20.64s Waiting 5.0s for "nearby-map-count-2000" Any to exist
+    t =    21.70s     Checking `Expect predicate `existsNoRetry == 1` for object "nearby-map-count-2000" Any`
+    t =    21.71s         Checking existence of `"nearby-map-count-2000" Any`
+    t =    21.80s Find the "nearby-map-count-2000" Any
+    t =    21.87s Checking existence of `"1 公里内" StaticText`
+    t =    21.89s Checking existence of `"1.5 公里内" StaticText`
+    t =    21.91s Checking existence of `"2 公里内" StaticText`
+    t =    21.93s Tap "设置" Button
+    t =    21.93s     Wait for dev.codex.aedresponse.testhost to idle
+    t =    21.93s     Find the "设置" Button
+    t =    21.95s     Check for interrupting elements affecting "设置" Button
+    t =    21.98s     Synthesize event
+    t =    22.28s     Wait for dev.codex.aedresponse.testhost to idle
+    t =    24.38s Waiting 5.0s for "settings-nearby-range-circles-toggle" Switch to exist
+    t =    25.44s     Checking `Expect predicate `existsNoRetry == 1` for object "settings-nearby-range-circles-toggle" Switch`
+    t =    25.44s         Checking existence of `"settings-nearby-range-circles-toggle" Switch`
+    t =    25.57s Find the "settings-nearby-range-circles-toggle" Switch
+    t =    25.60s Find the "settings-nearby-range-circles-toggle" Switch
+    t =    25.64s Find the "settings-nearby-range-circles-toggle" Switch
+    t =    25.67s Find the "settings-nearby-range-circles-toggle" Switch
+    t =    25.71s Find the "settings-nearby-range-circles-toggle" Switch
+    t =    25.74s Find the "settings-nearby-range-circles-toggle" Switch
+    t =    25.77s Tap "行动" Button
+    t =    25.77s     Wait for dev.codex.aedresponse.testhost to idle
+    t =    25.77s     Find the "行动" Button
+    t =    25.80s     Check for interrupting elements affecting "行动" Button
+    t =    25.82s     Synthesize event
+    t =    26.12s     Wait for dev.codex.aedresponse.testhost to idle
+    t =    27.56s Waiting 5.0s for "offline-nearby-map" Any to exist
+    t =    28.59s     Checking `Expect predicate `existsNoRetry == 1` for object "offline-nearby-map" Any`
+    t =    28.59s         Checking existence of `"offline-nearby-map" Any`
+    t =    28.64s Checking existence of `"offline-range-circles" Any`
+    t =    28.66s Waiting 5.0s for "nearby-map-count-1000" Any to exist
+    t =    29.70s     Checking `Expect predicate `existsNoRetry == 1` for object "nearby-map-count-1000" Any`
+    t =    29.70s         Checking existence of `"nearby-map-count-1000" Any`
+    t =    29.80s Find the "nearby-map-count-1000" Any
+    t =    29.89s Waiting 5.0s for "nearby-map-count-1500" Any to exist
+    t =    30.95s     Checking `Expect predicate `existsNoRetry == 1` for object "nearby-map-count-1500" Any`
+    t =    30.97s         Checking existence of `"nearby-map-count-1500" Any`
+    t =    31.09s Find the "nearby-map-count-1500" Any
+    t =    31.16s Waiting 5.0s for "nearby-map-count-2000" Any to exist
+    t =    32.22s     Checking `Expect predicate `existsNoRetry == 1` for object "nearby-map-count-2000" Any`
+    t =    32.23s         Checking existence of `"nearby-map-count-2000" Any`
+    t =    32.35s Find the "nearby-map-count-2000" Any
+    t =    32.42s Checking existence of `"1 公里内" StaticText`
+    t =    32.47s Checking existence of `"1.5 公里内" StaticText`
+    t =    32.49s Checking existence of `"2 公里内" StaticText`
+    t =    32.51s Find the "nearby-summary-note" Any
+    t =    32.58s Checking existence of `"live-nearby-map" Any`
+    t =    32.60s Find the Target Application 'dev.codex.aedresponse.testhost'
+    t =    32.85s Added attachment named 'map-first-circles-hidden-counts-preserved'
+    t =    32.85s Tap "设置" Button
+    t =    32.85s     Wait for dev.codex.aedresponse.testhost to idle
+    t =    32.85s     Find the "设置" Button
+    t =    32.87s     Check for interrupting elements affecting "设置" Button
+    t =    32.99s     Synthesize event
+    t =    33.35s     Wait for dev.codex.aedresponse.testhost to idle
+    t =    35.06s Waiting 5.0s for "settings-nearby-range-circles-toggle" Switch to exist
+    t =    36.13s     Checking `Expect predicate `existsNoRetry == 1` for object "settings-nearby-range-circles-toggle" Switch`
+    t =    36.14s         Checking existence of `"settings-nearby-range-circles-toggle" Switch`
+    t =    36.27s Tap "settings-nearby-range-circles-toggle" Switch
+    t =    36.27s     Wait for dev.codex.aedresponse.testhost to idle
+    t =    36.28s     Find the "settings-nearby-range-circles-toggle" Switch
+    t =    36.30s     Check for interrupting elements affecting "settings-nearby-range-circles-toggle" Switch
+    t =    36.39s     Synthesize event
+    t =    36.70s     Wait for dev.codex.aedresponse.testhost to idle
+    t =    36.95s Find the "settings-nearby-range-circles-toggle" Switch
+    t =    37.00s Tap "行动" Button
+    t =    37.00s     Wait for dev.codex.aedresponse.testhost to idle
+    t =    38.36s     Find the "行动" Button
+    t =    38.42s     Check for interrupting elements affecting "行动" Button
+    t =    38.46s     Synthesize event
+    t =    38.75s     Wait for dev.codex.aedresponse.testhost to idle
+    t =    40.11s Waiting 5.0s for "offline-range-circles" Any to exist
+    t =    41.18s     Checking `Expect predicate `existsNoRetry == 1` for object "offline-range-circles" Any`
+    t =    41.19s         Checking existence of `"offline-range-circles" Any`
+    t =    41.27s Waiting 5.0s for "nearby-map-count-1000" Any to exist
+    t =    42.30s     Checking `Expect predicate `existsNoRetry == 1` for object "nearby-map-count-1000" Any`
+    t =    42.30s         Checking existence of `"nearby-map-count-1000" Any`
+    t =    42.40s Find the "nearby-map-count-1000" Any
+    t =    42.48s Waiting 5.0s for "nearby-map-count-1500" Any to exist
+    t =    43.54s     Checking `Expect predicate `existsNoRetry == 1` for object "nearby-map-count-1500" Any`
+    t =    43.54s         Checking existence of `"nearby-map-count-1500" Any`
+    t =    43.61s Find the "nearby-map-count-1500" Any
+    t =    43.68s Waiting 5.0s for "nearby-map-count-2000" Any to exist
+    t =    44.75s     Checking `Expect predicate `existsNoRetry == 1` for object "nearby-map-count-2000" Any`
+    t =    44.75s         Checking existence of `"nearby-map-count-2000" Any`
+    t =    44.85s Find the "nearby-map-count-2000" Any
+    t =    44.92s Checking existence of `"1 公里内" StaticText`
+    t =    44.94s Checking existence of `"1.5 公里内" StaticText`
+    t =    44.96s Checking existence of `"2 公里内" StaticText`
+    t =    44.98s Find the Target Application 'dev.codex.aedresponse.testhost'
+    t =    45.16s Added attachment named 'map-first-circles-restored'
+    t =    45.16s Tap "设置" Button
+    t =    45.16s     Wait for dev.codex.aedresponse.testhost to idle
+    t =    45.16s     Find the "设置" Button
+    t =    45.18s     Check for interrupting elements affecting "设置" Button
+    t =    45.21s     Synthesize event
+    t =    45.51s     Wait for dev.codex.aedresponse.testhost to idle
+    t =    47.05s Waiting 5.0s for "settings-nearby-range-circles-toggle" Switch to exist
+    t =    48.11s     Checking `Expect predicate `existsNoRetry == 1` for object "settings-nearby-range-circles-toggle" Switch`
+    t =    48.12s         Checking existence of `"settings-nearby-range-circles-toggle" Switch`
+    t =    48.21s Tap "settings-nearby-range-circles-toggle" Switch
+    t =    48.21s     Wait for dev.codex.aedresponse.testhost to idle
+    t =    48.21s     Find the "settings-nearby-range-circles-toggle" Switch
+    t =    48.24s     Check for interrupting elements affecting "settings-nearby-range-circles-toggle" Switch
+    t =    48.26s     Synthesize event
+    t =    48.56s     Wait for dev.codex.aedresponse.testhost to idle
+    t =    49.85s Tear Down
+Test Case '-[AEDResponseUITests.AEDResponseUITests testSettingsRangePreferenceOnlyHidesCirclesAndPreservesCounts]' passed (50.276 seconds).
+Test Case '-[AEDResponseUITests.AEDResponseUITests testStandbyMapFillsActionPageAndShowsAggregateCounts]' started.
+    t =     0.00s Start Test at 2026-10-26 02:59:18.811
+    t =     0.06s Set Up
+    t =     0.06s Open dev.codex.aedresponse.testhost
+    t =     0.06s     Launch dev.codex.aedresponse.testhost
+    t =     0.06s         Terminate dev.codex.aedresponse.testhost:85041
+2026-10-26 02:59:19.947 xcodebuild[84848:6360942] [MT] IDELaunchParametersSnapshot: The operation couldn’t be completed. (DebuggerLLDB.DebuggerVersionStore.StoreError error 0.)
+2026-10-26 02:59:19.947 xcodebuild[84848:6360942] [MT] IDELaunchParametersSnapshot: no debugger version
+    t =     1.95s         Setting up automation session
+    t =     3.82s         Wait for dev.codex.aedresponse.testhost to idle
+    t =     6.67s Waiting 3.0s for "测试" Button to exist
+    t =     7.71s     Checking `Expect predicate `existsNoRetry == 1` for object "测试" Button`
+    t =     7.71s         Checking existence of `"测试" Button`
+    t =     7.90s Tap "测试" Button
+    t =     7.91s     Wait for dev.codex.aedresponse.testhost to idle
+    t =     7.91s     Find the "测试" Button
+    t =     7.93s     Check for interrupting elements affecting "测试" Button
+    t =     7.98s     Synthesize event
+    t =     8.29s     Wait for dev.codex.aedresponse.testhost to idle
+    t =    10.15s Waiting 5.0s for "local-test-scenario-neutral" Button to exist
+    t =    11.22s     Checking `Expect predicate `existsNoRetry == 1` for object "local-test-scenario-neutral" Button`
+    t =    11.22s         Checking existence of `"local-test-scenario-neutral" Button`
+    t =    11.36s Checking existence of `"local-test-scenario-neutral" Button`
+    t =    11.39s Find the "local-test-scenario-neutral" Button
+    t =    11.43s Waiting 5.0s for "local-test-scenario-neutral" Button to exist
+    t =    12.49s     Checking `Expect predicate `existsNoRetry == 1` for object "local-test-scenario-neutral" Button`
+    t =    12.50s         Checking existence of `"local-test-scenario-neutral" Button`
+    t =    12.59s Find the "local-test-scenario-neutral" Button
+    t =    12.63s Tap "local-test-scenario-neutral" Button
+    t =    12.63s     Wait for dev.codex.aedresponse.testhost to idle
+    t =    12.63s     Find the "local-test-scenario-neutral" Button
+    t =    12.66s     Check for interrupting elements affecting "local-test-scenario-neutral" Button
+    t =    12.74s     Synthesize event
+    t =    13.04s     Wait for dev.codex.aedresponse.testhost to idle
+    t =    15.71s Checking `Expect predicate `selected == 1` for object "行动" Button`
+    t =    15.72s     Find the "行动" Button
+    t =    16.86s Checking `Expect predicate `selected == 1` for object "行动" Button`
+    t =    16.86s     Find the "行动" Button
+    t =    16.91s Waiting 3.0s for "local-test-scenario-banner" Any to exist
+    t =    17.98s     Checking `Expect predicate `existsNoRetry == 1` for object "local-test-scenario-banner" Any`
+    t =    17.99s         Checking existence of `"local-test-scenario-banner" Any`
+    t =    18.03s Checking existence of `"行动" Button`
+    t =    18.06s Waiting 5.0s for "offline-nearby-map" Any to exist
+    t =    19.10s     Checking `Expect predicate `existsNoRetry == 1` for object "offline-nearby-map" Any`
+    t =    19.10s         Checking existence of `"offline-nearby-map" Any`
+    t =    19.18s Checking existence of `"standby-action-panel" Any`
+    t =    19.20s Waiting 5.0s for "action-map-canvas" Any to exist
+    t =    20.26s     Checking `Expect predicate `existsNoRetry == 1` for object "action-map-canvas" Any`
+    t =    20.27s         Checking existence of `"action-map-canvas" Any`
+    t =    20.34s Find the "action-map-canvas" Any
+    t =    20.42s Find the "action-map-canvas" Other
+    t =    20.47s Find the Target Application 'dev.codex.aedresponse.testhost'
+    t =    20.48s Waiting 5.0s for "nearby-map-count-1000" Any to exist
+    t =    21.54s     Checking `Expect predicate `existsNoRetry == 1` for object "nearby-map-count-1000" Any`
+    t =    21.54s         Checking existence of `"nearby-map-count-1000" Any`
+    t =    21.66s Find the "nearby-map-count-1000" Any
+    t =    21.74s Waiting 5.0s for "nearby-map-count-1500" Any to exist
+    t =    22.81s     Checking `Expect predicate `existsNoRetry == 1` for object "nearby-map-count-1500" Any`
+    t =    22.81s         Checking existence of `"nearby-map-count-1500" Any`
+    t =    22.89s Find the "nearby-map-count-1500" Any
+    t =    22.96s Waiting 5.0s for "nearby-map-count-2000" Any to exist
+    t =    23.99s     Checking `Expect predicate `existsNoRetry == 1` for object "nearby-map-count-2000" Any`
+    t =    23.99s         Checking existence of `"nearby-map-count-2000" Any`
+    t =    24.08s Find the "nearby-map-count-2000" Any
+    t =    24.16s Checking existence of `"1 公里内" StaticText`
+    t =    24.18s Checking existence of `"1.5 公里内" StaticText`
+    t =    24.20s Checking existence of `"2 公里内" StaticText`
+    t =    24.22s Find the "nearby-summary-note" Any
+    t =    24.28s Checking existence of `"nearby-view-mode-picker" Any`
+    t =    24.30s Checking existence of `"live-nearby-map" Any`
+    t =    24.32s Find the Target Application 'dev.codex.aedresponse.testhost'
+    t =    24.55s Added attachment named 'map-first-standby'
+    t =    24.55s Waiting 3.0s for "测试" Button to exist
+    t =    25.58s     Checking `Expect predicate `existsNoRetry == 1` for object "测试" Button`
+    t =    25.58s         Checking existence of `"测试" Button`
+    t =    25.62s Tap "测试" Button
+    t =    25.62s     Wait for dev.codex.aedresponse.testhost to idle
+    t =    25.63s     Find the "测试" Button
+    t =    25.65s     Check for interrupting elements affecting "测试" Button
+    t =    25.77s     Synthesize event
+    t =    26.14s     Wait for dev.codex.aedresponse.testhost to idle
+    t =    27.87s Waiting 5.0s for "local-test-scenario-patient" Button to exist
+    t =    28.91s     Checking `Expect predicate `existsNoRetry == 1` for object "local-test-scenario-patient" Button`
+    t =    28.92s         Checking existence of `"local-test-scenario-patient" Button`
+    t =    29.04s Checking existence of `"local-test-scenario-patient" Button`
+    t =    29.07s Find the "local-test-scenario-patient" Button
+    t =    29.12s Waiting 5.0s for "local-test-scenario-patient" Button to exist
+    t =    30.18s     Checking `Expect predicate `existsNoRetry == 1` for object "local-test-scenario-patient" Button`
+    t =    30.19s         Checking existence of `"local-test-scenario-patient" Button`
+    t =    30.25s Find the "local-test-scenario-patient" Button
+    t =    30.29s Tap "local-test-scenario-patient" Button
+    t =    30.30s     Wait for dev.codex.aedresponse.testhost to idle
+    t =    30.30s     Find the "local-test-scenario-patient" Button
+    t =    30.33s     Check for interrupting elements affecting "local-test-scenario-patient" Button
+    t =    30.37s     Synthesize event
+    t =    30.67s     Wait for dev.codex.aedresponse.testhost to idle
+    t =    32.92s Checking `Expect predicate `selected == 1` for object "行动" Button`
+    t =    32.92s     Find the "行动" Button
+    t =    34.07s Checking `Expect predicate `selected == 1` for object "行动" Button`
+    t =    34.07s     Find the "行动" Button
+    t =    34.12s Waiting 3.0s for "local-test-scenario-banner" Any to exist
+    t =    35.19s     Checking `Expect predicate `existsNoRetry == 1` for object "local-test-scenario-banner" Any`
+    t =    35.19s         Checking existence of `"local-test-scenario-banner" Any`
+    t =    35.24s Checking existence of `"行动" Button`
+    t =    35.26s Waiting 5.0s for "patient-resolve-button" Button to exist
+    t =    36.32s     Checking `Expect predicate `existsNoRetry == 1` for object "patient-resolve-button" Button`
+    t =    36.32s         Checking existence of `"patient-resolve-button" Button`
+    t =    36.37s Checking existence of `"standby-action-panel" Any`
+    t =    36.39s Checking existence of `"report-found-patient-button" Button`
+    t =    36.41s Checking existence of `"nearby-volunteers-card" Any`
+    t =    36.43s Waiting 3.0s for "测试" Button to exist
+    t =    37.49s     Checking `Expect predicate `existsNoRetry == 1` for object "测试" Button`
+    t =    37.49s         Checking existence of `"测试" Button`
+    t =    37.54s Tap "测试" Button
+    t =    37.54s     Wait for dev.codex.aedresponse.testhost to idle
+    t =    37.54s     Find the "测试" Button
+    t =    37.57s     Check for interrupting elements affecting "测试" Button
+    t =    37.59s     Synthesize event
+    t =    37.89s     Wait for dev.codex.aedresponse.testhost to idle
+    t =    39.02s Waiting 5.0s for "local-test-scenario-responderGoToPatient" Button to exist
+    t =    40.09s     Checking `Expect predicate `existsNoRetry == 1` for object "local-test-scenario-responderGoToPatient" Button`
+    t =    40.09s         Checking existence of `"local-test-scenario-responderGoToPatient" Button`
+    t =    40.17s Checking existence of `"local-test-scenario-responderGoToPatient" Button`
+    t =    40.20s Find the "local-test-scenario-responderGoToPatient" Button
+    t =    40.26s Waiting 5.0s for "local-test-scenario-responderGoToPatient" Button to exist
+    t =    41.30s     Checking `Expect predicate `existsNoRetry == 1` for object "local-test-scenario-responderGoToPatient" Button`
+    t =    41.30s         Checking existence of `"local-test-scenario-responderGoToPatient" Button`
+    t =    41.35s Find the "local-test-scenario-responderGoToPatient" Button
+    t =    41.40s Tap "local-test-scenario-responderGoToPatient" Button
+    t =    41.40s     Wait for dev.codex.aedresponse.testhost to idle
+    t =    41.40s     Find the "local-test-scenario-responderGoToPatient" Button
+    t =    41.43s     Check for interrupting elements affecting "local-test-scenario-responderGoToPatient" Button
+    t =    41.48s     Synthesize event
+    t =    41.78s     Wait for dev.codex.aedresponse.testhost to idle
+    t =    44.04s Checking `Expect predicate `selected == 1` for object "行动" Button`
+    t =    44.05s     Find the "行动" Button
+    t =    45.19s Checking `Expect predicate `selected == 1` for object "行动" Button`
+    t =    45.19s     Find the "行动" Button
+    t =    45.24s Waiting 3.0s for "local-test-scenario-banner" Any to exist
+    t =    46.29s     Checking `Expect predicate `existsNoRetry == 1` for object "local-test-scenario-banner" Any`
+    t =    46.30s         Checking existence of `"local-test-scenario-banner" Any`
+    t =    46.36s Checking existence of `"行动" Button`
+    t =    46.39s Waiting 5.0s for "advance-assignment-button" Button to exist
+    t =    47.44s     Checking `Expect predicate `existsNoRetry == 1` for object "advance-assignment-button" Button`
+    t =    47.44s         Checking existence of `"advance-assignment-button" Button`
+    t =    47.49s Checking existence of `"standby-action-panel" Any`
+    t =    47.52s Checking existence of `"report-found-patient-button" Button`
+    t =    47.55s Tear Down
+Test Case '-[AEDResponseUITests.AEDResponseUITests testStandbyMapFillsActionPageAndShowsAggregateCounts]' passed (47.854 seconds).
+Test Suite 'AEDResponseUITests' passed at 2026-10-26 03:00:06.667.
+	 Executed 3 tests, with 0 failures (0 unexpected) in 139.883 (139.904) seconds
+Test Suite 'AEDResponseUITests.xctest' passed at 2026-10-26 03:00:06.673.
+	 Executed 3 tests, with 0 failures (0 unexpected) in 139.883 (139.911) seconds
+Test Suite 'Selected tests' passed at 2026-10-26 03:00:06.679.
+	 Executed 3 tests, with 0 failures (0 unexpected) in 139.883 (139.941) seconds
+2026-10-26 03:00:07.356 xcodebuild[84848:6360942] [MT] IDETestOperationsObserverDebug: 146.491 elapsed -- Testing started completed.
+2026-10-26 03:00:07.356 xcodebuild[84848:6360942] [MT] IDETestOperationsObserverDebug: 0.000 sec, +0.000 sec -- start
+2026-10-26 03:00:07.356 xcodebuild[84848:6360942] [MT] IDETestOperationsObserverDebug: 146.491 sec, +146.490 sec -- end
+
+Test session results, code coverage, and logs:
+	[BUILD_CACHE]/action-map-first-20261026.hkwuih3c/ui-final-normal.xcresult
+
+** TEST EXECUTE SUCCEEDED **
+
+Testing started

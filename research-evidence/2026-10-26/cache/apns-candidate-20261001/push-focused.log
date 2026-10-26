@@ -1,0 +1,32 @@
+✔ push registration replaces the token of the calling device only (7.342875ms)
+✔ push registration rejects malformed tokens and unbound devices (0.686709ms)
+✔ sign-out clears the push registration so the phone stops receiving that account (0.767041ms)
+✔ unregistering is idempotent and leaves other devices alone (0.997125ms)
+✔ an outbox drain hands notifications to APNs and records the attempt (23.30675ms)
+✔ a token APNs rejects is forgotten instead of retried forever (5.176708ms)
+✔ without provider credentials the attempt is recorded as not delivered (4.879ms)
+✔ a device without a push registration is socket-only, not an error (15.147709ms)
+✔ APNs retry survives successful socket handoff and does not alert again on socket retries (9.400167ms)
+✔ the default APNs adapter actually speaks HTTP/2 (18.888291ms)
+✔ lock-screen content is phase-aware, private and not a position-tick alert (0.1255ms)
+✔ only emergency-class notifications are allowed to make a sound (0.053167ms)
+✔ a notification tap resolves through REST truth, not the push body (9.799292ms)
+✔ the stored push credential never reaches a client-visible projection (0.447583ms)
+✔ APNs credentials are accepted only as a complete, well-formed set (0.1835ms)
+✔ APNs responses map onto delivery, retry and forget-this-token (0.116458ms)
+✔ the APNs client signs a provider token and posts the opaque payload (17.806958ms)
+✔ an unreadable APNs key is an operator problem, not a lost notification (0.087958ms)
+✔ controlled Watch run config is explicit, bounded and has no duplicate devices (3.42ms)
+✔ a slow APNs provider cannot hold the actual Watch relay HTTP acknowledgement (61.40175ms)
+✔ Watch simulation rejects disabled, expired, foreign, unmarked and malformed inputs without creating events (26.618875ms)
+✔ synthetic Watch payload uses real HTTP/Socket, isolated recruitment, AED tasks and final event state (246.146292ms)
+✔ ordinary private simulation admin cannot inject a synthetic Watch observation (3.778417ms)
+✔ the actual controlled runner completes receipt progression, acceptance, navigation and AED over real HTTP (243.45275ms)
+ℹ tests 24
+ℹ suites 0
+ℹ pass 24
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 1612.72225

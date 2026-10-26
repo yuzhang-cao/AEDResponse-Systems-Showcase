@@ -1,0 +1,43 @@
+{
+  "date": "2026-10-26",
+  "version": "2.0",
+  "build": "14",
+  "implementation": "complete",
+  "installation": "success_independent_device_readback_build14",
+  "unit_tests": {
+    "passed": 162,
+    "failed": 0,
+    "result": "[BUILD_CACHE]/action-map-first-20261026.hkwuih3c/unit-final.xcresult"
+  },
+  "ui_tests": {
+    "distinct_scenarios_passed": 10,
+    "normal": 9,
+    "dark_maximum_dynamic_type": 1,
+    "method": "native iOS 26.4 offline TestHost XCTest; split runs and resolved reruns",
+    "results": [
+      "[BUILD_CACHE]/action-map-first-20261026.hkwuih3c/ui-normal.xcresult",
+      "[BUILD_CACHE]/action-map-first-20261026.hkwuih3c/ui-final-normal.xcresult",
+      "[BUILD_CACHE]/action-map-first-20261026.hkwuih3c/ui-final-accessibility.xcresult"
+    ]
+  },
+  "signatures": {
+    "verified_bundles": 3,
+    "profiles_valid": true,
+    "flags": "production phone flags remain NO; original Watch simulation condition retained"
+  },
+  "source": {
+    "staged_swift_files": 127,
+    "current_phone_source_files_verified": 73,
+    "original_paths_read_timeout": 6,
+    "timeout_files": "five unmodified Watch files and the offline fixture picker; initial snapshot matches build13",
+    "changed_swift_files_verified": 6
+  },
+  "no_server_deployment": true,
+  "no_live_rescue_events": true,
+  "phone_app_launched": false,
+  "screenshots": "screenshots-2026-10-26/",
+  "installation_verification": "[BUILD_CACHE]/action-map-first-20261026.hkwuih3c/installation-verification.json",
+  "installation_transport": "existing paired CoreDevice localNetwork tunnel",
+  "uninstall_or_data_clear_executed": false,
+  "watch_device_installation_verified": false
+}

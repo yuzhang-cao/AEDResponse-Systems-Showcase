@@ -1,0 +1,125 @@
+--- original/backend/src/domain.ts
++++ instrumented/backend/src/domain.ts
+@@ -37,6 +37,11 @@
+   left: Pick<PatientPosition | ResponderPosition, "latitude" | "longitude">,
+   right: Pick<PatientPosition | ResponderPosition, "latitude" | "longitude">
+ ): number {
++  const probe = (globalThis as any).__aedSpatialProbe;
++  if (probe?.active) {
++    probe.distanceCalls += 1;
++    if (Math.abs(left.latitude) >= 10 || Math.abs(right.latitude) >= 10) probe.farDistanceCalls += 1;
++  }
+   const earthRadius = 6_371_008.8;
+   const latitudeDelta = (right.latitude - left.latitude) * Math.PI / 180;
+   const longitudeDelta = (right.longitude - left.longitude) * Math.PI / 180;
+--- original/backend/src/device-position-index.ts
++++ instrumented/backend/src/device-position-index.ts
+@@ -86,8 +86,11 @@
+ 
+   /** Full rebuild; O(devices) once after load or a whole-state commit. */
+   rebuild(devices: Record<string, Positioned>): void {
++    const probe = (globalThis as any).__aedSpatialProbe;
++    if (probe?.active) probe.gridRebuilds += 1;
+     this.clear();
+     for (const [deviceInstanceId, device] of Object.entries(devices)) {
++      if (probe?.active) probe.gridRebuildDeviceVisits += 1;
+       const coordinate = coordinateOf(device);
+       if (coordinate) this.upsert(deviceInstanceId, coordinate.latitude, coordinate.longitude);
+     }
+@@ -110,6 +113,8 @@
+    * devices outside the radius, which the caller filters by exact distance.
+    */
+   query(latitude: number, longitude: number, radiusMeters: number): string[] {
++    const probe = (globalThis as any).__aedSpatialProbe;
++    if (probe?.active) probe.gridQueries += 1;
+     const latitudeDelta = radiusMeters / METERS_PER_DEGREE_LATITUDE;
+     // Longitude degrees shorten away from the equator; clamp the cosine so a
+     // near-polar query cannot ask for an unbounded degree span.
+@@ -133,11 +138,13 @@
+     const found = new Set<string>();
+     for (let latitudeCell = minLatitudeCell; latitudeCell <= maxLatitudeCell; latitudeCell += 1) {
+       for (let longitudeCell = minLongitudeCell; longitudeCell <= maxLongitudeCell; longitudeCell += 1) {
++        if (probe?.active) probe.gridCellsVisited += 1;
+         const bucket = this.cells.get(`${latitudeCell}:${longitudeCell}`);
+         if (!bucket) continue;
+         for (const deviceInstanceId of bucket) found.add(deviceInstanceId);
+       }
+     }
++    if (probe?.active) probe.gridCandidateReturns += found.size;
+     return [...found];
+   }
+ }
+--- original/backend/src/recruitment-context.ts
++++ instrumented/backend/src/recruitment-context.ts
+@@ -337,6 +337,7 @@
+   keys.push(...extra);
+   const ordinal = new Map<string, number>();
+   for (const [index, key] of orderedDeviceKeys.entries()) {
++    if ((globalThis as any).__aedSpatialProbe?.active) (globalThis as any).__aedSpatialProbe.ordinalKeyVisits += 1;
+     if (!ordinal.has(key)) ordinal.set(key, index);
+   }
+   const extraOrdinal = new Map<string, number>();
+@@ -399,6 +400,7 @@
+     getDevice: deviceInstanceId => state.devices[deviceInstanceId],
+     candidateDevices: (event) => {
+       const orderedDeviceKeys = Object.keys(state.devices);
++      if ((globalThis as any).__aedSpatialProbe?.active) (globalThis as any).__aedSpatialProbe.candidateAllKeyCopies += orderedDeviceKeys.length;
+       // `nearby` supplies committed geographic candidates for THIS event's ring.
+       // It is undefined unless the caller explicitly opted in, because a draft is
+       // free to have moved devices and a committed index cannot see that.
+@@ -413,7 +415,10 @@
+         queryNearby: () => indexed,
+         orderedDeviceKeys,
+         patientSiblingDeviceKeys: orderedDeviceKeys.filter(
+-          key => state.devices[key]?.userId === event.patientUserId
++          key => {
++            if ((globalThis as any).__aedSpatialProbe?.active) (globalThis as any).__aedSpatialProbe.draftSiblingChecks += 1;
++            return state.devices[key]?.userId === event.patientUserId;
++          }
+         ),
+         // Only devices this draft CHANGED, never every device: the committed index
+         // cannot know a device the draft moved, so those must be unioned in, but
+--- original/backend/src/tx-recruitment-context.ts
++++ instrumented/backend/src/tx-recruitment-context.ts
+@@ -185,6 +185,7 @@
+       // candidates for this ring, plus the patient's devices, plus everything this
+       // transaction staged.  Collection order is restored inside the helper.
+       const orderedDeviceKeys = tx.keys("devices");
++      if ((globalThis as any).__aedSpatialProbe?.active) (globalThis as any).__aedSpatialProbe.candidateAllKeyCopies += orderedDeviceKeys.length;
+       const stagedKeys = tx.stagedKeys("devices");
+       const orderedKeys = candidateDeviceKeys({
+         event,
+@@ -192,7 +193,10 @@
+           indexes.devicePositions?.query(latitude, longitude, radiusMeters),
+         deviceIdsForIdentity: indexes.deviceIdsForIdentity,
+         patientSiblingDeviceKeys: tx.keysWhere(
+-          "devices", device => device.userId === event.patientUserId, limit),
++          "devices", device => {
++            if ((globalThis as any).__aedSpatialProbe?.active) (globalThis as any).__aedSpatialProbe.txSiblingChecks += 1;
++            return device.userId === event.patientUserId;
++          }, limit),
+         orderedDeviceKeys,
+         extraDeviceKeys: stagedKeys
+       });
+--- original/backend/src/entity-transaction.ts
++++ instrumented/backend/src/entity-transaction.ts
+@@ -175,6 +175,7 @@
+       if (change.after === undefined) keys.delete(change.key);
+       else keys.add(change.key);
+     }
++    if (collection === "devices" && (globalThis as any).__aedSpatialProbe?.active) (globalThis as any).__aedSpatialProbe.txAllDeviceKeyCopies += keys.size;
+     return [...keys];
+   }
+ 
+@@ -195,7 +196,10 @@
+     // Cap so a caller asking for "all" (MAX_SAFE_INTEGER) cannot overflow into
+     // an unsafe integer and be rejected by the bounded view.
+     const requested = Math.min(limit, Number.MAX_SAFE_INTEGER - staged.length);
+-    const committed = this.view.keysWhere(collection, predicate, requested);
++    const committed = this.view.keysWhere(collection, item => {
++      if (collection === "devices" && (globalThis as any).__aedSpatialProbe?.active) (globalThis as any).__aedSpatialProbe.txCommittedDevicePredicateChecks += 1;
++      return predicate(item);
++    }, requested);
+     const selected: string[] = [];
+     for (const key of committed) {
+       const change = this.pending.get(changeId(collection, key));

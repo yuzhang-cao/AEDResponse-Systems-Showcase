@@ -1,0 +1,79 @@
+{
+  "scope": "isolated iPhone MapKit + USB bridge + actual local backend",
+  "syntheticPositions": true,
+  "candidateCount": 1,
+  "phoneModel": "iPhone 17 Pro",
+  "phoneOS": "iOS 27.2",
+  "probeBundle": "dev.codex.aedresponse.routeacceptance",
+  "probeBuild": "2",
+  "phoneMapKitMeters": {
+    "toAED": 260,
+    "AEDToPatient": 443,
+    "total": 703
+  },
+  "successfulRouteSubmissions": 2,
+  "serverRouteIdAndDistanceCrossChecked": true,
+  "navigationObservations": [
+    {
+      "success": true,
+      "detail": "transport=usb-files",
+      "phase": "app_ready",
+      "amapInstalled": true
+    },
+    {
+      "detail": "",
+      "amapInstalled": true,
+      "phase": "mapkit_completed",
+      "success": true
+    },
+    {
+      "phase": "app_ready",
+      "success": true,
+      "amapInstalled": true,
+      "detail": "transport=usb-files"
+    },
+    {
+      "success": true,
+      "amapInstalled": true,
+      "detail": "",
+      "phase": "mapkit_completed"
+    },
+    {
+      "success": false,
+      "amapInstalled": true,
+      "detail": "target=patient;scheme=iosamap",
+      "phase": "preferred_navigation_open"
+    },
+    {
+      "detail": "automatic=true;target=patient",
+      "success": false,
+      "amapInstalled": true,
+      "phase": "apple_fallback_open"
+    },
+    {
+      "success": true,
+      "phase": "apple_fallback_open",
+      "amapInstalled": true,
+      "detail": "target=aed;scheme=https"
+    }
+  ],
+  "userConfirmedRouteUI": true,
+  "userConfirmedAmapAndAppleVisible": true,
+  "userStatements": [
+    "已经通过，但是为什么这个过程这么慢。要差不多10秒多",
+    "打开都正确，但是你这个地点设备的有一点远吧"
+  ],
+  "navEvidenceLimit": "User confirmed both map UIs; callbacks include failed patient-target opens and a successful forced Apple AED-target open. Do not mark automatic failed-open recovery or actual AMap-uninstalled branch passed.",
+  "timingSeconds": {
+    "firstAppReadyToServerConfirmation": 13.602,
+    "firstContextToMapKitCompletionObservation": 4.368
+  },
+  "timingLimit": "Includes USB file transfer and synchronous observation round trips; not pure MapKit latency or production HTTP timing.",
+  "cleanup": {
+    "backendStopped": true,
+    "bridgeStopped": true,
+    "privateTokenConfigRemoved": true,
+    "bundledConfigContainsToken": false,
+    "phoneAppLeftInstalled": true
+  }
+}

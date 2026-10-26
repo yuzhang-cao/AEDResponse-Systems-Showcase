@@ -1,0 +1,35 @@
+✔ push registration replaces the token of the calling device only (6.998875ms)
+✔ push registration rejects malformed tokens and unbound devices (0.676959ms)
+✔ sign-out clears the push registration so the phone stops receiving that account (0.733916ms)
+✔ unregistering is idempotent and leaves other devices alone (1.095458ms)
+✔ an outbox drain hands notifications to APNs and records the attempt (27.7545ms)
+✔ a token APNs rejects is forgotten instead of retried forever (5.568125ms)
+✔ without provider credentials the attempt is recorded as not delivered (4.7795ms)
+✔ a device without a push registration is socket-only, not an error (14.06925ms)
+✔ APNs retry survives successful socket handoff and does not alert again on socket retries (7.866375ms)
+✔ the default APNs adapter actually speaks HTTP/2 (15.727ms)
+✔ lock-screen content is phase-aware, private and not a position-tick alert (0.135541ms)
+✔ only emergency-class notifications are allowed to make a sound (0.06475ms)
+✔ a notification tap resolves through REST truth, not the push body (10.398625ms)
+✔ the stored push credential never reaches a client-visible projection (0.431666ms)
+✔ APNs credentials are accepted only as a complete, well-formed set (0.177ms)
+✔ APNs responses map onto delivery, retry and forget-this-token (0.112333ms)
+✔ the APNs client signs a provider token and posts the opaque payload (14.422292ms)
+✔ an unreadable APNs key is an operator problem, not a lost notification (0.089417ms)
+✔ Watch signing category is independent from the production attestation environment (1.530792ms)
+✔ production Watch deployment fails closed until both trust settings are explicit (0.223959ms)
+✔ HTTP phone relay binds, preserves strict facts, replays and isolates Watch credentials (64.034167ms)
+✔ controlled Watch run config is explicit, bounded and has no duplicate devices (3.636417ms)
+✔ a slow APNs provider cannot hold the actual Watch relay HTTP acknowledgement (57.807583ms)
+✔ Watch simulation rejects disabled, expired, foreign, unmarked and malformed inputs without creating events (29.748166ms)
+✔ synthetic Watch payload uses real HTTP/Socket, isolated recruitment, AED tasks and final event state (228.648291ms)
+✔ ordinary private simulation admin cannot inject a synthetic Watch observation (3.568041ms)
+✔ the actual controlled runner completes receipt progression, acceptance, navigation and AED over real HTTP (226.433333ms)
+ℹ tests 27
+ℹ suites 0
+ℹ pass 27
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 1745.191875

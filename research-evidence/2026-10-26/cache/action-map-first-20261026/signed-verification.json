@@ -1,0 +1,49 @@
+[
+  {
+    "bundle": "dev.codex.aedresponse",
+    "version": "2.0",
+    "build": "14",
+    "signed": true,
+    "profileExpires": "2027-09-27T04:06:44Z",
+    "binariesSHA256": {
+      "AEDResponse": "fa205174ed7e81bd8d5c89e67c55a6466483b656b3c75a2ed8fb3b133c178004",
+      "AEDResponse.debug.dylib": "bef89a65bbe8831b5f794534294d8117d67d8fddedfd813b4a509336e42636a5",
+      "__preview.dylib": "7b0ff4c7271438be856cb1fb24f7a906ae0e77cdb89a7dd20eead26d8f0c296e"
+    },
+    "deviceInProfile": true,
+    "featureFlags": {
+      "AEDResponseShowTestTools": "NO",
+      "AEDResponseShowDialer": "NO",
+      "AEDResponseEnableTestFeatures": "NO"
+    },
+    "signInWithApple": true,
+    "apnsEnvironment": "development",
+    "timeSensitiveNotifications": true
+  },
+  {
+    "bundle": "dev.codex.aedresponse.watchkitapp",
+    "version": "2.0",
+    "build": "14",
+    "signed": true,
+    "profileExpires": "2027-09-20T01:20:34Z",
+    "binariesSHA256": {
+      "AEDResponseWatch": "cf388418f49fc3bf66a7abc1ff1f693f31aa1031653666e911b3d20534b9be1d",
+      "__preview.dylib": "f8428c46a457ae8bd6e600fe9b96e89fcfabe18ef6f1c5369587508469e41a50",
+      "AEDResponseWatch.debug.dylib": "9b796282292b86b27d84125f3275d1e8bea31cd9f486f2eb9269e3d5f03d1fd8"
+    },
+    "fallDetectionEntitlement": true
+  },
+  {
+    "bundle": "dev.codex.aedresponse.watchkitapp",
+    "version": "2.0",
+    "build": "14",
+    "signed": true,
+    "profileExpires": "2027-09-20T01:20:34Z",
+    "binariesSHA256": {
+      "AEDResponseWatch": "cf388418f49fc3bf66a7abc1ff1f693f31aa1031653666e911b3d20534b9be1d",
+      "__preview.dylib": "f8428c46a457ae8bd6e600fe9b96e89fcfabe18ef6f1c5369587508469e41a50",
+      "AEDResponseWatch.debug.dylib": "9b796282292b86b27d84125f3275d1e8bea31cd9f486f2eb9269e3d5f03d1fd8"
+    },
+    "fallDetectionEntitlement": true
+  }
+]

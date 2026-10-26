@@ -1,0 +1,8 @@
+{"level":"info","ts":1789271461.480439,"msg":"using config from file","file":"backend/deploy/azure/Caddyfile"}
+{"level":"info","ts":1789271461.4831622,"msg":"adapted config to JSON","adapter":"caddyfile"}
+{"level":"info","ts":1789271461.484444,"logger":"http.auto_https","msg":"server is listening only on the HTTPS port but has no TLS connection policies; adding one to enable TLS","server_name":"srv0","https_port":443}
+{"level":"info","ts":1789271461.484631,"logger":"http.auto_https","msg":"enabling automatic HTTP->HTTPS redirects","server_name":"srv0"}
+{"level":"info","ts":1789271461.484967,"logger":"tls.cache.maintenance","msg":"started background certificate maintenance","cache":"0x445e51de3480"}
+{"level":"info","ts":1789271461.4858072,"logger":"http","msg":"servers shutting down with eternal grace period"}
+{"level":"info","ts":1789271461.486131,"logger":"tls.cache.maintenance","msg":"stopped background certificate maintenance","cache":"0x445e51de3480"}
+Valid configuration

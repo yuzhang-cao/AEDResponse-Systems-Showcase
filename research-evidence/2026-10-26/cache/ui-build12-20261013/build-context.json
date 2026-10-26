@@ -1,0 +1,11 @@
+{
+  "head": "e44cbe3ba812bf8cac2aa8567274b9f064a4ea5d",
+  "source": "current complete local worktree",
+  "scheme": "AEDResponse",
+  "configuration": "Debug",
+  "version": "2.0",
+  "build": "12",
+  "watchSimulationCondition": "AED_WATCH_SIMULATION",
+  "targetModel": "iPhone18,1",
+  "targetUDID": "[REDACTED_UDID]"
+}

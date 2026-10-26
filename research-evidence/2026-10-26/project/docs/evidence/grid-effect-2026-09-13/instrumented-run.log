@@ -1,0 +1,7 @@
+Memory far=0: seven phases and correctness checks passed
+Memory far=250: seven phases and correctness checks passed
+Memory far=1000: seven phases and correctness checks passed
+SQLite far=0: seven phases and correctness checks passed
+SQLite far=250: seven phases and correctness checks passed
+SQLite far=1000: seven phases and correctness checks passed
+Saved 42 phase observations and 10 correctness checks to /tmp/aed-grid-effect-20260913-ae8g3iji/instrumented-results.json

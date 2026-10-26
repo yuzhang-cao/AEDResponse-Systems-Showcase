@@ -1,0 +1,322 @@
+Command line invocation:
+    /Applications/Xcode.app/Contents/Developer/usr/bin/xcodebuild -xctestrun [BUILD_CACHE]/action-map-first-20261026.hkwuih3c/Simulator/Build/Products/AEDResponseTestHost_iphonesimulator26.5-arm64.xctestrun -destination "platform=iOS Simulator,id=REDACTED-ID-0075" -parallel-testing-enabled NO test-without-building -resultBundlePath [BUILD_CACHE]/action-map-first-20261026.hkwuih3c/ui-final-accessibility.xcresult "-only-testing:AEDResponseUITests/AEDResponseUITests/testMapFirstDarkAccessibilityScreensKeepPrimaryActionsReachable"
+
+2026-10-26 03:00:10.826 xcodebuild[85289:6365966] [MT] IDERunDestination: Supported platforms for the buildables in the current scheme is empty.
+Writing result bundle at path:
+	[BUILD_CACHE]/action-map-first-20261026.hkwuih3c/ui-final-accessibility.xcresult
+
+2026-10-26 03:00:10.836 xcodebuild[85289:6365966] [MT] IDERunDestination: Supported platforms for the buildables in the current scheme is empty.
+2026-10-26 03:00:12.594 xcodebuild[85289:6365966] [MT] IDERunDestination: Supported platforms for the buildables in the current scheme is empty.
+2026-10-26 03:00:17.336743+0800 AEDResponseUITests-Runner[85303:6366335] [Default] Running tests...
+    t =      nans Interface orientation changed to Portrait
+Test Suite 'Selected tests' started at 2026-10-26 03:00:18.783.
+Test Suite 'AEDResponseUITests.xctest' started at 2026-10-26 03:00:18.789.
+Test Suite 'AEDResponseUITests' started at 2026-10-26 03:00:18.789.
+Test Case '-[AEDResponseUITests.AEDResponseUITests testMapFirstDarkAccessibilityScreensKeepPrimaryActionsReachable]' started.
+    t =     0.00s Start Test at 2026-10-26 03:00:18.790
+    t =     0.11s Set Up
+    t =     0.11s Open dev.codex.aedresponse.testhost
+    t =     0.11s     Launch dev.codex.aedresponse.testhost
+2026-10-26 03:00:19.613 xcodebuild[85289:6365966] [MT] IDELaunchParametersSnapshot: The operation couldn’t be completed. (DebuggerLLDB.DebuggerVersionStore.StoreError error 0.)
+2026-10-26 03:00:19.613 xcodebuild[85289:6365966] [MT] IDELaunchParametersSnapshot: no debugger version
+objc[85303]: Class UIAccessibilityLoaderWebShared is implemented in both /Library/Developer/CoreSimulator/Volumes/iOS_23E254a/Library/Developer/CoreSimulator/Profiles/Runtimes/iOS 26.4.simruntime/Contents/Resources/RuntimeRoot/System/Library/AccessibilityBundles/WebCore.axbundle/WebCore (0x10adb0310) and /Library/Developer/CoreSimulator/Volumes/iOS_23E254a/Library/Developer/CoreSimulator/Profiles/Runtimes/iOS 26.4.simruntime/Contents/Resources/RuntimeRoot/System/Library/AccessibilityBundles/WebKit.axbundle/WebKit (0x10ac4c398). This may cause spurious casting failures and mysterious crashes. One of the duplicates must be removed or renamed.
+    t =     4.05s         Setting up automation session
+    t =     6.68s         Wait for dev.codex.aedresponse.testhost to idle
+    t =    12.32s Waiting 3.0s for "测试" Button to exist
+    t =    13.40s     Checking `Expect predicate `existsNoRetry == 1` for object "测试" Button`
+    t =    13.40s         Checking existence of `"测试" Button`
+    t =    13.62s Tap "测试" Button
+    t =    13.62s     Wait for dev.codex.aedresponse.testhost to idle
+    t =    13.62s     Find the "测试" Button
+    t =    13.66s     Check for interrupting elements affecting "测试" Button
+    t =    13.76s     Synthesize event
+    t =    14.10s     Wait for dev.codex.aedresponse.testhost to idle
+    t =    16.33s Waiting 5.0s for "local-test-scenario-neutral" Button to exist
+    t =    17.41s     Checking `Expect predicate `existsNoRetry == 1` for object "local-test-scenario-neutral" Button`
+    t =    17.43s         Checking existence of `"local-test-scenario-neutral" Button`
+    t =    17.63s Checking existence of `"local-test-scenario-neutral" Button`
+    t =    17.66s Find the "local-test-scenario-neutral" Button
+    t =    17.72s Waiting 5.0s for "local-test-scenario-neutral" Button to exist
+    t =    18.80s     Checking `Expect predicate `existsNoRetry == 1` for object "local-test-scenario-neutral" Button`
+    t =    18.80s         Checking existence of `"local-test-scenario-neutral" Button`
+    t =    18.85s Find the "local-test-scenario-neutral" Button
+    t =    18.89s Tap "local-test-scenario-neutral" Button
+    t =    18.89s     Wait for dev.codex.aedresponse.testhost to idle
+    t =    18.90s     Find the "local-test-scenario-neutral" Button
+    t =    18.93s     Check for interrupting elements affecting "local-test-scenario-neutral" Button
+    t =    19.01s     Synthesize event
+    t =    19.33s     Wait for dev.codex.aedresponse.testhost to idle
+    t =    20.92s Checking `Expect predicate `selected == 1` for object "行动" Button`
+    t =    20.92s     Find the "行动" Button
+    t =    22.08s Checking `Expect predicate `selected == 1` for object "行动" Button`
+    t =    22.10s     Find the "行动" Button
+    t =    22.15s Waiting 3.0s for "local-test-scenario-banner" Any to exist
+    t =    23.22s     Checking `Expect predicate `existsNoRetry == 1` for object "local-test-scenario-banner" Any`
+    t =    23.23s         Checking existence of `"local-test-scenario-banner" Any`
+    t =    23.28s Checking existence of `"行动" Button`
+    t =    23.30s Waiting 5.0s for "nearby-map-count-1000" Any to exist
+    t =    24.38s     Checking `Expect predicate `existsNoRetry == 1` for object "nearby-map-count-1000" Any`
+    t =    24.38s         Checking existence of `"nearby-map-count-1000" Any`
+    t =    24.46s Find the "nearby-map-count-1000" Any
+    t =    24.54s Waiting 5.0s for "nearby-map-count-1500" Any to exist
+    t =    25.60s     Checking `Expect predicate `existsNoRetry == 1` for object "nearby-map-count-1500" Any`
+    t =    25.60s         Checking existence of `"nearby-map-count-1500" Any`
+    t =    25.70s Find the "nearby-map-count-1500" Any
+    t =    25.76s Waiting 5.0s for "nearby-map-count-2000" Any to exist
+    t =    26.83s     Checking `Expect predicate `existsNoRetry == 1` for object "nearby-map-count-2000" Any`
+    t =    26.83s         Checking existence of `"nearby-map-count-2000" Any`
+    t =    26.93s Find the "nearby-map-count-2000" Any
+    t =    27.01s Checking existence of `"1 公里内" StaticText`
+    t =    27.03s Checking existence of `"1.5 公里内" StaticText`
+    t =    27.05s Checking existence of `"2 公里内" StaticText`
+    t =    27.07s Waiting 5.0s for "action-map-canvas" Any to exist
+    t =    28.15s     Checking `Expect predicate `existsNoRetry == 1` for object "action-map-canvas" Any`
+    t =    28.15s         Checking existence of `"action-map-canvas" Any`
+    t =    28.22s Find the "action-map-canvas" Any
+    t =    28.30s Find the "action-map-canvas" Other
+    t =    28.35s Find the Target Application 'dev.codex.aedresponse.testhost'
+    t =    28.36s Find the Target Application 'dev.codex.aedresponse.testhost'
+    t =    28.56s Added attachment named 'map-first-dark-accessibility-standby'
+    t =    28.57s Waiting 3.0s for "测试" Button to exist
+    t =    29.64s     Checking `Expect predicate `existsNoRetry == 1` for object "测试" Button`
+    t =    29.64s         Checking existence of `"测试" Button`
+    t =    29.69s Tap "测试" Button
+    t =    29.69s     Wait for dev.codex.aedresponse.testhost to idle
+    t =    29.70s     Find the "测试" Button
+    t =    29.72s     Check for interrupting elements affecting "测试" Button
+    t =    29.81s     Synthesize event
+    t =    30.15s     Wait for dev.codex.aedresponse.testhost to idle
+    t =    31.81s Waiting 5.0s for "local-test-scenario-responseRequest" Button to exist
+    t =    32.87s     Checking `Expect predicate `existsNoRetry == 1` for object "local-test-scenario-responseRequest" Button`
+    t =    32.88s         Checking existence of `"local-test-scenario-responseRequest" Button`
+    t =    32.98s Checking existence of `"local-test-scenario-responseRequest" Button`
+    t =    33.01s Find the "local-test-scenario-responseRequest" Button
+    t =    33.05s Waiting 5.0s for "local-test-scenario-responseRequest" Button to exist
+    t =    34.13s     Checking `Expect predicate `existsNoRetry == 1` for object "local-test-scenario-responseRequest" Button`
+    t =    34.13s         Checking existence of `"local-test-scenario-responseRequest" Button`
+    t =    34.26s Find the "local-test-scenario-responseRequest" Button
+    t =    34.34s Tap "local-test-scenario-responseRequest" Button
+    t =    34.34s     Wait for dev.codex.aedresponse.testhost to idle
+    t =    34.36s     Find the "local-test-scenario-responseRequest" Button
+    t =    34.41s     Check for interrupting elements affecting "local-test-scenario-responseRequest" Button
+    t =    34.44s     Synthesize event
+    t =    34.76s     Wait for dev.codex.aedresponse.testhost to idle
+    t =    37.82s Checking `Expect predicate `selected == 1` for object "行动" Button`
+    t =    37.82s     Find the "行动" Button
+    t =    38.97s Checking `Expect predicate `selected == 1` for object "行动" Button`
+    t =    38.98s     Find the "行动" Button
+    t =    39.02s Waiting 3.0s for "local-test-scenario-banner" Any to exist
+    t =    40.10s     Checking `Expect predicate `existsNoRetry == 1` for object "local-test-scenario-banner" Any`
+    t =    40.11s         Checking existence of `"local-test-scenario-banner" Any`
+    t =    40.14s Checking existence of `"行动" Button`
+    t =    40.15s Waiting 5.0s for "accept-response-button" Button to exist
+    t =    41.23s     Checking `Expect predicate `existsNoRetry == 1` for object "accept-response-button" Button`
+    t =    41.23s         Checking existence of `"accept-response-button" Button`
+    t =    41.27s Waiting 5.0s for "action-map-panel" Any to exist
+    t =    42.33s     Checking `Expect predicate `existsNoRetry == 1` for object "action-map-panel" Any`
+    t =    42.34s         Checking existence of `"action-map-panel" Any`
+    t =    42.41s Checking existence of `"accept-response-button" Button`
+    t =    42.43s Find the "accept-response-button" Button
+    t =    42.49s Checking existence of `"accept-response-button" Button`
+    t =    42.51s Find the "accept-response-button" Button
+    t =    42.54s Find the "action-map-panel" Any
+    t =    42.59s Press "action-map-panel" ScrollView[0.50, 0.80] for 0.1 seconds, then drag to "action-map-panel" ScrollView[0.50, 0.30] with velocity of 500.00 pixels per second, and then hold for 0.0 seconds 
+    t =    42.59s     Wait for dev.codex.aedresponse.testhost to idle
+    t =    42.59s     Find the "action-map-panel" ScrollView
+    t =    42.64s     Check for interrupting elements affecting "action-map-panel" ScrollView
+    t =    42.69s     Synthesize event
+    t =    42.69s         Find the "action-map-panel" ScrollView
+    t =    42.74s         Find the "action-map-panel" ScrollView
+    t =    42.80s         Find the "action-map-panel" ScrollView
+    t =    42.85s         Find the "action-map-panel" ScrollView
+    t =    42.90s         Find the "action-map-panel" ScrollView
+    t =    43.74s     Wait for dev.codex.aedresponse.testhost to idle
+    t =    45.34s Checking existence of `"accept-response-button" Button`
+    t =    45.38s Find the "accept-response-button" Button
+    t =    45.41s Checking existence of `"accept-response-button" Button`
+    t =    45.43s Find the "accept-response-button" Button
+    t =    45.45s Find the "action-map-panel" ScrollView
+    t =    45.50s Press "action-map-panel" ScrollView[0.50, 0.80] for 0.1 seconds, then drag to "action-map-panel" ScrollView[0.50, 0.30] with velocity of 500.00 pixels per second, and then hold for 0.0 seconds 
+    t =    45.50s     Wait for dev.codex.aedresponse.testhost to idle
+    t =    45.50s     Find the "action-map-panel" ScrollView
+    t =    45.55s     Check for interrupting elements affecting "action-map-panel" ScrollView
+    t =    45.59s     Synthesize event
+    t =    45.59s         Find the "action-map-panel" ScrollView
+    t =    45.64s         Find the "action-map-panel" ScrollView
+    t =    45.69s         Find the "action-map-panel" ScrollView
+    t =    45.74s         Find the "action-map-panel" ScrollView
+    t =    45.79s         Find the "action-map-panel" ScrollView
+    t =    46.62s     Wait for dev.codex.aedresponse.testhost to idle
+    t =    48.21s Checking existence of `"accept-response-button" Button`
+    t =    48.25s Find the "accept-response-button" Button
+    t =    48.30s Find the "accept-response-button" Button
+    t =    48.32s Find the "action-map-panel" ScrollView
+    t =    48.37s Find the "accept-response-button" Button
+    t =    48.39s Find the "action-map-panel" ScrollView
+    t =    48.44s Checking existence of `"action-map-panel" Any`
+    t =    48.49s Find the "accept-response-button" Button
+    t =    48.52s Find the "accept-response-button" Button
+    t =    48.54s Find the "accept-response-button" Button
+    t =    48.56s Find the "action-map-panel" Any
+    t =    48.62s Find the "accept-response-button" Button
+    t =    48.64s Find the "action-map-panel" ScrollView
+    t =    48.69s Get all elements bound by index for: Descendants matching type TabBar
+    t =    48.70s Checking existence of `TabBar (Element at index 0)`
+    t =    48.72s Find the TabBar (Element at index 0)
+    t =    48.74s Find the "accept-response-button" Button
+    t =    48.76s Find the "标签页栏" TabBar
+    t =    48.78s Checking existence of `"task-location-details" Any`
+    t =    48.80s Find the Target Application 'dev.codex.aedresponse.testhost'
+    t =    48.96s Added attachment named 'map-first-dark-accessibility-invitation'
+    t =    48.97s Waiting 3.0s for "测试" Button to exist
+    t =    50.01s     Checking `Expect predicate `existsNoRetry == 1` for object "测试" Button`
+    t =    50.02s         Checking existence of `"测试" Button`
+    t =    50.06s Tap "测试" Button
+    t =    50.06s     Wait for dev.codex.aedresponse.testhost to idle
+    t =    50.06s     Find the "测试" Button
+    t =    50.09s     Check for interrupting elements affecting "测试" Button
+    t =    50.11s     Synthesize event
+    t =    50.41s     Wait for dev.codex.aedresponse.testhost to idle
+    t =    52.14s Waiting 5.0s for "local-test-scenario-responderGoToPatient" Button to exist
+    t =    53.20s     Checking `Expect predicate `existsNoRetry == 1` for object "local-test-scenario-responderGoToPatient" Button`
+    t =    53.20s         Checking existence of `"local-test-scenario-responderGoToPatient" Button`
+    t =    53.28s         Capturing element debug description
+    t =    54.23s     Checking `Expect predicate `existsNoRetry == 1` for object "local-test-scenario-responderGoToPatient" Button`
+    t =    54.24s         Checking existence of `"local-test-scenario-responderGoToPatient" Button`
+    t =    54.29s         Capturing element debug description
+    t =    55.15s     Checking `Expect predicate `existsNoRetry == 1` for object "local-test-scenario-responderGoToPatient" Button`
+    t =    55.15s         Checking existence of `"local-test-scenario-responderGoToPatient" Button`
+    t =    55.21s         Capturing element debug description
+    t =    56.17s     Checking `Expect predicate `existsNoRetry == 1` for object "local-test-scenario-responderGoToPatient" Button`
+    t =    56.17s         Checking existence of `"local-test-scenario-responderGoToPatient" Button`
+    t =    56.21s         Capturing element debug description
+    t =    57.14s     Checking `Expect predicate `existsNoRetry == 1` for object "local-test-scenario-responderGoToPatient" Button`
+    t =    57.15s         Checking existence of `"local-test-scenario-responderGoToPatient" Button`
+    t =    57.22s         Capturing element debug description
+    t =    57.26s     Checking existence of `"local-test-scenario-responderGoToPatient" Button`
+    t =    57.30s Collecting debug information to assist test failure triage
+    t =    57.30s     Requesting snapshot of accessibility hierarchy for app with pid 85315
+    t =    57.46s Find the "测试" Button
+    t =    57.50s Checking existence of `"local-test-scenario-responderGoToPatient" Button`
+    t =    57.55s Find the "测试" Button
+    t =    57.57s Checking existence of `"local-test-scenario-responderGoToPatient" Button`
+    t =    57.60s Swipe up "local-test-scenario-panel" CollectionView
+    t =    57.60s     Wait for dev.codex.aedresponse.testhost to idle
+    t =    57.61s     Find the "local-test-scenario-panel" CollectionView
+    t =    57.63s     Check for interrupting elements affecting "local-test-scenario-panel" CollectionView
+    t =    57.66s     Synthesize event
+    t =    58.14s     Wait for dev.codex.aedresponse.testhost to idle
+    t =    60.41s Checking existence of `"local-test-scenario-responderGoToPatient" Button`
+    t =    60.49s Find the "local-test-scenario-responderGoToPatient" Button
+    t =    60.57s Waiting 5.0s for "local-test-scenario-responderGoToPatient" Button to exist
+    t =    61.62s     Checking `Expect predicate `existsNoRetry == 1` for object "local-test-scenario-responderGoToPatient" Button`
+    t =    61.62s         Checking existence of `"local-test-scenario-responderGoToPatient" Button`
+    t =    61.65s Find the "local-test-scenario-responderGoToPatient" Button
+    t =    61.68s Tap "local-test-scenario-responderGoToPatient" Button
+    t =    61.68s     Wait for dev.codex.aedresponse.testhost to idle
+    t =    61.69s     Find the "local-test-scenario-responderGoToPatient" Button
+    t =    61.71s     Check for interrupting elements affecting "local-test-scenario-responderGoToPatient" Button
+    t =    61.75s     Synthesize event
+    t =    62.23s     Wait for dev.codex.aedresponse.testhost to idle
+    t =    65.39s Checking `Expect predicate `selected == 1` for object "行动" Button`
+    t =    65.40s     Find the "行动" Button
+    t =    66.58s Checking `Expect predicate `selected == 1` for object "行动" Button`
+    t =    66.58s     Find the "行动" Button
+    t =    66.72s Waiting 3.0s for "local-test-scenario-banner" Any to exist
+    t =    67.78s     Checking `Expect predicate `existsNoRetry == 1` for object "local-test-scenario-banner" Any`
+    t =    67.79s         Checking existence of `"local-test-scenario-banner" Any`
+    t =    67.85s Checking existence of `"行动" Button`
+    t =    67.89s Waiting 5.0s for "advance-assignment-button" Button to exist
+    t =    68.94s     Checking `Expect predicate `existsNoRetry == 1` for object "advance-assignment-button" Button`
+    t =    68.95s         Checking existence of `"advance-assignment-button" Button`
+    t =    69.01s Waiting 5.0s for "action-map-panel" Any to exist
+    t =    70.06s     Checking `Expect predicate `existsNoRetry == 1` for object "action-map-panel" Any`
+    t =    70.06s         Checking existence of `"action-map-panel" Any`
+    t =    70.14s Checking existence of `"advance-assignment-button" Button`
+    t =    70.16s Find the "advance-assignment-button" Button
+    t =    70.20s Checking existence of `"advance-assignment-button" Button`
+    t =    70.22s Find the "advance-assignment-button" Button
+    t =    70.25s Find the "action-map-panel" Any
+    t =    70.30s Press "action-map-panel" ScrollView[0.50, 0.80] for 0.1 seconds, then drag to "action-map-panel" ScrollView[0.50, 0.30] with velocity of 500.00 pixels per second, and then hold for 0.0 seconds 
+    t =    70.30s     Wait for dev.codex.aedresponse.testhost to idle
+    t =    70.30s     Find the "action-map-panel" ScrollView
+    t =    70.35s     Check for interrupting elements affecting "action-map-panel" ScrollView
+    t =    70.46s     Synthesize event
+    t =    70.47s         Find the "action-map-panel" ScrollView
+    t =    70.52s         Find the "action-map-panel" ScrollView
+    t =    70.57s         Find the "action-map-panel" ScrollView
+    t =    70.62s         Find the "action-map-panel" ScrollView
+    t =    70.67s         Find the "action-map-panel" ScrollView
+    t =    71.51s     Wait for dev.codex.aedresponse.testhost to idle
+    t =    73.10s Checking existence of `"advance-assignment-button" Button`
+    t =    73.17s Find the "advance-assignment-button" Button
+    t =    73.21s Find the "advance-assignment-button" Button
+    t =    73.23s Find the "action-map-panel" ScrollView
+    t =    73.28s Find the "advance-assignment-button" Button
+    t =    73.31s Find the "action-map-panel" ScrollView
+    t =    73.36s Checking existence of `"action-map-panel" Any`
+    t =    73.40s Find the "advance-assignment-button" Button
+    t =    73.43s Find the "advance-assignment-button" Button
+    t =    73.46s Find the "advance-assignment-button" Button
+    t =    73.48s Find the "action-map-panel" Any
+    t =    73.53s Find the "advance-assignment-button" Button
+    t =    73.55s Find the "action-map-panel" ScrollView
+    t =    73.60s Get all elements bound by index for: Descendants matching type TabBar
+    t =    73.62s Checking existence of `TabBar (Element at index 0)`
+    t =    73.64s Find the TabBar (Element at index 0)
+    t =    73.65s Find the "advance-assignment-button" Button
+    t =    73.68s Find the "标签页栏" TabBar
+    t =    73.70s Find the Target Application 'dev.codex.aedresponse.testhost'
+    t =    73.86s Added attachment named 'map-first-dark-accessibility-task'
+    t =    73.87s Waiting 5.0s for "action-map-panel" Any to exist
+    t =    74.91s     Checking `Expect predicate `existsNoRetry == 1` for object "action-map-panel" Any`
+    t =    74.91s         Checking existence of `"action-map-panel" Any`
+    t =    74.99s Checking existence of `"响应状态" Button`
+    t =    75.01s Find the "响应状态" Button
+    t =    75.05s Checking existence of `"响应状态" Button`
+    t =    75.07s Find the "响应状态" Button
+    t =    75.09s Find the "action-map-panel" Any
+    t =    75.14s Press "action-map-panel" ScrollView[0.50, 0.80] for 0.1 seconds, then drag to "action-map-panel" ScrollView[0.50, 0.30] with velocity of 500.00 pixels per second, and then hold for 0.0 seconds 
+    t =    75.14s     Wait for dev.codex.aedresponse.testhost to idle
+    t =    75.14s     Find the "action-map-panel" ScrollView
+    t =    75.19s     Check for interrupting elements affecting "action-map-panel" ScrollView
+    t =    75.24s     Synthesize event
+    t =    75.24s         Find the "action-map-panel" ScrollView
+    t =    75.29s         Find the "action-map-panel" ScrollView
+    t =    75.34s         Find the "action-map-panel" ScrollView
+    t =    75.39s         Find the "action-map-panel" ScrollView
+    t =    75.45s         Find the "action-map-panel" ScrollView
+    t =    76.27s     Wait for dev.codex.aedresponse.testhost to idle
+    t =    77.88s Checking existence of `"响应状态" Button`
+    t =    77.93s Find the "响应状态" Button
+    t =    77.97s Find the "响应状态" Button
+    t =    77.99s Find the "action-map-panel" ScrollView
+    t =    78.05s Find the "响应状态" Button
+    t =    78.08s Find the "action-map-panel" ScrollView
+    t =    78.13s Tap "响应状态" Button
+    t =    78.13s     Wait for dev.codex.aedresponse.testhost to idle
+    t =    78.13s     Find the "响应状态" Button
+    t =    78.15s     Check for interrupting elements affecting "响应状态" Button
+    t =    78.18s     Synthesize event
+    t =    78.47s     Wait for dev.codex.aedresponse.testhost to idle
+    t =    78.57s Waiting 3.0s for "response-status-card" Any to exist
+    t =    79.59s     Checking `Expect predicate `existsNoRetry == 1` for object "response-status-card" Any`
+    t =    79.60s         Checking existence of `"response-status-card" Any`
+    t =    79.66s Tear Down
+Test Case '-[AEDResponseUITests.AEDResponseUITests testMapFirstDarkAccessibilityScreensKeepPrimaryActionsReachable]' passed (80.065 seconds).
+Test Suite 'AEDResponseUITests' passed at 2026-10-26 03:01:38.857.
+	 Executed 1 test, with 0 failures (0 unexpected) in 80.065 (80.068) seconds
+Test Suite 'AEDResponseUITests.xctest' passed at 2026-10-26 03:01:38.859.
+	 Executed 1 test, with 0 failures (0 unexpected) in 80.065 (80.070) seconds
+Test Suite 'Selected tests' passed at 2026-10-26 03:01:38.861.
+	 Executed 1 test, with 0 failures (0 unexpected) in 80.065 (80.077) seconds
+2026-10-26 03:01:39.330 xcodebuild[85289:6365966] [MT] IDETestOperationsObserverDebug: 86.732 elapsed -- Testing started completed.
+2026-10-26 03:01:39.330 xcodebuild[85289:6365966] [MT] IDETestOperationsObserverDebug: 0.000 sec, +0.000 sec -- start
+2026-10-26 03:01:39.330 xcodebuild[85289:6365966] [MT] IDETestOperationsObserverDebug: 86.732 sec, +86.732 sec -- end
+
+Test session results, code coverage, and logs:
+	[BUILD_CACHE]/action-map-first-20261026.hkwuih3c/ui-final-accessibility.xcresult
+
+** TEST EXECUTE SUCCEEDED **
+
+Testing started

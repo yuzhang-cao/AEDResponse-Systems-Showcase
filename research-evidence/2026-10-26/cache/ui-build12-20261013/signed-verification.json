@@ -1,0 +1,26 @@
+[
+  {
+    "bundle": "dev.codex.aedresponse",
+    "version": "2.0",
+    "build": "12",
+    "signed": true,
+    "profileExpires": "2027-09-27T04:06:44Z",
+    "executableSHA256": "061ed07358f11ad80bd92e1afe6cc52b858c7f2a6879abfc5a51a9f9cecb1f70"
+  },
+  {
+    "bundle": "dev.codex.aedresponse.watchkitapp",
+    "version": "2.0",
+    "build": "12",
+    "signed": true,
+    "profileExpires": "2027-09-20T01:20:34Z",
+    "executableSHA256": "7fc91baba8f17b9f832628fcc0fa26ab9466bb7dad9b121f46d4570032a5edc9"
+  },
+  {
+    "bundle": "dev.codex.aedresponse.watchkitapp",
+    "version": "2.0",
+    "build": "12",
+    "signed": true,
+    "profileExpires": "2027-09-20T01:20:34Z",
+    "executableSHA256": "7fc91baba8f17b9f832628fcc0fa26ab9466bb7dad9b121f46d4570032a5edc9"
+  }
+]

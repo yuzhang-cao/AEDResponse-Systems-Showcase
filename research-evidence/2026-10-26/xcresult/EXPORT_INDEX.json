@@ -1,0 +1,363 @@
+{
+  "schema_version": 1,
+  "purpose": "Historical xcresult JSON export; no tests executed. Raw exports require privacy review before publication.",
+  "command_templates": {
+    "summary": "xcrun xcresulttool get test-results summary --path <bundle.xcresult>",
+    "tests": "xcrun xcresulttool get test-results tests --path <bundle.xcresult>"
+  },
+  "counting_warning": "Counts describe each individual run, not unique tests across runs. Runs must not be summed. Filename labels are hints only, not inferred execution chronology.",
+  "bundles": [
+    {
+      "bundle": "UITestsFirst.xcresult",
+      "filename_label": "initial-named run",
+      "exports": [
+        {
+          "kind": "summary",
+          "path": "UITestsFirst/summary.json",
+          "sha256": "210077ae2dbda7d1f09c24e7636f9e4665b402e94c2d1bf2f14409984a6d172a",
+          "size_bytes": 1941
+        },
+        {
+          "kind": "tests",
+          "path": "UITestsFirst/tests.json",
+          "sha256": "8209520c22076ab091a813a6b43f07bbb6f08c926bfd182306beba06b56c381d",
+          "size_bytes": 2806
+        }
+      ],
+      "summary_counts": {
+        "expectedFailures": 0,
+        "failedTests": 2,
+        "passedTests": 0,
+        "skippedTests": 0,
+        "totalTestCount": 2
+      },
+      "summary_status": {
+        "result": "Failed"
+      },
+      "summary_top_level_keys": [
+        "devicesAndConfigurations",
+        "environmentDescription",
+        "expectedFailures",
+        "failedTests",
+        "finishTime",
+        "passedTests",
+        "result",
+        "skippedTests",
+        "startTime",
+        "statistics",
+        "testFailures",
+        "title",
+        "topInsights",
+        "totalTestCount"
+      ]
+    },
+    {
+      "bundle": "UnitTests.xcresult",
+      "filename_label": "intermediate or initial run; chronology not inferred",
+      "exports": [
+        {
+          "kind": "summary",
+          "path": "UnitTests/summary.json",
+          "sha256": "8f9cb54f56e66d43e822e2905d1c373008c7857426524d591063b448d23dc2fd",
+          "size_bytes": 1757
+        },
+        {
+          "kind": "tests",
+          "path": "UnitTests/tests.json",
+          "sha256": "543b3d3ddf0c0055cc802b6a4ac1ff466f923a0672cd1965d5469b21b2b018bd",
+          "size_bytes": 104527
+        }
+      ],
+      "summary_counts": {
+        "expectedFailures": 0,
+        "failedTests": 1,
+        "passedTests": 161,
+        "skippedTests": 0,
+        "totalTestCount": 162
+      },
+      "summary_status": {
+        "result": "Failed"
+      },
+      "summary_top_level_keys": [
+        "devicesAndConfigurations",
+        "environmentDescription",
+        "expectedFailures",
+        "failedTests",
+        "finishTime",
+        "passedTests",
+        "result",
+        "skippedTests",
+        "startTime",
+        "statistics",
+        "testFailures",
+        "title",
+        "topInsights",
+        "totalTestCount"
+      ]
+    },
+    {
+      "bundle": "ui-accessibility.xcresult",
+      "filename_label": "intermediate or initial run; chronology not inferred",
+      "exports": [
+        {
+          "kind": "summary",
+          "path": "ui-accessibility/summary.json",
+          "sha256": "454a995b75fae5d9856a24b8d39c0891cd1558eef2134b242d9f36ef0a71408c",
+          "size_bytes": 1506
+        },
+        {
+          "kind": "tests",
+          "path": "ui-accessibility/tests.json",
+          "sha256": "6b2e75eac9a7e6e4b7ebcacc5c6f2e822a70056dca2375a9bada032619d44f65",
+          "size_bytes": 2022
+        }
+      ],
+      "summary_counts": {
+        "expectedFailures": 0,
+        "failedTests": 1,
+        "passedTests": 0,
+        "skippedTests": 0,
+        "totalTestCount": 1
+      },
+      "summary_status": {
+        "result": "Failed"
+      },
+      "summary_top_level_keys": [
+        "devicesAndConfigurations",
+        "environmentDescription",
+        "expectedFailures",
+        "failedTests",
+        "finishTime",
+        "passedTests",
+        "result",
+        "skippedTests",
+        "startTime",
+        "statistics",
+        "testFailures",
+        "title",
+        "topInsights",
+        "totalTestCount"
+      ]
+    },
+    {
+      "bundle": "ui-final-accessibility.xcresult",
+      "filename_label": "final-named run / rerun",
+      "exports": [
+        {
+          "kind": "summary",
+          "path": "ui-final-accessibility/summary.json",
+          "sha256": "87626f78541148ae2ef690abc22098abf9ac2ea02bd1b51f0883e5dd3edd01d9",
+          "size_bytes": 1004
+        },
+        {
+          "kind": "tests",
+          "path": "ui-final-accessibility/tests.json",
+          "sha256": "825d7db1435a474e10827382eece7a660251adee43b288eae7e78ad785842ed6",
+          "size_bytes": 1791
+        }
+      ],
+      "summary_counts": {
+        "expectedFailures": 0,
+        "failedTests": 0,
+        "passedTests": 1,
+        "skippedTests": 0,
+        "totalTestCount": 1
+      },
+      "summary_status": {
+        "result": "Passed"
+      },
+      "summary_top_level_keys": [
+        "devicesAndConfigurations",
+        "environmentDescription",
+        "expectedFailures",
+        "failedTests",
+        "finishTime",
+        "passedTests",
+        "result",
+        "skippedTests",
+        "startTime",
+        "statistics",
+        "testFailures",
+        "title",
+        "topInsights",
+        "totalTestCount"
+      ]
+    },
+    {
+      "bundle": "ui-final-normal.xcresult",
+      "filename_label": "final-named run / rerun",
+      "exports": [
+        {
+          "kind": "summary",
+          "path": "ui-final-normal/summary.json",
+          "sha256": "3b95592366551f49598ef93515e873d1fa739684b43546a85db0186e37a396ed",
+          "size_bytes": 1004
+        },
+        {
+          "kind": "tests",
+          "path": "ui-final-normal/tests.json",
+          "sha256": "e2f12687c606bfe861d1695efea12394d612571f782e40ea1b8eaff535d1a990",
+          "size_bytes": 2947
+        }
+      ],
+      "summary_counts": {
+        "expectedFailures": 0,
+        "failedTests": 0,
+        "passedTests": 3,
+        "skippedTests": 0,
+        "totalTestCount": 3
+      },
+      "summary_status": {
+        "result": "Passed"
+      },
+      "summary_top_level_keys": [
+        "devicesAndConfigurations",
+        "environmentDescription",
+        "expectedFailures",
+        "failedTests",
+        "finishTime",
+        "passedTests",
+        "result",
+        "skippedTests",
+        "startTime",
+        "statistics",
+        "testFailures",
+        "title",
+        "topInsights",
+        "totalTestCount"
+      ]
+    },
+    {
+      "bundle": "ui-normal-final.xcresult",
+      "filename_label": "final-named run / rerun",
+      "exports": [
+        {
+          "kind": "summary",
+          "path": "ui-normal-final/summary.json",
+          "sha256": "75888d02b2eb018bedf96fa92489ba06cd0023a58064546f8710c4eae44b9a3e",
+          "size_bytes": 1971
+        },
+        {
+          "kind": "tests",
+          "path": "ui-normal-final/tests.json",
+          "sha256": "b2d33b8371b5ee2c9fb17d6d7aaf9a21f4f29e55871c1516df253a5781c56739",
+          "size_bytes": 3418
+        }
+      ],
+      "summary_counts": {
+        "expectedFailures": 0,
+        "failedTests": 2,
+        "passedTests": 1,
+        "skippedTests": 0,
+        "totalTestCount": 3
+      },
+      "summary_status": {
+        "result": "Failed"
+      },
+      "summary_top_level_keys": [
+        "devicesAndConfigurations",
+        "environmentDescription",
+        "expectedFailures",
+        "failedTests",
+        "finishTime",
+        "passedTests",
+        "result",
+        "skippedTests",
+        "startTime",
+        "statistics",
+        "testFailures",
+        "title",
+        "topInsights",
+        "totalTestCount"
+      ]
+    },
+    {
+      "bundle": "ui-normal.xcresult",
+      "filename_label": "intermediate or initial run; chronology not inferred",
+      "exports": [
+        {
+          "kind": "summary",
+          "path": "ui-normal/summary.json",
+          "sha256": "24a858c554cb23fb02311ff86a9b2a85cdd4280b781d1dad707594ec6ae1bcd3",
+          "size_bytes": 1970
+        },
+        {
+          "kind": "tests",
+          "path": "ui-normal/tests.json",
+          "sha256": "d5898aa96c150307c0135628ac51bc0076c7d95a3f04aa37fbbe77095a0db610",
+          "size_bytes": 6987
+        }
+      ],
+      "summary_counts": {
+        "expectedFailures": 0,
+        "failedTests": 2,
+        "passedTests": 7,
+        "skippedTests": 0,
+        "totalTestCount": 9
+      },
+      "summary_status": {
+        "result": "Failed"
+      },
+      "summary_top_level_keys": [
+        "devicesAndConfigurations",
+        "environmentDescription",
+        "expectedFailures",
+        "failedTests",
+        "finishTime",
+        "passedTests",
+        "result",
+        "skippedTests",
+        "startTime",
+        "statistics",
+        "testFailures",
+        "title",
+        "topInsights",
+        "totalTestCount"
+      ]
+    },
+    {
+      "bundle": "unit-final.xcresult",
+      "filename_label": "final-named run / rerun",
+      "exports": [
+        {
+          "kind": "summary",
+          "path": "unit-final/summary.json",
+          "sha256": "27c24e3d6f4116c0fa26eb35664338d8213cf8f158008ebcc122d0d13619444c",
+          "size_bytes": 1200
+        },
+        {
+          "kind": "tests",
+          "path": "unit-final/tests.json",
+          "sha256": "375c7b949bc4935c3249a69103f1d63a065a431e24af3a80d5d76b5d71e8318e",
+          "size_bytes": 104425
+        }
+      ],
+      "summary_counts": {
+        "expectedFailures": 0,
+        "failedTests": 0,
+        "passedTests": 162,
+        "skippedTests": 0,
+        "totalTestCount": 162
+      },
+      "summary_status": {
+        "result": "Passed"
+      },
+      "summary_top_level_keys": [
+        "devicesAndConfigurations",
+        "environmentDescription",
+        "expectedFailures",
+        "failedTests",
+        "finishTime",
+        "passedTests",
+        "result",
+        "skippedTests",
+        "startTime",
+        "statistics",
+        "testFailures",
+        "title",
+        "topInsights",
+        "totalTestCount"
+      ]
+    }
+  ]
+}

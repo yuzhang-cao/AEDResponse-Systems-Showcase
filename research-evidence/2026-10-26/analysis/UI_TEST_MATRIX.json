@@ -1,0 +1,609 @@
+{
+  "schema_version": 1,
+  "method": "Read historical xcresult summary/tests exports. Deduplicate by Test Case nodeIdentifier; no tests executed.",
+  "evidence_limits": [
+    "Results are offline native TestHost runs, not physical-device business acceptance.",
+    "Final UI coverage combines ui-normal with targeted ui-final-normal and ui-final-accessibility reruns; it is not one clean 10-case full rerun.",
+    "File names alone do not prove success: ui-normal-final contains failures.",
+    "Per-run counts are not additive unique coverage.",
+    "expectedFailures and skippedTests are separate summary fields; neither is reclassified as Passed."
+  ],
+  "ui_final_coverage": {
+    "unique_scenarios": 10,
+    "normal_unique": 9,
+    "accessibility_additional_unique": 1,
+    "passed_selected_evidence": 10,
+    "basis_runs": [
+      "ui-normal",
+      "ui-final-normal",
+      "ui-final-accessibility"
+    ],
+    "basis_all_run_expectedFailures": {
+      "ui-normal": 0,
+      "ui-final-normal": 0,
+      "ui-final-accessibility": 0
+    },
+    "basis_all_run_skippedTests": {
+      "ui-normal": 0,
+      "ui-final-normal": 0,
+      "ui-final-accessibility": 0
+    },
+    "single_combined_clean_run": false
+  },
+  "unit_verification": {
+    "final_run": "unit-final",
+    "unique_node_identifiers": 162,
+    "passed_unique": 162,
+    "skippedTests": 0,
+    "expectedFailures": 0,
+    "same_case_set_as_initial_run": true,
+    "initial_failures_later_passed": [
+      {
+        "nodeIdentifier": "AppStoreArchitectureTests/testConnectAndLocationChangesPublishStrictResponderPositionThroughRest()",
+        "initial_result": "Failed",
+        "final_result": "Passed"
+      }
+    ]
+  },
+  "runs": [
+    {
+      "run": "UITestsFirst",
+      "summary_source": "../xcresult/UITestsFirst/summary.json",
+      "tests_source": "../xcresult/UITestsFirst/tests.json",
+      "test_case_nodes": 2,
+      "unique_node_identifiers": 2,
+      "node_result_counts": {
+        "Failed": 2
+      },
+      "reported_summary_counts": {
+        "totalTestCount": 2,
+        "passedTests": 0,
+        "failedTests": 2,
+        "skippedTests": 0,
+        "expectedFailures": 0
+      },
+      "reported_result": "Failed"
+    },
+    {
+      "run": "ui-normal",
+      "summary_source": "../xcresult/ui-normal/summary.json",
+      "tests_source": "../xcresult/ui-normal/tests.json",
+      "test_case_nodes": 9,
+      "unique_node_identifiers": 9,
+      "node_result_counts": {
+        "Passed": 7,
+        "Failed": 2
+      },
+      "reported_summary_counts": {
+        "totalTestCount": 9,
+        "passedTests": 7,
+        "failedTests": 2,
+        "skippedTests": 0,
+        "expectedFailures": 0
+      },
+      "reported_result": "Failed"
+    },
+    {
+      "run": "ui-accessibility",
+      "summary_source": "../xcresult/ui-accessibility/summary.json",
+      "tests_source": "../xcresult/ui-accessibility/tests.json",
+      "test_case_nodes": 1,
+      "unique_node_identifiers": 1,
+      "node_result_counts": {
+        "Failed": 1
+      },
+      "reported_summary_counts": {
+        "totalTestCount": 1,
+        "passedTests": 0,
+        "failedTests": 1,
+        "skippedTests": 0,
+        "expectedFailures": 0
+      },
+      "reported_result": "Failed"
+    },
+    {
+      "run": "ui-normal-final",
+      "summary_source": "../xcresult/ui-normal-final/summary.json",
+      "tests_source": "../xcresult/ui-normal-final/tests.json",
+      "test_case_nodes": 3,
+      "unique_node_identifiers": 3,
+      "node_result_counts": {
+        "Passed": 1,
+        "Failed": 2
+      },
+      "reported_summary_counts": {
+        "totalTestCount": 3,
+        "passedTests": 1,
+        "failedTests": 2,
+        "skippedTests": 0,
+        "expectedFailures": 0
+      },
+      "reported_result": "Failed"
+    },
+    {
+      "run": "ui-final-normal",
+      "summary_source": "../xcresult/ui-final-normal/summary.json",
+      "tests_source": "../xcresult/ui-final-normal/tests.json",
+      "test_case_nodes": 3,
+      "unique_node_identifiers": 3,
+      "node_result_counts": {
+        "Passed": 3
+      },
+      "reported_summary_counts": {
+        "totalTestCount": 3,
+        "passedTests": 3,
+        "failedTests": 0,
+        "skippedTests": 0,
+        "expectedFailures": 0
+      },
+      "reported_result": "Passed"
+    },
+    {
+      "run": "ui-final-accessibility",
+      "summary_source": "../xcresult/ui-final-accessibility/summary.json",
+      "tests_source": "../xcresult/ui-final-accessibility/tests.json",
+      "test_case_nodes": 1,
+      "unique_node_identifiers": 1,
+      "node_result_counts": {
+        "Passed": 1
+      },
+      "reported_summary_counts": {
+        "totalTestCount": 1,
+        "passedTests": 1,
+        "failedTests": 0,
+        "skippedTests": 0,
+        "expectedFailures": 0
+      },
+      "reported_result": "Passed"
+    },
+    {
+      "run": "UnitTests",
+      "summary_source": "../xcresult/UnitTests/summary.json",
+      "tests_source": "../xcresult/UnitTests/tests.json",
+      "test_case_nodes": 162,
+      "unique_node_identifiers": 162,
+      "node_result_counts": {
+        "Passed": 161,
+        "Failed": 1
+      },
+      "reported_summary_counts": {
+        "totalTestCount": 162,
+        "passedTests": 161,
+        "failedTests": 1,
+        "skippedTests": 0,
+        "expectedFailures": 0
+      },
+      "reported_result": "Failed"
+    },
+    {
+      "run": "unit-final",
+      "summary_source": "../xcresult/unit-final/summary.json",
+      "tests_source": "../xcresult/unit-final/tests.json",
+      "test_case_nodes": 162,
+      "unique_node_identifiers": 162,
+      "node_result_counts": {
+        "Passed": 162
+      },
+      "reported_summary_counts": {
+        "totalTestCount": 162,
+        "passedTests": 162,
+        "failedTests": 0,
+        "skippedTests": 0,
+        "expectedFailures": 0
+      },
+      "reported_result": "Passed"
+    }
+  ],
+  "ui_cases": [
+    {
+      "nodeIdentifier": "AEDResponseUITests/testLocalFetchAssignmentUsesRapRouteAndCompletesPatientHandoff()",
+      "scenario": "取 AED 至患者交接",
+      "results_by_run": [
+        {
+          "run": "UITestsFirst",
+          "result": null,
+          "source": "../xcresult/UITestsFirst/tests.json"
+        },
+        {
+          "run": "ui-normal",
+          "result": "Passed",
+          "source": "../xcresult/ui-normal/tests.json"
+        },
+        {
+          "run": "ui-accessibility",
+          "result": null,
+          "source": "../xcresult/ui-accessibility/tests.json"
+        },
+        {
+          "run": "ui-normal-final",
+          "result": null,
+          "source": "../xcresult/ui-normal-final/tests.json"
+        },
+        {
+          "run": "ui-final-normal",
+          "result": null,
+          "source": "../xcresult/ui-final-normal/tests.json"
+        },
+        {
+          "run": "ui-final-accessibility",
+          "result": null,
+          "source": "../xcresult/ui-final-accessibility/tests.json"
+        }
+      ],
+      "selected_final_evidence": {
+        "run": "ui-normal",
+        "result": "Passed",
+        "source": "../xcresult/ui-normal/tests.json"
+      }
+    },
+    {
+      "nodeIdentifier": "AEDResponseUITests/testMapFirstDarkAccessibilityScreensKeepPrimaryActionsReachable()",
+      "scenario": "深色大字主操作可达",
+      "results_by_run": [
+        {
+          "run": "UITestsFirst",
+          "result": null,
+          "source": "../xcresult/UITestsFirst/tests.json"
+        },
+        {
+          "run": "ui-normal",
+          "result": null,
+          "source": "../xcresult/ui-normal/tests.json"
+        },
+        {
+          "run": "ui-accessibility",
+          "result": "Failed",
+          "source": "../xcresult/ui-accessibility/tests.json"
+        },
+        {
+          "run": "ui-normal-final",
+          "result": null,
+          "source": "../xcresult/ui-normal-final/tests.json"
+        },
+        {
+          "run": "ui-final-normal",
+          "result": null,
+          "source": "../xcresult/ui-final-normal/tests.json"
+        },
+        {
+          "run": "ui-final-accessibility",
+          "result": "Passed",
+          "source": "../xcresult/ui-final-accessibility/tests.json"
+        }
+      ],
+      "selected_final_evidence": {
+        "run": "ui-final-accessibility",
+        "result": "Passed",
+        "source": "../xcresult/ui-final-accessibility/tests.json"
+      }
+    },
+    {
+      "nodeIdentifier": "AEDResponseUITests/testNearbyFixtureShowsCurrentOfferAndAcceptsLocally()",
+      "scenario": "显示邀请及离线接受",
+      "results_by_run": [
+        {
+          "run": "UITestsFirst",
+          "result": "Failed",
+          "source": "../xcresult/UITestsFirst/tests.json"
+        },
+        {
+          "run": "ui-normal",
+          "result": "Passed",
+          "source": "../xcresult/ui-normal/tests.json"
+        },
+        {
+          "run": "ui-accessibility",
+          "result": null,
+          "source": "../xcresult/ui-accessibility/tests.json"
+        },
+        {
+          "run": "ui-normal-final",
+          "result": "Passed",
+          "source": "../xcresult/ui-normal-final/tests.json"
+        },
+        {
+          "run": "ui-final-normal",
+          "result": "Passed",
+          "source": "../xcresult/ui-final-normal/tests.json"
+        },
+        {
+          "run": "ui-final-accessibility",
+          "result": null,
+          "source": "../xcresult/ui-final-accessibility/tests.json"
+        }
+      ],
+      "selected_final_evidence": {
+        "run": "ui-final-normal",
+        "result": "Passed",
+        "source": "../xcresult/ui-final-normal/tests.json"
+      }
+    },
+    {
+      "nodeIdentifier": "AEDResponseUITests/testPatientFalseAlarmHasOneExplicitConfirmation()",
+      "scenario": "患者误报确认",
+      "results_by_run": [
+        {
+          "run": "UITestsFirst",
+          "result": null,
+          "source": "../xcresult/UITestsFirst/tests.json"
+        },
+        {
+          "run": "ui-normal",
+          "result": "Passed",
+          "source": "../xcresult/ui-normal/tests.json"
+        },
+        {
+          "run": "ui-accessibility",
+          "result": null,
+          "source": "../xcresult/ui-accessibility/tests.json"
+        },
+        {
+          "run": "ui-normal-final",
+          "result": null,
+          "source": "../xcresult/ui-normal-final/tests.json"
+        },
+        {
+          "run": "ui-final-normal",
+          "result": null,
+          "source": "../xcresult/ui-final-normal/tests.json"
+        },
+        {
+          "run": "ui-final-accessibility",
+          "result": null,
+          "source": "../xcresult/ui-final-accessibility/tests.json"
+        }
+      ],
+      "selected_final_evidence": {
+        "run": "ui-normal",
+        "result": "Passed",
+        "source": "../xcresult/ui-normal/tests.json"
+      }
+    },
+    {
+      "nodeIdentifier": "AEDResponseUITests/testPatientResolveHasOneExplicitConfirmation()",
+      "scenario": "患者结束确认",
+      "results_by_run": [
+        {
+          "run": "UITestsFirst",
+          "result": null,
+          "source": "../xcresult/UITestsFirst/tests.json"
+        },
+        {
+          "run": "ui-normal",
+          "result": "Passed",
+          "source": "../xcresult/ui-normal/tests.json"
+        },
+        {
+          "run": "ui-accessibility",
+          "result": null,
+          "source": "../xcresult/ui-accessibility/tests.json"
+        },
+        {
+          "run": "ui-normal-final",
+          "result": null,
+          "source": "../xcresult/ui-normal-final/tests.json"
+        },
+        {
+          "run": "ui-final-normal",
+          "result": null,
+          "source": "../xcresult/ui-final-normal/tests.json"
+        },
+        {
+          "run": "ui-final-accessibility",
+          "result": null,
+          "source": "../xcresult/ui-final-accessibility/tests.json"
+        }
+      ],
+      "selected_final_evidence": {
+        "run": "ui-normal",
+        "result": "Passed",
+        "source": "../xcresult/ui-normal/tests.json"
+      }
+    },
+    {
+      "nodeIdentifier": "AEDResponseUITests/testSettingsRangePreferenceOnlyHidesCirclesAndPreservesCounts()",
+      "scenario": "隐藏范围圈但保留人数",
+      "results_by_run": [
+        {
+          "run": "UITestsFirst",
+          "result": null,
+          "source": "../xcresult/UITestsFirst/tests.json"
+        },
+        {
+          "run": "ui-normal",
+          "result": "Failed",
+          "source": "../xcresult/ui-normal/tests.json"
+        },
+        {
+          "run": "ui-accessibility",
+          "result": null,
+          "source": "../xcresult/ui-accessibility/tests.json"
+        },
+        {
+          "run": "ui-normal-final",
+          "result": "Failed",
+          "source": "../xcresult/ui-normal-final/tests.json"
+        },
+        {
+          "run": "ui-final-normal",
+          "result": "Passed",
+          "source": "../xcresult/ui-final-normal/tests.json"
+        },
+        {
+          "run": "ui-final-accessibility",
+          "result": null,
+          "source": "../xcresult/ui-final-accessibility/tests.json"
+        }
+      ],
+      "selected_final_evidence": {
+        "run": "ui-final-normal",
+        "result": "Passed",
+        "source": "../xcresult/ui-final-normal/tests.json"
+      }
+    },
+    {
+      "nodeIdentifier": "AEDResponseUITests/testSettingsRoundTripPreservesAedTaskProgress()",
+      "scenario": "设置往返保留任务进度",
+      "results_by_run": [
+        {
+          "run": "UITestsFirst",
+          "result": null,
+          "source": "../xcresult/UITestsFirst/tests.json"
+        },
+        {
+          "run": "ui-normal",
+          "result": "Passed",
+          "source": "../xcresult/ui-normal/tests.json"
+        },
+        {
+          "run": "ui-accessibility",
+          "result": null,
+          "source": "../xcresult/ui-accessibility/tests.json"
+        },
+        {
+          "run": "ui-normal-final",
+          "result": null,
+          "source": "../xcresult/ui-normal-final/tests.json"
+        },
+        {
+          "run": "ui-final-normal",
+          "result": null,
+          "source": "../xcresult/ui-final-normal/tests.json"
+        },
+        {
+          "run": "ui-final-accessibility",
+          "result": null,
+          "source": "../xcresult/ui-final-accessibility/tests.json"
+        }
+      ],
+      "selected_final_evidence": {
+        "run": "ui-normal",
+        "result": "Passed",
+        "source": "../xcresult/ui-normal/tests.json"
+      }
+    },
+    {
+      "nodeIdentifier": "AEDResponseUITests/testSettingsShowsUserPermissionsAndHidesDeveloperInformation()",
+      "scenario": "权限展示及隐藏开发信息",
+      "results_by_run": [
+        {
+          "run": "UITestsFirst",
+          "result": null,
+          "source": "../xcresult/UITestsFirst/tests.json"
+        },
+        {
+          "run": "ui-normal",
+          "result": "Passed",
+          "source": "../xcresult/ui-normal/tests.json"
+        },
+        {
+          "run": "ui-accessibility",
+          "result": null,
+          "source": "../xcresult/ui-accessibility/tests.json"
+        },
+        {
+          "run": "ui-normal-final",
+          "result": null,
+          "source": "../xcresult/ui-normal-final/tests.json"
+        },
+        {
+          "run": "ui-final-normal",
+          "result": null,
+          "source": "../xcresult/ui-final-normal/tests.json"
+        },
+        {
+          "run": "ui-final-accessibility",
+          "result": null,
+          "source": "../xcresult/ui-final-accessibility/tests.json"
+        }
+      ],
+      "selected_final_evidence": {
+        "run": "ui-normal",
+        "result": "Passed",
+        "source": "../xcresult/ui-normal/tests.json"
+      }
+    },
+    {
+      "nodeIdentifier": "AEDResponseUITests/testSoleResponderExitCancelsAndThenRequiresThreeDistinctConfirmations()",
+      "scenario": "退出取消及三次确认",
+      "results_by_run": [
+        {
+          "run": "UITestsFirst",
+          "result": null,
+          "source": "../xcresult/UITestsFirst/tests.json"
+        },
+        {
+          "run": "ui-normal",
+          "result": "Passed",
+          "source": "../xcresult/ui-normal/tests.json"
+        },
+        {
+          "run": "ui-accessibility",
+          "result": null,
+          "source": "../xcresult/ui-accessibility/tests.json"
+        },
+        {
+          "run": "ui-normal-final",
+          "result": null,
+          "source": "../xcresult/ui-normal-final/tests.json"
+        },
+        {
+          "run": "ui-final-normal",
+          "result": null,
+          "source": "../xcresult/ui-final-normal/tests.json"
+        },
+        {
+          "run": "ui-final-accessibility",
+          "result": null,
+          "source": "../xcresult/ui-final-accessibility/tests.json"
+        }
+      ],
+      "selected_final_evidence": {
+        "run": "ui-normal",
+        "result": "Passed",
+        "source": "../xcresult/ui-normal/tests.json"
+      }
+    },
+    {
+      "nodeIdentifier": "AEDResponseUITests/testStandbyMapFillsActionPageAndShowsAggregateCounts()",
+      "scenario": "待命地图及聚合人数",
+      "results_by_run": [
+        {
+          "run": "UITestsFirst",
+          "result": "Failed",
+          "source": "../xcresult/UITestsFirst/tests.json"
+        },
+        {
+          "run": "ui-normal",
+          "result": "Failed",
+          "source": "../xcresult/ui-normal/tests.json"
+        },
+        {
+          "run": "ui-accessibility",
+          "result": null,
+          "source": "../xcresult/ui-accessibility/tests.json"
+        },
+        {
+          "run": "ui-normal-final",
+          "result": "Failed",
+          "source": "../xcresult/ui-normal-final/tests.json"
+        },
+        {
+          "run": "ui-final-normal",
+          "result": "Passed",
+          "source": "../xcresult/ui-final-normal/tests.json"
+        },
+        {
+          "run": "ui-final-accessibility",
+          "result": null,
+          "source": "../xcresult/ui-final-accessibility/tests.json"
+        }
+      ],
+      "selected_final_evidence": {
+        "run": "ui-final-normal",
+        "result": "Passed",
+        "source": "../xcresult/ui-final-normal/tests.json"
+      }
+    }
+  ]
+}

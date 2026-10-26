@@ -1,0 +1,66 @@
+--- original/backend/src/tx-recruitment-context.ts
++++ instrumented/backend/src/tx-recruitment-context.ts
+@@ -28,7 +28,7 @@
+ import { notificationRowFor } from "./notification-outbox.js";
+ import { fingerprint } from "./domain.js";
+ import { assignmentExitsParticipation, deviceIdentityKey } from "./domain.js";
+-import { candidateDeviceKeys, survivingAssignmentForDevice } from "./recruitment-context.js";
++import { survivingAssignmentForDevice } from "./recruitment-context.js";
+ import { operationMetrics } from "./runtime-metrics.js";
+ import type { RecruitmentContext, TxRecruitmentContext } from "./recruitment-context.js";
+ import type {
+@@ -181,20 +181,41 @@
+       tx.get("devices", deviceInstanceId) as DeviceRecord | undefined,
+ 
+     candidateDevices: (event) => {
+-      // One candidate rule, shared with the draft adapter: committed geographic
+-      // candidates for this ring, plus the patient's devices, plus everything this
+-      // transaction staged.  Collection order is restored inside the helper.
+-      const orderedDeviceKeys = tx.keys("devices");
++      const position = patientPositionOf(event);
++      const keys: string[] = [];
++      const indexed = position
++        ? indexes.devicePositions?.query(
++          position.latitude, position.longitude, event.currentRecruitmentRadiusMeters)
++        : undefined;
++      if (indexed) {
++        keys.push(...indexed);
++        // This candidate source also serves the patient notification audience.
++        // Patients need no R position, including other iPhones of the same user.
++        keys.push(...event.patientDeviceIds);
++        const patientIdentity = `user:${event.patientUserId}`;
++        keys.push(...(indexes.deviceIdsForIdentity?.(patientIdentity)
++          ?? tx.keysWhere("devices", device => device.userId === event.patientUserId, limit)));
++      } else keys.push(...tx.keysWhere("devices", () => true, limit));
++      // A device whose position this transaction just wrote is not in the committed
++      // index.  Without this union it would silently never receive an offer.
+       const stagedKeys = tx.stagedKeys("devices");
+-      const orderedKeys = candidateDeviceKeys({
+-        event,
+-        queryNearby: (latitude, longitude, radiusMeters) =>
+-          indexes.devicePositions?.query(latitude, longitude, radiusMeters),
+-        deviceIdsForIdentity: indexes.deviceIdsForIdentity,
+-        patientSiblingDeviceKeys: tx.keysWhere(
+-          "devices", device => device.userId === event.patientUserId, limit),
+-        orderedDeviceKeys,
+-        extraDeviceKeys: stagedKeys
++      keys.push(...stagedKeys);
++      // Restore collection order after unioning candidate sources. Patient viewers
++      // preserve this order in notifications; responder selection still owns its
++      // separate device-id sort. Only stores without order metadata need a scan.
++      const fallbackOrder = indexes.deviceOrdinal ? undefined
++        : new Map(tx.keys("devices").map((key, ordinal) => [key, ordinal]));
++      const stagedOrder = new Map(stagedKeys.map((key, ordinal) => [key, ordinal]));
++      const committedOrdinal = (key: string): number | undefined =>
++        indexes.deviceOrdinal ? indexes.deviceOrdinal(key) : fallbackOrder?.get(key);
++      const orderedKeys = [...new Set(keys)].sort((left, right) => {
++        const a = committedOrdinal(left);
++        const b = committedOrdinal(right);
++        if (a !== undefined && b !== undefined) return a - b;
++        if (a !== undefined) return -1;
++        if (b !== undefined) return 1;
++        return (stagedOrder.get(left) ?? Number.MAX_SAFE_INTEGER)
++          - (stagedOrder.get(right) ?? Number.MAX_SAFE_INTEGER);
+       });
+       return devicesFor(orderedKeys);
+     },

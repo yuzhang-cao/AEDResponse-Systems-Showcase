@@ -1,0 +1,137 @@
+{
+  "devices": [
+    {
+      "architecture": "arm64",
+      "deviceId": "[REDACTED_ENVIRONMENT]",
+      "deviceName": "[REDACTED_ENVIRONMENT]",
+      "modelName": "iPhone 17 Pro",
+      "osBuildNumber": "23E254a",
+      "osVersion": "26.4.1",
+      "platform": "iOS Simulator"
+    }
+  ],
+  "testNodes": [
+    {
+      "children": [
+        {
+          "children": [
+            {
+              "children": [
+                {
+                  "duration": "49秒",
+                  "durationInSeconds": 49.62447202205658,
+                  "name": "testLocalFetchAssignmentUsesRapRouteAndCompletesPatientHandoff()",
+                  "nodeIdentifier": "AEDResponseUITests/testLocalFetchAssignmentUsesRapRouteAndCompletesPatientHandoff()",
+                  "nodeIdentifierURL": "test://com.apple.xcode/AEDResponse/AEDResponseUITests/AEDResponseUITests/testLocalFetchAssignmentUsesRapRouteAndCompletesPatientHandoff",
+                  "nodeType": "Test Case",
+                  "result": "Passed"
+                },
+                {
+                  "duration": "43秒",
+                  "durationInSeconds": 43.57809603214264,
+                  "name": "testNearbyFixtureShowsCurrentOfferAndAcceptsLocally()",
+                  "nodeIdentifier": "AEDResponseUITests/testNearbyFixtureShowsCurrentOfferAndAcceptsLocally()",
+                  "nodeIdentifierURL": "test://com.apple.xcode/AEDResponse/AEDResponseUITests/AEDResponseUITests/testNearbyFixtureShowsCurrentOfferAndAcceptsLocally",
+                  "nodeType": "Test Case",
+                  "result": "Passed"
+                },
+                {
+                  "duration": "23秒",
+                  "durationInSeconds": 23.487508058547974,
+                  "name": "testPatientFalseAlarmHasOneExplicitConfirmation()",
+                  "nodeIdentifier": "AEDResponseUITests/testPatientFalseAlarmHasOneExplicitConfirmation()",
+                  "nodeIdentifierURL": "test://com.apple.xcode/AEDResponse/AEDResponseUITests/AEDResponseUITests/testPatientFalseAlarmHasOneExplicitConfirmation",
+                  "nodeType": "Test Case",
+                  "result": "Passed"
+                },
+                {
+                  "duration": "23秒",
+                  "durationInSeconds": 23.489109992980957,
+                  "name": "testPatientResolveHasOneExplicitConfirmation()",
+                  "nodeIdentifier": "AEDResponseUITests/testPatientResolveHasOneExplicitConfirmation()",
+                  "nodeIdentifierURL": "test://com.apple.xcode/AEDResponse/AEDResponseUITests/AEDResponseUITests/testPatientResolveHasOneExplicitConfirmation",
+                  "nodeType": "Test Case",
+                  "result": "Passed"
+                },
+                {
+                  "children": [
+                    {
+                      "name": "AEDResponseUITests.swift:82: XCTAssertTrue failed",
+                      "nodeType": "Failure Message"
+                    }
+                  ],
+                  "duration": "36秒",
+                  "durationInSeconds": 36.57210302352905,
+                  "name": "testSettingsRangePreferenceOnlyHidesCirclesAndPreservesCounts()",
+                  "nodeIdentifier": "AEDResponseUITests/testSettingsRangePreferenceOnlyHidesCirclesAndPreservesCounts()",
+                  "nodeIdentifierURL": "test://com.apple.xcode/AEDResponse/AEDResponseUITests/AEDResponseUITests/testSettingsRangePreferenceOnlyHidesCirclesAndPreservesCounts",
+                  "nodeType": "Test Case",
+                  "result": "Failed"
+                },
+                {
+                  "duration": "51秒",
+                  "durationInSeconds": 51.59234797954559,
+                  "name": "testSettingsRoundTripPreservesAedTaskProgress()",
+                  "nodeIdentifier": "AEDResponseUITests/testSettingsRoundTripPreservesAedTaskProgress()",
+                  "nodeIdentifierURL": "test://com.apple.xcode/AEDResponse/AEDResponseUITests/AEDResponseUITests/testSettingsRoundTripPreservesAedTaskProgress",
+                  "nodeType": "Test Case",
+                  "result": "Passed"
+                },
+                {
+                  "duration": "16秒",
+                  "durationInSeconds": 16.5399169921875,
+                  "name": "testSettingsShowsUserPermissionsAndHidesDeveloperInformation()",
+                  "nodeIdentifier": "AEDResponseUITests/testSettingsShowsUserPermissionsAndHidesDeveloperInformation()",
+                  "nodeIdentifierURL": "test://com.apple.xcode/AEDResponse/AEDResponseUITests/AEDResponseUITests/testSettingsShowsUserPermissionsAndHidesDeveloperInformation",
+                  "nodeType": "Test Case",
+                  "result": "Passed"
+                },
+                {
+                  "duration": "1分钟13秒",
+                  "durationInSeconds": 73.64466202259064,
+                  "name": "testSoleResponderExitCancelsAndThenRequiresThreeDistinctConfirmations()",
+                  "nodeIdentifier": "AEDResponseUITests/testSoleResponderExitCancelsAndThenRequiresThreeDistinctConfirmations()",
+                  "nodeIdentifierURL": "test://com.apple.xcode/AEDResponse/AEDResponseUITests/AEDResponseUITests/testSoleResponderExitCancelsAndThenRequiresThreeDistinctConfirmations",
+                  "nodeType": "Test Case",
+                  "result": "Passed"
+                },
+                {
+                  "children": [
+                    {
+                      "name": "AEDResponseUITests.swift:48: XCTAssertTrue failed",
+                      "nodeType": "Failure Message"
+                    }
+                  ],
+                  "duration": "23秒",
+                  "durationInSeconds": 23.124119997024536,
+                  "name": "testStandbyMapFillsActionPageAndShowsAggregateCounts()",
+                  "nodeIdentifier": "AEDResponseUITests/testStandbyMapFillsActionPageAndShowsAggregateCounts()",
+                  "nodeIdentifierURL": "test://com.apple.xcode/AEDResponse/AEDResponseUITests/AEDResponseUITests/testStandbyMapFillsActionPageAndShowsAggregateCounts",
+                  "nodeType": "Test Case",
+                  "result": "Failed"
+                }
+              ],
+              "name": "AEDResponseUITests",
+              "nodeIdentifierURL": "test://com.apple.xcode/AEDResponse/AEDResponseUITests/AEDResponseUITests",
+              "nodeType": "Test Suite",
+              "result": "Failed"
+            }
+          ],
+          "name": "AEDResponseUITests",
+          "nodeIdentifierURL": "test://com.apple.xcode/AEDResponse/AEDResponseUITests",
+          "nodeType": "UI test bundle",
+          "result": "Failed"
+        }
+      ],
+      "name": "AEDResponseTestHost",
+      "nodeType": "Test Plan",
+      "result": "Failed"
+    }
+  ],
+  "testPlanConfigurations": [
+    {
+      "configurationId": "1",
+      "configurationName": "Test Scheme Action"
+    }
+  ]
+}

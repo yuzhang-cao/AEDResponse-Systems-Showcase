@@ -1,0 +1,34 @@
+{
+  "date": "2026-09-19",
+  "runtime": "iPhone 17 Pro Simulator / iOS 26.5 / 402x874 points",
+  "ui_suite": {
+    "result": "5 passed, 0 failed",
+    "bundle": "/tmp/aed-ui-resume-20260919.xcresult"
+  },
+  "final_layout_rechecks": {
+    "settings": "passed in /tmp/aed-ui-layout-20260919.xcresult",
+    "nearby_map_list": "passed in /tmp/aed-ui-layout-20260919.xcresult",
+    "four_screens_and_aed_steps": "passed in /tmp/aed-ui-capture-20260919.xcresult",
+    "resolved_test_issue": "Initial synthesized tab tap left action selected. Helper now retries only when target tab remains unselected."
+  },
+  "earlier_checks": {
+    "unit_tests": "48 passed before final layout-only refinements",
+    "release_compile": "iPhone and Watch unsigned Release build passed before final layout-only refinements"
+  },
+  "final_compile": "Simulator Debug test build passed",
+  "not_verified": [
+    "Physical-device Apple authentication",
+    "Live map routes",
+    "Authenticated server receipt of consents",
+    "Push delivery"
+  ],
+  "view_sha256": {
+    "RootView": "9cd16159688e71b7c29326a44cf4a442f51946012cf1f02a4cfc2d444147bca1",
+    "ResponderDashboardView": "a11dbabea92030c58d95bd056ef331f2ed72b439663d80cc180f6a0d0f3ef73a",
+    "NearbyVolunteersView": "02e844306bc2c05567748d9642fb18ee0833636a39db1a5eac3866cd2e730dd6",
+    "ResponderNavigationView": "c6f08dff40274bdd99f471867480347c968076df94c20fb08b2ab25f1a6bfbcd",
+    "SettingsView": "00cfc552a79ad4dccb81d50612d49f250411c7c7204853c447f9047530e366c4",
+    "AuthView": "6fe95cac7e117057e12d84bd6d42d437bf417b98113e3a72060cba525667e0c3",
+    "OnboardingView": "a723c0af8dcd185f7520eb67bb19ac7632b503a60a1fabe61f0f77cf8b962508"
+  }
+}

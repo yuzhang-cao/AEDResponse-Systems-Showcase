@@ -1,0 +1,64 @@
+{
+  "date": "2026-10-04",
+  "scope": "iPhone native UI polish; offline TestHost only",
+  "device": "iPhone 17 Pro / iOS 26.4 Simulator",
+  "pixel_size": [
+    1206,
+    2622
+  ],
+  "builds": {
+    "unsigned_iphone_and_watch_debug": "passed",
+    "simulator_testhost": "passed"
+  },
+  "tests": [
+    {
+      "result": "passed",
+      "count": 3,
+      "suite": "ApprovedUIScenarioTests",
+      "bundle": "/tmp/aed-ui-polish-final-20261004.xcresult"
+    },
+    {
+      "result": "passed",
+      "count": 2,
+      "tests": [
+        "testSettingsShowsUserPermissionsAndHidesDeveloperInformation",
+        "testStandbyShowsAreaMapByDefaultAndSwitchesToAggregateList"
+      ],
+      "bundle": "/tmp/aed-ui-polish-final-20261004.xcresult"
+    },
+    {
+      "result": "passed",
+      "count": 1,
+      "tests": [
+        "testConsumerReferenceScreensAndAedSteps"
+      ],
+      "bundle": "/tmp/aed-ui-polish-layout-20261004.xcresult"
+    }
+  ],
+  "prior_failures": "Initial runs failed; retained in logs. Scene selection helper now validates selected tab; production behavior assertions remain unchanged.",
+  "concept_image": "Not generated: built-in imagegen failed twice with network errors. Existing reference and written tokens used.",
+  "not_validated": [
+    "Physical-device installation or runtime",
+    "Real network MapKit or rescue workflows",
+    "All screens at all Dynamic Type sizes"
+  ],
+  "source_sha256": {
+    "ios/AEDResponse/Views/RootView.swift": "7c6883b8432e6c7287957e6b3fffe98bb3e7cc718380e71d695cd73fb93f63e2",
+    "ios/AEDResponse/Views/ResponderDashboardView.swift": "23f69cb3108c7d5925450342c432f9f5b04bc9e525e26c94326777218c9c5f23",
+    "ios/AEDResponse/Views/NearbyVolunteersView.swift": "34bd43c275ac2733f740a89bce062b8489f32494447e41cdd2c9d32e1185139b",
+    "ios/AEDResponse/Views/ResponderNavigationView.swift": "69a97cf1f4f7974c8bdfac0c585170cfe3a412674f19432298ec7c4471ca0b71",
+    "ios/AEDResponse/Views/SettingsView.swift": "f5edbe1cff2a4c7988370b707a2a0c51dd1f80363d70f460aae98a8f6966c654",
+    "ios/AEDResponse/Views/PatientDashboardView.swift": "d85b50acd0c43f2135e4015665063ab183d6890baaeaaa13072cecfd445a7711",
+    "ios/AEDResponseUITests/AEDResponseUITests.swift": "cf757c1b9bb6573b63bc919f9d4e8c120d9723bda1692e6ec8ff73802fac7bfd"
+  },
+  "screenshot_sha256": {
+    "home-light.png": "282c0e59c849a2f7b529f73203cca3835ddd41b9a15a300d0c7bb8259be8e2be",
+    "home-test.png": "01ed5309c5fffaf766c41a958ef75e7ad47de716f9964a8504c15fe8ef47178b",
+    "settings-light.png": "ea97299c1fa5ab3229adf319449e8f195177779cb4cffea126a19cf9045b8976",
+    "settings-test.png": "ff4c37bf38dda184f0b5bfed340eb70b3cb1582ed3df064deb8c193f18537afe",
+    "aed-acquired.png": "8c8ea0222173a116995f370a56f56358a10a217d743bef62471ba422b592acc9",
+    "settings-dark-accessibility.png": "eee032848899942614ef138889e003fe103741b9488f76dc690acb75f3473149",
+    "request-light.png": "0feb39ac32fa27e550ffd041af447bca57feabe7815a3cd863a4b1f6c8c5048a",
+    "navigation-light.png": "5c52ec3b5eb3b5a862fb2ac7c4e29ee520dc292f4f0c55e6a35c13d02b6ffe9f"
+  }
+}

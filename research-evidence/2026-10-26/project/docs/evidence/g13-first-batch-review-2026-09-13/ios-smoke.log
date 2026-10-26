@@ -1,0 +1,21 @@
+iOS smoke tiers: A=compile B=simulator unit slice
+derived data root: /tmp/aed-g13-review-derived-20260913
+vendored packages: [PROJECT_ROOT]/ios/.build/SourcePackages
+--- ios-build-iphone
+    log: /tmp/aed-g13-review-20260913/ios/ios-build-iphone.log
+    PASS  ios-build-iphone (51s, attempt 1/2)
+    ** TEST BUILD SUCCEEDED **
+--- ios-build-watch
+    log: /tmp/aed-g13-review-20260913/ios/ios-build-watch.log
+    PASS  ios-build-watch (23s, attempt 1/2)
+    ** TEST BUILD SUCCEEDED **
+--- simulator: KeepOne-CI (REDACTED-ID-0022)
+--- ios-unit-slice
+    log: /tmp/aed-g13-review-20260913/ios/ios-unit-slice.log
+    PASS  ios-unit-slice (160s, attempt 1/2)
+    ** TEST SUCCEEDED **
+    	 Executed 128 tests, with 0 failures (0 unexpected) in 0.961 (1.046) seconds
+    	 Executed 128 tests, with 0 failures (0 unexpected) in 0.961 (1.047) seconds
+
+ios smoke: passed (compile evidence only unless a simulator tier ran)
+note: this is not physical-device, physical-Watch, real-login or cellular evidence.

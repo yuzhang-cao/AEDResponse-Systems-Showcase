@@ -1,0 +1,13 @@
+{
+  "preparedAt": "2026-10-13T04:34:20.376359+00:00",
+  "baselineOriginalSource": "/tmp/aed-routing-speed-20261013/before/AppleMapsDirections.swift",
+  "baselineOriginalSHA256": "f5cf5e12b3145133686a4114fe994c4c7caab8f6ca96e912257d1b37246830b1",
+  "baselineSnapshot": "Evidence/AppleMapsDirections.before.swift",
+  "baselineExtractedSource": "Sources/BaselineMapKitAedRouteCalculator.swift",
+  "baselineExtractedSHA256": "5b05119a33549f17cc93d28521ce0d7e5ddb3840c967ba76adff8dda3f507137",
+  "productionLinkedSource": "[PROJECT_ROOT]/ios/AEDResponse/Services/AppleMapsDirections.swift",
+  "productionSHA256AtPreparation": "55bc4928481975272e0cb420005ca8c8e97aa328a1a8f527948cff0a356060b3",
+  "productionHashNotice": "Hash verified immediately before build after leg-queue optimization; verify again after build",
+  "dtoSHA256": "944c6b59a390fd448f99523aef3c8fda80c3be8aa5c5b3b0234c23cfe0882064",
+  "productionSHA256AtBuild": "55bc4928481975272e0cb420005ca8c8e97aa328a1a8f527948cff0a356060b3"
+}

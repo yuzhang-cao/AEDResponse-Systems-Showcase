@@ -1,0 +1,7 @@
+# Archived logs, patches and source snapshots retain their evidence whitespace.
+2026-10-26/project/** -whitespace
+2026-10-26/cache/** -whitespace
+2026-10-26/reference-tests/** -whitespace
+2026-10-26/historical-test-snapshots/** -whitespace
+2026-10-26/loadtest/** -whitespace
+*.zip binary

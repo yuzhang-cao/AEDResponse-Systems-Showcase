@@ -1,0 +1,314 @@
+{
+  "baseline": "/tmp/aed-unfrozen-20260913/baseline",
+  "scope": "Five source/test/contract directories captured before this implementation phase; not a claim that all dirty Git files belong to this phase. Documentation and package test wiring are listed in the master checklist.",
+  "files": [
+    {
+      "path": "backend/src/account-lifecycle.ts",
+      "workPackages": "G02/G11 账户状态与退出",
+      "change": "added",
+      "baselineSHA256": null,
+      "currentSHA256": "38b1eb599c5cbfda509d4b7fcbe0f8097a1222a8f9a02c07d0bc8c2ab5ec6327"
+    },
+    {
+      "path": "backend/src/aed-actions.ts",
+      "workPackages": "G06 资产与跨事件",
+      "change": "modified",
+      "baselineSHA256": "b517029a8d1d6540c0d8f20fb8ce9483b4f31ff6c68e59746662c2728411af51",
+      "currentSHA256": "e3a2de58df5343c54662ac1dd08d395b87f781aa6db1c03b94f58eabf6c824f3"
+    },
+    {
+      "path": "backend/src/aed-asset-model.ts",
+      "workPackages": "G06 资产与跨事件",
+      "change": "added",
+      "baselineSHA256": null,
+      "currentSHA256": "9ddda4cb00403825bff06e444e13d397e447c0670d7d526fdbccc93d46a35f35"
+    },
+    {
+      "path": "backend/src/aed-assets.ts",
+      "workPackages": "G06 资产与跨事件",
+      "change": "added",
+      "baselineSHA256": null,
+      "currentSHA256": "a25acffd46c9420cd3a73f739dcc69bf49fb55cf3fc718e819ace5bc7ba47db6"
+    },
+    {
+      "path": "backend/src/assignment-status.ts",
+      "workPackages": "G06 资产与跨事件",
+      "change": "modified",
+      "baselineSHA256": "62790406644afa1fe4f425871aade81fb3e7fba1f4abcba01a73bbe477cd558d",
+      "currentSHA256": "49c0528d147e580328b14de41af760029122febed4d5877909043132628069ef"
+    },
+    {
+      "path": "backend/src/contracts.ts",
+      "workPackages": "G05 救助取消与终态",
+      "change": "modified",
+      "baselineSHA256": "1eb6f7244a0d320baef21f2dc180871559265c7a35d58890a69bf6fbcd11672c",
+      "currentSHA256": "79ded66535b99b67d20d3631198d18154cedbdc511cdb9a842c41fea2fd12866"
+    },
+    {
+      "path": "backend/src/entity-transaction.ts",
+      "workPackages": "G12 事务证据",
+      "change": "modified",
+      "baselineSHA256": "2f3f35c9ae861bbfde4071abc5c86022742e2c47179abed406528f78702ae019",
+      "currentSHA256": "5f9db9257bcdc1aca3cf139907fc80842cf9bf5d54a8e733171d97ffe26cbed9"
+    },
+    {
+      "path": "backend/src/event-lifecycle.ts",
+      "workPackages": "G05/G06 终态与跨事件组合",
+      "change": "modified",
+      "baselineSHA256": "8add76806e9265717e8d497a4eb8077c1f6df7b83edaecdf9110b5a803de87fa",
+      "currentSHA256": "da139af51f3d1740350516594f39e689161434940b495bcff08d9fed4d6ae05c"
+    },
+    {
+      "path": "backend/src/event-resolution.ts",
+      "workPackages": "G05 救助取消与终态",
+      "change": "modified",
+      "baselineSHA256": "adc4ae16c1b5d2f0c102dcaba2434fc4e38702afa1e13807f42fe92d3a439590",
+      "currentSHA256": "43a0f7008b085d4c3fc2fb68eee48e7aea387d74147fff5de5501b7d2c0933cd"
+    },
+    {
+      "path": "backend/src/evidence-integrity.ts",
+      "workPackages": "G12 事务证据",
+      "change": "added",
+      "baselineSHA256": null,
+      "currentSHA256": "718a710d9cb871c3b6a1f0a9ea820f0393bbe576f13c9e11294b1898856bc7a3"
+    },
+    {
+      "path": "backend/src/evidence-startup.ts",
+      "workPackages": "G12 事务证据",
+      "change": "added",
+      "baselineSHA256": null,
+      "currentSHA256": "6d06ddad237c3d7c269a4bbf9a8b1bd32a40f4d95b23730d3c036ca277b3cf10"
+    },
+    {
+      "path": "backend/src/identity-access.ts",
+      "workPackages": "G02/G11 账户状态与退出",
+      "change": "modified",
+      "baselineSHA256": "e4f1a3788b1bb6faea3dac08b2b9471f4a1614a27a2c82900d1fe9f1f430bcc0",
+      "currentSHA256": "eed2ba1e55dc69411ce68f361231714ecc72f6abb095fcb265146dc1c7653916"
+    },
+    {
+      "path": "backend/src/incremental-state.ts",
+      "workPackages": "G02/G05/G06/G11/G12/G13 共用接线与持久化",
+      "change": "modified",
+      "baselineSHA256": "07ca8a92913c4500d27d7ea4f1854fbc4ca4b81dba8609fae5890d00bb0dba56",
+      "currentSHA256": "0311368c8f4c5245fe4fe747b0e01321ef965d57ad8ea2b3a56ad1890844b2d4"
+    },
+    {
+      "path": "backend/src/models.ts",
+      "workPackages": "G02/G05/G06/G11/G12/G13 共用接线与持久化",
+      "change": "modified",
+      "baselineSHA256": "fd614a70c9e6707df135d5a738a129a37919e527ac0e5c009cbb076043ae1896",
+      "currentSHA256": "e73039d214682038010251b18ad11efbba1698e5d59671a0acf057b46cd3c2a2"
+    },
+    {
+      "path": "backend/src/notification-outbox.ts",
+      "workPackages": "G05 救助取消与终态",
+      "change": "modified",
+      "baselineSHA256": "46ceb4fdf110d179116a4097ef0363bd1143af9b7a6720b89d5fc74e184c484b",
+      "currentSHA256": "e39c8b31dd0d9cf44d2bed49aa6beff0a37c762afc101eaf4f50f02e840ecbd6"
+    },
+    {
+      "path": "backend/src/responder-exit.ts",
+      "workPackages": "G06 资产与跨事件",
+      "change": "modified",
+      "baselineSHA256": "281f7fa5da87f1b1f337f5621772a345c39680c44a2daac3126c0772a344cd0c",
+      "currentSHA256": "39ad6a692ea1b533f1ba2cca003154cf217c8ffe1a175b41324c790b42d8a600"
+    },
+    {
+      "path": "backend/src/retention-clock.ts",
+      "workPackages": "G11/G13 留存与到期查询",
+      "change": "added",
+      "baselineSHA256": null,
+      "currentSHA256": "6329f466353ba06b7cd28a2ea15f640db461213fce65e814ee87a83603e83a9a"
+    },
+    {
+      "path": "backend/src/retention.ts",
+      "workPackages": "G11/G13 留存与到期查询",
+      "change": "modified",
+      "baselineSHA256": "06892af7a78e33ca42013bc61dbf9bd06e0f082b2440eb6961c4ccb9c72bebef",
+      "currentSHA256": "4bb5d9a9eb700c16b498b16d6b1b5eeeaba2a1c5b5093d637e470a6b5e9255c3"
+    },
+    {
+      "path": "backend/src/server.ts",
+      "workPackages": "G02/G05/G06/G11/G12/G13 共用接线与持久化",
+      "change": "modified",
+      "baselineSHA256": "36aaf520475467232e6eb6751844e9149b5908a4abc9ca3bcc7858894f94f22f",
+      "currentSHA256": "0295196946b3a65b74331c8aa45cd2e58bd1a25d1543e7088be378ef62c3b3a9"
+    },
+    {
+      "path": "backend/src/service.ts",
+      "workPackages": "G02/G05/G06/G11/G12/G13 共用接线与持久化",
+      "change": "modified",
+      "baselineSHA256": "c0edc0fa76bf6bfaf3581dde376d2be9866d5ec765fa1741d4c75493e4d22150",
+      "currentSHA256": "2725943ad11c190ef8fcf2c62bd19496fe23216f727f9fadc45f2a34f849a558"
+    },
+    {
+      "path": "backend/src/store.ts",
+      "workPackages": "G02/G05/G06/G11/G12/G13 共用接线与持久化",
+      "change": "modified",
+      "baselineSHA256": "6083ce106db8115596a11fd6e82a43126d9728e11a9d49efcc535d1e0db74678",
+      "currentSHA256": "b2130cf6877132353419545655e6ee6d4891a6823f02e73983cf0c8113ed4505"
+    },
+    {
+      "path": "backend/test/aed-assets.test.ts",
+      "workPackages": "G06 资产与跨事件",
+      "change": "added",
+      "baselineSHA256": null,
+      "currentSHA256": "0472f020818fe7f9726595eb6e7ed4c9364474b5dde5303d0dd97b42f216cc02"
+    },
+    {
+      "path": "backend/test/auth.test.ts",
+      "workPackages": "G02/G11 账户状态与退出",
+      "change": "modified",
+      "baselineSHA256": "86bc5a368e7bbd98dee92f64c5404171269cfd9e33d3cb36d7ffb9037625dd75",
+      "currentSHA256": "18d87536d0203c279c0dc1fbcaa5631d005a7fba5c239a1edaf664378d746189"
+    },
+    {
+      "path": "backend/test/cross-event-facts.test.ts",
+      "workPackages": "G05/G06 终态与跨事件组合",
+      "change": "modified",
+      "baselineSHA256": "3be6bc1f1503aa67946a2238f48efe8bd92121c42bfc94437100b4ca37390d02",
+      "currentSHA256": "b3a490ca02415dc4c0c4a27c56d43d8d80fa3384bdfb7d76a1b8400d6d7f3d9c"
+    },
+    {
+      "path": "backend/test/evidence-integrity.test.ts",
+      "workPackages": "G12 事务证据",
+      "change": "added",
+      "baselineSHA256": null,
+      "currentSHA256": "9a19369fc9139ab2c46daa234bb2ccd4401bfed8727fb60dccef72dd4bb14e53"
+    },
+    {
+      "path": "backend/test/g13-operation-scope.test.ts",
+      "workPackages": "G13-A 全操作计量",
+      "change": "modified",
+      "baselineSHA256": "e4eea2e71a74dcb47af616c2cb0b6363fcb9bf5f29cfa79e6693a72fa821c2b1",
+      "currentSHA256": "95b22f8c618591cb73d0f8186141a7c5e030f79cfa7031f16d54b1508c4c651f"
+    },
+    {
+      "path": "backend/test/retention.test.ts",
+      "workPackages": "G11/G13 留存与到期查询",
+      "change": "modified",
+      "baselineSHA256": "b3d6298dd106d027a37f3bfaa77c50444ba8daea733d896539a9d351c45959dd",
+      "currentSHA256": "ce139418be3182febf95199bad7390e881448261c84e0b3fb342db127f45ac8f"
+    },
+    {
+      "path": "ios/AEDResponse/App/AppStore.swift",
+      "workPackages": "G02/G05 客户端应用与契约",
+      "change": "modified",
+      "baselineSHA256": "034a21cd82591780315f4a4916bd9e5b02d824c470739101b3a5790853828f7f",
+      "currentSHA256": "46c4c5a917c190832aaf23633919bd57097b27bdadfd0a3a491288a8b1760414"
+    },
+    {
+      "path": "ios/AEDResponse/Application/EventEndCoordinator.swift",
+      "workPackages": "G05 救助取消与终态",
+      "change": "modified",
+      "baselineSHA256": "fce3d08059188d5430877c37cfc9061ef4a2e99e2cb6fa08e8e068fb9e118c7f",
+      "currentSHA256": "35a9d87de6a01b03b634961fd3d87ebe59692162af36bd98ed309dd3ecb81d01"
+    },
+    {
+      "path": "ios/AEDResponse/Application/Ports.swift",
+      "workPackages": "G05 救助取消与终态",
+      "change": "modified",
+      "baselineSHA256": "17fe003e740c21c3a172f48d5b7456dddd906fd43e98782c5542420e07da6313",
+      "currentSHA256": "7758d4f539d5482c0b1d9bc4b8bcaad6cf3e06afdcb6d01c9236744d50faa06f"
+    },
+    {
+      "path": "ios/AEDResponse/Domain/ExitConfirmationCoordinator.swift",
+      "workPackages": "G05 救助取消与终态",
+      "change": "modified",
+      "baselineSHA256": "9a233948472dd0b8fbe04b9a0e8d207c213b6ffbe3f5519e027a5e8fc4daa253",
+      "currentSHA256": "1dd14a64d3b0de17c37fff877573cebb6c5419f32cc7dabd4c68ccb66b7fad0d"
+    },
+    {
+      "path": "ios/AEDResponse/Domain/Models.swift",
+      "workPackages": "G05 救助取消与终态",
+      "change": "modified",
+      "baselineSHA256": "23dd0ce1ec40dc2a937e69b82bd63c8ab1ba013e1d2b12bafc68ea897cfc4bb0",
+      "currentSHA256": "92be3dfb697a3502b9fbd40b67d1f01a7895e457ceabd8ae0944ded61ea4a05c"
+    },
+    {
+      "path": "ios/AEDResponse/Networking/APIClient.swift",
+      "workPackages": "G02/G05 客户端应用与契约",
+      "change": "modified",
+      "baselineSHA256": "199300c68f19c3fee37c121c4875ec72f63472abd902130faaf0369b5842f35f",
+      "currentSHA256": "de67b29f1b976b58a3eebb8f361756e10adb1fd26e03fd91181675fb728f3eee"
+    },
+    {
+      "path": "ios/AEDResponse/Networking/SocketIOEventStream.swift",
+      "workPackages": "G05 救助取消与终态",
+      "change": "modified",
+      "baselineSHA256": "925eb273911a102534dc358a17d20a67ea88a3b17e36e8b8697bcc59b5dc114a",
+      "currentSHA256": "5e1742812c7edb87aae6f85caa33e3c591d12770ff431093bc3882df1253bdab"
+    },
+    {
+      "path": "ios/AEDResponse/Views/AgreementDocumentView.swift",
+      "workPackages": "G02/G11 账户状态与退出",
+      "change": "modified",
+      "baselineSHA256": "e84c59f2d7ec7578e169d9d7fc8e28933b2b06a2f52efa4fce99fe0ff24dec5f",
+      "currentSHA256": "e19be660faf5cea68266cca836a700abcb7b035cd7275d409e4c3207f06058a4"
+    },
+    {
+      "path": "ios/AEDResponse/Views/PatientDashboardView.swift",
+      "workPackages": "G05 救助取消与终态",
+      "change": "modified",
+      "baselineSHA256": "7e87e3cec0007d04865440377b8b2da4978b237442974974788bb9c1f4752522",
+      "currentSHA256": "802d518582646147e6dfb61fa784c049ba907a1c1cb0c18e5cef95c1a4b66984"
+    },
+    {
+      "path": "ios/AEDResponse/Views/ResponderDashboardView.swift",
+      "workPackages": "G05 救助取消与终态",
+      "change": "modified",
+      "baselineSHA256": "261fdfca185edb3e963c542cfd9c412c0f99c9e075d1b52209efec62262da973",
+      "currentSHA256": "c78cf82fc1dc389bccee39832816e386554ee4713df73becdd7a3e2576ada835"
+    },
+    {
+      "path": "ios/AEDResponse/Views/SettingsView.swift",
+      "workPackages": "G02/G11 账户状态与退出",
+      "change": "modified",
+      "baselineSHA256": "a1c875ece64c8491f93e2b475d3d542cb2140be2e0946789b7724d9b12479be1",
+      "currentSHA256": "db33aa819f39befe4aa18418f0698d6aa4ad07343fd82dbe3922a46ab8863c62"
+    },
+    {
+      "path": "ios/AEDResponseTests/AppStoreArchitectureTests.swift",
+      "workPackages": "G02/G05 客户端应用与契约",
+      "change": "modified",
+      "baselineSHA256": "09fd720729c49fc59b3ccdfb9aa2fa81fa68a64804dcec2f707773aebab59cd6",
+      "currentSHA256": "ce508d56a3c7b74000b4b8e8e30c0ccc74531f808e39e2fe38e22a766f111e2e"
+    },
+    {
+      "path": "ios/AEDResponseTests/AuthenticationArchitectureTests.swift",
+      "workPackages": "G02 Apple 挑战客户端",
+      "change": "modified",
+      "baselineSHA256": "47edfdf5c403bd30cefdac350207885730b0673581bff4828499b4396dc8c014",
+      "currentSHA256": "7d7d679a0e9695f2be605427653e8782089ac8da2e761e572b6543e1533745af"
+    },
+    {
+      "path": "ios/AEDResponseTests/ResponderExitTests.swift",
+      "workPackages": "G05 救助取消与终态",
+      "change": "modified",
+      "baselineSHA256": "d46b2bfa88653a5f803fc24380d42744e1b5777aa0bcbe3afac73fef271b48c4",
+      "currentSHA256": "4cfe212ebd474cafb0163a1a93b8000f53be166c0e84ccec4e48a196acbc077a"
+    },
+    {
+      "path": "contracts/agreements.json",
+      "workPackages": "G02/G11 账户状态与退出",
+      "change": "modified",
+      "baselineSHA256": "cab264e1122fcabba9553b0de71b56bd0816f045c6515ad28630baf770e21a15",
+      "currentSHA256": "a5dd860cb480e2d98840f224b77bd8c066923e52c3c6db6223c76e0a1903ef8e"
+    },
+    {
+      "path": "contracts/events.md",
+      "workPackages": "G05 救助取消与终态",
+      "change": "modified",
+      "baselineSHA256": "cc4d5f7a78bfc3e6bcc4cd0893c6c2e162c218a89283ac9993373088efde0f02",
+      "currentSHA256": "aa2a36c77fd7561f65137d35cf1e2430dd2c5a12e6a8c29e3f2c2f5c91838da7"
+    },
+    {
+      "path": "contracts/openapi.yaml",
+      "workPackages": "G02/G05/G06/G11/G12/G13 共用接线与持久化",
+      "change": "modified",
+      "baselineSHA256": "c743d4fcdcae80e6f695548915df9e8ad25a8338d4e3f459df4c2a6d8fd294e4",
+      "currentSHA256": "b4695a02659c6bcb1ce01fc89d02e1c080ac205c4127224dced834441afbedc2"
+    }
+  ]
+}

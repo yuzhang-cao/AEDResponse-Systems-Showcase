@@ -1,0 +1,37 @@
+{
+  "sourceFilesUnchanged": 42,
+  "observationsPerRun": 42,
+  "correctnessChecksPerRun": 10,
+  "instrumentedVsUnmodifiedOutcomesEqual": true,
+  "priorAdapterControlOutcomesEqual": true,
+  "currentCreateDistanceCalls": [
+    24,
+    24,
+    24
+  ],
+  "currentCreateOrdinalKeyVisits": [
+    40,
+    2040,
+    8040
+  ],
+  "positionTxDeviceKeyCopiesCurrent": [
+    15,
+    765,
+    3015
+  ],
+  "positionTxDeviceKeyCopiesPrior": [
+    0,
+    0,
+    0
+  ],
+  "positionTxCommittedDevicePredicateChecksCurrent": [
+    15,
+    765,
+    3015
+  ],
+  "positionTxCommittedDevicePredicateChecksPrior": [
+    0,
+    0,
+    0
+  ]
+}

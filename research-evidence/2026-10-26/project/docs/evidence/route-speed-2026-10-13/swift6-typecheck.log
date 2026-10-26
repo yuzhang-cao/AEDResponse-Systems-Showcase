@@ -1,0 +1,33 @@
+[PROJECT_ROOT]/ios/AEDResponse/Services/AppleMapsDirections.swift:159:26: warning: 'init(placemark:)' was deprecated in macOS 26.0: Use init(location:address:) [#DeprecatedDeclaration]
+157 |     private static func walkingDistance(from: CLLocationCoordinate2D, to: CLLocationCoordinate2D) async throws -> Double {
+158 |         let request = MKDirections.Request()
+159 |         request.source = MKMapItem(placemark: MKPlacemark(coordinate: from))
+    |                          `- warning: 'init(placemark:)' was deprecated in macOS 26.0: Use init(location:address:) [#DeprecatedDeclaration]
+160 |         request.destination = MKMapItem(placemark: MKPlacemark(coordinate: to))
+161 |         request.transportType = .walking
+
+[PROJECT_ROOT]/ios/AEDResponse/Services/AppleMapsDirections.swift:159:47: warning: 'MKPlacemark' was deprecated in macOS 26.0: Use MKMapItem's location, address and addressRepresentations properties instead. Use MKAddressRepresentations for formatted address strings for MapKit provided MKMapItems [#DeprecatedDeclaration]
+157 |     private static func walkingDistance(from: CLLocationCoordinate2D, to: CLLocationCoordinate2D) async throws -> Double {
+158 |         let request = MKDirections.Request()
+159 |         request.source = MKMapItem(placemark: MKPlacemark(coordinate: from))
+    |                                               `- warning: 'MKPlacemark' was deprecated in macOS 26.0: Use MKMapItem's location, address and addressRepresentations properties instead. Use MKAddressRepresentations for formatted address strings for MapKit provided MKMapItems [#DeprecatedDeclaration]
+160 |         request.destination = MKMapItem(placemark: MKPlacemark(coordinate: to))
+161 |         request.transportType = .walking
+
+[PROJECT_ROOT]/ios/AEDResponse/Services/AppleMapsDirections.swift:160:31: warning: 'init(placemark:)' was deprecated in macOS 26.0: Use init(location:address:) [#DeprecatedDeclaration]
+158 |         let request = MKDirections.Request()
+159 |         request.source = MKMapItem(placemark: MKPlacemark(coordinate: from))
+160 |         request.destination = MKMapItem(placemark: MKPlacemark(coordinate: to))
+    |                               `- warning: 'init(placemark:)' was deprecated in macOS 26.0: Use init(location:address:) [#DeprecatedDeclaration]
+161 |         request.transportType = .walking
+162 |         request.requestsAlternateRoutes = true
+
+[PROJECT_ROOT]/ios/AEDResponse/Services/AppleMapsDirections.swift:160:52: warning: 'MKPlacemark' was deprecated in macOS 26.0: Use MKMapItem's location, address and addressRepresentations properties instead. Use MKAddressRepresentations for formatted address strings for MapKit provided MKMapItems [#DeprecatedDeclaration]
+158 |         let request = MKDirections.Request()
+159 |         request.source = MKMapItem(placemark: MKPlacemark(coordinate: from))
+160 |         request.destination = MKMapItem(placemark: MKPlacemark(coordinate: to))
+    |                                                    `- warning: 'MKPlacemark' was deprecated in macOS 26.0: Use MKMapItem's location, address and addressRepresentations properties instead. Use MKAddressRepresentations for formatted address strings for MapKit provided MKMapItems [#DeprecatedDeclaration]
+161 |         request.transportType = .walking
+162 |         request.requestsAlternateRoutes = true
+
+[#DeprecatedDeclaration]: <https://redacted-host.invalid/compiler/documentation/diagnostics/deprecated-declaration>

@@ -1,0 +1,11 @@
+AED_PUSH_DIAGNOSTIC phase=request
+AED_PUSH_DIAGNOSTIC phase=token-received
+AED_PUSH_DIAGNOSTIC phase=request
+AED_PUSH_DIAGNOSTIC phase=token-received
+AED_PUSH_DIAGNOSTIC phase=server-registration-failed httpStatus=404
+AED_PUSH_DIAGNOSTIC phase=request
+AED_PUSH_DIAGNOSTIC phase=token-received
+AED_PUSH_DIAGNOSTIC phase=server-registration-failed httpStatus=404
+AED_PUSH_DIAGNOSTIC phase=request
+AED_PUSH_DIAGNOSTIC phase=token-received
+AED_PUSH_DIAGNOSTIC phase=server-registration-failed httpStatus=404

@@ -1,0 +1,16 @@
+# Sanitized AEDResponse CompanionRelay records; Asia/Shanghai timestamps.
+# USB first absent: 2026-10-01 13:31:44.222+0800.
+# USB last absent: 2026-10-01 13:33:03.018+0800; first returned: 13:33:05.030+0800.
+# Conservative query window: 13:31:50 through 13:32:58+0800, entirely inside USB absence.
+# Device/process identifiers omitted. Source messages do not contain request IDs.
+2026-10-01 13:32:30.775 immediate reply method=ping status=unavailable httpStatus=0
+2026-10-01 13:32:30.790 background receive method=ping appState=2
+2026-10-01 13:32:30.793 background reply method=ping status=unavailable appState=2
+2026-10-01 13:32:31.927 background reply method=ping status=unavailable appState=2
+2026-10-01 13:32:31.988 background reply method=ping status=unavailable appState=2
+2026-10-01 13:32:33.361 background reply method=ping status=ok appState=2
+2026-10-01 13:32:33.567 background response transfer succeeded=true appState=2
+2026-10-01 13:32:35.085 immediate reply method=ping status=ok httpStatus=0
+2026-10-01 13:32:45.366 background receive method=ping appState=2
+2026-10-01 13:32:45.394 background reply method=ping status=ok appState=2
+2026-10-01 13:32:45.500 background response transfer succeeded=true appState=2

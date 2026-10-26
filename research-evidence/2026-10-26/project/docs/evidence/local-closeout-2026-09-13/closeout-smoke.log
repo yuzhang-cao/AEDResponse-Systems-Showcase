@@ -1,0 +1,51 @@
+
+> aedresponse-backend@2.1.0 smoke
+> npm run smoke:contract && npm run smoke:backend
+
+
+> aedresponse-backend@2.1.0 smoke:contract
+> tsx test/smoke/contract.smoke.ts
+
+AEDResponse v2 contract smoke -> [PROJECT_ROOT]/contracts/openapi.yaml
+
+live conformance target: http://127.0.0.1:62635
+
+  PASS  C01  the contract keeps its identity and production entry (0 ms)
+        35 operations, 35 operationIds, 201 internal refs resolve, 61 documented error schemas
+  PASS  C02  every operation is identified and every internal $ref resolves (1 ms)
+        8 live responses validated against documented schemas
+  PASS  C03  live responses conform to the documented schemas (98 ms)
+        33 implemented route templates are all documented (excluding the /healthz liveness probe, asserted in C03)
+  PASS  C04  server routes and contract paths cover each other (1 ms)
+        2 fixture AEDs match the AED contract schema
+  PASS  C05  the demo fixture stays schema-valid and internally consistent (3 ms)
+
+contract smoke passed: 5 steps
+
+> aedresponse-backend@2.1.0 smoke:backend
+> tsx test/smoke/backend.smoke.ts
+
+AEDResponse v2 backend smoke -> http://127.0.0.1:62640
+seeded AEDs: aed-demo-01, aed-demo-02
+
+  PASS  S01  health endpoint answers the documented envelope (14 ms)
+  PASS  S02  unauthenticated reads and unknown routes return RFC7807 problems (23 ms)
+  PASS  S03  authentication gate rejects unverified credentials (12 ms)
+  PASS  S04  four agreements gate bootstrap; denied permissions only disarm response (21 ms)
+  PASS  S05  Watch session requires an iPhone-issued one-time ticket (10 ms)
+  PASS  S06  a Watch fall observation creates the ACTIVE/RECRUITING event (19 ms)
+  PASS  S07  P writes enforce scope, range, clock skew and no regression (25 ms)
+  PASS  S08  standby responders publish R and stay out of the event (68 ms)
+  PASS  S09  recruitment offers reach nearby responders with no patient data (13 ms)
+  PASS  S10  the patient iPhone sees its own event and stays subscribed (15 ms)
+  PASS  S11  accepting as responder A flips the projection and clears the offer (57 ms)
+  PASS  S12  refusing as responder B keeps it out of the response (15 ms)
+  PASS  S13  event position batches write strict UTC second slots (39 ms)
+  PASS  S14  Watch sessions stay scoped to their own triggering event (6 ms)
+  PASS  S15  a stale offer stops being acceptable once its window closes (2 ms)
+  PASS  S16  a second accept creates the FETCH_AED task and a route R -> A -> P (134 ms)
+  PASS  S17  patient ends the event and every participant converges (27 ms)
+  PASS  S18  oversized request bodies are rejected at the 16 KiB boundary (2 ms)
+
+backend smoke passed: 18 steps in 502 ms
+event REDACTED-ID-0018 -> RESOLVED (accepted assignment REDACTED-ID-0026, AED task REDACTED-ID-0026 -> aed-demo-01, offers REDACTED-ID-0027 / REDACTED-ID-0028)

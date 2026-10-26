@@ -1,0 +1,29 @@
+{
+  "date": "2026-10-13",
+  "targetModel": "iPhone 17 Pro (iPhone18,1)",
+  "bundle": "dev.codex.aedresponse",
+  "version": "2.0",
+  "build": "12",
+  "source": "current full local worktree including UI commit e44cbe3 and existing local changes",
+  "signedBuild": "BUILD SUCCEEDED",
+  "signatureVerification": "iPhone, embedded Watch, standalone Watch passed codesign deep strict verification",
+  "sourceHashesUnchanged": 206,
+  "installation": "ordinary USB ideviceinstaller install; InstallComplete 100%, Complete, exit 0",
+  "independentDeviceReadback": {
+    "bundle": "dev.codex.aedresponse",
+    "version": "2.0",
+    "build": "12",
+    "model": "iPhone18,1"
+  },
+  "watchSimulationCondition": "AED_WATCH_SIMULATION",
+  "watchDeviceInstall": "not independently checked this turn",
+  "launchAndRuntime": "not checked this turn; no DDI or mirroring",
+  "backendDeployment": "not performed",
+  "rescueTests": "not performed",
+  "gitCommitOrPush": "not performed",
+  "thisTurnChangedFiles": [
+    "ios/project.yml",
+    "ios/AEDResponse.xcodeproj/project.pbxproj"
+  ],
+  "workRoot": "[BUILD_CACHE]/ui-build12-20261013._a5jevfc"
+}

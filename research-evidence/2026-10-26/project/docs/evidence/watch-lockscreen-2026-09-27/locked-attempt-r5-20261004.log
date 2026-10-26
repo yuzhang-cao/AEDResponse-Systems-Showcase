@@ -1,0 +1,12 @@
+# Ordinary device logarchive; Asia/Shanghai; only AEDResponse CompanionRelay allowlisted fields.
+# Window 2026-10-04 22:05:00 through 22:10:20. No simulationContext/simulationObservation captured.
+2026-10-04 22:06:30.127072+0800 immediate reply method=context status=ok httpStatus=0
+2026-10-04 22:06:30.137666+0800 background receive method=context appState=2
+2026-10-04 22:06:33.958919+0800 background response transfer succeeded=true appState=2
+2026-10-04 22:06:45.783377+0800 background receive method=bind appState=2
+2026-10-04 22:06:46.530702+0800 background reply method=bind status=ok appState=2
+2026-10-04 22:06:46.772182+0800 immediate reply method=bind status=ok httpStatus=0
+2026-10-04 22:06:47.012539+0800 background response transfer succeeded=true appState=2
+2026-10-04 22:07:01.337190+0800 background receive method=ping appState=2
+2026-10-04 22:07:01.358119+0800 background reply method=ping status=ok appState=2
+2026-10-04 22:07:01.818927+0800 background response transfer succeeded=true appState=2

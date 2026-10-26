@@ -1,0 +1,51 @@
+--- original/backend/src/domain.ts
++++ instrumented/backend/src/domain.ts
+@@ -37,6 +37,11 @@
+   left: Pick<PatientPosition | ResponderPosition, "latitude" | "longitude">,
+   right: Pick<PatientPosition | ResponderPosition, "latitude" | "longitude">
+ ): number {
++  const probe = (globalThis as any).__aedSpatialProbe;
++  if (probe?.active) {
++    probe.distanceCalls += 1;
++    if (Math.abs(left.latitude) >= 10 || Math.abs(right.latitude) >= 10) probe.farDistanceCalls += 1;
++  }
+   const earthRadius = 6_371_008.8;
+   const latitudeDelta = (right.latitude - left.latitude) * Math.PI / 180;
+   const longitudeDelta = (right.longitude - left.longitude) * Math.PI / 180;
+--- original/backend/src/device-position-index.ts
++++ instrumented/backend/src/device-position-index.ts
+@@ -86,8 +86,11 @@
+ 
+   /** Full rebuild; O(devices) once after load or a whole-state commit. */
+   rebuild(devices: Record<string, Positioned>): void {
++    const probe = (globalThis as any).__aedSpatialProbe;
++    if (probe?.active) probe.gridRebuilds += 1;
+     this.clear();
+     for (const [deviceInstanceId, device] of Object.entries(devices)) {
++      if (probe?.active) probe.gridRebuildDeviceVisits += 1;
+       const coordinate = coordinateOf(device);
+       if (coordinate) this.upsert(deviceInstanceId, coordinate.latitude, coordinate.longitude);
+     }
+@@ -110,6 +113,8 @@
+    * devices outside the radius, which the caller filters by exact distance.
+    */
+   query(latitude: number, longitude: number, radiusMeters: number): string[] {
++    const probe = (globalThis as any).__aedSpatialProbe;
++    if (probe?.active) probe.gridQueries += 1;
+     const latitudeDelta = radiusMeters / METERS_PER_DEGREE_LATITUDE;
+     // Longitude degrees shorten away from the equator; clamp the cosine so a
+     // near-polar query cannot ask for an unbounded degree span.
+@@ -133,11 +138,13 @@
+     const found = new Set<string>();
+     for (let latitudeCell = minLatitudeCell; latitudeCell <= maxLatitudeCell; latitudeCell += 1) {
+       for (let longitudeCell = minLongitudeCell; longitudeCell <= maxLongitudeCell; longitudeCell += 1) {
++        if (probe?.active) probe.gridCellsVisited += 1;
+         const bucket = this.cells.get(`${latitudeCell}:${longitudeCell}`);
+         if (!bucket) continue;
+         for (const deviceInstanceId of bucket) found.add(deviceInstanceId);
+       }
+     }
++    if (probe?.active) probe.gridCandidateReturns += found.size;
+     return [...found];
+   }
+ }

@@ -1,0 +1,20 @@
+{
+  "status": "DEFERRED_BY_USER_UNTIL_SHENZHEN",
+  "userInstruction": "那跳过这一段，等我回到深圳再测试",
+  "probeBundle": "dev.codex.aedresponse.routeacceptance",
+  "probeBuild": "3",
+  "buildSucceeded": true,
+  "signatureVerified": true,
+  "USBInstallCompleted": true,
+  "locationAcquired": true,
+  "locationAccuracyMeters": 5.845490672047712,
+  "searchMilliseconds": 335.371959,
+  "searchError": null,
+  "nearbyCandidatesFound": 0,
+  "routeSamples": 0,
+  "routeTimingVerified": false,
+  "patientEndpoint": "Demonstration point about 300 meters from current phone position, selected by user",
+  "privacy": "Exact phone coordinates omitted from project evidence; private result remains in owner-only temporary directory and phone app documents",
+  "rejectedAction": "Mac-side precise-location reverse geocoding to Apple was rejected by automatic approval review and did not execute",
+  "appNetworkDuringTiming": "No USB or backend round trip included in planned MapKit timing; no timing sample was produced"
+}

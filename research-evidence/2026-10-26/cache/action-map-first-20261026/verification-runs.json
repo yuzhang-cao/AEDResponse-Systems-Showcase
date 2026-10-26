@@ -1,0 +1,38 @@
+[
+  {
+    "name": "unit-final",
+    "exit_code": 0,
+    "selection": [
+      "AEDResponseTests/AppStoreArchitectureTests",
+      "AEDResponseTests/NearbyVolunteerSummaryTests",
+      "AEDResponseTests/ResponderExitTests",
+      "AEDResponseTests/AedRerouteTests",
+      "AEDResponseTests/ClientRouteRefreshCoordinatorTests",
+      "AEDResponseTests/ResponsePrivacyProjectionTests",
+      "AEDResponseTests/StateMachineTests",
+      "AEDResponseTests/EventOutcomePresentationTests"
+    ]
+  },
+  {
+    "name": "ui-normal",
+    "exit_code": 65,
+    "selection": [
+      "AEDResponseUITests/AEDResponseUITests/testStandbyMapFillsActionPageAndShowsAggregateCounts",
+      "AEDResponseUITests/AEDResponseUITests/testSettingsRangePreferenceOnlyHidesCirclesAndPreservesCounts",
+      "AEDResponseUITests/AEDResponseUITests/testNearbyFixtureShowsCurrentOfferAndAcceptsLocally",
+      "AEDResponseUITests/AEDResponseUITests/testLocalFetchAssignmentUsesRapRouteAndCompletesPatientHandoff",
+      "AEDResponseUITests/AEDResponseUITests/testSoleResponderExitCancelsAndThenRequiresThreeDistinctConfirmations",
+      "AEDResponseUITests/AEDResponseUITests/testSettingsRoundTripPreservesAedTaskProgress",
+      "AEDResponseUITests/AEDResponseUITests/testPatientFalseAlarmHasOneExplicitConfirmation",
+      "AEDResponseUITests/AEDResponseUITests/testPatientResolveHasOneExplicitConfirmation",
+      "AEDResponseUITests/AEDResponseUITests/testSettingsShowsUserPermissionsAndHidesDeveloperInformation"
+    ]
+  },
+  {
+    "name": "ui-accessibility",
+    "exit_code": 65,
+    "selection": [
+      "AEDResponseUITests/AEDResponseUITests/testMapFirstDarkAccessibilityScreensKeepPrimaryActionsReachable"
+    ]
+  }
+]

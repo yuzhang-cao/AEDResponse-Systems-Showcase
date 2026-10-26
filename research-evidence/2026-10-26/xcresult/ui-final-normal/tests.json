@@ -1,0 +1,71 @@
+{
+  "devices": [
+    {
+      "architecture": "arm64",
+      "deviceId": "[REDACTED_ENVIRONMENT]",
+      "deviceName": "[REDACTED_ENVIRONMENT]",
+      "modelName": "iPhone 17 Pro",
+      "osBuildNumber": "23E254a",
+      "osVersion": "26.4.1",
+      "platform": "iOS Simulator"
+    }
+  ],
+  "testNodes": [
+    {
+      "children": [
+        {
+          "children": [
+            {
+              "children": [
+                {
+                  "duration": "41秒",
+                  "durationInSeconds": 41.75329101085663,
+                  "name": "testNearbyFixtureShowsCurrentOfferAndAcceptsLocally()",
+                  "nodeIdentifier": "AEDResponseUITests/testNearbyFixtureShowsCurrentOfferAndAcceptsLocally()",
+                  "nodeIdentifierURL": "test://com.apple.xcode/AEDResponse/AEDResponseUITests/AEDResponseUITests/testNearbyFixtureShowsCurrentOfferAndAcceptsLocally",
+                  "nodeType": "Test Case",
+                  "result": "Passed"
+                },
+                {
+                  "duration": "50秒",
+                  "durationInSeconds": 50.27608907222748,
+                  "name": "testSettingsRangePreferenceOnlyHidesCirclesAndPreservesCounts()",
+                  "nodeIdentifier": "AEDResponseUITests/testSettingsRangePreferenceOnlyHidesCirclesAndPreservesCounts()",
+                  "nodeIdentifierURL": "test://com.apple.xcode/AEDResponse/AEDResponseUITests/AEDResponseUITests/testSettingsRangePreferenceOnlyHidesCirclesAndPreservesCounts",
+                  "nodeType": "Test Case",
+                  "result": "Passed"
+                },
+                {
+                  "duration": "47秒",
+                  "durationInSeconds": 47.85392892360687,
+                  "name": "testStandbyMapFillsActionPageAndShowsAggregateCounts()",
+                  "nodeIdentifier": "AEDResponseUITests/testStandbyMapFillsActionPageAndShowsAggregateCounts()",
+                  "nodeIdentifierURL": "test://com.apple.xcode/AEDResponse/AEDResponseUITests/AEDResponseUITests/testStandbyMapFillsActionPageAndShowsAggregateCounts",
+                  "nodeType": "Test Case",
+                  "result": "Passed"
+                }
+              ],
+              "name": "AEDResponseUITests",
+              "nodeIdentifierURL": "test://com.apple.xcode/AEDResponse/AEDResponseUITests/AEDResponseUITests",
+              "nodeType": "Test Suite",
+              "result": "Passed"
+            }
+          ],
+          "name": "AEDResponseUITests",
+          "nodeIdentifierURL": "test://com.apple.xcode/AEDResponse/AEDResponseUITests",
+          "nodeType": "UI test bundle",
+          "result": "Passed"
+        }
+      ],
+      "name": "AEDResponseTestHost",
+      "nodeType": "Test Plan",
+      "result": "Passed"
+    }
+  ],
+  "testPlanConfigurations": [
+    {
+      "configurationId": "1",
+      "configurationName": "Test Scheme Action"
+    }
+  ]
+}

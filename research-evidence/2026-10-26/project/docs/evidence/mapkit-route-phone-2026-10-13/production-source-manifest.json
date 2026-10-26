@@ -1,0 +1,5 @@
+{
+  "ios/AEDResponse/Domain/Models.swift": "20f0594c5aee22523565f7016a0ec5e0327858e9c7c9e5a84e427465a1a3e57f",
+  "ios/AEDResponse/Domain/AedRouteEstimator.swift": "0699b2e0b86f722fd20bcb2ae4dda291f025e35d803cc489edbb3253f4b13e59",
+  "ios/AEDResponse/Services/AppleMapsDirections.swift": "f5cf5e12b3145133686a4114fe994c4c7caab8f6ca96e912257d1b37246830b1"
+}

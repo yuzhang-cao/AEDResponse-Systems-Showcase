@@ -1,0 +1,189 @@
+{
+  "scenario": "Random synthetic AED and patient positions around actual phone origin; no actual emergency or device",
+  "status": "baseline and fixed-scenario phone AB completed",
+  "network": "Wi-Fi",
+  "baselineSourceSHA256": "f5cf5e12b3145133686a4114fe994c4c7caab8f6ca96e912257d1b37246830b1",
+  "optimizedSourceSHA256": "55bc4928481975272e0cb420005ca8c8e97aa328a1a8f527948cff0a356060b3",
+  "baselineSamples": [
+    {
+      "group": "单候选",
+      "round": 1,
+      "elapsedMilliseconds": 301.975417,
+      "network": "Wi-Fi",
+      "error": null,
+      "candidateCount": 1,
+      "returnedCount": 1,
+      "totalDistanceMeters": [
+        849
+      ]
+    },
+    {
+      "group": "单候选",
+      "round": 2,
+      "elapsedMilliseconds": 95.497584,
+      "network": "Wi-Fi",
+      "error": null,
+      "candidateCount": 1,
+      "returnedCount": 1,
+      "totalDistanceMeters": [
+        849
+      ]
+    },
+    {
+      "group": "单候选",
+      "round": 3,
+      "elapsedMilliseconds": 71.439291,
+      "network": "Wi-Fi",
+      "error": null,
+      "candidateCount": 1,
+      "returnedCount": 1,
+      "totalDistanceMeters": [
+        849
+      ]
+    },
+    {
+      "group": "多候选",
+      "round": 1,
+      "elapsedMilliseconds": 217.167875,
+      "network": "Wi-Fi",
+      "error": null,
+      "candidateCount": 3,
+      "returnedCount": 3,
+      "totalDistanceMeters": [
+        849,
+        1407,
+        2341
+      ]
+    },
+    {
+      "group": "多候选",
+      "round": 2,
+      "elapsedMilliseconds": 210.048708,
+      "network": "Wi-Fi",
+      "error": null,
+      "candidateCount": 3,
+      "returnedCount": 3,
+      "totalDistanceMeters": [
+        849,
+        1407,
+        2341
+      ]
+    },
+    {
+      "group": "多候选",
+      "round": 3,
+      "elapsedMilliseconds": 302.48275,
+      "network": "Wi-Fi",
+      "error": null,
+      "candidateCount": 3,
+      "returnedCount": 3,
+      "totalDistanceMeters": [
+        849,
+        1407,
+        2341
+      ]
+    }
+  ],
+  "baselineMediansMilliseconds": {
+    "单候选": 95.497584,
+    "多候选": 217.167875
+  },
+  "httpsHealthCheck": {
+    "status": 200,
+    "milliseconds": 471.96525,
+    "countsAsRouteLatency": false
+  },
+  "nativeTests": {
+    "passed": 15,
+    "failed": 0,
+    "onlineMapKit": false,
+    "simulatorOrDDI": false
+  },
+  "formalIOSGenericBuild": "passed, no installation",
+  "timingBoundary": "MapKit helper only; excludes USB, GPS, scenario generation, HTTP health, file save and intervals",
+  "limitations": [
+    "only this Wi-Fi and synthetic scenario",
+    "first in run is not guaranteed cold cache",
+    "no nearby-real-AED verification",
+    "no production event/context GET-submit PUT end-to-end timing"
+  ],
+  "rawPreciseLocationCopiedToProject": false,
+  "abScenarioMatchesBaselineFile": true,
+  "abDistancesIdenticalAllRounds": true,
+  "abOrder": [
+    "baseline",
+    "optimized",
+    "optimized",
+    "baseline"
+  ],
+  "abSamples": [
+    {
+      "round": 1,
+      "implementation": "baseline",
+      "elapsedMilliseconds": 346.396583,
+      "networkAtStart": "检测中",
+      "networkAtEnd": "Wi-Fi",
+      "error": null,
+      "candidateCount": 3,
+      "returnedCount": 3,
+      "totalDistanceMeters": [
+        849,
+        1407,
+        2341
+      ]
+    },
+    {
+      "round": 2,
+      "implementation": "optimized",
+      "elapsedMilliseconds": 166.665583,
+      "networkAtStart": "Wi-Fi",
+      "networkAtEnd": "Wi-Fi",
+      "error": null,
+      "candidateCount": 3,
+      "returnedCount": 3,
+      "totalDistanceMeters": [
+        849,
+        1407,
+        2341
+      ]
+    },
+    {
+      "round": 3,
+      "implementation": "optimized",
+      "elapsedMilliseconds": 178.689458,
+      "networkAtStart": "Wi-Fi",
+      "networkAtEnd": "Wi-Fi",
+      "error": null,
+      "candidateCount": 3,
+      "returnedCount": 3,
+      "totalDistanceMeters": [
+        849,
+        1407,
+        2341
+      ]
+    },
+    {
+      "round": 4,
+      "implementation": "baseline",
+      "elapsedMilliseconds": 164.520041,
+      "networkAtStart": "Wi-Fi",
+      "networkAtEnd": "Wi-Fi",
+      "error": null,
+      "candidateCount": 3,
+      "returnedCount": 3,
+      "totalDistanceMeters": [
+        849,
+        1407,
+        2341
+      ]
+    }
+  ],
+  "abMediansMilliseconds": {
+    "baseline": 255.458312,
+    "optimized": 172.6775205
+  },
+  "abConclusion": "All under 0.35 seconds in this repeated-query scenario. Optimization removes scheduler idle slots; these few cached/noisy samples cannot establish a stable percentage improvement.",
+  "abNetworkCaveat": "First baseline started before path monitor initial callback (label detecting), ended Wi-Fi. Other samples Wi-Fi throughout.",
+  "phoneABBuild": "5",
+  "formalAppReinstalled": false
+}

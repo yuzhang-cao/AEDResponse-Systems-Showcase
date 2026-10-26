@@ -1,0 +1,31 @@
+✔ Memory: position operation rolls back after staging devices (21.758709ms)
+✔ Memory: position operation rolls back after staging positionUpdateReceiptsById (1.278125ms)
+✔ Memory: position operation rolls back after staging events (2.222792ms)
+✔ Memory: position operation rolls back after staging deliveries (1.874792ms)
+✔ Memory: position operation rolls back after staging timelineByEventId (1.434625ms)
+✔ Memory: position operation rolls back after staging notificationOutboxById (4.456583ms)
+✔ Memory: successful recruiting position write uses one business entity transaction before real outbox work (8.545375ms)
+✔ SQLite: position operation rolls back after staging devices (20.008666ms)
+✔ SQLite: position operation rolls back after staging positionUpdateReceiptsById (5.491083ms)
+✔ SQLite: position operation rolls back after staging events (4.409ms)
+✔ SQLite: position operation rolls back after staging deliveries (4.867834ms)
+✔ SQLite: position operation rolls back after staging timelineByEventId (4.174917ms)
+✔ SQLite: position operation rolls back after staging notificationOutboxById (6.056ms)
+✔ SQLite: successful recruiting position write uses one business entity transaction before real outbox work (8.8445ms)
+✔ Memory: business recruitment visits stay bounded while the real response tail remains separately measured (27.558083ms)
+ℹ {"unrelated":[0,250],"business":{"devices":14,"deliveries":16,"assignments":4,"aedReceipts":1},"wholeOperation":[{"devices":14,"deliveries":17,"assignments":5,"aedReceipts":1},{"devices":14,"deliveries":17,"assignments":5,"aedReceipts":1}]}
+✔ SQLite: business recruitment visits stay bounded while the real response tail remains separately measured (51.474375ms)
+ℹ {"unrelated":[0,250],"business":{"devices":14,"deliveries":16,"assignments":4,"aedReceipts":1},"wholeOperation":[{"devices":14,"deliveries":17,"assignments":5,"aedReceipts":1},{"devices":14,"deliveries":17,"assignments":5,"aedReceipts":1}]}
+✔ position capability fallback, indexed recruitment and tick have distinct per-operation metrics (4.526833ms)
+✔ rollback guard rejects a store that commits the staged prefix before reporting failure (5.1255ms)
+✔ structural guard rejects a geographic candidate query that includes unrelated history (9.80475ms)
+✔ Memory: a position write does not enumerate device keys once the indexes answer (79.631875ms)
+✔ SQLite: a position write does not enumerate device keys once the indexes answer (150.335959ms)
+ℹ tests 21
+ℹ suites 0
+ℹ pass 21
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 815.298083

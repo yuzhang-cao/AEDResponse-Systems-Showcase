@@ -1,0 +1,3609 @@
+openapi: 3.1.0
+info:
+  title: AEDResponse API
+  version: 2.1.0
+  description: >-
+    Authenticated device-session API for Apple Watch Fall context, iPhone
+    current P/R position reporting, event participant position batches, and volunteer coordination. Patient iPhone P is
+    the normal and preferred ongoing source; Watch patientPosition is only an optional
+    trigger-time snapshot. A Watch may submit fallback P only when it declares its
+    network available and iPhone reachability is not simultaneously ACTIVATED and
+    reachable; the server keeps the sample as a candidate until 10 seconds without
+    a valid iPhone P, or promotes it immediately after that silence has elapsed.
+    It provides no manual SOS, app-owned false-alarm countdown, automatic telephone
+    calling, medical diagnosis, or real
+    emergency-dispatch integration. callFirstObservedAt is the app observation time,
+    not an authoritative system dial-start timestamp. Production clients use a public
+    HTTPS/WSS ingress reachable over cellular data; private-LAN HTTP is development only.
+servers:
+  - url: https://redacted-host.invalid/api/v2
+    description: Production WAN endpoint reachable from cellular data and external Wi-Fi.
+    variables:
+      apiHost:
+        default: api.example.invalid
+        description: Deployment-configured public DNS name with a publicly trusted TLS certificate.
+  - url: http://127.0.0.1:{port}/api/v2
+    description: Loopback development endpoint only; never a production or WAN acceptance target.
+    variables:
+      port:
+        default: '8787'
+security:
+  - bearerAuth: []
+
+paths:
+  /auth/apple/challenges:
+    post:
+      operationId: requestAppleLoginChallenge
+      security: []
+      summary: Prepare a five-minute single-use native Apple sign-in request
+      description: >-
+        Obtain this challenge BEFORE presenting the native Apple sign-in sheet.
+        Send SHA256(nonce) to Apple; submit the raw nonce and challengeId with the
+        returned identity token. Restarted servers invalidate pending challenges.
+      requestBody:
+        content:
+          application/json:
+            schema: { type: object, additionalProperties: false }
+      responses:
+        '201':
+          description: One-time Apple authentication challenge
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/AppleLoginChallenge' }
+        '429': { $ref: '#/components/responses/Problem' }
+        '503': { $ref: '#/components/responses/Problem' }
+
+  /auth/apple:
+    post:
+      operationId: signInWithApple
+      security: []
+      summary: Verify an Apple identity token and create an account session
+      description: >-
+        The configured native verifier checks the RS256 signature against Apple's
+        fixed JWKS, issuer, explicit client-ID audience, expiry, issued-at and the
+        previously issued nonce challenge, consuming the challenge exactly once.
+        It never persists the supplied token, nonce, name or email. Missing provider
+        or unavailable verification keys return 503, invalid credentials return 401.
+        Authorization-code exchange and Apple revocation synchronization require
+        separate approved client-secret configuration; this native verification
+        endpoint does not claim to perform them.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema: { $ref: '#/components/schemas/AppleIdentityTokenRequest' }
+      responses:
+        '200':
+          description: Authenticated account session created
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/AuthSessionResponse' }
+        '400': { $ref: '#/components/responses/Problem' }
+        '401': { $ref: '#/components/responses/Problem' }
+        '503': { $ref: '#/components/responses/Problem' }
+
+  /auth/apple/notifications:
+    post:
+      operationId: handleAppleServerNotification
+      summary: Receive Apple's signed server-to-server notification
+      description: >-
+        Public endpoint. The body is a compact JWS verified against Apple's embedded
+        root (chain, validity windows, ES256 signature) with iss=apple and the
+        configured audience. A consent-revoked or account-deleted event revokes every
+        session of the accounts carrying that Apple subject; the response never
+        reveals whether the subject is known.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [payload]
+              additionalProperties: false
+              properties:
+                payload: { type: string, minLength: 1, maxLength: 65536 }
+      responses:
+        '200':
+          description: The notification verified and was applied
+          content:
+            application/json:
+              schema:
+                type: object
+                required: [accepted]
+                additionalProperties: false
+                properties:
+                  accepted: { type: boolean, enum: [true] }
+        '400': { $ref: '#/components/responses/Problem' }
+
+  /auth/session/refresh:
+    post:
+      operationId: refreshAccountSession
+      security: []
+      summary: Rotate an account refresh credential
+      description: >-
+        Refresh credentials are opaque, stored only as hashes, and single-use. Reuse
+        revokes the complete refresh family. This endpoint accepts account refresh
+        credentials only; Watch credentials use the dedicated Watch endpoint.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema: { $ref: '#/components/schemas/RefreshSessionRequest' }
+      responses:
+        '200':
+          description: Rotated authenticated account session
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/AuthSessionResponse' }
+        '401': { $ref: '#/components/responses/Problem' }
+
+  /auth/logout:
+    post:
+      operationId: logout
+      summary: Revoke the presented account or device session family
+      description: >-
+        Account logout revokes the current account refresh family. iPhone device logout
+        also revokes unconsumed Watch-link tickets and same-user/same-pair Watch sessions;
+        Watch logout revokes its own access and refresh family. Event facts remain retained.
+        Replaying the same bearer returns 204 only while an explicit committed logout
+        completion marker remains in its session record. This does not reauthenticate
+        the bearer. Expiry, refresh rotation, unknown tokens, or a deleted record do
+        not by themselves prove logout completion and still return 401.
+      responses:
+        '204': { description: Session revoked }
+        '401': { $ref: '#/components/responses/Problem' }
+
+  /auth/logout/recover:
+    post:
+      operationId: recoverPriorLogout
+      summary: Confirm prior logout after signing into the original account again
+      description: >-
+        Requires a current account bearer. Existing prior credentials must belong
+        to that account. Device recovery also requires ownership of the original
+        iPhone device. Only sessions and Watch bindings from before requestedAt
+        are revoked; a later login or newly established Watch binding is preserved.
+        An absent account credential can be confirmed inactive without revoking
+        the current account family. This endpoint never issues session credentials.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              additionalProperties: false
+              required: [priorToken, isAccount, requestedAt]
+              properties:
+                priorToken: { type: string, minLength: 1, maxLength: 512 }
+                isAccount: { type: boolean }
+                requestedAt: { type: string, format: date-time }
+                deviceInstanceId: { type: string, format: uuid }
+      responses:
+        '204': { description: Prior logout confirmed without invalidating the fresh login }
+        '401': { $ref: '#/components/responses/Problem' }
+        '403': { $ref: '#/components/responses/Problem' }
+
+  /auth/account:
+    delete:
+      operationId: deleteAccount
+      summary: Close the signed-in account and stop further collection
+      description: >-
+        Requires an ACCOUNT bearer. Sets the user's lifecycleState to CLOSED and
+        closedAt to the server time, retains existing account and event information,
+        marks bound devices SIGNED_OUT and revokes all sessions and Watch tickets.
+        A closed account cannot authenticate or silently reactivate on Apple login.
+        Replays return the original closure record. The legacy operation name and
+        erasureStartedAt field are retained for compatibility; that timestamp now
+        identifies closure, not physical erasure. Mobile clients block account
+        operations while participating in an active rescue. Logout is local-first
+        with durable server revocation retry.
+      responses:
+        '202':
+          description: >-
+            Closure recorded; existing information is retained and all credentials are invalid.
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties: false
+                required: [requestId, status, requestedAt, erasureStartedAt]
+                properties:
+                  requestId: { type: string, minLength: 1, maxLength: 128 }
+                  status: { type: string, enum: [REQUESTED, CLOSED] }
+                  requestedAt: { type: string, format: date-time }
+                  erasureStartedAt: { type: string, format: date-time }
+        '401': { $ref: '#/components/responses/Problem' }
+        '403': { $ref: '#/components/responses/Problem' }
+
+  /me/companion-link-tickets:
+    post:
+      operationId: createCompanionLinkTicket
+      summary: Issue a one-use Watch companion-link ticket
+      description: >-
+        Requires an authenticated iPhone device session bound to the account and four
+        current agreements. The ticket is opaque, short-lived, single-use, and persisted
+        only as a hash.
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema: { $ref: '#/components/schemas/CompanionLinkTicketRequest' }
+      responses:
+        '201':
+          description: Opaque companion-link ticket issued
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/CompanionLinkTicketResponse' }
+        '400': { $ref: '#/components/responses/Problem' }
+        '401': { $ref: '#/components/responses/Problem' }
+        '403': { $ref: '#/components/responses/Problem' }
+        '409': { $ref: '#/components/responses/Problem' }
+
+  /me/watch-relay/bindings:
+    post:
+      operationId: bindCompanionRelay
+      summary: Bind the OS-paired Watch to an authenticated iPhone relay
+      description: >-
+        See watch-relay.md. Does not issue a Watch bearer or assert App Attest success.
+        Requires current iPhone device identity and agreements; preserves the same
+        binding across reconnects and refuses revoked or differently owned identities.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              additionalProperties: false
+              required: [deviceInstanceId, companionPairId]
+              properties:
+                deviceInstanceId: { type: string, format: uuid }
+                companionPairId: { type: string, format: uuid }
+      responses:
+        '200':
+          description: Phone-owned relay binding, not independent Watch credentials
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/CompanionRelayBinding' }
+        '400': { $ref: '#/components/responses/Problem' }
+        '401': { $ref: '#/components/responses/Problem' }
+        '403': { $ref: '#/components/responses/Problem' }
+
+  /me/watch-relay/{watchId}/{bindingId}/emergency-observations/{eventId}:
+    parameters:
+      - { name: watchId, in: path, required: true, schema: { type: string, format: uuid } }
+      - { name: bindingId, in: path, required: true, schema: { type: string, format: uuid } }
+      - $ref: '#/components/parameters/EventId'
+    put:
+      operationId: relayWatchEmergencyObservation
+      summary: Relay the bound Watch's original fact using the iPhone device bearer
+      description: >-
+        Rechecks phone session and binding in the event transaction. Uses the same
+        source, event ID and immutable payload fingerprint as direct Watch reporting.
+        Phone receipt is not final acknowledgement; see watch-relay.md.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema: { $ref: '#/components/schemas/WatchEmergencyObservation' }
+      responses:
+        '200':
+          description: Identical observation replay
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/EmergencyEvent' }
+        '201':
+          description: Event created from the original Watch observation
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/EmergencyEvent' }
+        '400': { $ref: '#/components/responses/Problem' }
+        '401': { $ref: '#/components/responses/Problem' }
+        '403': { $ref: '#/components/responses/Problem' }
+        '409': { $ref: '#/components/responses/Problem' }
+
+  /me/watch-relay/{watchId}/{bindingId}/simulation:
+    parameters:
+      - { name: watchId, in: path, required: true, schema: { type: string, format: uuid } }
+      - { name: bindingId, in: path, required: true, schema: { type: string, format: uuid } }
+    get:
+      operationId: getWatchSimulationContext
+      summary: Get an operator-armed, time-limited controlled Watch test grant
+      description: Disabled by default. Requires the current phone bearer, relay binding and exact enrolled cohort. Never an App Attest bypass.
+      responses:
+        '200':
+          description: Approved test run; no credentials are returned to Watch
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties: false
+                required: [runId, startsAt, expiresAt]
+                properties:
+                  runId: { type: string, format: uuid }
+                  startsAt: { type: string, format: date-time }
+                  expiresAt: { type: string, format: date-time }
+        '401': { $ref: '#/components/responses/Problem' }
+        '403': { $ref: '#/components/responses/Problem' }
+
+  /me/watch-relay/{watchId}/{bindingId}/simulation/emergency-observations/{eventId}:
+    parameters:
+      - { name: watchId, in: path, required: true, schema: { type: string, format: uuid } }
+      - { name: bindingId, in: path, required: true, schema: { type: string, format: uuid } }
+      - $ref: '#/components/parameters/EventId'
+    put:
+      operationId: relayControlledWatchSimulation
+      summary: Relay synthetic Watch input into the isolated normal business workflow
+      description: Original Watch bytes use the same observation schema. Server stores them only inside a SIMULATED_TEST observation with an immutable enrolled cohort. Run ID must equal event ID. No direct Watch fallback.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema: { $ref: '#/components/schemas/WatchEmergencyObservation' }
+      responses:
+        '200':
+          description: Idempotent replay; simulation marker remains required
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/EmergencyEvent' }
+        '201':
+          description: Isolated simulated event created from Watch input
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/EmergencyEvent' }
+        '400': { $ref: '#/components/responses/Problem' }
+        '401': { $ref: '#/components/responses/Problem' }
+        '403': { $ref: '#/components/responses/Problem' }
+        '409': { $ref: '#/components/responses/Problem' }
+
+  /me/watch-relay/{watchId}/{bindingId}/events/{eventId}/state:
+    parameters:
+      - { name: watchId, in: path, required: true, schema: { type: string, format: uuid } }
+      - { name: bindingId, in: path, required: true, schema: { type: string, format: uuid } }
+      - $ref: '#/components/parameters/EventId'
+    get:
+      operationId: getRelayedWatchEventState
+      summary: Relay the triggering Watch's restricted event-state projection
+      responses:
+        '200':
+          description: Same restricted projection as the direct Watch state endpoint
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/WatchEventState' }
+        '401': { $ref: '#/components/responses/Problem' }
+        '403': { $ref: '#/components/responses/Problem' }
+        '404': { $ref: '#/components/responses/Problem' }
+
+  /watch/session/redeem:
+    post:
+      operationId: redeemCompanionLinkTicket
+      security: []
+      summary: Redeem a Watch companion-link ticket with App Attest
+      description: >-
+        The Watch presents its deviceInstanceId, pair, opaque ticket, App Attest key ID,
+        and base64 attestationObject. Verification is delegated to an injected verifier;
+        missing production configuration fails closed. A successful redemption binds the
+        Watch to the authenticated user and issues a Watch access/refresh session.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema: { $ref: '#/components/schemas/WatchCompanionLinkRequest' }
+      responses:
+        '201':
+          description: Authenticated Watch device session created
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/WatchSessionResponse' }
+        '400': { $ref: '#/components/responses/Problem' }
+        '401': { $ref: '#/components/responses/Problem' }
+        '403': { $ref: '#/components/responses/Problem' }
+        '503': { $ref: '#/components/responses/Problem' }
+
+  /watch/session/refresh:
+    post:
+      operationId: refreshWatchSession
+      security: []
+      summary: Rotate a Watch refresh credential
+      description: >-
+        Watch refresh credentials are opaque, stored only as hashes, and single-use.
+        Reuse revokes the complete Watch refresh family and a revoked iPhone binding
+        prevents further renewal.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema: { $ref: '#/components/schemas/RefreshSessionRequest' }
+      responses:
+        '200':
+          description: Rotated authenticated Watch device session
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/WatchSessionResponse' }
+        '401': { $ref: '#/components/responses/Problem' }
+
+  /session/bootstrap:
+    post:
+      operationId: bootstrapSession
+      summary: Create or rotate an authenticated scoped device session
+      description: >-
+        The request is authorized by an authenticated account session. iPhone requests
+        must carry separate PATIENT, VOLUNTEER_RESPONDER, PRIVACY_POLICY, and
+        SENSITIVE_PERSONAL_INFORMATION v2 acceptances. Watch bootstrap is not a
+        public path; a Watch must redeem a companionLinkTicket with attestation.
+        Tokens are short-lived, revocable, and rotatable.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema: { $ref: '#/components/schemas/SessionBootstrapRequest' }
+      responses:
+        '201':
+          description: Authenticated device session created
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/SessionBootstrapResponse' }
+        '400': { $ref: '#/components/responses/Problem' }
+        '429': { $ref: '#/components/responses/Problem' }
+
+  /watch/emergency-observations/{eventId}:
+    put:
+      operationId: reportWatchEmergencyObservation
+      summary: Idempotently report Fall context plus the App help response
+      description: >-
+        Watch-only endpoint. The App submits the Fall context and the one App help
+        response. NEEDS_HELP creates the event immediately. NO_RESPONSE requires
+        callFirstObservedAt with FIRST_OBSERVED_OUTGOING_STATE within 120 seconds of
+        fallDetectedAt; the server records only the App observation and does not infer
+        a number, connection, duration, or SMS. DECLINED is not a valid request.
+        Optional patientPosition is a trigger snapshot, not an ongoing Watch location
+        channel. Replaying the same eventId and payload is idempotent; conflicting reuse
+        is rejected and a new event is accepted only through 35 minutes after the Fall.
+        If this stable user was participating as a responder in another active event, the
+        same transaction ends that old interval with PATIENT_PRIORITY and creates this
+        patient event with createdAt exactly equal to the old interval's exclusive endedAt.
+        An iOS client that can no longer read the old event uses the new event createdAt as
+        the authoritative transition boundary.
+      parameters:
+        - $ref: '#/components/parameters/EventId'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema: { $ref: '#/components/schemas/WatchEmergencyObservation' }
+      responses:
+        '200':
+          description: Existing identical observation returned
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/EmergencyEvent' }
+        '201':
+          description: ACTIVE/RECRUITING event created
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/EmergencyEvent' }
+        '400': { $ref: '#/components/responses/Problem' }
+        '409': { $ref: '#/components/responses/Problem' }
+
+  /watch/events/{eventId}/state:
+    get:
+      operationId: getWatchEventState
+      summary: Recover only the triggering Watch's authoritative event state and time window
+      description: >-
+        Requires watch:report and the current Watch/device/account/pair binding for
+        the original triggering event. Known patient user identity must still match.
+        No iPhone projection, location, coordination or internal audit fields are returned.
+        The GET does not drive timers; startup and periodic backend execution remain independent.
+      parameters:
+        - $ref: '#/components/parameters/EventId'
+      responses:
+        '200':
+          description: Current committed state; resolvedAt is the exclusive historical position window end
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/WatchEventState' }
+        '401': { $ref: '#/components/responses/Problem' }
+        '403': { $ref: '#/components/responses/Problem' }
+        '404': { $ref: '#/components/responses/Problem' }
+
+  /watch/events/{eventId}/fallback-position/{positionUpdateId}:
+    put:
+      operationId: updateWatchFallbackPatientPosition
+      summary: Submit one authenticated Watch fallback P sample
+      description: >-
+        Watch-only. The request must declare an available Watch network and must not
+        claim that iPhone is simultaneously ACTIVATED and reachable. The transaction
+        rechecks the triggering Watch, bound user and pair, active event, and the
+        latest valid iPhone P. A new sample is initially a candidate; it becomes
+        effective only after 10 seconds without valid iPhone P, while a valid iPhone P
+        immediately takes precedence. Equal or older samples are ignored as stale.
+        The endpoint records cadence evidence; it is not a normal upload rate limiter.
+        After a terminal commit, a first upload whose original observedAt is within
+        [createdAt,resolvedAt) is saved as historical evidence with applied=false and
+        ignoredAsStale=true, without changing event state, current P, tasks or counts.
+        The stored connectivity/network facts are unchanged. An out-of-window first
+        upload is 409; a previously acknowledged identical payload remains replayable.
+        The complete received fallback payload is retained with its idempotency receipt.
+      parameters:
+        - $ref: '#/components/parameters/EventId'
+        - $ref: '#/components/parameters/PositionUpdateId'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema: { $ref: '#/components/schemas/WatchFallbackPositionUpdate' }
+      responses:
+        '200':
+          description: Applied or idempotently replayed fallback position
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/PositionUpdateResult' }
+        '403': { $ref: '#/components/responses/Problem' }
+        '409': { $ref: '#/components/responses/Problem' }
+
+  /events:
+    get:
+      operationId: listEvents
+      summary: List events visible to the current authenticated device session
+      responses:
+        '200':
+          description: Current REST state truth
+          content:
+            application/json:
+              schema:
+                type: object
+                required: [events]
+                properties:
+                  events:
+                    type: array
+                    items: { $ref: '#/components/schemas/EmergencyEvent' }
+
+  /events/found-patient:
+    post:
+      operationId: reportFoundPatient
+      summary: Report a patient found by a person, starting a case
+      description: >-
+        An additional way to start an event, alongside the Watch fall observation.
+        The caller's own iPhone becomes the patient-side position source, and the
+        stored observation carries only a position and a time: it has no fall fields,
+        because nobody measured a fall. Idempotent by eventId for the reporting
+        device. Everything after creation is the existing recruitment, assignment,
+        notification and retention path.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [eventId, observedAt, patientPosition]
+              additionalProperties: false
+              properties:
+                eventId: { type: string, format: uuid }
+                observedAt: { type: string, format: date-time }
+                patientPosition: { $ref: '#/components/schemas/PatientPosition' }
+      responses:
+        '201':
+          description: The case, created or replayed
+          content:
+            application/json:
+              schema:
+                type: object
+                required: [created, event]
+                additionalProperties: false
+                properties:
+                  created: { type: boolean }
+                  event: { $ref: '#/components/schemas/EmergencyEvent' }
+        '400': { $ref: '#/components/responses/Problem' }
+        '403': { $ref: '#/components/responses/Problem' }
+        '409': { $ref: '#/components/responses/Problem' }
+
+  /events/{eventId}:
+    get:
+      operationId: getEvent
+      summary: Get current event state and current viewer relationship
+      parameters:
+        - $ref: '#/components/parameters/EventId'
+      responses:
+        '200':
+          description: Event state truth
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/EmergencyEvent' }
+        '404': { $ref: '#/components/responses/Problem' }
+
+  /events/{eventId}/confirm-false-alarm:
+    post:
+      operationId: confirmFalseAlarm
+      summary: Patient explicitly confirms a false alarm after call observation
+      description: >-
+        Cancels volunteer coordination and broadcasts the cancellation. It does not
+        and cannot cancel an Apple system telephone call.
+      parameters:
+        - $ref: '#/components/parameters/EventId'
+      responses:
+        '200':
+          description: Event moved to CANCELLED_CONFIRMED_FALSE_ALARM
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/EmergencyEvent' }
+        '403': { $ref: '#/components/responses/Problem' }
+        '409': { $ref: '#/components/responses/Problem' }
+
+  /events/{eventId}/resolve:
+    post:
+      operationId: resolveEvent
+      summary: Explicitly end a real event
+      description: >-
+        Allowed only for the patient, an on-scene responder, or an authorized backend
+        operator. Passive Watch/call/recovery signals never call this endpoint. resolvedAt is
+        a client claim. A slow client clock does not block an authorized emergency end: the
+        authoritative effective time is max(min(resolvedAt, server receipt time), the latest
+        causal event/participant/assignment/delivery/evidence time closed by the action).
+      parameters:
+        - $ref: '#/components/parameters/EventId'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              additionalProperties: false
+              required: [resolutionId, actor, resolvedAt]
+              properties:
+                resolutionId: { type: string, format: uuid }
+                actor:
+                  type: string
+                  enum: [PATIENT, ON_SCENE_RESPONDER, AUTHORIZED_OPERATOR]
+                reason:
+                  $ref: '#/components/schemas/EventEndReason'
+                resolvedAt:
+                  type: string
+                  format: date-time
+                  description: >-
+                    Client claim; the server clamps it between the latest causal fact and receipt time.
+                note: { type: string, maxLength: 300 }
+      responses:
+        '200':
+          description: Event moved to RESOLVED
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/EmergencyEvent' }
+        '403': { $ref: '#/components/responses/Problem' }
+        '409': { $ref: '#/components/responses/Problem' }
+
+  /events/{eventId}/team:
+    get:
+      operationId: getCoordinationTeam
+      summary: Anonymous coordination team for one event
+      description: >-
+        Visible only to a CURRENT participant of an ACTIVE event: an unaccepted
+        offer, an exited responder and the patient are all refused. Members appear
+        as a per-event alias with role, status and a coarsened position; no names,
+        device ids, exact coordinates or personal ETAs are exposed.
+      parameters:
+        - { name: eventId, in: path, required: true, schema: { type: string } }
+      responses:
+        '200':
+          description: The team view for this participant
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/CoordinationTeamView' }
+        '403': { $ref: '#/components/responses/Problem' }
+        '404': { $ref: '#/components/responses/Problem' }
+
+  /events/{eventId}/team-signals:
+    post:
+      operationId: sendTeamSignal
+      summary: Send a preset in-app contact signal to the current team
+      description: >-
+        Current accepted participants only. The contact form is a closed vocabulary
+        of preset signals: there is no free text, no media and no coordinate, so
+        nothing that identifies a person can travel through this channel.
+        Idempotent by signalId; rate limited per sender and capped per event.
+      parameters:
+        - { name: eventId, in: path, required: true, schema: { type: string, format: uuid } }
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [signalId, kind]
+              additionalProperties: false
+              properties:
+                signalId: { type: string, format: uuid }
+                kind:
+                  type: string
+                  enum: [ACCEPTED_TASK, ON_MY_WAY, ARRIVED_AT_PATIENT, AED_ACQUIRED, NEED_HELP_HERE, CANNOT_CONTINUE]
+      responses:
+        '201':
+          description: The signal, or the original one when the request was a retry
+          content:
+            application/json:
+              schema:
+                type: object
+                required: [signalId, kind, createdAt, expiresAt, duplicate]
+                additionalProperties: false
+                properties:
+                  signalId: { type: string, format: uuid }
+                  kind: { type: string }
+                  createdAt: { type: string, format: date-time }
+                  expiresAt: { type: string, format: date-time }
+                  duplicate: { type: boolean }
+        '400': { $ref: '#/components/responses/Problem' }
+        '403': { $ref: '#/components/responses/Problem' }
+        '429': { $ref: '#/components/responses/Problem' }
+    get:
+      operationId: readTeamSignals
+      summary: Read the current team's recent preset signals
+      description: >-
+        Current accepted participants only, attributed by anonymous alias. Exit and
+        event termination revoke the channel immediately, and a signal expires with
+        its own TTL rather than becoming a message history.
+      parameters:
+        - { name: eventId, in: path, required: true, schema: { type: string, format: uuid } }
+      responses:
+        '200':
+          description: The signals visible to this member
+          content:
+            application/json:
+              schema:
+                type: object
+                required: [eventId, signals]
+                additionalProperties: false
+                properties:
+                  eventId: { type: string, format: uuid }
+                  signals:
+                    type: array
+                    items: { $ref: '#/components/schemas/TeamSignalView' }
+        '403': { $ref: '#/components/responses/Problem' }
+        '404': { $ref: '#/components/responses/Problem' }
+
+  /ops/events/{eventId}/status:
+    get:
+      operationId: opsEventStatus
+      summary: One event's anonymous operational status
+      description: >-
+        Operator-only. Lets an operator answer "what happened / is a hold in force"
+        without reading personal data: state, retention tier, hold basis and counts,
+        with participant identities, positions, AED ids and timeline text left out.
+      parameters:
+        - { name: eventId, in: path, required: true, schema: { type: string, format: uuid } }
+      responses:
+        '200':
+          description: The anonymous operational status
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/OpsEventStatus' }
+        '403': { $ref: '#/components/responses/Problem' }
+        '404': { $ref: '#/components/responses/Problem' }
+
+  /ops/events/{eventId}/legal-hold:
+    post:
+      operationId: placeEventLegalHold
+      summary: Freeze one event's retention clock under a lawful hold
+      description: >-
+        Operator-only and per event. The basis and reason are required so the hold is
+        auditable after the fact, and a held event is neither sealed nor purged until
+        the hold is released.
+      parameters:
+        - { name: eventId, in: path, required: true, schema: { type: string, format: uuid } }
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [authority, reason]
+              additionalProperties: false
+              properties:
+                authority: { type: string, minLength: 1, maxLength: 200 }
+                reason: { type: string, minLength: 4, maxLength: 500 }
+      responses:
+        '201':
+          description: The hold is recorded
+          content:
+            application/json:
+              schema:
+                type: object
+                required: [eventId, placedAt]
+                additionalProperties: false
+                properties:
+                  eventId: { type: string, format: uuid }
+                  placedAt: { type: string, format: date-time }
+        '403': { $ref: '#/components/responses/Problem' }
+        '409': { $ref: '#/components/responses/Problem' }
+
+  /ops/events/{eventId}/legal-hold/release:
+    post:
+      operationId: releaseEventLegalHold
+      summary: Release a legal hold; the retention clock keeps running
+      parameters:
+        - { name: eventId, in: path, required: true, schema: { type: string, format: uuid } }
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [authority, reason]
+              additionalProperties: false
+              properties:
+                authority: { type: string, minLength: 1, maxLength: 200 }
+                reason: { type: string, minLength: 4, maxLength: 500 }
+      responses:
+        '200':
+          description: The hold is released
+          content:
+            application/json:
+              schema:
+                type: object
+                required: [eventId, releasedAt]
+                additionalProperties: false
+                properties:
+                  eventId: { type: string, format: uuid }
+                  releasedAt: { type: string, format: date-time }
+        '403': { $ref: '#/components/responses/Problem' }
+        '409': { $ref: '#/components/responses/Problem' }
+
+  /ops/break-glass:
+    post:
+      operationId: issueBreakGlassGrant
+      summary: Issue a single-event, read-only break-glass grant
+      description: >-
+        Operator-only. The grant is scoped to ONE event, is read-only by
+        construction, requires a stated reason and expires within 30 minutes.
+        A business operator credential alone never grants access to precise data.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema: { $ref: '#/components/schemas/BreakGlassGrantRequest' }
+      responses:
+        '201':
+          description: Grant issued
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/BreakGlassGrant' }
+        '400': { $ref: '#/components/responses/Problem' }
+        '403': { $ref: '#/components/responses/Problem' }
+        '404': { $ref: '#/components/responses/Problem' }
+
+  /ops/events/{eventId}/precise-patient-position:
+    get:
+      operationId: readEventPrecisePosition
+      summary: Read one event's precise patient position under a grant
+      description: >-
+        Requires the operator credential AND an unexpired break-glass grant for
+        this event, plus a reason. Allowed and denied reads are both written to
+        the access audit; the audit entry carries identifiers and the reason, never
+        the coordinates themselves.
+      parameters:
+        - { name: eventId, in: path, required: true, schema: { type: string } }
+        - { name: reason, in: query, required: true, schema: { type: string } }
+        - { name: grantId, in: query, required: false, schema: { type: string } }
+      responses:
+        '200':
+          description: The precise sample this grant authorises
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/PrecisePatientPosition' }
+        '403': { $ref: '#/components/responses/Problem' }
+        '404': { $ref: '#/components/responses/Problem' }
+
+  /ops/status:
+    get:
+      operationId: operatorStatus
+      summary: Operator status for the concerns liveness cannot see
+      description: >-
+        Counts, configured paths and a verdict per concern (outbox backlog, deferred
+        purges, withheld cold copies, media erasure, identity ledger, retention
+        sweeps, sealing, audit growth, security log). Operator-only, and it contains
+        no user ids, coordinates, tokens or message bodies.
+      responses:
+        '200':
+          description: The current status, worst verdict first
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/OperatorStatus' }
+        '403': { $ref: '#/components/responses/Problem' }
+
+  /ops/access-audit:
+    get:
+      operationId: readAccessAudit
+      summary: Read the access audit trail
+      description: Operator-only; reading the audit is itself audited.
+      parameters:
+        - { name: subjectId, in: query, required: false, schema: { type: string } }
+        - { name: limit, in: query, required: false, schema: { type: integer, minimum: 1, maximum: 500 } }
+      responses:
+        '200':
+          description: Audit entries, newest selection first
+          content:
+            application/json:
+              schema:
+                type: object
+                required: [entries]
+                additionalProperties: false
+                properties:
+                  entries:
+                    type: array
+                    items: { $ref: '#/components/schemas/AccessAuditEntry' }
+        '403': { $ref: '#/components/responses/Problem' }
+
+  /me/companion-link:
+    delete:
+      operationId: unbindCompanionWatch
+      summary: Disconnect the Watch paired with this iPhone
+      description: >-
+        The explicit control a replacement flow needs: it revokes the companion link,
+        every session of that Watch and any outstanding ticket, scoped to the
+        caller's own companion pair. Linking a Watch does not evict another one, so
+        disconnecting hardware is always an explicit act.
+      responses:
+        '200':
+          description: What the unbind revoked
+          content:
+            application/json:
+              schema:
+                type: object
+                required: [companionPairId, unbindId, revokedWatches, revokedSessions, revokedTickets]
+                additionalProperties: false
+                properties:
+                  companionPairId: { type: string, format: uuid }
+                  unbindId: { type: string, format: date-time }
+                  revokedWatches: { type: integer, minimum: 0 }
+                  revokedSessions: { type: integer, minimum: 0 }
+                  revokedTickets: { type: integer, minimum: 0 }
+        '403': { $ref: '#/components/responses/Problem' }
+
+  /me/self-access-requests:
+    post:
+      operationId: requestSelfAccess
+      summary: Open a self-service access request for the requester's own data
+      description: >-
+        The scope is computed on the server from participation records; the client
+        cannot name events. The response carries a single-use challenge nonce the
+        device must sign. No data is readable until an operator approves the
+        request and the resulting read-only grant is used.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [method]
+              additionalProperties: false
+              properties:
+                method: { type: string, enum: [BIOMETRIC, PASSCODE] }
+      responses:
+        '201':
+          description: The request and the payload the device must sign
+          content:
+            application/json:
+              schema:
+                type: object
+                required: [requestId, status, approvalDeadlineAt, challengeExpiresAt, payloadBase64, events]
+                additionalProperties: false
+                properties:
+                  requestId: { type: string, format: uuid }
+                  status: { type: string, enum: [PENDING_CHALLENGE] }
+                  approvalDeadlineAt: { type: string, format: date-time }
+                  challengeExpiresAt: { type: string, format: date-time }
+                  payloadBase64: { type: string }
+                  events:
+                    type: array
+                    items: { type: string, format: uuid }
+        '403': { $ref: '#/components/responses/Problem' }
+        '404': { $ref: '#/components/responses/Problem' }
+
+  /me/self-access-requests/{requestId}:
+    get:
+      operationId: readSelfAccessView
+      summary: Read the approved read-only view of the requester's own data
+      description: >-
+        Owner and device bound. Refused unless the grant is APPROVED and unexpired;
+        the projection contains the requester's own facts and redacts every other
+        participant. There is deliberately no export route.
+      parameters:
+        - { name: requestId, in: path, required: true, schema: { type: string, format: uuid } }
+      responses:
+        '200':
+          description: The requester's own read-only view
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/SelfAccessView' }
+        '403': { $ref: '#/components/responses/Problem' }
+        '404': { $ref: '#/components/responses/Problem' }
+
+  /me/self-access-requests/{requestId}/challenge:
+    post:
+      operationId: completeSelfAccessChallenge
+      summary: Answer the single-use signature challenge
+      description: >-
+        The signature must cover the exact payload issued for this request, and the
+        asserted local authentication method is inside the signed bytes.
+      parameters:
+        - { name: requestId, in: path, required: true, schema: { type: string, format: uuid } }
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [method, publicKeyPem, signatureBase64]
+              additionalProperties: false
+              properties:
+                method: { type: string, enum: [BIOMETRIC, PASSCODE] }
+                publicKeyPem: { type: string, maxLength: 4000 }
+                signatureBase64: { type: string, maxLength: 4000 }
+      responses:
+        '200':
+          description: The challenge verified and the request awaits an operator
+          content:
+            application/json:
+              schema:
+                type: object
+                required: [requestId, status, approvalDeadlineAt]
+                additionalProperties: false
+                properties:
+                  requestId: { type: string, format: uuid }
+                  status: { type: string, enum: [PENDING_APPROVAL] }
+                  approvalDeadlineAt: { type: string, format: date-time }
+        '401': { $ref: '#/components/responses/Problem' }
+        '403': { $ref: '#/components/responses/Problem' }
+        '404': { $ref: '#/components/responses/Problem' }
+
+  /me/self-access-requests/{requestId}/revocation:
+    post:
+      operationId: revokeSelfAccess
+      summary: Revoke a self-access request or grant
+      description: The owner, or an operator, may close a pending or approved request.
+      parameters:
+        - { name: requestId, in: path, required: true, schema: { type: string, format: uuid } }
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [reason]
+              additionalProperties: false
+              properties:
+                reason: { type: string, minLength: 4, maxLength: 500 }
+      responses:
+        '200':
+          description: The request is closed
+          content:
+            application/json:
+              schema:
+                type: object
+                required: [requestId, status]
+                additionalProperties: false
+                properties:
+                  requestId: { type: string, format: uuid }
+                  status: { type: string, enum: [REVOKED] }
+        '403': { $ref: '#/components/responses/Problem' }
+        '404': { $ref: '#/components/responses/Problem' }
+
+  /ops/self-access-requests:
+    get:
+      operationId: listSelfAccessRequests
+      summary: List self-access requests awaiting an operator decision
+      description: Operator-only queue, oldest first, bounded by limit.
+      parameters:
+        - { name: limit, in: query, required: false, schema: { type: integer, minimum: 1, maximum: 100 } }
+      responses:
+        '200':
+          description: Pending requests
+          content:
+            application/json:
+              schema:
+                type: object
+                required: [pending]
+                additionalProperties: false
+                properties:
+                  pending:
+                    type: array
+                    items: { $ref: '#/components/schemas/SelfAccessPendingRequest' }
+        '403': { $ref: '#/components/responses/Problem' }
+
+  /ops/self-access-requests/{requestId}/decision:
+    post:
+      operationId: decideSelfAccess
+      summary: Approve or reject a self-access request
+      description: >-
+        Operator-only. Approval requires a verified challenge, happens inside the
+        15-working-day promise, and issues a read-only grant capped at 24 hours.
+      parameters:
+        - { name: requestId, in: path, required: true, schema: { type: string, format: uuid } }
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [approve, reason]
+              additionalProperties: false
+              properties:
+                approve: { type: boolean }
+                reason: { type: string, minLength: 4, maxLength: 500 }
+      responses:
+        '200':
+          description: The decision and, on approval, the grant window
+          content:
+            application/json:
+              schema:
+                type: object
+                required: [requestId, status]
+                additionalProperties: false
+                properties:
+                  requestId: { type: string, format: uuid }
+                  status: { type: string, enum: [APPROVED, REJECTED] }
+                  grant:
+                    type: object
+                    required: [expiresAt, readOnly, exportAllowed]
+                    additionalProperties: false
+                    properties:
+                      expiresAt: { type: string, format: date-time }
+                      readOnly: { type: boolean, enum: [true] }
+                      exportAllowed: { type: boolean, enum: [false] }
+        '403': { $ref: '#/components/responses/Problem' }
+        '404': { $ref: '#/components/responses/Problem' }
+
+  /me/push-token:
+    post:
+      operationId: registerPushToken
+      summary: Register this iPhone's APNs token
+      description: >-
+        Idempotent replacement for the calling device only. The token is a routing
+        credential: it is stored, never returned, cleared on sign-out, and one
+        token is bound to one installation. A device without a registration keeps
+        working over Socket.IO.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema: { $ref: '#/components/schemas/PushTokenRegistrationRequest' }
+      responses:
+        '201':
+          description: Registration stored
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/PushTokenRegistration' }
+        '400': { $ref: '#/components/responses/Problem' }
+        '403': { $ref: '#/components/responses/Problem' }
+        '422': { $ref: '#/components/responses/Problem' }
+    delete:
+      operationId: unregisterPushToken
+      summary: Remove this iPhone's APNs registration
+      description: Idempotent; reports whether a registration existed.
+      responses:
+        '200':
+          description: Registration state after the call
+          content:
+            application/json:
+              schema:
+                type: object
+                required: [removed]
+                additionalProperties: false
+                properties:
+                  removed: { type: boolean }
+        '403': { $ref: '#/components/responses/Problem' }
+
+  /notifications/{messageId}:
+    get:
+      operationId: getNotificationRoute
+      summary: Resolve a notification identifier into REST truth
+      description: >-
+        A push tap must not act on the push body, which may be minutes old. This
+        returns the opaque identifiers plus the current event state so the client
+        can decide to open the event or drop the alert; an unknown identifier is
+        not an error, and another device's notification is refused.
+      parameters:
+        - { name: messageId, in: path, required: true, schema: { type: string } }
+      responses:
+        '200':
+          description: Routing facts for this device session
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/NotificationRoute' }
+        '403': { $ref: '#/components/responses/Problem' }
+
+  /events/{eventId}/aed-route-calculation:
+    parameters:
+      - { name: eventId, in: path, required: true, schema: { type: string, format: uuid } }
+    get:
+      operationId: clientAedRouteContext
+      summary: Issue a short-lived MapKit calculation context to an accepted responder
+      description: >-
+        CLIENT_MAPKIT only; other modes return null. At most eight currently available
+        candidates are selected by geometric lower bound, retaining the current AED
+        for comparisons. Exact positions require accepted event membership. The
+        60-second context is bound to event/device and may be replaced by a new GET.
+      responses:
+        '200':
+          description: Calculation context or null when not needed or positions are unavailable
+          content:
+            application/json:
+              schema:
+                type: object
+                required: [context]
+                properties:
+                  context:
+                    oneOf:
+                      - { $ref: '#/components/schemas/ClientAedRouteContext' }
+                      - { type: 'null' }
+        '403': { $ref: '#/components/responses/Problem' }
+        '404': { $ref: '#/components/responses/Problem' }
+    put:
+      operationId: submitClientAedRoutes
+      summary: Submit MapKit distances for server eligibility checks and assignment
+      description: >-
+        Rechecks accepted membership, active event, current positions, unchanged AED
+        metadata, availability and reservations. Patient coordinates must match and
+        responder drift must be within 25 m. Distances are client claims with bounds
+        and a geometric sanity check, not independently authenticated Apple evidence.
+        Only unstarted assignments may be reallocated; in-flight changes require the
+        existing reroute confirmation. Unknown, duplicate or stale results are rejected.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema: { $ref: '#/components/schemas/ClientAedRouteSubmission' }
+      responses:
+        '200':
+          description: Current server-authoritative event projection
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/EmergencyEvent' }
+        '400': { $ref: '#/components/responses/Problem' }
+        '403': { $ref: '#/components/responses/Problem' }
+        '409': { $ref: '#/components/responses/Problem' }
+
+  /events/{eventId}/assignments/{assignmentId}/reroute:
+    post:
+      operationId: proposeAedReroute
+      summary: Propose a closer AED to an in-flight responder
+      description: >-
+        Creates a 15-second PROPOSAL only. The responder's task, route and status
+        are untouched until they accept, so an ignored proposal cannot move anyone
+        to a different cabinet. Only a shorter total route distance is proposed.
+      parameters:
+        - { name: eventId, in: path, required: true, schema: { type: string } }
+        - { name: assignmentId, in: path, required: true, schema: { type: string } }
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema: { $ref: '#/components/schemas/AedRerouteProposalRequest' }
+      responses:
+        '201':
+          description: Proposal created and awaiting the responder's answer
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/AedRerouteProposal' }
+        '400': { $ref: '#/components/responses/Problem' }
+        '403': { $ref: '#/components/responses/Problem' }
+        '404': { $ref: '#/components/responses/Problem' }
+        '409': { $ref: '#/components/responses/Problem' }
+        '422': { $ref: '#/components/responses/Problem' }
+
+  /events/{eventId}/reroutes/pending:
+    get:
+      operationId: pendingAedReroute
+      summary: The caller's own pending reroute proposal for this event
+      description: >-
+        A proposal is a question addressed to one device, so only that device sees
+        it. The window is 15 seconds: a late caller gets `proposal: null` and keeps
+        the original task, exactly as the server's own expiry does.
+      parameters:
+        - { name: eventId, in: path, required: true, schema: { type: string, format: uuid } }
+      responses:
+        '200':
+          description: The pending proposal, or null when there is none
+          content:
+            application/json:
+              schema:
+                type: object
+                required: [proposal]
+                additionalProperties: false
+                properties:
+                  proposal:
+                    oneOf:
+                      - { type: 'null' }
+                      - { $ref: '#/components/schemas/PendingRerouteProposal' }
+        '403': { $ref: '#/components/responses/Problem' }
+        '404': { $ref: '#/components/responses/Problem' }
+
+  /events/{eventId}/reroutes/{proposalId}/decision:
+    post:
+      operationId: decideAedReroute
+      summary: Accept or refuse a reroute proposal
+      description: >-
+        Acceptance revalidates the assignment state, the responder's movement and
+        the target device's availability; refusal or expiry leaves the original
+        task exactly as it was. A proposal can only be decided once.
+      parameters:
+        - { name: eventId, in: path, required: true, schema: { type: string } }
+        - { name: proposalId, in: path, required: true, schema: { type: string } }
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema: { $ref: '#/components/schemas/AedRerouteDecisionRequest' }
+      responses:
+        '200':
+          description: Decision recorded; refused revalidations carry a reason
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/AedRerouteDecision' }
+        '400': { $ref: '#/components/responses/Problem' }
+        '403': { $ref: '#/components/responses/Problem' }
+        '404': { $ref: '#/components/responses/Problem' }
+        '409': { $ref: '#/components/responses/Problem' }
+
+  /events/{eventId}/end:
+    post:
+      operationId: endEvent
+      summary: Patient's single confirmed event end action
+      description: >-
+        FALSE_ALARM maps to CANCELLED_CONFIRMED_FALSE_ALARM, ASSISTANCE_WITHDRAWN
+        maps to CANCELLED_ASSISTANCE_WITHDRAWN after the three-confirmation mobile
+        flow, and the two real-event completion reasons map to RESOLVED.
+        This endpoint never attempts to cancel an Apple system call.
+      parameters:
+        - $ref: '#/components/parameters/EventId'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema: { $ref: '#/components/schemas/EventEndRequest' }
+      responses:
+        '200':
+          description: Event moved to the terminal state selected by the patient
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/EmergencyEvent' }
+        '403': { $ref: '#/components/responses/Problem' }
+        '409': { $ref: '#/components/responses/Problem' }
+
+  /events/{eventId}/status-confirmation:
+    post:
+      operationId: respondToStatusConfirmation
+      summary: Patient confirms the rescue is still in progress
+      description: >-
+        The response is accepted only for the current server-issued confirmation
+        and its five-minute window. CONTINUE restarts the 30-minute cycle; it never
+        ends an event.
+      parameters:
+        - $ref: '#/components/parameters/EventId'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema: { $ref: '#/components/schemas/StatusConfirmationResponse' }
+      responses:
+        '200':
+          description: Confirmation accepted or replayed idempotently
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/StatusConfirmationResult' }
+        '403': { $ref: '#/components/responses/Problem' }
+        '409': { $ref: '#/components/responses/Problem' }
+
+  /events/{eventId}/exit:
+    post:
+      operationId: exitEvent
+      summary: Accepted responder explicitly exits an event
+      description: >-
+        Immediately clears this stable user's current event-position projection and revokes its
+        realtime write, assignment, read and communication access. Persisted per-second batches,
+        the participation interval and valid pre-exit late evidence are never deleted or overwritten.
+        The same user cannot re-enter this event.
+        If this is the sole accepted responder at commit time, soleResponderConfirmed must
+        be true after three explicit UI confirmations. Otherwise the transaction is rejected
+        without revocation with status 409 and problem type
+        https://aedresponse.invalid/problems/sole-responder-confirmation-required.
+        The confirmation flag is a client assertion, not independent proof of screen taps.
+        Leaving zero responders does not end the event; recruitment resumes and remaining
+        flexible assignments are replanned without changing progressed assignments.
+      parameters:
+        - $ref: '#/components/parameters/EventId'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema: { $ref: '#/components/schemas/ParticipantExitRequest' }
+      responses:
+        '200':
+          description: Exit persisted or replayed idempotently
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/ParticipantExitResult' }
+        '403': { $ref: '#/components/responses/Problem' }
+        '409': { $ref: '#/components/responses/Problem' }
+
+  /events/{eventId}/deliveries/{deliveryId}/receipt:
+    put:
+      operationId: updateDeliveryReceipt
+      summary: Idempotently advance a response-request delivery receipt
+      description: >-
+        occurredAt is a client claim that cannot predate the request/current delivery state;
+        the persisted transition time is capped at server receipt time.
+      parameters:
+        - $ref: '#/components/parameters/EventId'
+        - $ref: '#/components/parameters/DeliveryId'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              additionalProperties: false
+              required: [status, occurredAt]
+              properties:
+                status: { $ref: '#/components/schemas/DeliveryStatus' }
+                occurredAt:
+                  type: string
+                  format: date-time
+                  description: Client-claimed receipt time, causally bounded and server-capped.
+      responses:
+        '200': { description: New or identical receipt accepted }
+        '409': { $ref: '#/components/responses/Problem' }
+
+  /events/{eventId}/responses/{deliveryId}:
+    put:
+      operationId: decideResponse
+      summary: Accept or refuse a response request idempotently
+      description: >-
+        Only persisted ACCEPT decisions contribute to effective N. decidedAt is a client claim;
+        it cannot predate the response request/current delivery state and acceptedAt is the server-authoritative
+        min(decidedAt, server receipt time).
+      parameters:
+        - $ref: '#/components/parameters/EventId'
+        - $ref: '#/components/parameters/DeliveryId'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              additionalProperties: false
+              required: [decision, decidedAt]
+              properties:
+                decision: { type: string, enum: [ACCEPT, REFUSE] }
+                decidedAt:
+                  type: string
+                  format: date-time
+                  description: Client-claimed decision time, bounded by request/current delivery time.
+      responses:
+        '200':
+          description: Decision and current optional assignment
+          content:
+            application/json:
+              schema:
+                type: object
+                required: [decision]
+                properties:
+                  decision: { type: string, enum: [ACCEPT, REFUSE] }
+                  assignment:
+                    oneOf:
+                      - { $ref: '#/components/schemas/Assignment' }
+                      - { type: 'null' }
+        '409': { $ref: '#/components/responses/Problem' }
+
+  /events/{eventId}/assignments/{assignmentId}/aed-acquired:
+    put:
+      operationId: acquireAed
+      summary: Idempotently confirm that the assigned AED was acquired
+      description: >-
+        acquiredAt is a client claim that cannot predate current assignment state; the
+        canonical receipt returned and stored uses min(acquiredAt, server receipt time).
+      parameters:
+        - $ref: '#/components/parameters/EventId'
+        - $ref: '#/components/parameters/AssignmentId'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema: { $ref: '#/components/schemas/AedAcquiredReceipt' }
+      responses:
+        '200':
+          description: Existing identical receipt returned
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/AedAcquiredReceipt' }
+        '201':
+          description: Receipt persisted and broadcast to all participants
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/AedAcquiredReceipt' }
+        '409': { $ref: '#/components/responses/Problem' }
+
+  /events/{eventId}/assignments/{assignmentId}/status:
+    put:
+      operationId: updateAssignmentStatus
+      summary: Idempotently report an explicit assignment progress action
+      description: >-
+        The server validates role-specific transitions and returns REST truth. Passive
+        sensor, recovery, call-ended, or connectivity signals cannot use this endpoint.
+        occurredAt cannot predate current assignment state and the persisted transition time
+        is capped at server receipt time.
+      parameters:
+        - $ref: '#/components/parameters/EventId'
+        - $ref: '#/components/parameters/AssignmentId'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              additionalProperties: false
+              required: [status, occurredAt]
+              properties:
+                status: { $ref: '#/components/schemas/AssignmentStatus' }
+                occurredAt:
+                  type: string
+                  format: date-time
+                  description: Client claim; the persisted transition time is server-capped.
+      responses:
+        '200':
+          description: Current assignment truth
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/Assignment' }
+        '409': { $ref: '#/components/responses/Problem' }
+
+  /events/{eventId}/assignments/{assignmentId}/aed-unavailable:
+    put:
+      operationId: reportAedUnavailable
+      summary: Idempotently report the assigned AED unavailable and request reassignment
+      description: >-
+        reportedAt is a client claim that cannot predate current assignment state. The
+        canonical response and reassignment timestamps are capped at server receipt time.
+      parameters:
+        - $ref: '#/components/parameters/EventId'
+        - $ref: '#/components/parameters/AssignmentId'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema: { $ref: '#/components/schemas/AedUnavailableReport' }
+      responses:
+        '200':
+          description: Existing canonical report returned
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/AedUnavailableReport' }
+        '201':
+          description: Canonical report persisted and reassignment started
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/AedUnavailableReport' }
+        '409': { $ref: '#/components/responses/Problem' }
+
+  /events/{eventId}/timeline:
+    get:
+      operationId: getEventTimeline
+      summary: Read a compatibility hint from the authorized current event snapshot
+      description: >-
+        This compatibility endpoint no longer exports internal append-only audit records.
+        It returns one generic current-state hint using only fields already visible through
+        GET /events/{eventId}, with the same event authorization and error semantics.
+        The entry id is the event id; it identifies the current projection, not a historical
+        audit entry. New clients recover event, delivery and assignment state directly from
+        event snapshots and must not depend on this endpoint. Internal audit access requires
+        a separately approved policy and is not granted by this API.
+      parameters:
+        - $ref: '#/components/parameters/EventId'
+      responses:
+        '200':
+          description: One current-state hint without internal observations or participant identifiers
+          content:
+            application/json:
+              schema:
+                type: array
+                maxItems: 1
+                items: { $ref: '#/components/schemas/TimelineEntry' }
+
+  /events/{eventId}/patient-position:
+    put:
+      operationId: updatePatientPosition
+      summary: Compatibility latest-only patient P update
+      description: >-
+        Transitional compatibility endpoint limited to iPhone sessions with position:write for the
+        patient device associated with this active event. The production iPhone does not dual-write
+        this endpoint and the strict per-second event batch endpoint; ongoing patient evidence uses
+        position-batches, whose FIX records also update the current P projection. A Watch trigger
+        location may seed the event. An otherwise valid,
+        still-fresh replay or older request restores the latest stored iPhone fix as the
+        effective source without replacing that fix; older samples never move it backwards.
+      parameters:
+        - $ref: '#/components/parameters/EventId'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema: { $ref: '#/components/schemas/PatientPositionUpdate' }
+      responses:
+        '200':
+          description: Position was applied, replayed idempotently, or ignored as stale
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/PositionUpdateResult' }
+        '403': { $ref: '#/components/responses/Problem' }
+        '409': { $ref: '#/components/responses/Problem' }
+
+  /events/{eventId}/position-batches/{batchId}:
+    put:
+      operationId: recordEventPositionBatch
+      summary: Append an event participant position batch
+      description: >-
+        Limited to the patient iPhone or an iPhone with an immutable accepted-participant
+        interval for this event. Current projections require active participation; a historical
+        participant may upload evidence from its pre-end interval after the event is terminal.
+        Each batch contains one to five records, with at most one record per UTC second slot.
+        A FIX carries a real P/R fix and its fixObservedAt must be within [slotAt, slotAt + 1
+        second). NO_NEW_FIX carries only NO_FIX or APP_NOT_RUNNING and never copies the previous
+        coordinate. A new batch is accepted only after every submitted UTC-second slot has fully
+        elapsed at server receipt time; an open/future slot returns retryable 425 without
+        persistence. The server persists the batch as append-only event evidence before returning
+        the ACK. Clients must retain the batch until this REST response is received. Replaying
+        the same batchId and content is idempotent; a different record occupying the same
+        event/user/device/slotAt key returns 409. An older FIX may be retained as evidence but
+        never replaces a newer current position projection. The client permanently seals a slot
+        when it first submits its batch and normally may only retry identical content until ACK.
+        If a later REST-authoritative participation window proves that an unacknowledged transport
+        batch crosses its boundary, the client may create a new batchId containing only unchanged
+        legal records with their original recordIds and payloads; every excluded record must remain
+        in append-only local quarantine. This transport regrouping is not a correction, and the API
+        has no record correction/replacement operation. The endpoint enforces slot uniqueness
+        but does not itself finalize cross-batch completeness: the reference backend has no
+        stream-finalized or sync-complete signal, so a temporarily missing slot cannot become a
+        final audit conclusion during normal writes. A future persistent audit must wait for an
+        explicit completion signal or the retention close. Batch evidence is not written to the
+        ordinary user-visible timeline.
+      parameters:
+        - $ref: '#/components/parameters/EventId'
+        - $ref: '#/components/parameters/BatchId'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema: { $ref: '#/components/schemas/EventPositionBatch' }
+      responses:
+        '200':
+          description: Batch persisted or replayed idempotently
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/EventPositionBatchAck' }
+        '400': { $ref: '#/components/responses/Problem' }
+        '403': { $ref: '#/components/responses/Problem' }
+        '409': { $ref: '#/components/responses/Problem' }
+        '425': { $ref: '#/components/responses/Problem' }
+        '422': { $ref: '#/components/responses/Problem' }
+
+  /me/responder-position:
+    put:
+      operationId: updateResponderPosition
+      summary: Update the authenticated device's strict R position while eligible to respond
+      description: Limited to iPhone sessions with position:write; Watch sessions and active patients are rejected.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema: { $ref: '#/components/schemas/ResponderPositionUpdate' }
+      responses:
+        '200':
+          description: Position was applied, replayed idempotently, or ignored as stale
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/PositionUpdateResult' }
+        '403': { $ref: '#/components/responses/Problem' }
+        '409': { $ref: '#/components/responses/Problem' }
+
+  /me/presence:
+    get:
+      operationId: getDevicePresence
+      summary: Read the current authenticated device presence projection
+      description: Limited to iPhone sessions with the events:read scope; Watch sessions are rejected.
+      responses:
+        '200':
+          description: Current server presence truth for this device
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/DevicePresence' }
+    put:
+      operationId: updateDevicePresence
+      summary: Idempotently update participation availability and capabilities
+      description: Limited to iPhone sessions with the events:read scope; Watch sessions are rejected.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema: { $ref: '#/components/schemas/DevicePresenceUpdate' }
+      responses:
+        '200':
+          description: Current server presence truth for this device
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/DevicePresence' }
+        '409': { $ref: '#/components/responses/Problem' }
+
+  /me/nearby-volunteers:
+    get:
+      operationId: getNearbyVolunteerSummary
+      summary: Read anonymous cumulative counts of eligible nearby volunteers
+      description: >-
+        Limited to an authenticated iPhone session with the events:read scope and
+        current responder agreements. The server uses the viewer's stored fresh R
+        position as the centre; clients cannot provide a centre or receive volunteer
+        identities, coordinates, distances, or event details. Counts are unique stable
+        users, cumulative across the fixed 1 km, 1.5 km, and 2 km rings. A fresh viewer
+        R position is required; an unavailable location is not represented as zero.
+      responses:
+        '200':
+          description: Privacy-minimal nearby volunteer counts
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/NearbyVolunteerSummary' }
+        '400': { $ref: '#/components/responses/Problem' }
+        '403': { $ref: '#/components/responses/Problem' }
+        '422': { $ref: '#/components/responses/Problem' }
+
+  /aeds:
+    get:
+      operationId: listAeds
+      summary: List AEDs visible to the current event participant
+      responses:
+        '200':
+          description: AED list
+          content:
+            application/json:
+              schema:
+                type: array
+                items: { $ref: '#/components/schemas/Aed' }
+
+  /routes/aed:
+    post:
+      operationId: estimateAedRoute
+      summary: Estimate an R to A to P route with operational overhead
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              additionalProperties: false
+              required: [responderPosition, patientPosition]
+              properties:
+                responderPosition: { $ref: '#/components/schemas/ResponderPosition' }
+                patientPosition: { $ref: '#/components/schemas/PatientPosition' }
+                at: { type: string, format: date-time }
+      responses:
+        '200':
+          description: Best eligible route
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/AedRoute' }
+
+  /operations/aeds/{aedId}/actions:
+    post:
+      operationId: updateAedAsset
+      summary: Apply an audited AED registration, maintenance or verified return
+      description: Requires the out-of-band asset operator credential. Ordinary account and device bearers are rejected. Repeated requestId with identical input is idempotent; stale revisions conflict.
+      parameters:
+        - in: path
+          name: aedId
+          required: true
+          schema: { type: string, minLength: 1 }
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema: { $ref: '#/components/schemas/AedAssetAction' }
+      responses:
+        '200':
+          description: Applied asset state
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/AedAsset' }
+        '401': { $ref: '#/components/responses/Problem' }
+        '403': { $ref: '#/components/responses/Problem' }
+        '409': { $ref: '#/components/responses/Problem' }
+
+  /events/{eventId}/aed-handovers:
+    post:
+      operationId: openAedHandover
+      summary: Open an AED handover for a device this session currently holds
+      description: >-
+        The holder is derived from the AED's own custody fact, never from the body, so a
+        client cannot claim to hold a device the server does not believe it holds. The
+        device stays occupied (AWAITING_HANDOFF) until the handover is settled, and a
+        settled handover is still not a return. Only one handover may be outstanding per
+        device; replaying requestId with identical content is idempotent.
+      parameters:
+        - $ref: '#/components/parameters/EventId'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema: { $ref: '#/components/schemas/AedHandoverRequest' }
+      responses:
+        '201':
+          description: Handover opened
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/AedHandover' }
+        '400': { $ref: '#/components/responses/Problem' }
+        '401': { $ref: '#/components/responses/Problem' }
+        '403': { $ref: '#/components/responses/Problem' }
+        '404': { $ref: '#/components/responses/Problem' }
+        '409': { $ref: '#/components/responses/Problem' }
+
+  /events/{eventId}/aed-handovers/{handoverId}/confirm:
+    post:
+      operationId: confirmAedHandover
+      summary: One side confirms the handover once
+      description: >-
+        Both sides must confirm before the handover can be settled. A side that already
+        confirmed receives the same record again, so a retry over a flaky link cannot
+        double-write. The receiving device is taken from the authenticated session, not
+        from the body.
+      parameters:
+        - $ref: '#/components/parameters/EventId'
+        - $ref: '#/components/parameters/HandoverId'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema: { $ref: '#/components/schemas/AedHandoverConfirmation' }
+      responses:
+        '200':
+          description: Handover after this confirmation
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/AedHandover' }
+        '400': { $ref: '#/components/responses/Problem' }
+        '401': { $ref: '#/components/responses/Problem' }
+        '403': { $ref: '#/components/responses/Problem' }
+        '404': { $ref: '#/components/responses/Problem' }
+        '409': { $ref: '#/components/responses/Problem' }
+
+  /events/{eventId}/aed-handovers/{handoverId}/settle:
+    post:
+      operationId: settleAedHandover
+      summary: Complete a face-to-face handover, or place the AED at a temporary point
+      description: >-
+        FACE_TO_FACE requires one confirmation from each side. TEMPORARY_POINT requires a
+        position sample no older than 30 seconds at 50 m accuracy or better AND a valid
+        photo reference (JPEG, longest edge at most 2048, at most 5 MiB, EXIF stripped,
+        declared sha256). Both facts are validated before anything is written, and with no
+        private object storage configured the request fails rather than creating a
+        dispatchable device.
+      parameters:
+        - $ref: '#/components/parameters/EventId'
+        - $ref: '#/components/parameters/HandoverId'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema: { $ref: '#/components/schemas/AedHandoverSettlement' }
+      responses:
+        '200':
+          description: Settled handover
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/AedHandover' }
+        '400': { $ref: '#/components/responses/Problem' }
+        '401': { $ref: '#/components/responses/Problem' }
+        '403': { $ref: '#/components/responses/Problem' }
+        '404': { $ref: '#/components/responses/Problem' }
+        '409': { $ref: '#/components/responses/Problem' }
+        '422': { $ref: '#/components/responses/Problem' }
+
+  /events/{eventId}/aed-temporary-point:
+    get:
+      operationId: getAedTemporaryPoint
+      summary: The outstanding temporary AED placement point for this event
+      description: >-
+        Available to participants of this event's coordination. The photo stays in private
+        storage; this view carries only what is needed to walk to the device.
+      parameters:
+        - $ref: '#/components/parameters/EventId'
+      responses:
+        '200':
+          description: Outstanding placement point
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/AedTemporaryPoint' }
+        '401': { $ref: '#/components/responses/Problem' }
+        '403': { $ref: '#/components/responses/Problem' }
+        '404': { $ref: '#/components/responses/Problem' }
+
+  /events/{eventId}/aed-temporary-point/{depositId}/follow-up:
+    post:
+      operationId: reportAedTemporaryPointFollowUp
+      summary: The later responder reports whether the placed AED was found
+      description: >-
+        FOUND moves custody to the finding responder and keeps the device in use.
+        NOT_FOUND marks the asset unavailable, because the evidence that placed it there
+        is no longer true. Either outcome closes the search, so a second responder is not
+        sent to look for something already resolved.
+      parameters:
+        - $ref: '#/components/parameters/EventId'
+        - $ref: '#/components/parameters/DepositId'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema: { $ref: '#/components/schemas/AedTemporaryPointFollowUp' }
+      responses:
+        '201':
+          description: Recorded outcome
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/AedTemporaryPointFollowUpResult' }
+        '400': { $ref: '#/components/responses/Problem' }
+        '401': { $ref: '#/components/responses/Problem' }
+        '403': { $ref: '#/components/responses/Problem' }
+        '404': { $ref: '#/components/responses/Problem' }
+        '409': { $ref: '#/components/responses/Problem' }
+
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: Bearer [REDACTED]: authenticated-device-session
+
+  parameters:
+    EventId:
+      name: eventId
+      in: path
+      required: true
+      schema: { type: string, format: uuid }
+    DeliveryId:
+      name: deliveryId
+      in: path
+      required: true
+      schema: { type: string, format: uuid }
+    AssignmentId:
+      name: assignmentId
+      in: path
+      required: true
+      schema: { type: string, format: uuid }
+    DepositId:
+      name: depositId
+      in: path
+      required: true
+      schema: { type: string, format: uuid }
+    HandoverId:
+      name: handoverId
+      in: path
+      required: true
+      schema: { type: string, format: uuid }
+    PositionUpdateId:
+      name: positionUpdateId
+      in: path
+      required: true
+      schema: { type: string, format: uuid }
+    BatchId:
+      name: batchId
+      in: path
+      required: true
+      schema: { type: string, format: uuid }
+
+  responses:
+    Problem:
+      description: Request rejected
+      content:
+        application/problem+json:
+          schema:
+            type: object
+            required: [type, title, status]
+            properties:
+              type: { type: string }
+              title: { type: string }
+              status: { type: integer }
+              detail: { type: string }
+
+  schemas:
+    CompanionRelayBinding:
+      type: object
+      additionalProperties: false
+      required: [bindingId, iPhoneDeviceId, deviceInstanceId, companionPairId, userId, accountId, expiresAt]
+      properties:
+        bindingId: { type: string, format: uuid }
+        iPhoneDeviceId: { type: string, format: uuid }
+        deviceInstanceId: { type: string, format: uuid }
+        companionPairId: { type: string, format: uuid }
+        userId: { type: string }
+        accountId: { type: string }
+        expiresAt: { type: string, format: date-time }
+    AppleLoginChallenge:
+      type: object
+      additionalProperties: false
+      required: [provider, challengeId, nonce, expiresAt]
+      properties:
+        provider: { type: string, const: APPLE }
+        challengeId: { type: string, format: uuid }
+        nonce: { type: string, minLength: 32, maxLength: 512 }
+        expiresAt: { type: string, format: date-time }
+
+    AppleIdentityTokenRequest:
+      type: object
+      additionalProperties: false
+      required: [identityToken, nonce, challengeId]
+      properties:
+        challengeId: { type: string, format: uuid }
+        identityToken: { type: string, minLength: 1, maxLength: 32768 }
+        authorizationCode: { type: string, minLength: 1, maxLength: 8192 }
+        nonce: { type: string, minLength: 1, maxLength: 512 }
+
+    RefreshSessionRequest:
+      type: object
+      additionalProperties: false
+      required: [refreshToken]
+      properties:
+        refreshToken: { type: string, minLength: 1, maxLength: 512 }
+
+    AuthSessionResponse:
+      type: object
+      additionalProperties: false
+      required:
+        - provider
+        - userId
+        - accountId
+        - sessionId
+        - sessionToken
+        - refreshToken
+        - expiresAt
+        - scopes
+      properties:
+        provider:
+          type: string
+          enum: [PHONE, APPLE, CONTROLLED_TEST]
+          description: >-
+            PHONE and APPLE are the only released login methods. CONTROLLED_TEST
+            is a test-period response marker for locally provisioned accounts on
+            an explicitly enabled development server; it is not a public login
+            option. Disabling that server switch rejects these sessions.
+        userId: { type: string, minLength: 1 }
+        accountId: { type: string, minLength: 1 }
+        sessionId: { type: string, format: uuid }
+        sessionToken: { type: string, minLength: 1 }
+        refreshToken: { type: string, minLength: 1 }
+        expiresAt: { type: string, format: date-time }
+        scopes:
+          type: array
+          items: { type: string }
+
+    CompanionLinkTicketRequest:
+      type: object
+      additionalProperties: false
+      properties:
+        companionPairId: { type: string, format: uuid }
+
+    CompanionLinkTicketResponse:
+      type: object
+      additionalProperties: false
+      required: [companionLinkTicket, companionPairId, expiresAt]
+      properties:
+        companionLinkTicket: { type: string, minLength: 32 }
+        companionPairId: { type: string, format: uuid }
+        expiresAt: { type: string, format: date-time }
+
+    WatchCompanionLinkRequest:
+      type: object
+      additionalProperties: false
+      required:
+        - deviceInstanceId
+        - companionPairId
+        - companionLinkTicket
+        - appAttestKeyId
+        - attestationObject
+      properties:
+        deviceInstanceId: { type: string, format: uuid }
+        companionPairId: { type: string, format: uuid }
+        companionLinkTicket: { type: string, minLength: 32, maxLength: 512 }
+        appAttestKeyId: { type: string, minLength: 1, maxLength: 256 }
+        attestationObject:
+          type: string
+          maxLength: 16384
+          pattern: '^[A-Za-z0-9+/_-]+={0,2}$'
+
+    WatchSessionResponse:
+      type: object
+      additionalProperties: false
+      required: [sessionId, sessionToken, refreshToken, expiresAt, scopes, userId, accountId]
+      properties:
+        sessionId: { type: string, format: uuid }
+        sessionToken: { type: string, minLength: 1 }
+        refreshToken: { type: string, minLength: 1 }
+        expiresAt: { type: string, format: date-time }
+        scopes:
+          type: array
+          items:
+            type: string
+            enum: ['watch:report', 'watch:fallback']
+        userId: { type: string, minLength: 1 }
+        accountId: { type: string, minLength: 1 }
+
+    AgreementAcceptance:
+      type: object
+      additionalProperties: false
+      required: [kind, version, acceptedAt]
+      properties:
+        kind:
+          type: string
+          enum: [PATIENT, VOLUNTEER_RESPONDER, PRIVACY_POLICY, SENSITIVE_PERSONAL_INFORMATION]
+        version: { type: string, minLength: 1 }
+        acceptedAt: { type: string, format: date-time }
+
+    SessionBootstrapRequest:
+      $ref: '#/components/schemas/IPhoneSessionBootstrapRequest'
+
+    IPhoneSessionBootstrapRequest:
+      type: object
+      additionalProperties: false
+      required:
+        - deviceInstanceId
+        - deviceKind
+        - companionPairId
+        - agreementAcceptances
+        - capabilities
+        - availableForResponse
+      properties:
+        deviceInstanceId:
+          type: string
+          format: uuid
+          description: Opaque app-scoped identifier; not a user account.
+        deviceKind: { const: IPHONE }
+        companionPairId: { type: string, format: uuid }
+        agreementAcceptances:
+          type: array
+          minItems: 4
+          maxItems: 4
+          items: { $ref: '#/components/schemas/AgreementAcceptance' }
+          description: Must contain one current acceptance for each of the four required kinds.
+        capabilities: { $ref: '#/components/schemas/DeviceCapabilities' }
+        availableForResponse:
+          type: boolean
+          description: Current user-controlled readiness; never a manual role selection.
+      allOf:
+        - properties:
+            agreementAcceptances:
+              contains:
+                type: object
+                required: [kind]
+                properties: { kind: { const: PATIENT } }
+              minContains: 1
+              maxContains: 1
+        - properties:
+            agreementAcceptances:
+              contains:
+                type: object
+                required: [kind]
+                properties: { kind: { const: PRIVACY_POLICY } }
+              minContains: 1
+              maxContains: 1
+        - properties:
+            agreementAcceptances:
+              contains:
+                type: object
+                required: [kind]
+                properties: { kind: { const: SENSITIVE_PERSONAL_INFORMATION } }
+              minContains: 1
+              maxContains: 1
+        - properties:
+            agreementAcceptances:
+              contains:
+                type: object
+                required: [kind]
+                properties: { kind: { const: VOLUNTEER_RESPONDER } }
+              minContains: 1
+              maxContains: 1
+
+    SessionBootstrapResponse:
+      type: object
+      additionalProperties: false
+      required: [sessionId, sessionToken, expiresAt, scopes, userId, accountId]
+      properties:
+        sessionId: { type: string, format: uuid }
+        sessionToken: { type: string, minLength: 1 }
+        expiresAt: { type: string, format: date-time }
+        userId: { type: string, minLength: 1 }
+        accountId: { type: string, minLength: 1 }
+        scopes:
+          type: array
+          items:
+            type: string
+            enum:
+              - events:read
+              - events:write
+              - responses:write
+              - position:write
+              - assignments:write
+
+    DeviceCapabilities:
+      type: object
+      additionalProperties: false
+      required: [notificationAuthorized, locationAuthorized]
+      properties:
+        notificationAuthorized: { type: boolean }
+        locationAuthorized: { type: boolean }
+
+    DevicePresenceUpdate:
+      type: object
+      additionalProperties: false
+      required: [presenceUpdateId, occurredAt, availableForResponse, capabilities]
+      properties:
+        presenceUpdateId: { type: string, format: uuid }
+        occurredAt: { type: string, format: date-time }
+        availableForResponse: { type: boolean }
+        capabilities: { $ref: '#/components/schemas/DeviceCapabilities' }
+
+    LatestDevicePosition:
+      oneOf:
+        - { $ref: '#/components/schemas/LatestPatientPosition' }
+        - { $ref: '#/components/schemas/LatestResponderPosition' }
+
+    LatestPatientPosition:
+      type: object
+      required: [positionUpdateId, position, eventId, observedAt, serverReceivedAt]
+      properties:
+        positionUpdateId: { type: string, format: uuid }
+        position: { $ref: '#/components/schemas/PatientPosition' }
+        eventId: { type: string, format: uuid }
+        observedAt: { type: string, format: date-time }
+        serverReceivedAt: { type: string, format: date-time }
+
+    LatestResponderPosition:
+      type: object
+      required: [positionUpdateId, position, observedAt, serverReceivedAt]
+      properties:
+        positionUpdateId: { type: string, format: uuid }
+        position: { $ref: '#/components/schemas/ResponderPosition' }
+        observedAt: { type: string, format: date-time }
+        serverReceivedAt: { type: string, format: date-time }
+
+    DevicePresence:
+      type: object
+      required:
+        - deviceInstanceId
+        - deviceKind
+        - lastSeenAt
+        - availableForResponse
+        - capabilities
+        - positioningTier
+      properties:
+        deviceInstanceId: { type: string, format: uuid }
+        deviceKind: { type: string, enum: [IPHONE, WATCH] }
+        lastSeenAt: { type: string, format: date-time }
+        availableForResponse: { type: boolean }
+        capabilities: { $ref: '#/components/schemas/DeviceCapabilities' }
+        positioningTier: { $ref: '#/components/schemas/PositioningTier' }
+        # Last known coordinate.  It is retained past its validity window so a
+        # responder can still be told where the patient was last seen; `freshness`
+        # — not the presence of this object — decides whether it is current.
+        position:
+          oneOf:
+            - { $ref: '#/components/schemas/LastKnownPosition' }
+            - { type: 'null' }
+        # The only field that authorises treating `position` as the current
+        # location.  FRESH covers "absent" as UNAVAILABLE, and a sample whose
+        # timestamp cannot be interpreted is UNAVAILABLE, never FRESH or STALE.
+        freshness: { $ref: '#/components/schemas/PositionFreshness' }
+        # Whole-second display value.  Deliberately NOT sufficient to re-derive
+        # `freshness`: at 600.001 s this still reports 600 while the verdict is
+        # already STALE, because the boundary is evaluated in milliseconds.
+        ageSeconds:
+          oneOf:
+            - { type: integer, minimum: 0 }
+            - { type: 'null' }
+        currentEventId:
+          oneOf:
+            - { type: string, format: uuid }
+            - { type: 'null' }
+        currentAssignmentId:
+          oneOf:
+            - { type: string, format: uuid }
+            - { type: 'null' }
+        lastPresenceUpdateId:
+          oneOf:
+            - { type: string, format: uuid }
+            - { type: 'null' }
+        lastPresenceOccurredAt:
+          oneOf:
+            - { type: string, format: date-time }
+            - { type: 'null' }
+
+    NearbyVolunteerRangeCount:
+      type: object
+      additionalProperties: false
+      required: [radiusMeters, count]
+      properties:
+        radiusMeters:
+          type: integer
+          enum: [1000, 1500, 2000]
+          description: Fixed cumulative ring radius in metres.
+        count:
+          type: integer
+          minimum: 0
+          description: Number of unique eligible stable users within this radius.
+
+    NearbyVolunteerSummary:
+      type: object
+      additionalProperties: false
+      required: [generatedAt, ranges]
+      properties:
+        generatedAt:
+          type: string
+          format: date-time
+          description: Server snapshot time shared by all three cumulative counts.
+        ranges:
+          type: array
+          minItems: 3
+          maxItems: 3
+          description: Ordered cumulative counts for 1 km, 1.5 km, and 2 km.
+          items: { $ref: '#/components/schemas/NearbyVolunteerRangeCount' }
+
+    CoordinateFields:
+      type: object
+      required: [latitude, longitude]
+      properties:
+        latitude: { type: number, minimum: -90, maximum: 90 }
+        longitude: { type: number, minimum: -180, maximum: 180 }
+        accuracyMeters: { type: number, exclusiveMinimum: 0 }
+
+    PatientPosition:
+      unevaluatedProperties: false
+      allOf:
+        - $ref: '#/components/schemas/CoordinateFields'
+        - type: object
+          required: [kind, accuracyMeters]
+          properties: { kind: { const: P } }
+
+    ResponderPosition:
+      unevaluatedProperties: false
+      allOf:
+        - $ref: '#/components/schemas/CoordinateFields'
+        - type: object
+          required: [kind, accuracyMeters]
+          properties: { kind: { const: R } }
+
+    ResponderPositionUpdate:
+      type: object
+      additionalProperties: false
+      required: [positionUpdateId, responderPosition, observedAt]
+      properties:
+        positionUpdateId: { type: string, format: uuid }
+        responderPosition: { $ref: '#/components/schemas/ResponderPosition' }
+        observedAt: { type: string, format: date-time }
+
+    PatientPositionUpdate:
+      type: object
+      additionalProperties: false
+      required: [positionUpdateId, patientPosition, observedAt]
+      properties:
+        positionUpdateId: { type: string, format: uuid }
+        patientPosition: { $ref: '#/components/schemas/PatientPosition' }
+        observedAt: { type: string, format: date-time }
+
+    UtcSecond:
+      type: string
+      pattern: '^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(?:\.000)?Z$'
+      description: UTC timestamp at exact second precision; canonical responses use .000Z.
+
+    EventPositionRecord:
+      oneOf:
+        - type: object
+          additionalProperties: false
+          required: [recordId, slotAt, status, position, fixObservedAt]
+          properties:
+            recordId: { type: string, format: uuid }
+            slotAt: { $ref: '#/components/schemas/UtcSecond' }
+            status: { const: FIX }
+            position:
+              oneOf:
+                - { $ref: '#/components/schemas/PatientPosition' }
+                - { $ref: '#/components/schemas/ResponderPosition' }
+            fixObservedAt:
+              type: string
+              format: date-time
+              description: Real OS fix time in [slotAt, slotAt + 1 second).
+        - type: object
+          additionalProperties: false
+          required: [recordId, slotAt, status, gapReason]
+          properties:
+            recordId: { type: string, format: uuid }
+            slotAt: { $ref: '#/components/schemas/UtcSecond' }
+            status: { const: NO_NEW_FIX }
+            gapReason: { type: string, enum: [NO_FIX, APP_NOT_RUNNING] }
+
+    EventPositionBatch:
+      type: object
+      additionalProperties: false
+      required: [schemaVersion, eventId, batchId, records]
+      properties:
+        schemaVersion: { const: '2.0' }
+        eventId: { type: string, format: uuid }
+        batchId: { type: string, format: uuid }
+        records:
+          type: array
+          minItems: 1
+          maxItems: 5
+          items: { $ref: '#/components/schemas/EventPositionRecord' }
+
+    EventPositionBatchAck:
+      type: object
+      additionalProperties: false
+      required:
+        - schemaVersion
+        - eventId
+        - batchId
+        - acceptedRecordCount
+        - idempotent
+        - acknowledgedAt
+        - records
+      properties:
+        schemaVersion: { const: '2.0' }
+        eventId: { type: string, format: uuid }
+        batchId: { type: string, format: uuid }
+        acceptedRecordCount: { type: integer, minimum: 1, maximum: 5 }
+        idempotent: { type: boolean }
+        acknowledgedAt: { type: string, format: date-time }
+        records:
+          type: array
+          minItems: 1
+          maxItems: 5
+          items:
+            type: object
+            additionalProperties: false
+            required: [recordId, persisted, appliedToLatest, ignoredAsStale, serverReceivedAt]
+            properties:
+              recordId: { type: string, format: uuid }
+              persisted: { type: boolean }
+              appliedToLatest: { type: boolean }
+              ignoredAsStale: { type: boolean }
+              serverReceivedAt: { type: string, format: date-time }
+
+    PositionFreshness:
+      type: string
+      enum: [FRESH, STALE, UNAVAILABLE]
+      description: >-
+        Whether `position` may be treated as the device's current location.
+        FRESH requires a coordinate whose age is at most the server's
+        position-max-age (600 s by default); exactly the limit is still FRESH.
+        STALE means a last-known coordinate is available but must not be used for
+        live distance, candidate ordering or task replanning. UNAVAILABLE means no
+        coordinate, or a timestamp that cannot be interpreted.
+
+    LastKnownPosition:
+      type: object
+      additionalProperties: false
+      required: [coordinate, observedAt]
+      properties:
+        coordinate:
+          oneOf:
+            - { $ref: '#/components/schemas/PatientPosition' }
+            - { $ref: '#/components/schemas/ResponderPosition' }
+        observedAt: { type: string, format: date-time }
+
+    PositioningTier:
+      type: string
+      enum: [STANDBY, SEARCH_RING, EVENT_PARTICIPANT]
+
+    DistanceRange:
+      type: string
+      enum:
+        - DISTANCE_0_500M
+        - DISTANCE_500_1000M
+        - DISTANCE_1000_1500M
+        - DISTANCE_1500_2000M
+        - DISTANCE_OVER_2000M
+
+    EtaRange:
+      type: string
+      enum: [ETA_0_5_MIN, ETA_5_10_MIN, ETA_10_15_MIN, ETA_OVER_15_MIN]
+
+    PositionUpdateResult:
+      type: object
+      additionalProperties: false
+      required:
+        - positionUpdateId
+        - applied
+        - idempotent
+        - ignoredAsStale
+        - positionObservedAt
+        - serverReceivedAt
+      properties:
+        positioningTier:
+          type: string
+          enum: [STANDBY, SEARCH_RING, EVENT_PARTICIPANT]
+          description: Live R-upload sampling metadata; recomputed on replay, not an event-write grant.
+        positionUpdateId: { type: string, format: uuid }
+        applied: { type: boolean }
+        idempotent: { type: boolean }
+        ignoredAsStale: { type: boolean }
+        positionObservedAt: { type: string, format: date-time }
+        serverReceivedAt: { type: string, format: date-time }
+
+    AedPosition:
+      unevaluatedProperties: false
+      allOf:
+        - $ref: '#/components/schemas/CoordinateFields'
+        - type: object
+          required: [kind]
+          properties: { kind: { const: A } }
+
+    AedAssetRegistration:
+      type: object
+      additionalProperties: false
+      required: [aed, source, permission, maintenanceOwner, verifiedAt, validUntil]
+      properties:
+        aed: { $ref: '#/components/schemas/Aed' }
+        source: { type: string, minLength: 1, maxLength: 1000 }
+        permission: { type: string, minLength: 1, maxLength: 1000 }
+        maintenanceOwner: { type: string, minLength: 1, maxLength: 300 }
+        verifiedAt: { type: string, format: date-time }
+        validUntil: { type: string, format: date-time }
+    AedHandoverRequest:
+      type: object
+      additionalProperties: false
+      required: [requestId, aedId, mode, assignmentId]
+      properties:
+        requestId: { type: string, format: uuid }
+        aedId: { type: string, minLength: 1 }
+        mode: { type: string, enum: [FACE_TO_FACE, TEMPORARY_POINT] }
+        assignmentId: { type: string, format: uuid }
+    AedHandoverConfirmation:
+      type: object
+      additionalProperties: false
+      required: [requestId, side]
+      properties:
+        requestId: { type: string, format: uuid }
+        side: { type: string, enum: [HOLDER, RECEIVER] }
+    AedPhotoReference:
+      type: object
+      additionalProperties: false
+      required: [objectKey, mimeType, byteSize, widthPixels, heightPixels, exifStripped, sha256, capturedAt]
+      properties:
+        objectKey: { type: string, minLength: 1, maxLength: 1024 }
+        mimeType: { type: string, enum: [image/jpeg] }
+        byteSize: { type: integer, minimum: 1, maximum: 5242880 }
+        widthPixels: { type: integer, minimum: 1 }
+        heightPixels: { type: integer, minimum: 1 }
+        exifStripped: { type: boolean, enum: [true] }
+        sha256: { type: string, pattern: '^[0-9a-f]{64}$' }
+        capturedAt: { type: string, format: date-time }
+    AedHandoverSettlement:
+      type: object
+      additionalProperties: false
+      required: [requestId]
+      properties:
+        requestId: { type: string, format: uuid }
+        receiverDeviceInstanceId: { type: string, format: uuid }
+        position: { $ref: '#/components/schemas/ResponderPosition' }
+        positionObservedAt: { type: string, format: date-time }
+        photo: { $ref: '#/components/schemas/AedPhotoReference' }
+    AedHandover:
+      type: object
+      additionalProperties: false
+      required: [handoverId, requestId, eventId, aedId, assignmentId, mode, status, holderDeviceInstanceId, acquiredAt, initiatedAt, revision]
+      properties:
+        handoverId: { type: string, format: uuid }
+        requestId: { type: string, format: uuid }
+        eventId: { type: string, format: uuid }
+        aedId: { type: string }
+        assignmentId: { type: string, format: uuid }
+        mode: { type: string, enum: [FACE_TO_FACE, TEMPORARY_POINT] }
+        status: { type: string, enum: [PENDING, CONFIRMED, SETTLED, HALTED] }
+        holderDeviceInstanceId: { type: string, format: uuid }
+        holderUserId: { type: string, format: uuid }
+        receiverDeviceInstanceId: { type: string, format: uuid }
+        receiverUserId: { type: string, format: uuid }
+        holderConfirmedAt: { type: string, format: date-time }
+        receiverConfirmedAt: { type: string, format: date-time }
+        acquiredAt: { type: string, format: date-time }
+        initiatedAt: { type: string, format: date-time }
+        settledAt: { type: string, format: date-time }
+        haltedAt: { type: string, format: date-time }
+        haltReason: { type: string }
+        temporaryPointDepositId: { type: string, format: uuid }
+        revision: { type: integer, minimum: 1 }
+    AedTemporaryPoint:
+      type: object
+      additionalProperties: false
+      required: [depositId, eventId, aedId, status, position, positionObservedAt, depositedAt, photoReceived]
+      properties:
+        depositId: { type: string, format: uuid }
+        eventId: { type: string, format: uuid }
+        aedId: { type: string }
+        status: { type: string, enum: [SEARCHING, FOUND, NOT_FOUND] }
+        position: { $ref: '#/components/schemas/ResponderPosition' }
+        positionObservedAt: { type: string, format: date-time }
+        depositedAt: { type: string, format: date-time }
+        photoReceived: { type: boolean, enum: [true] }
+    AedTemporaryPointFollowUp:
+      type: object
+      additionalProperties: false
+      required: [requestId, outcome, deviceInstanceId]
+      properties:
+        requestId: { type: string, format: uuid }
+        outcome: { type: string, enum: [FOUND, NOT_FOUND] }
+        deviceInstanceId: { type: string, format: uuid }
+    AedTemporaryPointFollowUpResult:
+      type: object
+      additionalProperties: false
+      required: [followUpId, requestId, depositId, handoverId, eventId, aedId, outcome, deviceInstanceId, reportedAt]
+      properties:
+        followUpId: { type: string }
+        requestId: { type: string, format: uuid }
+        depositId: { type: string, format: uuid }
+        handoverId: { type: string, format: uuid }
+        eventId: { type: string, format: uuid }
+        aedId: { type: string }
+        outcome: { type: string, enum: [FOUND, NOT_FOUND] }
+        deviceInstanceId: { type: string, format: uuid }
+        userId: { type: string, format: uuid }
+        reportedAt: { type: string, format: date-time }
+    AedAsset:
+      type: object
+      additionalProperties: false
+      required: [aedId, status, updatedAt, revision]
+      properties:
+        aedId: { type: string, minLength: 1 }
+        status: { type: string, enum: [AVAILABLE, RESERVED, IN_USE, AWAITING_HANDOFF, DEPOSITED, AWAITING_RETURN, UNAVAILABLE, MAINTENANCE, RETIRED] }
+        updatedAt: { type: string, format: date-time }
+        revision: { type: integer, minimum: 0 }
+        registration: { $ref: '#/components/schemas/AedAssetRegistration' }
+        custody:
+          type: object
+          additionalProperties: false
+          required: [eventId]
+          properties:
+            eventId: { type: string }
+            userId: { type: string }
+            deviceInstanceId: { type: string }
+            acquiredAt: { type: string, format: date-time }
+            custodySince: { type: string, format: date-time }
+            depositedAt: { type: string, format: date-time }
+        temporaryPointId: { type: string }
+    AedAssetAction:
+      type: object
+      additionalProperties: false
+      required: [requestId, expectedRevision, action, reason]
+      properties:
+        requestId: { type: string, format: uuid }
+        expectedRevision: { type: integer, minimum: 0 }
+        action: { type: string, enum: [REGISTER, VERIFY, DISABLE, RETIRE, START_MAINTENANCE, COMPLETE_MAINTENANCE, CONFIRM_RETURN] }
+        reason: { type: string, minLength: 1, maxLength: 1000 }
+        registration: { $ref: '#/components/schemas/AedAssetRegistration' }
+        physicallyConfirmedAt: { type: string, format: date-time, description: Return confirmation must be no older than 30 seconds }
+
+    Aed:
+      type: object
+      required:
+        - id
+        - name
+        - aedPosition
+        - openFrom
+        - openUntil
+        - floor
+        - floorTransferSeconds
+        - accessNote
+        - accessDelaySeconds
+        - verificationSeconds
+        - available
+      properties:
+        id: { type: string, minLength: 1 }
+        name: { type: string, minLength: 1 }
+        aedPosition: { $ref: '#/components/schemas/AedPosition' }
+        openFrom: { type: string, pattern: '^\d{2}:\d{2}$' }
+        openUntil: { type: string, pattern: '^\d{2}:\d{2}$' }
+        floor: { type: string }
+        floorTransferSeconds: { type: integer, minimum: 0 }
+        accessNote: { type: string }
+        accessDelaySeconds: { type: integer, minimum: 0 }
+        verificationSeconds: { type: integer, minimum: 0 }
+        available: { type: boolean }
+
+    PatientLocationCard:
+      type: object
+      required: [address, floor, accessNote]
+      properties:
+        address: { type: string, minLength: 1 }
+        floor: { type: string }
+        accessNote: { type: string }
+
+    FallResolution:
+      type: string
+      enum: [CONFIRMED, DISMISSED, REJECTED, UNRESPONSIVE, UNKNOWN]
+
+    WatchEmergencyObservation:
+      type: object
+      additionalProperties: false
+      required:
+        - schemaVersion
+        - eventId
+        - observationKind
+        - fallDetectedAt
+        - fallResolution
+        - appHelpResponse
+      properties:
+        schemaVersion: { const: '2.0' }
+        eventId: { type: string, format: uuid }
+        observationKind: { const: FALL_CONTEXT }
+        fallDetectedAt: { type: string, format: date-time }
+        fallResolution: { $ref: '#/components/schemas/FallResolution' }
+        appHelpResponse:
+          type: string
+          enum: [NEEDS_HELP, NO_RESPONSE]
+        callFirstObservedAt:
+          type: string
+          format: date-time
+          description: Required only for NO_RESPONSE and within 120 seconds after Fall.
+        callObservationSemantics:
+          const: FIRST_OBSERVED_OUTGOING_STATE
+          description: Required only for NO_RESPONSE; App observation, not dial truth.
+        patientPosition:
+          description: Optional trigger-time Watch snapshot; never an ongoing fallback update.
+          oneOf:
+            - { $ref: '#/components/schemas/PatientPosition' }
+            - { type: 'null' }
+        patientPositionObservedAt:
+          type: string
+          format: date-time
+          description: >-
+            Original OS location sampling time, independent of fallDetectedAt,
+            callFirstObservedAt and server receive time. Requires patientPosition.
+            Legacy observations without this field remain immutable evidence and
+            may be replayed, but their coordinates cannot initialize effective P.
+            Existing server position age/accuracy/clock policies remain unchanged.
+        locationUnavailableReason:
+          oneOf:
+            - { type: string, maxLength: 200 }
+            - { type: 'null' }
+
+    WatchEventState:
+      type: object
+      additionalProperties: false
+      required: [eventId, state, createdAt, resolvedAt]
+      properties:
+        fallbackAllowed:
+          type: boolean
+          description: Server confirms ACTIVE event and at least 10 seconds without effective iPhone P receipt; upload rechecks this authority even if iPhone is reachable.
+        eventId: { type: string, format: uuid }
+        state:
+          type: string
+          enum: [ACTIVE, CANCELLED_CONFIRMED_FALSE_ALARM, CANCELLED_ASSISTANCE_WITHDRAWN, RESOLVED, CLOSED_UNCONFIRMED_NO_RESPONSE]
+        createdAt: { type: string, format: date-time }
+        resolvedAt: { type: [string, 'null'], format: date-time }
+
+    WatchFallbackPositionUpdate:
+      type: object
+      additionalProperties: false
+      required:
+        - schemaVersion
+        - eventId
+        - positionUpdateId
+        - observedAt
+        - patientPosition
+        - activationState
+        - iphoneReachable
+        - networkAvailable
+      properties:
+        schemaVersion: { const: '2.0' }
+        eventId: { type: string, format: uuid }
+        positionUpdateId: { type: string, format: uuid }
+        observedAt: { type: string, format: date-time }
+        patientPosition:
+          allOf:
+            - { $ref: '#/components/schemas/PatientPosition' }
+          description: Candidate or effective Watch fallback P; stale samples never replace newer state.
+        activationState:
+          type: string
+          enum: [NOT_ACTIVATED, INACTIVE, ACTIVATED]
+        iphoneReachable:
+          type: boolean
+          description: Current WatchConnectivity live-messaging reachability observation.
+        networkAvailable:
+          type: boolean
+          description: Watch's own network availability; false cannot create or end an event.
+
+    PatientPositionSource:
+      type: string
+      enum: [WATCH_TRIGGER_SNAPSHOT, IPHONE_PRIMARY, WATCH_FALLBACK]
+
+    EventState:
+      type: string
+      enum: [ACTIVE, CANCELLED_CONFIRMED_FALSE_ALARM, CANCELLED_ASSISTANCE_WITHDRAWN, RESOLVED, CLOSED_UNCONFIRMED_NO_RESPONSE]
+
+    EventEndReason:
+      type: string
+      enum: [FALSE_ALARM, ASSISTANCE_WITHDRAWN, PROBLEM_RESOLVED, PROFESSIONAL_TAKEOVER]
+
+    EventEndRequest:
+      type: object
+      additionalProperties: false
+      required: [resolutionId, reason, endedAt]
+      properties:
+        resolutionId: { type: string, format: uuid }
+        reason: { $ref: '#/components/schemas/EventEndReason' }
+        withdrawalConfirmed: { type: boolean, const: true, description: Required for ASSISTANCE_WITHDRAWN after the three-confirmation client flow }
+        endedAt:
+          type: string
+          format: date-time
+          description: >-
+            Client claim. The persisted effective end is
+            max(min(endedAt, server receipt time), latest causal event/coordination/evidence time),
+            so a slow clock cannot block the patient's single confirmed end.
+        note: { type: string, maxLength: 300 }
+
+    StatusConfirmation:
+      type: object
+      additionalProperties: false
+      required: [confirmationId, prompt, sentAt, responseDeadlineAt]
+      properties:
+        confirmationId: { type: string, format: uuid }
+        prompt: { const: STILL_IN_PROGRESS }
+        sentAt: { type: string, format: date-time }
+        responseDeadlineAt: { type: string, format: date-time }
+
+    StatusConfirmationResponse:
+      type: object
+      additionalProperties: false
+      required: [confirmationId, response, respondedAt]
+      properties:
+        confirmationId: { type: string, format: uuid }
+        response: { const: CONTINUE }
+        respondedAt:
+          type: string
+          format: date-time
+          description: >-
+            Client-claimed response time. It cannot predate the prompt sentAt and the persisted
+            response time is capped at server receipt time.
+
+    StatusConfirmationResult:
+      type: object
+      additionalProperties: false
+      required: [confirmationId, response, respondedAt, nextCheckAt, idempotent]
+      properties:
+        confirmationId: { type: string, format: uuid }
+        response: { const: CONTINUE }
+        respondedAt: { type: string, format: date-time }
+        nextCheckAt: { type: string, format: date-time }
+        idempotent: { type: boolean }
+
+    ParticipantExitRequest:
+      type: object
+      additionalProperties: false
+      required: [exitId, exitedAt]
+      properties:
+        exitId: { type: string, format: uuid }
+        exitedAt:
+          type: string
+          format: date-time
+          description: >-
+            Client claim. The authoritative exit is clamped to at least the latest
+            acceptance/assignment/evidence fact and at most server receipt time; a slow clock
+            never delays immediate revocation.
+        reason: { type: string, minLength: 1, maxLength: 300 }
+
+        soleResponderConfirmed:
+          const: true
+          description: >-
+            Omit for ordinary exits. Set only after three explicit confirmations for this
+            event's sole-responder warning. The server recomputes the accepted responder
+            count transactionally and requires this assertion when only the caller remains.
+            It is included in the idempotency fingerprint; retries must preserve the entire body.
+
+    ParticipantExitResult:
+      type: object
+      additionalProperties: false
+      required: [exitId, eventId, exitedAt, idempotent]
+      properties:
+        exitId: { type: string, format: uuid }
+        eventId: { type: string, format: uuid }
+        exitedAt:
+          type: string
+          format: date-time
+          description: Server-authoritative effective exit time; exclusive for position evidence.
+        idempotent: { type: boolean }
+
+    RecruitmentState:
+      type: string
+      enum: [RECRUITING, STOPPED, COMPLETED]
+      description: False-alarm terminal events use STOPPED; resolved events use COMPLETED.
+
+    ViewerRelationship:
+      type: string
+      enum: [NEUTRAL, PATIENT, RESPONDER]
+      description: Terminal event projections always return NEUTRAL.
+
+    CoordinationSummary:
+      type: object
+      required:
+        - revision
+        - currentRecruitmentRadiusMeters
+        - nearbyCandidateCount
+        - pendingOfferCount
+        - acceptedResponderCount
+        - goToPatientCount
+        - fetchAedCount
+        - enRouteCount
+        - arrivedAtAedCount
+        - arrivedAtPatientCount
+        - aedAcquiredCount
+        - completedAssignmentCount
+      properties:
+        revision: { type: integer, minimum: 1 }
+        currentRecruitmentRadiusMeters: { type: integer, enum: [1000, 1500, 2000] }
+        nearbyCandidateCount: { type: integer, minimum: 0 }
+        pendingOfferCount: { type: integer, minimum: 0 }
+        acceptedResponderCount: { type: integer, minimum: 0 }
+        goToPatientCount: { type: integer, minimum: 0 }
+        fetchAedCount: { type: integer, minimum: 0 }
+        enRouteCount:
+          type: integer
+          minimum: 0
+          description: Current EN_ROUTE plus EN_ROUTE_TO_PATIENT assignments.
+        arrivedAtAedCount:
+          type: integer
+          minimum: 0
+          description: Current ARRIVED_AT_AED assignments; decreases after acquisition.
+        arrivedAtPatientCount:
+          type: integer
+          minimum: 0
+          description: Current ARRIVED_AT_PATIENT plus COMPLETED assignments.
+        aedAcquiredCount:
+          type: integer
+          minimum: 0
+          description: Cumulative unique valid AED receipts for this event.
+        completedAssignmentCount:
+          type: integer
+          minimum: 0
+          description: Current COMPLETED assignments.
+
+    EmergencyEvent:
+      type: object
+      additionalProperties: false
+      required:
+        - id
+        - state
+        - recruitmentState
+        - eventType
+        - positioningTier
+        - canPublishEventPosition
+        - eventPositionParticipationStartedAt
+        - eventPositionParticipationEndedAt
+        - currentRecruitmentRadiusMeters
+        - viewerRelationship
+        - createdAt
+      properties:
+        simulation:
+          $ref: '#/components/schemas/SimulationMarker'
+        id: { type: string, format: uuid }
+        state: { $ref: '#/components/schemas/EventState' }
+        recruitmentState: { $ref: '#/components/schemas/RecruitmentState' }
+        eventType: { const: FALL_ASSISTANCE }
+        positioningTier: { $ref: '#/components/schemas/PositioningTier' }
+        canPublishEventPosition:
+          type: boolean
+          description: True only for the authenticated primary patient iPhone or accepted responder device.
+        eventPositionParticipationStartedAt:
+          oneOf:
+            - { type: string, format: date-time }
+            - { type: 'null' }
+          description: >-
+            Inclusive start of this authenticated device's own event-position evidence window.
+            Null for a device that never obtained event-position authority.
+        eventPositionParticipationEndedAt:
+          oneOf:
+            - { type: string, format: date-time }
+            - { type: 'null' }
+          description: >-
+            Exclusive end of this authenticated device's own event-position evidence window.
+            Null while its window remains open or when it never obtained authority. No other
+            participant's interval is disclosed.
+        currentRecruitmentRadiusMeters: { type: integer, enum: [1000, 1500, 2000] }
+        recruitmentStageStartedAt:
+          oneOf:
+            - { type: string, format: date-time }
+            - { type: 'null' }
+          description: Null until the first valid patient position starts the current ring clock.
+        distanceRange:
+          oneOf:
+            - { $ref: '#/components/schemas/DistanceRange' }
+            - { type: 'null' }
+        etaRange:
+          oneOf:
+            - { $ref: '#/components/schemas/EtaRange' }
+            - { type: 'null' }
+        expiresAt:
+          oneOf:
+            - { type: string, format: date-time }
+            - { type: 'null' }
+        triggerSource:
+          oneOf:
+            - { type: string, enum: [WATCH_FALL_HELP_CONFIRMED, WATCH_FALL_NO_RESPONSE_OUTGOING_CALL_OBSERVED, SIMULATED_TEST] }
+            - { type: 'null' }
+          description: Returned only to the patient or triggering Watch, never to a pending candidate.
+        fallDetectedAt:
+          oneOf:
+            - { type: string, format: date-time }
+            - { type: 'null' }
+          description: Returned only to the patient or triggering Watch.
+        fallResolution:
+          oneOf:
+            - { $ref: '#/components/schemas/FallResolution' }
+            - { type: 'null' }
+          description: Returned only to the patient or triggering Watch.
+        appHelpResponse:
+          oneOf:
+            - { type: string, enum: [NEEDS_HELP, NO_RESPONSE] }
+            - { type: 'null' }
+          description: Returned only to the patient or triggering Watch.
+        callFirstObservedAt:
+          oneOf:
+            - type: string
+              format: date-time
+            - type: 'null'
+          description: Present only for NO_RESPONSE; App observation time only.
+        patientPosition:
+          oneOf:
+            - { $ref: '#/components/schemas/PatientPosition' }
+            - { type: 'null' }
+          description: Present only for the patient or an accepted responder.
+        patientPositionSource:
+          oneOf:
+            - { $ref: '#/components/schemas/PatientPositionSource' }
+            - { type: 'null' }
+        patientPositionObservedAt:
+          oneOf:
+            - { type: string, format: date-time }
+            - { type: 'null' }
+        patientPositionServerReceivedAt:
+          oneOf:
+            - { type: string, format: date-time }
+            - { type: 'null' }
+        patientLocationCard:
+          oneOf:
+            - { $ref: '#/components/schemas/PatientLocationCard' }
+            - { type: 'null' }
+          description: Present only for the patient or an accepted responder.
+        viewerRelationship: { $ref: '#/components/schemas/ViewerRelationship' }
+        coordination:
+          description: Present for the patient and accepted responders; omitted from pending candidates.
+          $ref: '#/components/schemas/CoordinationSummary'
+        createdAt:
+          type: string
+          format: date-time
+          description: >-
+            Authoritative inclusive patient-event boundary. When patient priority ends this
+            user’s responder interval in another event, this value exactly equals that interval’s
+            exclusive PATIENT_PRIORITY endedAt and may be used by iOS when the old event is no
+            longer visible.
+        resolvedAt:
+          oneOf:
+            - { type: string, format: date-time }
+            - { type: 'null' }
+        pendingResponseRequest:
+          description: Null for terminal events and when the viewer has no unfinished offer; pending offers are privacy-minimal.
+          oneOf:
+            - { $ref: '#/components/schemas/ResponseRequest' }
+            - { type: 'null' }
+        statusConfirmation:
+          description: Present only for the patient while a five-minute status-confirmation answer window is open.
+          $ref: '#/components/schemas/StatusConfirmation'
+        currentAssignment:
+          description: Present only while the viewer has an active accepted assignment.
+          oneOf:
+            - { $ref: '#/components/schemas/Assignment' }
+            - { type: 'null' }
+    DeliveryStatus:
+      type: string
+      enum: [SENT, DELIVERED, VIEWED, ACCEPTED, REFUSED, EXPIRED]
+
+    PendingDeliveryStatus:
+      type: string
+      enum: [SENT, DELIVERED, VIEWED]
+
+    SimulationMarker:
+      type: object
+      additionalProperties: false
+      required: [runId, label]
+      properties:
+        runId: { type: string, format: uuid }
+        label: { const: SIMULATED_TEST }
+      description: Management-only controlled simulation. runId equals eventId; never represents a system Fall or SOS observation. Simulation observation/bindings are immutable and not included in this public marker.
+    ResponseRequest:
+      type: object
+      additionalProperties: false
+      required:
+        - schemaVersion
+        - messageId
+        - eventId
+        - deliveryId
+        - deliveryStatus
+        - occurredAt
+        - eventType
+        - positioningTier
+        - distanceRange
+        - etaRange
+        - currentRecruitmentRadiusMeters
+        - expiresAt
+      properties:
+        simulation:
+          $ref: '#/components/schemas/SimulationMarker'
+        schemaVersion: { const: '2.0' }
+        messageId:
+          type: string
+          minLength: 1
+          description: Stable idempotency ID; it need not encode identity or ordering.
+        eventId: { type: string, format: uuid }
+        deliveryId: { type: string, format: uuid }
+        deliveryStatus: { $ref: '#/components/schemas/PendingDeliveryStatus' }
+        occurredAt: { type: string, format: date-time }
+        eventType: { const: FALL_ASSISTANCE }
+        positioningTier: { const: SEARCH_RING }
+        distanceRange: { $ref: '#/components/schemas/DistanceRange' }
+        etaRange: { $ref: '#/components/schemas/EtaRange' }
+        currentRecruitmentRadiusMeters: { type: integer, enum: [1000, 1500, 2000] }
+        expiresAt: { type: string, format: date-time }
+
+    AssignmentRole:
+      type: string
+      enum: [GO_TO_PATIENT, FETCH_AED]
+
+    AssignmentStatus:
+      type: string
+      enum:
+        - ASSIGNED
+        - EN_ROUTE
+        - ARRIVED_AT_AED
+        - AED_ACQUIRED
+        - EN_ROUTE_TO_PATIENT
+        - ARRIVED_AT_PATIENT
+        - COMPLETED
+        - AED_UNAVAILABLE
+        - TIMED_OUT
+        - CANCELLED
+
+    Assignment:
+      type: object
+      required: [id, eventId, role, status, revision]
+      properties:
+        id: { type: string, format: uuid }
+        eventId: { type: string, format: uuid }
+        role: { $ref: '#/components/schemas/AssignmentRole' }
+        status: { $ref: '#/components/schemas/AssignmentStatus' }
+        revision: { type: integer, minimum: 1 }
+        route:
+          oneOf:
+            - { $ref: '#/components/schemas/AedRoute' }
+            - { type: 'null' }
+        aedAcquiredReceipt:
+          oneOf:
+            - { $ref: '#/components/schemas/AedAcquiredReceipt' }
+            - { type: 'null' }
+
+    AedAcquiredReceipt:
+      type: object
+      additionalProperties: false
+      required: [receiptId, eventId, assignmentId, aedId, acquiredAt]
+      properties:
+        receiptId: { type: string, format: uuid }
+        eventId: { type: string, format: uuid }
+        assignmentId: { type: string, format: uuid }
+        aedId: { type: string }
+        acquiredAt:
+          type: string
+          format: date-time
+          description: Canonical responses contain the server-authoritative effective time.
+
+    AedUnavailableReport:
+      type: object
+      additionalProperties: false
+      required: [reportId, eventId, assignmentId, aedId, reportedAt, reason]
+      properties:
+        reportId: { type: string, format: uuid }
+        eventId: { type: string, format: uuid }
+        assignmentId: { type: string, format: uuid }
+        aedId: { type: string }
+        reportedAt:
+          type: string
+          format: date-time
+          description: Canonical responses contain the server-authoritative effective time.
+        reason: { type: string, minLength: 1, maxLength: 300 }
+
+    CoordinationTeamView:
+      type: object
+      required: [eventId, members, viewerAlias, generatedAt]
+      additionalProperties: false
+      properties:
+        eventId: { type: string }
+        viewerAlias: { type: string, nullable: true }
+        generatedAt: { type: string, format: date-time }
+        members:
+          type: array
+          items: { $ref: '#/components/schemas/TeamMemberView' }
+    TeamMemberView:
+      type: object
+      required: [alias, role, status, positionFreshness, isViewer]
+      additionalProperties: false
+      properties:
+        alias: { type: string }
+        role: { type: string, enum: [GO_TO_PATIENT, FETCH_AED] }
+        status: { type: string }
+        approximatePosition:
+          type: object
+          additionalProperties: false
+          required: [latitude, longitude]
+          properties:
+            latitude: { type: number }
+            longitude: { type: number }
+        positionFreshness: { type: string, enum: [CURRENT, RECENT, STALE, UNKNOWN] }
+        isViewer: { type: boolean }
+    BreakGlassGrantRequest:
+      type: object
+      required: [eventId, reason]
+      additionalProperties: false
+      properties:
+        eventId: { type: string, format: uuid }
+        reason: { type: string, minLength: 4, maxLength: 500 }
+        minutes: { type: integer, minimum: 1, maximum: 30 }
+    BreakGlassGrant:
+      type: object
+      required: [grantId, eventId, reason, issuedAt, expiresAt, scope]
+      additionalProperties: true
+      properties:
+        grantId: { type: string }
+        eventId: { type: string }
+        reason: { type: string }
+        issuedAt: { type: string, format: date-time }
+        expiresAt: { type: string, format: date-time }
+        scope: { type: string, enum: [READ_ONLY] }
+        usedAt: { type: string, format: date-time }
+    PrecisePatientPosition:
+      type: object
+      required: [eventId, observedAt, source, latitude, longitude, accuracyMeters]
+      additionalProperties: false
+      properties:
+        eventId: { type: string }
+        observedAt: { type: string, format: date-time }
+        source: { type: string }
+        latitude: { type: number }
+        longitude: { type: number }
+        accuracyMeters: { type: number }
+    AccessAuditEntry:
+      type: object
+      required: [entryId, actor, actorKind, dataClass, subjectId, reason, recordedAt, outcome]
+      additionalProperties: false
+      properties:
+        entryId: { type: string }
+        actor: { type: string }
+        actorKind: { type: string, enum: [OPERATOR, ACCOUNT, DEVICE, SYSTEM] }
+        dataClass:
+          type: string
+          enum: [EVENT_SUMMARY, PRECISE_PATIENT_POSITION, PARTICIPANT_POSITION, PARTICIPANT_IDENTITY, EVIDENCE, RETENTION, LEGAL_HOLD, ACCOUNT_ADMIN]
+        subjectId: { type: string }
+        reason: { type: string }
+        grantId: { type: string }
+        recordedAt: { type: string, format: date-time }
+        outcome: { type: string, enum: [ALLOWED, DENIED] }
+    SelfAccessPendingRequest:
+      type: object
+      required: [requestId, status, requestedAt, approvalDeadlineAt, overdue]
+      additionalProperties: false
+      properties:
+        requestId: { type: string, format: uuid }
+        status: { type: string, enum: [PENDING_APPROVAL] }
+        requestedAt: { type: string, format: date-time }
+        approvalDeadlineAt: { type: string, format: date-time }
+        overdue: { type: boolean }
+        verifiedLocalAuth: { type: string, enum: [BIOMETRIC, PASSCODE] }
+    SelfAccessOwnPosition:
+      type: object
+      required: [kind, at, latitude, longitude, accuracyMeters, source]
+      additionalProperties: false
+      properties:
+        kind: { type: string, enum: [P, R] }
+        at: { type: string, format: date-time }
+        latitude: { type: number }
+        longitude: { type: number }
+        accuracyMeters: { type: number }
+        source: { type: string, enum: [OWN_REPORTED, WATCH_TRIGGER_SNAPSHOT] }
+    SelfAccessEventView:
+      type: object
+      required: [eventId, role, state, createdAt, ownPositions, ownPositionGapCount, ownDeliveries, ownAssignments]
+      additionalProperties: false
+      properties:
+        eventId: { type: string, format: uuid }
+        role: { type: string, enum: [PATIENT, RESPONDER] }
+        state: { type: string }
+        createdAt: { type: string, format: date-time }
+        resolvedAt: { type: string, format: date-time }
+        terminalReason: { type: string }
+        ownPositions:
+          type: array
+          items: { $ref: '#/components/schemas/SelfAccessOwnPosition' }
+        ownPositionGapCount: { type: integer, minimum: 0 }
+        ownDeliveries:
+          type: array
+          items:
+            type: object
+            required: [deliveryId, status]
+            additionalProperties: false
+            properties:
+              deliveryId: { type: string }
+              status: { type: string }
+              decidedAt: { type: string, format: date-time }
+        ownAssignments:
+          type: array
+          items:
+            type: object
+            required: [assignmentId, role, status]
+            additionalProperties: false
+            properties:
+              assignmentId: { type: string }
+              role: { type: string }
+              status: { type: string }
+              aedId: { type: string }
+              distanceMeters: { type: number }
+        ownObservation:
+          type: object
+          required: [fallDetectedAt, fallResolution]
+          additionalProperties: false
+          properties:
+            fallDetectedAt: { type: string, format: date-time }
+            fallResolution: { type: string }
+    SelfAccessView:
+      type: object
+      required: [requestId, readOnly, exportAllowed, grantedAt, expiresAt, redactions, events]
+      additionalProperties: false
+      properties:
+        requestId: { type: string, format: uuid }
+        readOnly: { type: boolean, enum: [true] }
+        exportAllowed: { type: boolean, enum: [false] }
+        grantedAt: { type: string, format: date-time }
+        expiresAt: { type: string, format: date-time }
+        redactions:
+          type: array
+          items: { type: string }
+        events:
+          type: array
+          items: { $ref: '#/components/schemas/SelfAccessEventView' }
+    OpsEventStatus:
+      type: object
+      required: [eventId, state, triggerSource, createdAt, retention, counts, redactions]
+      additionalProperties: false
+      properties:
+        eventId: { type: string, format: uuid }
+        state: { type: string }
+        triggerSource: { type: string }
+        createdAt: { type: string, format: date-time }
+        resolvedAt: { type: string, format: date-time }
+        terminalReason: { type: string }
+        retention:
+          type: object
+          required: [tier, hasColdCopy, legalHold]
+          additionalProperties: false
+          properties:
+            tier: { type: string, enum: [ONLINE, SEALED, PURGED] }
+            sealedAt: { type: string, format: date-time }
+            hasColdCopy: { type: boolean }
+            legalHold:
+              oneOf:
+                - { type: 'null' }
+                - type: object
+                  required: [placedAt, authority]
+                  additionalProperties: false
+                  properties:
+                    placedAt: { type: string, format: date-time }
+                    authority: { type: string }
+                    releasedAt: { type: string, format: date-time }
+        counts:
+          type: object
+          required: [acceptedResponders, completedAssignments, aedAcquired, aedUnavailableReports, positionBatches, positionRecords, timelineEntries, notificationsPending]
+          additionalProperties: false
+          properties:
+            acceptedResponders: { type: integer, minimum: 0 }
+            completedAssignments: { type: integer, minimum: 0 }
+            aedAcquired: { type: integer, minimum: 0 }
+            aedUnavailableReports: { type: integer, minimum: 0 }
+            positionBatches: { type: integer, minimum: 0 }
+            positionRecords: { type: integer, minimum: 0 }
+            timelineEntries: { type: integer, minimum: 0 }
+            notificationsPending: { type: integer, minimum: 0 }
+        redactions:
+          type: array
+          items: { type: string }
+    OperatorStatus:
+      type: object
+      required: [status, generatedAt, uptimeSeconds, concerns, counters, paths]
+      additionalProperties: false
+      properties:
+        status: { type: string, enum: [ok, degraded, action_required] }
+        generatedAt: { type: string, format: date-time }
+        uptimeSeconds: { type: integer, minimum: 0 }
+        concerns:
+          type: array
+          items:
+            type: object
+            required: [name, verdict, observed, detail]
+            additionalProperties: false
+            properties:
+              name: { type: string }
+              verdict: { type: string, enum: [ok, degraded, action_required] }
+              observed: { oneOf: [{ type: number }, { type: boolean }, { type: string }] }
+              detail: { type: string }
+        counters:
+          type: object
+          additionalProperties: { type: number }
+        paths:
+          type: object
+          required: [identityLedger, sealKey]
+          additionalProperties: false
+          properties:
+            identityLedger: { type: string }
+            sealKey: { type: string }
+    PendingRerouteProposal:
+      type: object
+      required: [proposalId, assignmentId, fromAedId, toAedId, distanceMeters, distanceSavingMeters, proposedAt, expiresAt]
+      additionalProperties: false
+      properties:
+        proposalId: { type: string, format: uuid }
+        assignmentId: { type: string, format: uuid }
+        fromAedId: { type: string }
+        toAedId: { type: string }
+        distanceMeters: { type: number }
+        distanceSavingMeters: { type: number }
+        proposedAt: { type: string, format: date-time }
+        expiresAt: { type: string, format: date-time }
+    TeamSignalView:
+      type: object
+      required: [alias, kind, createdAt, expiresAt, mine]
+      additionalProperties: false
+      properties:
+        alias: { type: string }
+        kind: { type: string, enum: [ACCEPTED_TASK, ON_MY_WAY, ARRIVED_AT_PATIENT, AED_ACQUIRED, NEED_HELP_HERE, CANNOT_CONTINUE] }
+        createdAt: { type: string, format: date-time }
+        expiresAt: { type: string, format: date-time }
+        mine: { type: boolean }
+    PushTokenRegistrationRequest:
+      type: object
+      required: [pushToken, pushEnvironment, bundleId]
+      additionalProperties: false
+      properties:
+        pushToken: { type: string, minLength: 1, maxLength: 512 }
+        pushEnvironment: { type: string, enum: [SANDBOX, PRODUCTION] }
+        bundleId: { type: string, minLength: 1, maxLength: 255 }
+    PushTokenRegistration:
+      type: object
+      required: [registeredAt, environment, providerConfigured]
+      additionalProperties: false
+      properties:
+        registeredAt: { type: string, format: date-time }
+        environment: { type: string, enum: [SANDBOX, PRODUCTION] }
+        providerConfigured:
+          type: boolean
+          description: Provider credentials are configured; not proof of APNs acceptance or device presentation.
+    NotificationRoute:
+      type: object
+      required: [messageId, eventId, name, eventState, actionable]
+      additionalProperties: false
+      properties:
+        messageId: { type: string }
+        eventId: { type: string, nullable: true }
+        name: { type: string, nullable: true }
+        eventState: { type: string, nullable: true }
+        actionable: { type: boolean }
+    AedRerouteProposalRequest:
+      type: object
+      additionalProperties: false
+      properties:
+        positionUpdateId: { type: string, format: uuid }
+        minimumSavingMeters: { type: number, minimum: 0 }
+    AedRerouteProposal:
+      type: object
+      required: [proposalId, toAedId, distanceSavingMeters, expiresAt]
+      additionalProperties: false
+      properties:
+        proposalId: { type: string }
+        toAedId: { type: string }
+        distanceSavingMeters: { type: number }
+        expiresAt: { type: string, format: date-time }
+    AedRerouteDecisionRequest:
+      type: object
+      required: [accept, decidedAt]
+      additionalProperties: false
+      properties:
+        accept: { type: boolean }
+        decidedAt: { type: string, format: date-time }
+        responderPosition: { $ref: '#/components/schemas/ResponderPosition' }
+    AedRerouteDecision:
+      type: object
+      required: [status]
+      additionalProperties: true
+      properties:
+        status: { type: string, enum: [ACCEPTED, REJECTED, REFUSED] }
+        reason: { type: string }
+    ClientAedRouteContext:
+      type: object
+      required: [calculationId, expiresAt, responder, patient, aeds, eligibleCandidateCount]
+      properties:
+        calculationId: { type: string, format: uuid }
+        expiresAt: { type: string, format: date-time }
+        responder: { $ref: '#/components/schemas/ResponderPosition' }
+        patient: { $ref: '#/components/schemas/PatientPosition' }
+        aeds:
+          type: array
+          maxItems: 8
+          items: { $ref: '#/components/schemas/Aed' }
+        eligibleCandidateCount: { type: integer, minimum: 0 }
+    ClientAedRouteSubmission:
+      type: object
+      additionalProperties: false
+      required: [calculationId, routes]
+      properties:
+        calculationId: { type: string, format: uuid }
+        routes:
+          type: array
+          maxItems: 8
+          items:
+            type: object
+            additionalProperties: false
+            required: [aedId, toAedMeters, toPatientMeters]
+            properties:
+              aedId: { type: string, minLength: 1, maxLength: 255 }
+              toAedMeters: { type: number, minimum: 0, maximum: 100000 }
+              toPatientMeters: { type: number, minimum: 0, maximum: 100000 }
+    AedRoute:
+      type: object
+      required: [aedId, path, distanceMeters, distanceSource]
+      properties:
+        aedId: { type: string }
+        path:
+          type: array
+          minItems: 3
+          maxItems: 3
+          prefixItems:
+            - { $ref: '#/components/schemas/ResponderPosition' }
+            - { $ref: '#/components/schemas/AedPosition' }
+            - { $ref: '#/components/schemas/PatientPosition' }
+        distanceMeters: { type: number, minimum: 0 }
+        distanceSource: { type: string, enum: [AMAP_WALKING, CLIENT_MAPKIT, GEODESIC_ESTIMATE] }
+        amapNavigation:
+          type: object
+          description: Derived GCJ-02 coordinates for opening AMap; path remains WGS-84.
+          required: [coordinateSystem, aed, patient]
+          additionalProperties: false
+          properties:
+            coordinateSystem: { type: string, enum: [GCJ02] }
+            aed: { $ref: '#/components/schemas/AmapNavigationCoordinate' }
+            patient: { $ref: '#/components/schemas/AmapNavigationCoordinate' }
+    AmapNavigationCoordinate:
+      type: object
+      required: [latitude, longitude]
+      additionalProperties: false
+      properties:
+        latitude: { type: number, minimum: -90, maximum: 90 }
+        longitude: { type: number, minimum: -180, maximum: 180 }
+
+    TimelineEntry:
+      type: object
+      additionalProperties: false
+      required: [id, eventId, occurredAt, kind, message]
+      properties:
+        id: { type: string, format: uuid }
+        eventId: { type: string, format: uuid }
+        occurredAt: { type: string, format: date-time }
+        kind:
+          type: string
+          enum:
+            - EVENT_ACTIVATED
+            - FALSE_ALARM_CONFIRMED
+            - EVENT_RESOLVED
+            - PASSIVE_OBSERVATION
+        message: { type: string }

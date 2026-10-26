@@ -1,0 +1,25 @@
+{
+  "version": "0.6",
+  "generator": "openstreetmap-cgimap 2.1.0 (244701 spike-07.openstreetmap.org)",
+  "copyright": "OpenStreetMap and contributors",
+  "attribution": "http://www.openstreetmap.org/copyright",
+  "license": "http://redacted-host.invalid/licenses/odbl/1-0/",
+  "elements": [
+    {
+      "type": "node",
+      "id": 9633878276,
+      "lat": 23.1506706,
+      "lon": 113.0231916,
+      "timestamp": "2022-04-03T16:56:30Z",
+      "version": 1,
+      "changeset": 119271842,
+      "user": "SpaghettiMapper",
+      "uid": 15478351,
+      "tags": {
+        "defibrillator:location": "体育馆门口",
+        "emergency": "defibrillator",
+        "indoor": "no"
+      }
+    }
+  ]
+}

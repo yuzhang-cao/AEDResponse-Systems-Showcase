@@ -1,0 +1,62 @@
+[0/1] Planning build
+Building for debugging...
+[0/3] Write swift-version--58304C5D6DBC2206.txt
+[2/6] Compiling AEDResponse ProductionDTOs.swift
+[3/6] Emitting module AEDResponse
+[4/6] Compiling AEDResponse AppleMapsDirections.swift
+[5/8] Compiling AEDResponseTests AppleMapsDirectionsTests.swift
+[6/8] Emitting module AEDResponseTests
+[7/10] Emitting module AEDResponseNativeTestsPackageTests
+[8/10] Compiling AEDResponseNativeTestsPackageTests runner.swift
+[8/10] Write Objects.LinkFileList
+[9/10] Linking AEDResponseNativeTestsPackageTests
+Build complete! (3.25s)
+Test Suite 'All tests' started at 2026-10-13 12:36:28.837.
+Test Suite 'AEDResponseNativeTestsPackageTests.xctest' started at 2026-10-13 12:36:28.842.
+Test Suite 'AmapDirectionsTests' started at 2026-10-13 12:36:28.842.
+Test Case '-[AEDResponseTests.AmapDirectionsTests testAfterPickupNavigatesToPatientWithoutReturningToCabinet]' started.
+Test Case '-[AEDResponseTests.AmapDirectionsTests testAfterPickupNavigatesToPatientWithoutReturningToCabinet]' passed (0.004 seconds).
+Test Case '-[AEDResponseTests.AmapDirectionsTests testDirectPatientAndLegacyRoutesUseWGS84Conversion]' started.
+Test Case '-[AEDResponseTests.AmapDirectionsTests testDirectPatientAndLegacyRoutesUseWGS84Conversion]' passed (0.000 seconds).
+Test Case '-[AEDResponseTests.AmapDirectionsTests testFetchUsesCurrentLocationThenGCJ02AedThenPatient]' started.
+Test Case '-[AEDResponseTests.AmapDirectionsTests testFetchUsesCurrentLocationThenGCJ02AedThenPatient]' passed (0.000 seconds).
+Test Case '-[AEDResponseTests.AmapDirectionsTests testNavigationPrefersInstalledAmapAndOtherwiseUsesApple]' started.
+Test Case '-[AEDResponseTests.AmapDirectionsTests testNavigationPrefersInstalledAmapAndOtherwiseUsesApple]' passed (0.000 seconds).
+Test Case '-[AEDResponseTests.AmapDirectionsTests testUnknownCoordinateSystemCannotProduceAMisplacedWaypoint]' started.
+Test Case '-[AEDResponseTests.AmapDirectionsTests testUnknownCoordinateSystemCannotProduceAMisplacedWaypoint]' passed (0.000 seconds).
+Test Suite 'AmapDirectionsTests' passed at 2026-10-13 12:36:28.848.
+	 Executed 5 tests, with 0 failures (0 unexpected) in 0.005 (0.005) seconds
+Test Suite 'AppleMapsDirectionsTests' started at 2026-10-13 12:36:28.848.
+Test Case '-[AEDResponseTests.AppleMapsDirectionsTests testAWalkingLinkCarriesTheServerAssignedDestination]' started.
+Test Case '-[AEDResponseTests.AppleMapsDirectionsTests testAWalkingLinkCarriesTheServerAssignedDestination]' passed (0.000 seconds).
+Test Case '-[AEDResponseTests.AppleMapsDirectionsTests testNoCoordinateMeansNoLinkRatherThanALinkToNowhere]' started.
+Test Case '-[AEDResponseTests.AppleMapsDirectionsTests testNoCoordinateMeansNoLinkRatherThanALinkToNowhere]' passed (0.000 seconds).
+Test Case '-[AEDResponseTests.AppleMapsDirectionsTests testTheLabelIsOptionalAndDoesNotBreakTheLink]' started.
+Test Case '-[AEDResponseTests.AppleMapsDirectionsTests testTheLabelIsOptionalAndDoesNotBreakTheLink]' passed (0.000 seconds).
+Test Suite 'AppleMapsDirectionsTests' passed at 2026-10-13 12:36:28.848.
+	 Executed 3 tests, with 0 failures (0 unexpected) in 0.000 (0.001) seconds
+Test Suite 'MapKitAedRouteCalculatorTests' started at 2026-10-13 12:36:28.849.
+Test Case '-[AEDResponseTests.MapKitAedRouteCalculatorTests testAFreeLegSlotStartsTheNextCandidateAndResultsKeepInputOrder]' started.
+Test Case '-[AEDResponseTests.MapKitAedRouteCalculatorTests testAFreeLegSlotStartsTheNextCandidateAndResultsKeepInputOrder]' passed (0.046 seconds).
+Test Case '-[AEDResponseTests.MapKitAedRouteCalculatorTests testAlreadyCancelledCalculationDoesNotCallTheLegCalculator]' started.
+Test Case '-[AEDResponseTests.MapKitAedRouteCalculatorTests testAlreadyCancelledCalculationDoesNotCallTheLegCalculator]' passed (0.000 seconds).
+Test Case '-[AEDResponseTests.MapKitAedRouteCalculatorTests testBothLegsAreSummedAsDistancesWithoutTimeOrAccessCost]' started.
+Test Case '-[AEDResponseTests.MapKitAedRouteCalculatorTests testBothLegsAreSummedAsDistancesWithoutTimeOrAccessCost]' passed (0.000 seconds).
+Test Case '-[AEDResponseTests.MapKitAedRouteCalculatorTests testCancellationPropagatesWithoutStartingMoreLegs]' started.
+Test Case '-[AEDResponseTests.MapKitAedRouteCalculatorTests testCancellationPropagatesWithoutStartingMoreLegs]' passed (0.000 seconds).
+Test Case '-[AEDResponseTests.MapKitAedRouteCalculatorTests testCandidateLimitRejectsBeforeStartingRequests]' started.
+Test Case '-[AEDResponseTests.MapKitAedRouteCalculatorTests testCandidateLimitRejectsBeforeStartingRequests]' passed (0.000 seconds).
+Test Case '-[AEDResponseTests.MapKitAedRouteCalculatorTests testDirectionsNotFoundOnEitherLegOmitsTheWholeCandidate]' started.
+Test Case '-[AEDResponseTests.MapKitAedRouteCalculatorTests testDirectionsNotFoundOnEitherLegOmitsTheWholeCandidate]' passed (0.001 seconds).
+Test Case '-[AEDResponseTests.MapKitAedRouteCalculatorTests testOtherErrorsPropagateAndCancelTheRemainingLeg]' started.
+Test Case '-[AEDResponseTests.MapKitAedRouteCalculatorTests testOtherErrorsPropagateAndCancelTheRemainingLeg]' passed (0.000 seconds).
+Test Suite 'MapKitAedRouteCalculatorTests' passed at 2026-10-13 12:36:28.898.
+	 Executed 7 tests, with 0 failures (0 unexpected) in 0.049 (0.049) seconds
+Test Suite 'AEDResponseNativeTestsPackageTests.xctest' passed at 2026-10-13 12:36:28.898.
+	 Executed 15 tests, with 0 failures (0 unexpected) in 0.054 (0.055) seconds
+Test Suite 'All tests' passed at 2026-10-13 12:36:28.898.
+	 Executed 15 tests, with 0 failures (0 unexpected) in 0.054 (0.060) seconds
+◇ Test run started.
+↳ Testing Library Version: 1902
+↳ Target Platform: arm64e-apple-macos14.0
+✔ Test run with 0 tests in 0 suites passed after 0.001 seconds.

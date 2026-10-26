@@ -1,0 +1,488 @@
+Command line invocation:
+    /Applications/Xcode.app/Contents/Developer/usr/bin/xcodebuild -project AEDResponse.xcodeproj -scheme AEDResponseTestHost -configuration Debug -destination "platform=iOS Simulator,id=REDACTED-ID-0015e2d01105c61a" -derivedDataPath [BUILD_CACHE]/action-map-first-20261026.hkwuih3c/Simulator -resultBundlePath [BUILD_CACHE]/action-map-first-20261026.hkwuih3c/UnitTests.xcresult -parallel-testing-enabled NO -disableAutomaticPackageResolution -skipPackageUpdates "-only-testing:AEDResponseTests/AppStoreArchitectureTests" "-only-testing:AEDResponseTests/NearbyVolunteerSummaryTests" "-only-testing:AEDResponseTests/ResponderExitTests" "-only-testing:AEDResponseTests/AedRerouteTests" "-only-testing:AEDResponseTests/ClientRouteRefreshCoordinatorTests" "-only-testing:AEDResponseTests/ResponsePrivacyProjectionTests" "-only-testing:AEDResponseTests/StateMachineTests" "-only-testing:AEDResponseTests/EventOutcomePresentationTests" CODE_SIGNING_ALLOWED=NO test-without-building
+
+Build settings from command line:
+    CODE_SIGNING_ALLOWED = NO
+
+Resolve Package Graph
+
+Fetching from https://github.com/socketio/socket.io-client-swift.git (cached)
+
+Fetching from https://github.com/daltoniam/Starscream (cached)
+
+Creating working copy of package ‘Starscream’
+
+Creating working copy of package ‘socket.io-client-swift’
+
+Checking out 4.0.8 of package ‘Starscream’
+
+Checking out 16.1.1 of package ‘socket.io-client-swift’
+
+
+Resolved source packages:
+  Starscream: https://github.com/daltoniam/Starscream @ 4.0.8
+  SocketIO: [BUILD_CACHE]/action-map-first-20261026.hkwuih3c/Source/ios/.build/SourcePackages/checkouts/socket.io-client-swift @ local
+
+Writing result bundle at path:
+	[BUILD_CACHE]/action-map-first-20261026.hkwuih3c/UnitTests.xcresult
+
+2026-10-26 02:21:41.242568+0800 AEDResponseTestHost[77663:6276034] [General] Failed to send CA Event for app launch measurements for ca_event_type: 0 event_name: com.apple.app_launch_measurement.FirstFramePresentationMetric
+2026-10-26 02:21:47.234637+0800 AEDResponseTestHost[77663:6276034] [General] Failed to send CA Event for app launch measurements for ca_event_type: 1 event_name: com.apple.app_launch_measurement.ExtendedLaunchMetrics
+Test Suite 'Selected tests' started at 2026-10-26 02:22:07.840.
+Test Suite 'AEDResponseTests.xctest' started at 2026-10-26 02:22:07.915.
+Test Suite 'AedRerouteTests' started at 2026-10-26 02:22:07.915.
+Test Case '-[AEDResponseTests.AedRerouteTests testAcceptanceIsSentOnceWithTheCurrentPositionAndRefusalKeepsTheTask]' started.
+Test Case '-[AEDResponseTests.AedRerouteTests testAcceptanceIsSentOnceWithTheCurrentPositionAndRefusalKeepsTheTask]' passed (0.060 seconds).
+Test Case '-[AEDResponseTests.AedRerouteTests testAnExpiredQuestionIsDroppedAndNeverAccepted]' started.
+Test Case '-[AEDResponseTests.AedRerouteTests testAnExpiredQuestionIsDroppedAndNeverAccepted]' passed (0.003 seconds).
+Test Case '-[AEDResponseTests.AedRerouteTests testASessionChangeOrTaskChangeDropsTheQuestion]' started.
+Test Case '-[AEDResponseTests.AedRerouteTests testASessionChangeOrTaskChangeDropsTheQuestion]' passed (0.012 seconds).
+Test Case '-[AEDResponseTests.AedRerouteTests testPendingProposalDecodesAndTheNullCaseIsUnderstood]' started.
+Test Case '-[AEDResponseTests.AedRerouteTests testPendingProposalDecodesAndTheNullCaseIsUnderstood]' passed (0.195 seconds).
+Test Suite 'AedRerouteTests' passed at 2026-10-26 02:22:08.297.
+	 Executed 4 tests, with 0 failures (0 unexpected) in 0.270 (0.382) seconds
+Test Suite 'AppStoreArchitectureTests' started at 2026-10-26 02:22:08.300.
+Test Case '-[AEDResponseTests.AppStoreArchitectureTests testAccountBearerCannotBeSentToDifferentIssuer]' started.
+Test Case '-[AEDResponseTests.AppStoreArchitectureTests testAccountBearerCannotBeSentToDifferentIssuer]' passed (0.695 seconds).
+Test Case '-[AEDResponseTests.AppStoreArchitectureTests testAccountDeletionAsksTheServerAndClearsEveryLocalIdentityFact]' started.
+2026-10-26 02:22:09.070296+0800 AEDResponseTestHost[77663:6274557] AED_PUSH_DIAGNOSTIC phase=coordinator-client-connected httpStatus=none
+Test Case '-[AEDResponseTests.AppStoreArchitectureTests testAccountDeletionAsksTheServerAndClearsEveryLocalIdentityFact]' passed (0.274 seconds).
+Test Case '-[AEDResponseTests.AppStoreArchitectureTests testAcquiringAedWhileCalculatingDiscardsOldResultAndProgressMessage]' started.
+2026-10-26 02:22:09.280824+0800 AEDResponseTestHost[77663:6274557] AED_PUSH_DIAGNOSTIC phase=coordinator-client-connected httpStatus=none
+Test Case '-[AEDResponseTests.AppStoreArchitectureTests testAcquiringAedWhileCalculatingDiscardsOldResultAndProgressMessage]' passed (0.033 seconds).
+Test Case '-[AEDResponseTests.AppStoreArchitectureTests testActivePatientAndResponderCannotLogoutOrCloseAccountLocally]' started.
+2026-10-26 02:22:09.310094+0800 AEDResponseTestHost[77663:6274557] AED_PUSH_DIAGNOSTIC phase=coordinator-client-connected httpStatus=none
+2026-10-26 02:22:09.312275+0800 AEDResponseTestHost[77663:6274557] AED_PUSH_DIAGNOSTIC phase=coordinator-client-connected httpStatus=none
+Test Case '-[AEDResponseTests.AppStoreArchitectureTests testActivePatientAndResponderCannotLogoutOrCloseAccountLocally]' passed (0.006 seconds).
+Test Case '-[AEDResponseTests.AppStoreArchitectureTests testActiveStartOnlyProjectionQuarantinesLegacyFloorSlotInPendingAndOpenDraft]' started.
+Test Case '-[AEDResponseTests.AppStoreArchitectureTests testActiveStartOnlyProjectionQuarantinesLegacyFloorSlotInPendingAndOpenDraft]' passed (0.012 seconds).
+Test Case '-[AEDResponseTests.AppStoreArchitectureTests testAFailedReportIsReportedAndDoesNotCreateALocalCase]' started.
+2026-10-26 02:22:09.328244+0800 AEDResponseTestHost[77663:6274557] AED_PUSH_DIAGNOSTIC phase=coordinator-client-connected httpStatus=none
+Test Case '-[AEDResponseTests.AppStoreArchitectureTests testAFailedReportIsReportedAndDoesNotCreateALocalCase]' passed (0.003 seconds).
+Test Case '-[AEDResponseTests.AppStoreArchitectureTests testARefusedAccountClosureIsReportedAndKeepsTheSessionForRetry]' started.
+2026-10-26 02:22:09.331620+0800 AEDResponseTestHost[77663:6274557] AED_PUSH_DIAGNOSTIC phase=coordinator-client-connected httpStatus=none
+Test Case '-[AEDResponseTests.AppStoreArchitectureTests testARefusedAccountClosureIsReportedAndKeepsTheSessionForRetry]' passed (0.033 seconds).
+Test Case '-[AEDResponseTests.AppStoreArchitectureTests testAReportedPatientTriggerIsNotPresentedAsFallDetection]' started.
+Test Case '-[AEDResponseTests.AppStoreArchitectureTests testAReportedPatientTriggerIsNotPresentedAsFallDetection]' passed (0.003 seconds).
+Test Case '-[AEDResponseTests.AppStoreArchitectureTests testAssignmentTimeoutHintAlsoWaitsForNeutralRestWindowBeforeSealing]' started.
+2026-10-26 02:22:09.373688+0800 AEDResponseTestHost[77663:6274557] AED_PUSH_DIAGNOSTIC phase=coordinator-client-connected httpStatus=none
+Test Case '-[AEDResponseTests.AppStoreArchitectureTests testAssignmentTimeoutHintAlsoWaitsForNeutralRestWindowBeforeSealing]' passed (0.020 seconds).
+Test Case '-[AEDResponseTests.AppStoreArchitectureTests testAStaleAgreementVersionIsTreatedAsIncompleteRatherThanAccepted]' started.
+Test Case '-[AEDResponseTests.AppStoreArchitectureTests testAStaleAgreementVersionIsTreatedAsIncompleteRatherThanAccepted]' passed (0.024 seconds).
+Test Case '-[AEDResponseTests.AppStoreArchitectureTests testAuthenticatedBootstrapCarriesFourAgreementsAndNoCredentials]' started.
+2026-10-26 02:22:09.445849+0800 AEDResponseTestHost[77663:6274557] AED_PUSH_DIAGNOSTIC phase=coordinator-client-connected httpStatus=none
+Test Case '-[AEDResponseTests.AppStoreArchitectureTests testAuthenticatedBootstrapCarriesFourAgreementsAndNoCredentials]' passed (0.028 seconds).
+Test Case '-[AEDResponseTests.AppStoreArchitectureTests testAuthoritativeEndClocksAndSealsValidUnclockedFinalFix]' started.
+Test Case '-[AEDResponseTests.AppStoreArchitectureTests testAuthoritativeEndClocksAndSealsValidUnclockedFinalFix]' passed (0.003 seconds).
+Test Case '-[AEDResponseTests.AppStoreArchitectureTests testAuthoritativeEndRegroupsPendingLegalRecordsAndQuarantinesSuffix]' started.
+Test Case '-[AEDResponseTests.AppStoreArchitectureTests testAuthoritativeEndRegroupsPendingLegalRecordsAndQuarantinesSuffix]' passed (0.023 seconds).
+Test Case '-[AEDResponseTests.AppStoreArchitectureTests testAuthoritativeEndSealsOpenLegalPrefixAndQuarantinesInvalidDraftFacts]' started.
+Test Case '-[AEDResponseTests.AppStoreArchitectureTests testAuthoritativeEndSealsOpenLegalPrefixAndQuarantinesInvalidDraftFacts]' passed (0.003 seconds).
+Test Case '-[AEDResponseTests.AppStoreArchitectureTests testAutomaticConnectionCancelledByImmediateLogout]' started.
+Test Case '-[AEDResponseTests.AppStoreArchitectureTests testAutomaticConnectionCancelledByImmediateLogout]' passed (0.101 seconds).
+Test Case '-[AEDResponseTests.AppStoreArchitectureTests testAutomaticConnectionCannotOpenSocketAfterLogoutDuringBootstrap]' started.
+Test Case '-[AEDResponseTests.AppStoreArchitectureTests testAutomaticConnectionCannotOpenSocketAfterLogoutDuringBootstrap]' passed (0.116 seconds).
+Test Case '-[AEDResponseTests.AppStoreArchitectureTests testAutomaticConnectionPreservesAllGatesAndOfflineIsolation]' started.
+Test Case '-[AEDResponseTests.AppStoreArchitectureTests testAutomaticConnectionPreservesAllGatesAndOfflineIsolation]' passed (0.304 seconds).
+Test Case '-[AEDResponseTests.AppStoreArchitectureTests testAutomaticConnectionRetriesInitialFailureWithoutForegroundDuplicates]' started.
+2026-10-26 02:22:13.789423+0800 AEDResponseTestHost[77663:6274557] AED_PUSH_DIAGNOSTIC phase=coordinator-client-connected httpStatus=none
+Test Case '-[AEDResponseTests.AppStoreArchitectureTests testAutomaticConnectionRetriesInitialFailureWithoutForegroundDuplicates]' passed (3.870 seconds).
+Test Case '-[AEDResponseTests.AppStoreArchitectureTests testAutomaticConnectionStartsAfterPermissionBecomesEligible]' started.
+2026-10-26 02:22:13.898821+0800 AEDResponseTestHost[77663:6274557] AED_PUSH_DIAGNOSTIC phase=coordinator-client-connected httpStatus=none
+Test Case '-[AEDResponseTests.AppStoreArchitectureTests testAutomaticConnectionStartsAfterPermissionBecomesEligible]' passed (0.027 seconds).
+Test Case '-[AEDResponseTests.AppStoreArchitectureTests testAutomaticConnectionStartsOnceWithoutManualConnect]' started.
+2026-10-26 02:22:13.911966+0800 AEDResponseTestHost[77663:6274557] AED_PUSH_DIAGNOSTIC phase=coordinator-client-connected httpStatus=none
+Test Case '-[AEDResponseTests.AppStoreArchitectureTests testAutomaticConnectionStartsOnceWithoutManualConnect]' passed (0.132 seconds).
+Test Case '-[AEDResponseTests.AppStoreArchitectureTests testBackendSoleResponder409ReopensThreeConfirmationsWithoutAutomaticRetry]' started.
+2026-10-26 02:22:14.078105+0800 AEDResponseTestHost[77663:6274557] AED_PUSH_DIAGNOSTIC phase=coordinator-client-connected httpStatus=none
+Test Case '-[AEDResponseTests.AppStoreArchitectureTests testBackendSoleResponder409ReopensThreeConfirmationsWithoutAutomaticRetry]' passed (0.074 seconds).
+Test Case '-[AEDResponseTests.AppStoreArchitectureTests testClientMapKitCalculationOnlyAppliesTheServerConfirmedAssignment]' started.
+2026-10-26 02:22:14.118938+0800 AEDResponseTestHost[77663:6274557] AED_PUSH_DIAGNOSTIC phase=coordinator-client-connected httpStatus=none
+Test Case '-[AEDResponseTests.AppStoreArchitectureTests testClientMapKitCalculationOnlyAppliesTheServerConfirmedAssignment]' passed (0.028 seconds).
+Test Case '-[AEDResponseTests.AppStoreArchitectureTests testClientRouteScheduleFollowsSceneAndAuthoritativeTaskLifecycle]' started.
+2026-10-26 02:22:14.146011+0800 AEDResponseTestHost[77663:6274557] AED_PUSH_DIAGNOSTIC phase=coordinator-client-connected httpStatus=none
+Test Case '-[AEDResponseTests.AppStoreArchitectureTests testClientRouteScheduleFollowsSceneAndAuthoritativeTaskLifecycle]' passed (0.015 seconds).
+Test Case '-[AEDResponseTests.AppStoreArchitectureTests testCompanionTicketIsRequestedOnlyAfterDeviceSessionAndReachableWatch]' started.
+2026-10-26 02:22:14.163017+0800 AEDResponseTestHost[77663:6274557] AED_PUSH_DIAGNOSTIC phase=coordinator-client-connected httpStatus=none
+Test Case '-[AEDResponseTests.AppStoreArchitectureTests testCompanionTicketIsRequestedOnlyAfterDeviceSessionAndReachableWatch]' passed (1.801 seconds).
+Test Case '-[AEDResponseTests.AppStoreArchitectureTests testConnectAndLocationChangesPublishStrictResponderPositionThroughRest]' started.
+2026-10-26 02:22:16.200195+0800 AEDResponseTestHost[77663:6274557] AED_PUSH_DIAGNOSTIC phase=coordinator-client-connected httpStatus=none
+[BUILD_CACHE]/action-map-first-20261026.hkwuih3c/Source/ios/AEDResponseTests/AppStoreArchitectureTests.swift:4745: error: -[AEDResponseTests.AppStoreArchitectureTests testConnectAndLocationChangesPublishStrictResponderPositionThroughRest] : failed - 等待异步 REST 对账超时。
+Test Case '-[AEDResponseTests.AppStoreArchitectureTests testConnectAndLocationChangesPublishStrictResponderPositionThroughRest]' failed (8.674 seconds).
+Test Case '-[AEDResponseTests.AppStoreArchitectureTests testConsentGateExposesReadableDocumentsWhenPresent]' started.
+Test Case '-[AEDResponseTests.AppStoreArchitectureTests testConsentGateExposesReadableDocumentsWhenPresent]' passed (0.037 seconds).
+Test Case '-[AEDResponseTests.AppStoreArchitectureTests testConsentGateFailsClosedWithoutReadableDocuments]' started.
+Test Case '-[AEDResponseTests.AppStoreArchitectureTests testConsentGateFailsClosedWithoutReadableDocuments]' passed (0.002 seconds).
+Test Case '-[AEDResponseTests.AppStoreArchitectureTests testDelayedAedUnavailableHTTPCompletionCannotOverwriteSocketReplacement]' started.
+2026-10-26 02:22:24.725027+0800 AEDResponseTestHost[77663:6274557] AED_PUSH_DIAGNOSTIC phase=coordinator-client-connected httpStatus=none
+Test Case '-[AEDResponseTests.AppStoreArchitectureTests testDelayedAedUnavailableHTTPCompletionCannotOverwriteSocketReplacement]' passed (0.096 seconds).
+Test Case '-[AEDResponseTests.AppStoreArchitectureTests testDelayedRestProjectionStartsAtAuthorityAndRetainsCompletedSlots]' started.
+2026-10-26 02:22:24.807561+0800 AEDResponseTestHost[77663:6274557] AED_PUSH_DIAGNOSTIC phase=coordinator-client-connected httpStatus=none
+Test Case '-[AEDResponseTests.AppStoreArchitectureTests testDelayedRestProjectionStartsAtAuthorityAndRetainsCompletedSlots]' passed (0.212 seconds).
+Test Case '-[AEDResponseTests.AppStoreArchitectureTests testDeliveryReceiptSurvivesAppStoreRestartAndDrainsFromSameProtectedQueue]' started.
+2026-10-26 02:22:25.021371+0800 AEDResponseTestHost[77663:6274557] AED_PUSH_DIAGNOSTIC phase=coordinator-client-connected httpStatus=none
+2026-10-26 02:22:25.123599+0800 AEDResponseTestHost[77663:6274557] AED_PUSH_DIAGNOSTIC phase=coordinator-client-connected httpStatus=none
+Test Case '-[AEDResponseTests.AppStoreArchitectureTests testDeliveryReceiptSurvivesAppStoreRestartAndDrainsFromSameProtectedQueue]' passed (0.191 seconds).
+Test Case '-[AEDResponseTests.AppStoreArchitectureTests testDeniedNotificationsCannotOpenBusinessGate]' started.
+Test Case '-[AEDResponseTests.AppStoreArchitectureTests testDeniedNotificationsCannotOpenBusinessGate]' passed (0.003 seconds).
+Test Case '-[AEDResponseTests.AppStoreArchitectureTests testEndRetryPreservesOperationIdentity]' started.
+2026-10-26 02:22:25.201076+0800 AEDResponseTestHost[77663:6274557] AED_PUSH_DIAGNOSTIC phase=coordinator-client-connected httpStatus=none
+Test Case '-[AEDResponseTests.AppStoreArchitectureTests testEndRetryPreservesOperationIdentity]' passed (0.168 seconds).
+Test Case '-[AEDResponseTests.AppStoreArchitectureTests testEventParticipantCapturesNoNewFixWithoutCopyingOldCoordinate]' started.
+2026-10-26 02:22:25.371765+0800 AEDResponseTestHost[77663:6274557] AED_PUSH_DIAGNOSTIC phase=coordinator-client-connected httpStatus=none
+Test Case '-[AEDResponseTests.AppStoreArchitectureTests testEventParticipantCapturesNoNewFixWithoutCopyingOldCoordinate]' passed (0.016 seconds).
+Test Case '-[AEDResponseTests.AppStoreArchitectureTests testEventParticipantFlushesFiveSecondBatchAndAcknowledgementRemovesIt]' started.
+2026-10-26 02:22:25.387716+0800 AEDResponseTestHost[77663:6274557] AED_PUSH_DIAGNOSTIC phase=coordinator-client-connected httpStatus=none
+Test Case '-[AEDResponseTests.AppStoreArchitectureTests testEventParticipantFlushesFiveSecondBatchAndAcknowledgementRemovesIt]' passed (0.030 seconds).
+Test Case '-[AEDResponseTests.AppStoreArchitectureTests testEventParticipantSendsEarlyAfterTenMetersAndDoesNotUseStandbyEndpoint]' started.
+2026-10-26 02:22:25.417613+0800 AEDResponseTestHost[77663:6274557] AED_PUSH_DIAGNOSTIC phase=coordinator-client-connected httpStatus=none
+Test Case '-[AEDResponseTests.AppStoreArchitectureTests testEventParticipantSendsEarlyAfterTenMetersAndDoesNotUseStandbyEndpoint]' passed (0.067 seconds).
+Test Case '-[AEDResponseTests.AppStoreArchitectureTests testEventPositionBatchFailureRetainsBatchUntilLaterACK]' started.
+2026-10-26 02:22:25.483458+0800 AEDResponseTestHost[77663:6274557] AED_PUSH_DIAGNOSTIC phase=coordinator-client-connected httpStatus=none
+Test Case '-[AEDResponseTests.AppStoreArchitectureTests testEventPositionBatchFailureRetainsBatchUntilLaterACK]' passed (0.428 seconds).
+Test Case '-[AEDResponseTests.AppStoreArchitectureTests testEventPositionGroupsBatchCallbackBySecondAndKeepsLatestFixPerSlot]' started.
+2026-10-26 02:22:25.914641+0800 AEDResponseTestHost[77663:6274557] AED_PUSH_DIAGNOSTIC phase=coordinator-client-connected httpStatus=none
+Test Case '-[AEDResponseTests.AppStoreArchitectureTests testEventPositionGroupsBatchCallbackBySecondAndKeepsLatestFixPerSlot]' passed (0.044 seconds).
+Test Case '-[AEDResponseTests.AppStoreArchitectureTests testEventPositionLateFixCannotOverwriteFinalizedSlot]' started.
+2026-10-26 02:22:25.958667+0800 AEDResponseTestHost[77663:6274557] AED_PUSH_DIAGNOSTIC phase=coordinator-client-connected httpStatus=none
+Test Case '-[AEDResponseTests.AppStoreArchitectureTests testEventPositionLateFixCannotOverwriteFinalizedSlot]' passed (0.094 seconds).
+Test Case '-[AEDResponseTests.AppStoreArchitectureTests testEventPositionPersistenceFailureDoesNotClaimQueuedOrSend]' started.
+2026-10-26 02:22:26.069700+0800 AEDResponseTestHost[77663:6274557] AED_PUSH_DIAGNOSTIC phase=coordinator-client-connected httpStatus=none
+Test Case '-[AEDResponseTests.AppStoreArchitectureTests testEventPositionPersistenceFailureDoesNotClaimQueuedOrSend]' passed (0.131 seconds).
+Test Case '-[AEDResponseTests.AppStoreArchitectureTests testEventSamplingContinuesOfflineAndKeepsBatchForReconnect]' started.
+2026-10-26 02:22:26.183802+0800 AEDResponseTestHost[77663:6274557] AED_PUSH_DIAGNOSTIC phase=coordinator-client-connected httpStatus=none
+Test Case '-[AEDResponseTests.AppStoreArchitectureTests testEventSamplingContinuesOfflineAndKeepsBatchForReconnect]' passed (0.029 seconds).
+Test Case '-[AEDResponseTests.AppStoreArchitectureTests testEverySocketStateMutationSchedulesRestReconciliation]' started.
+2026-10-26 02:22:26.214112+0800 AEDResponseTestHost[77663:6274557] AED_PUSH_DIAGNOSTIC phase=coordinator-client-connected httpStatus=none
+Test Case '-[AEDResponseTests.AppStoreArchitectureTests testEverySocketStateMutationSchedulesRestReconciliation]' passed (0.029 seconds).
+Test Case '-[AEDResponseTests.AppStoreArchitectureTests testExitACKAtWindowBoundaryRecoversAfterTemporaryQueueSaveFailure]' started.
+2026-10-26 02:22:26.255845+0800 AEDResponseTestHost[77663:6274557] AED_PUSH_DIAGNOSTIC phase=coordinator-client-connected httpStatus=none
+Test Case '-[AEDResponseTests.AppStoreArchitectureTests testExitACKAtWindowBoundaryRecoversAfterTemporaryQueueSaveFailure]' passed (0.055 seconds).
+Test Case '-[AEDResponseTests.AppStoreArchitectureTests testExitNetworkFailureRetriesTheExactSameDeclarationAndACKClearsTask]' started.
+2026-10-26 02:22:26.298761+0800 AEDResponseTestHost[77663:6274557] AED_PUSH_DIAGNOSTIC phase=coordinator-client-connected httpStatus=none
+Test Case '-[AEDResponseTests.AppStoreArchitectureTests testExitNetworkFailureRetriesTheExactSameDeclarationAndACKClearsTask]' passed (0.039 seconds).
+Test Case '-[AEDResponseTests.AppStoreArchitectureTests testFailedAccountDeletionKeepsTheSessionAndReportsTheFailure]' started.
+2026-10-26 02:22:26.338131+0800 AEDResponseTestHost[77663:6274557] AED_PUSH_DIAGNOSTIC phase=coordinator-client-connected httpStatus=none
+Test Case '-[AEDResponseTests.AppStoreArchitectureTests testFailedAccountDeletionKeepsTheSessionAndReportsTheFailure]' passed (0.068 seconds).
+Test Case '-[AEDResponseTests.AppStoreArchitectureTests testFailedRestReceiptRemainsPendingAndBlocksDecision]' started.
+2026-10-26 02:22:26.407581+0800 AEDResponseTestHost[77663:6274557] AED_PUSH_DIAGNOSTIC phase=coordinator-client-connected httpStatus=none
+Test Case '-[AEDResponseTests.AppStoreArchitectureTests testFailedRestReceiptRemainsPendingAndBlocksDecision]' passed (0.016 seconds).
+Test Case '-[AEDResponseTests.AppStoreArchitectureTests testForegroundNotificationRevocationStopsLiveBusiness]' started.
+2026-10-26 02:22:26.422643+0800 AEDResponseTestHost[77663:6274557] AED_PUSH_DIAGNOSTIC phase=coordinator-client-connected httpStatus=none
+Test Case '-[AEDResponseTests.AppStoreArchitectureTests testForegroundNotificationRevocationStopsLiveBusiness]' passed (0.013 seconds).
+Test Case '-[AEDResponseTests.AppStoreArchitectureTests testFractionalParticipationStartSkipsPartialFirstSecond]' started.
+2026-10-26 02:22:26.436741+0800 AEDResponseTestHost[77663:6274557] AED_PUSH_DIAGNOSTIC phase=coordinator-client-connected httpStatus=none
+Test Case '-[AEDResponseTests.AppStoreArchitectureTests testFractionalParticipationStartSkipsPartialFirstSecond]' passed (0.014 seconds).
+Test Case '-[AEDResponseTests.AppStoreArchitectureTests testIPhoneDoesNotActivateCompanionBeforeAllOnboardingGates]' started.
+Test Case '-[AEDResponseTests.AppStoreArchitectureTests testIPhoneDoesNotActivateCompanionBeforeAllOnboardingGates]' passed (0.002 seconds).
+Test Case '-[AEDResponseTests.AppStoreArchitectureTests testLatestPositionUploadCoordinatorOwnsStableRetryIdentity]' started.
+Test Case '-[AEDResponseTests.AppStoreArchitectureTests testLatestPositionUploadCoordinatorOwnsStableRetryIdentity]' passed (1.013 seconds).
+Test Case '-[AEDResponseTests.AppStoreArchitectureTests testLiveRoleTransitionInvalidatesResponderModeBeforePublishingPatientSample]' started.
+2026-10-26 02:22:27.529203+0800 AEDResponseTestHost[77663:6274557] AED_PUSH_DIAGNOSTIC phase=coordinator-client-connected httpStatus=none
+Test Case '-[AEDResponseTests.AppStoreArchitectureTests testLiveRoleTransitionInvalidatesResponderModeBeforePublishingPatientSample]' passed (0.187 seconds).
+Test Case '-[AEDResponseTests.AppStoreArchitectureTests testLocalOfferExpiryReleasesBusyAndIgnoresLateDecision]' started.
+2026-10-26 02:22:27.659025+0800 AEDResponseTestHost[77663:6274557] AED_PUSH_DIAGNOSTIC phase=coordinator-client-connected httpStatus=none
+Test Case '-[AEDResponseTests.AppStoreArchitectureTests testLocalOfferExpiryReleasesBusyAndIgnoresLateDecision]' passed (0.292 seconds).
+Test Case '-[AEDResponseTests.AppStoreArchitectureTests testLocalTestHostScenarioCannotConnectOrBootstrapBackend]' started.
+Test Case '-[AEDResponseTests.AppStoreArchitectureTests testLocalTestHostScenarioCannotConnectOrBootstrapBackend]' passed (0.011 seconds).
+Test Case '-[AEDResponseTests.AppStoreArchitectureTests testLocalTestHostScenarioCannotStartAfterLiveConnectionAttempt]' started.
+2026-10-26 02:22:27.975117+0800 AEDResponseTestHost[77663:6274557] AED_PUSH_DIAGNOSTIC phase=coordinator-client-connected httpStatus=none
+Test Case '-[AEDResponseTests.AppStoreArchitectureTests testLocalTestHostScenarioCannotStartAfterLiveConnectionAttempt]' passed (0.003 seconds).
+Test Case '-[AEDResponseTests.AppStoreArchitectureTests testLocalTestHostScenariosDerivePatientAndResponderRoles]' started.
+Test Case '-[AEDResponseTests.AppStoreArchitectureTests testLocalTestHostScenariosDerivePatientAndResponderRoles]' passed (0.048 seconds).
+Test Case '-[AEDResponseTests.AppStoreArchitectureTests testLocationAuthorizationDowngradeStopsLiveBusinessImmediately]' started.
+2026-10-26 02:22:28.026692+0800 AEDResponseTestHost[77663:6274557] AED_PUSH_DIAGNOSTIC phase=coordinator-client-connected httpStatus=none
+Test Case '-[AEDResponseTests.AppStoreArchitectureTests testLocationAuthorizationDowngradeStopsLiveBusinessImmediately]' passed (0.040 seconds).
+Test Case '-[AEDResponseTests.AppStoreArchitectureTests testLogoutStopsLiveBusinessAndClearsIdentityState]' started.
+2026-10-26 02:22:28.067764+0800 AEDResponseTestHost[77663:6274557] AED_PUSH_DIAGNOSTIC phase=coordinator-client-connected httpStatus=none
+Test Case '-[AEDResponseTests.AppStoreArchitectureTests testLogoutStopsLiveBusinessAndClearsIdentityState]' passed (0.014 seconds).
+Test Case '-[AEDResponseTests.AppStoreArchitectureTests testOfferExpiryClearsOnlyMatchingEventAndDelivery]' started.
+2026-10-26 02:22:28.083883+0800 AEDResponseTestHost[77663:6274557] AED_PUSH_DIAGNOSTIC phase=coordinator-client-connected httpStatus=none
+Test Case '-[AEDResponseTests.AppStoreArchitectureTests testOfferExpiryClearsOnlyMatchingEventAndDelivery]' passed (0.007 seconds).
+Test Case '-[AEDResponseTests.AppStoreArchitectureTests testOfflineFixtureAcceptsWithoutUploadingOrAcknowledgingRealReceipts]' started.
+Test Case '-[AEDResponseTests.AppStoreArchitectureTests testOfflineFixtureAcceptsWithoutUploadingOrAcknowledgingRealReceipts]' passed (0.008 seconds).
+Test Case '-[AEDResponseTests.AppStoreArchitectureTests testOlderDifferentAssignmentCreatedAndUpdatedCannotOverrideReplacementOrPause]' started.
+2026-10-26 02:22:28.100983+0800 AEDResponseTestHost[77663:6274557] AED_PUSH_DIAGNOSTIC phase=coordinator-client-connected httpStatus=none
+Test Case '-[AEDResponseTests.AppStoreArchitectureTests testOlderDifferentAssignmentCreatedAndUpdatedCannotOverrideReplacementOrPause]' passed (0.031 seconds).
+Test Case '-[AEDResponseTests.AppStoreArchitectureTests testOldResponseDecisionCannotReleaseNewSessionSubmission]' started.
+2026-10-26 02:22:28.161001+0800 AEDResponseTestHost[77663:6274557] AED_PUSH_DIAGNOSTIC phase=coordinator-client-connected httpStatus=none
+2026-10-26 02:22:28.356238+0800 AEDResponseTestHost[77663:6274557] AED_PUSH_DIAGNOSTIC phase=coordinator-client-connected httpStatus=none
+Test Case '-[AEDResponseTests.AppStoreArchitectureTests testOldResponseDecisionCannotReleaseNewSessionSubmission]' passed (0.325 seconds).
+Test Case '-[AEDResponseTests.AppStoreArchitectureTests testOnboardingPersistsFourConsentsAndRequestsPermissions]' started.
+Test Case '-[AEDResponseTests.AppStoreArchitectureTests testOnboardingPersistsFourConsentsAndRequestsPermissions]' passed (0.126 seconds).
+Test Case '-[AEDResponseTests.AppStoreArchitectureTests testOnboardingRequiresSeparateAgreementAcceptance]' started.
+Test Case '-[AEDResponseTests.AppStoreArchitectureTests testOnboardingRequiresSeparateAgreementAcceptance]' passed (0.078 seconds).
+Test Case '-[AEDResponseTests.AppStoreArchitectureTests testPartialAgreementKeepsAccountControlsReachableAndBusinessClosed]' started.
+Test Case '-[AEDResponseTests.AppStoreArchitectureTests testPartialAgreementKeepsAccountControlsReachableAndBusinessClosed]' passed (0.003 seconds).
+Test Case '-[AEDResponseTests.AppStoreArchitectureTests testPatientActivationImmediatelyOverridesResponseAndAssignment]' started.
+Test Case '-[AEDResponseTests.AppStoreArchitectureTests testPatientActivationImmediatelyOverridesResponseAndAssignment]' passed (0.032 seconds).
+Test Case '-[AEDResponseTests.AppStoreArchitectureTests testPatientActivationReleasesBusyAndPreventsLateAcceptance]' started.
+2026-10-26 02:22:28.753500+0800 AEDResponseTestHost[77663:6274557] AED_PUSH_DIAGNOSTIC phase=coordinator-client-connected httpStatus=none
+Test Case '-[AEDResponseTests.AppStoreArchitectureTests testPatientActivationReleasesBusyAndPreventsLateAcceptance]' passed (0.083 seconds).
+Test Case '-[AEDResponseTests.AppStoreArchitectureTests testPatientCanSubmitContinueForRestStatusConfirmation]' started.
+2026-10-26 02:22:28.837944+0800 AEDResponseTestHost[77663:6274557] AED_PUSH_DIAGNOSTIC phase=coordinator-client-connected httpStatus=none
+Test Case '-[AEDResponseTests.AppStoreArchitectureTests testPatientCanSubmitContinueForRestStatusConfirmation]' passed (0.063 seconds).
+Test Case '-[AEDResponseTests.AppStoreArchitectureTests testPatientPriorityReadOnlyPhoneClosesOldResponderButNeverStartsPatientPublishing]' started.
+2026-10-26 02:22:28.902897+0800 AEDResponseTestHost[77663:6274557] AED_PUSH_DIAGNOSTIC phase=coordinator-client-connected httpStatus=none
+Test Case '-[AEDResponseTests.AppStoreArchitectureTests testPatientPriorityReadOnlyPhoneClosesOldResponderButNeverStartsPatientPublishing]' passed (0.030 seconds).
+Test Case '-[AEDResponseTests.AppStoreArchitectureTests testPatientPriorityRestSnapshotClosesMissingResponderContextAndStartsNewPatientStream]' started.
+2026-10-26 02:22:28.929953+0800 AEDResponseTestHost[77663:6274557] AED_PUSH_DIAGNOSTIC phase=coordinator-client-connected httpStatus=none
+Test Case '-[AEDResponseTests.AppStoreArchitectureTests testPatientPriorityRestSnapshotClosesMissingResponderContextAndStartsNewPatientStream]' passed (0.027 seconds).
+Test Case '-[AEDResponseTests.AppStoreArchitectureTests testPatientResolutionPerformsFullVisibleEventReconciliation]' started.
+2026-10-26 02:22:28.968615+0800 AEDResponseTestHost[77663:6274557] AED_PUSH_DIAGNOSTIC phase=coordinator-client-connected httpStatus=none
+Test Case '-[AEDResponseTests.AppStoreArchitectureTests testPatientResolutionPerformsFullVisibleEventReconciliation]' passed (0.080 seconds).
+Test Case '-[AEDResponseTests.AppStoreArchitectureTests testPermanentlyRejectedReceiptIsIsolatedAndDoesNotBlockLaterReceipts]' started.
+Test Case '-[AEDResponseTests.AppStoreArchitectureTests testPermanentlyRejectedReceiptIsIsolatedAndDoesNotBlockLaterReceipts]' passed (0.031 seconds).
+Test Case '-[AEDResponseTests.AppStoreArchitectureTests testPermanentRejectedBatchDoesNotBlockFollowingLegalBatch]' started.
+2026-10-26 02:22:29.072921+0800 AEDResponseTestHost[77663:6274557] AED_PUSH_DIAGNOSTIC phase=coordinator-client-connected httpStatus=none
+Test Case '-[AEDResponseTests.AppStoreArchitectureTests testPermanentRejectedBatchDoesNotBlockFollowingLegalBatch]' passed (0.036 seconds).
+Test Case '-[AEDResponseTests.AppStoreArchitectureTests testPositionRetryReusesStableUpdateIDWhenNoNewerSampleExists]' started.
+2026-10-26 02:22:29.110582+0800 AEDResponseTestHost[77663:6274557] AED_PUSH_DIAGNOSTIC phase=coordinator-client-connected httpStatus=none
+Test Case '-[AEDResponseTests.AppStoreArchitectureTests testPositionRetryReusesStableUpdateIDWhenNoNewerSampleExists]' passed (1.077 seconds).
+Test Case '-[AEDResponseTests.AppStoreArchitectureTests testPositionUploadRetriesLatestCoordinateAfterTransientFailure]' started.
+2026-10-26 02:22:30.318264+0800 AEDResponseTestHost[77663:6274557] AED_PUSH_DIAGNOSTIC phase=coordinator-client-connected httpStatus=none
+Test Case '-[AEDResponseTests.AppStoreArchitectureTests testPositionUploadRetriesLatestCoordinateAfterTransientFailure]' passed (1.517 seconds).
+Test Case '-[AEDResponseTests.AppStoreArchitectureTests testProductionStateNeverFallsBackToDemoLocationOrResponderPosition]' started.
+Test Case '-[AEDResponseTests.AppStoreArchitectureTests testProductionStateNeverFallsBackToDemoLocationOrResponderPosition]' passed (0.006 seconds).
+Test Case '-[AEDResponseTests.AppStoreArchitectureTests testPushRegistrationFailureIsNonblockingAndClearsOnlyAfterServerRegistration]' started.
+2026-10-26 02:22:31.728450+0800 AEDResponseTestHost[77663:6274557] AED_PUSH_DIAGNOSTIC phase=coordinator-client-connected httpStatus=none
+2026-10-26 02:22:31.728745+0800 AEDResponseTestHost[77663:6274557] AED_PUSH_DIAGNOSTIC phase=coordinator-token-received httpStatus=none
+2026-10-26 02:22:31.728860+0800 AEDResponseTestHost[77663:6274557] AED_PUSH_DIAGNOSTIC phase=server-registration-started httpStatus=none
+2026-10-26 02:22:31.729568+0800 AEDResponseTestHost[77663:6274557] AED_PUSH_DIAGNOSTIC phase=server-registered httpStatus=none
+2026-10-26 02:22:31.741156+0800 AEDResponseTestHost[77663:6274557] AED_PUSH_DIAGNOSTIC phase=coordinator-token-received httpStatus=none
+Test Case '-[AEDResponseTests.AppStoreArchitectureTests testPushRegistrationFailureIsNonblockingAndClearsOnlyAfterServerRegistration]' passed (0.030 seconds).
+Test Case '-[AEDResponseTests.AppStoreArchitectureTests testPushTapReadsServerRouteWithoutAcceptingAnOffer]' started.
+2026-10-26 02:22:31.745760+0800 AEDResponseTestHost[77663:6274557] AED_PUSH_DIAGNOSTIC phase=coordinator-client-connected httpStatus=none
+Test Case '-[AEDResponseTests.AppStoreArchitectureTests testPushTapReadsServerRouteWithoutAcceptingAnOffer]' passed (0.017 seconds).
+Test Case '-[AEDResponseTests.AppStoreArchitectureTests testPushTokenIsGatedByDeviceSessionAndStopsAtLogout]' started.
+2026-10-26 02:22:31.761016+0800 AEDResponseTestHost[77663:6274557] AED_PUSH_DIAGNOSTIC phase=coordinator-token-received httpStatus=none
+2026-10-26 02:22:31.761558+0800 AEDResponseTestHost[77663:6274557] AED_PUSH_DIAGNOSTIC phase=coordinator-client-connected httpStatus=none
+2026-10-26 02:22:31.761699+0800 AEDResponseTestHost[77663:6274557] AED_PUSH_DIAGNOSTIC phase=server-registration-started httpStatus=none
+2026-10-26 02:22:31.761755+0800 AEDResponseTestHost[77663:6274557] AED_PUSH_DIAGNOSTIC phase=server-registered httpStatus=none
+2026-10-26 02:22:31.778756+0800 AEDResponseTestHost[77663:6274557] AED_PUSH_DIAGNOSTIC phase=coordinator-token-received httpStatus=none
+Test Case '-[AEDResponseTests.AppStoreArchitectureTests testPushTokenIsGatedByDeviceSessionAndStopsAtLogout]' passed (0.071 seconds).
+Test Case '-[AEDResponseTests.AppStoreArchitectureTests testReceivingRequestDoesNotMakeUserResponderBeforeAcceptance]' started.
+Test Case '-[AEDResponseTests.AppStoreArchitectureTests testReceivingRequestDoesNotMakeUserResponderBeforeAcceptance]' passed (0.003 seconds).
+Test Case '-[AEDResponseTests.AppStoreArchitectureTests testReconnectRestoresEventSnapshotBeforeResumingPatientPosition]' started.
+2026-10-26 02:22:31.838146+0800 AEDResponseTestHost[77663:6274557] AED_PUSH_DIAGNOSTIC phase=coordinator-client-connected httpStatus=none
+2026-10-26 02:22:32.935977+0800 AEDResponseTestHost[77663:6274557] AED_PUSH_DIAGNOSTIC phase=coordinator-client-connected httpStatus=none
+Test Case '-[AEDResponseTests.AppStoreArchitectureTests testReconnectRestoresEventSnapshotBeforeResumingPatientPosition]' passed (1.237 seconds).
+Test Case '-[AEDResponseTests.AppStoreArchitectureTests testRecoveredConnectionClearsOnlyItsOwnFailure]' started.
+2026-10-26 02:22:33.078232+0800 AEDResponseTestHost[77663:6274557] AED_PUSH_DIAGNOSTIC phase=coordinator-client-connected httpStatus=none
+Test Case '-[AEDResponseTests.AppStoreArchitectureTests testRecoveredConnectionClearsOnlyItsOwnFailure]' passed (0.009 seconds).
+Test Case '-[AEDResponseTests.AppStoreArchitectureTests testRecoveredConnectionDoesNotDismissANewerErrorWithTheSameMessage]' started.
+2026-10-26 02:22:33.085816+0800 AEDResponseTestHost[77663:6274557] AED_PUSH_DIAGNOSTIC phase=coordinator-client-connected httpStatus=none
+Test Case '-[AEDResponseTests.AppStoreArchitectureTests testRecoveredConnectionDoesNotDismissANewerErrorWithTheSameMessage]' passed (0.004 seconds).
+Test Case '-[AEDResponseTests.AppStoreArchitectureTests testRecoveryDoesNotDependOnInternalTimelineAvailability]' started.
+2026-10-26 02:22:33.089881+0800 AEDResponseTestHost[77663:6274557] AED_PUSH_DIAGNOSTIC phase=coordinator-client-connected httpStatus=none
+Test Case '-[AEDResponseTests.AppStoreArchitectureTests testRecoveryDoesNotDependOnInternalTimelineAvailability]' passed (0.016 seconds).
+Test Case '-[AEDResponseTests.AppStoreArchitectureTests testRecoveryKeepsExistingClockedGapsAsNoFixAndMarksOnlyDowntimeSlots]' started.
+Test Case '-[AEDResponseTests.AppStoreArchitectureTests testRecoveryKeepsExistingClockedGapsAsNoFixAndMarksOnlyDowntimeSlots]' passed (0.019 seconds).
+Test Case '-[AEDResponseTests.AppStoreArchitectureTests testReducedAccuracyCannotOpenBusinessGate]' started.
+Test Case '-[AEDResponseTests.AppStoreArchitectureTests testReducedAccuracyCannotOpenBusinessGate]' passed (0.030 seconds).
+Test Case '-[AEDResponseTests.AppStoreArchitectureTests testRepeatedConnectTearsDownOldSessionAndWaitsForSocketReady]' started.
+2026-10-26 02:22:33.182733+0800 AEDResponseTestHost[77663:6274557] AED_PUSH_DIAGNOSTIC phase=coordinator-client-connected httpStatus=none
+2026-10-26 02:22:33.183966+0800 AEDResponseTestHost[77663:6274557] AED_PUSH_DIAGNOSTIC phase=coordinator-client-connected httpStatus=none
+Test Case '-[AEDResponseTests.AppStoreArchitectureTests testRepeatedConnectTearsDownOldSessionAndWaitsForSocketReady]' passed (0.006 seconds).
+Test Case '-[AEDResponseTests.AppStoreArchitectureTests testReplacingOfferReleasesBusyAndIgnoresOldDecision]' started.
+2026-10-26 02:22:33.188539+0800 AEDResponseTestHost[77663:6274557] AED_PUSH_DIAGNOSTIC phase=coordinator-client-connected httpStatus=none
+Test Case '-[AEDResponseTests.AppStoreArchitectureTests testReplacingOfferReleasesBusyAndIgnoresOldDecision]' passed (0.084 seconds).
+Test Case '-[AEDResponseTests.AppStoreArchitectureTests testReportingAFoundPatientUsesTheReturnedCaseAndTheCurrentPosition]' started.
+2026-10-26 02:22:33.273818+0800 AEDResponseTestHost[77663:6274557] AED_PUSH_DIAGNOSTIC phase=coordinator-client-connected httpStatus=none
+Test Case '-[AEDResponseTests.AppStoreArchitectureTests testReportingAFoundPatientUsesTheReturnedCaseAndTheCurrentPosition]' passed (0.005 seconds).
+Test Case '-[AEDResponseTests.AppStoreArchitectureTests testReportingAFoundPatientWithoutAPositionIsRefusedLocallyAndNeverSent]' started.
+2026-10-26 02:22:33.278886+0800 AEDResponseTestHost[77663:6274557] AED_PUSH_DIAGNOSTIC phase=coordinator-client-connected httpStatus=none
+Test Case '-[AEDResponseTests.AppStoreArchitectureTests testReportingAFoundPatientWithoutAPositionIsRefusedLocallyAndNeverSent]' passed (0.004 seconds).
+Test Case '-[AEDResponseTests.AppStoreArchitectureTests testResponseDecisionDoubleTapSubmitsOnlyOneAccept]' started.
+2026-10-26 02:22:33.283620+0800 AEDResponseTestHost[77663:6274557] AED_PUSH_DIAGNOSTIC phase=coordinator-client-connected httpStatus=none
+Test Case '-[AEDResponseTests.AppStoreArchitectureTests testResponseDecisionDoubleTapSubmitsOnlyOneAccept]' passed (0.064 seconds).
+Test Case '-[AEDResponseTests.AppStoreArchitectureTests testResponseDecisionFailureReleasesBusyAndAllowsRetry]' started.
+2026-10-26 02:22:33.469257+0800 AEDResponseTestHost[77663:6274557] AED_PUSH_DIAGNOSTIC phase=coordinator-client-connected httpStatus=none
+Test Case '-[AEDResponseTests.AppStoreArchitectureTests testResponseDecisionFailureReleasesBusyAndAllowsRetry]' passed (0.187 seconds).
+Test Case '-[AEDResponseTests.AppStoreArchitectureTests testRestoredContextCannotPersistNewFixBeforeActiveRestAuthority]' started.
+Test Case '-[AEDResponseTests.AppStoreArchitectureTests testRestoredContextCannotPersistNewFixBeforeActiveRestAuthority]' passed (0.053 seconds).
+Test Case '-[AEDResponseTests.AppStoreArchitectureTests testRestoredContextFillsMissingSlotsAsAppNotRunningAfterHistoricalFixGrace]' started.
+Test Case '-[AEDResponseTests.AppStoreArchitectureTests testRestoredContextFillsMissingSlotsAsAppNotRunningAfterHistoricalFixGrace]' passed (0.029 seconds).
+Test Case '-[AEDResponseTests.AppStoreArchitectureTests testRESTSnapshotAndQueuedPushTapDoNotWaitForSocketReady]' started.
+2026-10-26 02:22:33.639485+0800 AEDResponseTestHost[77663:6274557] AED_PUSH_DIAGNOSTIC phase=coordinator-client-connected httpStatus=none
+Test Case '-[AEDResponseTests.AppStoreArchitectureTests testRESTSnapshotAndQueuedPushTapDoNotWaitForSocketReady]' passed (0.034 seconds).
+Test Case '-[AEDResponseTests.AppStoreArchitectureTests testSecondaryPatientProjectionWithCanPublishFalseNeverStartsEventPositionSampling]' started.
+2026-10-26 02:22:33.655546+0800 AEDResponseTestHost[77663:6274557] AED_PUSH_DIAGNOSTIC phase=coordinator-client-connected httpStatus=none
+Test Case '-[AEDResponseTests.AppStoreArchitectureTests testSecondaryPatientProjectionWithCanPublishFalseNeverStartsEventPositionSampling]' passed (0.030 seconds).
+Test Case '-[AEDResponseTests.AppStoreArchitectureTests testSnapshotSelectsOnlyActiveNonterminalResponderAssignment]' started.
+Test Case '-[AEDResponseTests.AppStoreArchitectureTests testSnapshotSelectsOnlyActiveNonterminalResponderAssignment]' passed (0.024 seconds).
+Test Case '-[AEDResponseTests.AppStoreArchitectureTests testSocketDisconnectRebootstrapsAuthenticatedSessionBeforeReconnect]' started.
+2026-10-26 02:22:33.709910+0800 AEDResponseTestHost[77663:6274557] AED_PUSH_DIAGNOSTIC phase=coordinator-client-connected httpStatus=none
+2026-10-26 02:22:34.830922+0800 AEDResponseTestHost[77663:6274557] AED_PUSH_DIAGNOSTIC phase=coordinator-client-connected httpStatus=none
+Test Case '-[AEDResponseTests.AppStoreArchitectureTests testSocketDisconnectRebootstrapsAuthenticatedSessionBeforeReconnect]' passed (1.466 seconds).
+Test Case '-[AEDResponseTests.AppStoreArchitectureTests testSocketOfferExpiredClearsThroughTypedEventWithoutPatientData]' started.
+Test Case '-[AEDResponseTests.AppStoreArchitectureTests testSocketOfferExpiredClearsThroughTypedEventWithoutPatientData]' passed (3.103 seconds).
+Test Case '-[AEDResponseTests.AppStoreArchitectureTests testSocketPositionAndCoordinationHintsDecodeBeforeRestReconciliation]' started.
+Test Case '-[AEDResponseTests.AppStoreArchitectureTests testSocketPositionAndCoordinationHintsDecodeBeforeRestReconciliation]' passed (0.044 seconds).
+Test Case '-[AEDResponseTests.AppStoreArchitectureTests testSocketResponseRequestUsesOnlyCoarseAllowlistedFields]' started.
+Test Case '-[AEDResponseTests.AppStoreArchitectureTests testSocketResponseRequestUsesOnlyCoarseAllowlistedFields]' passed (0.092 seconds).
+Test Case '-[AEDResponseTests.AppStoreArchitectureTests testSocketStateHintReconcilesThroughRestAndRestTruthWins]' started.
+2026-10-26 02:22:38.565860+0800 AEDResponseTestHost[77663:6274557] AED_PUSH_DIAGNOSTIC phase=coordinator-client-connected httpStatus=none
+Test Case '-[AEDResponseTests.AppStoreArchitectureTests testSocketStateHintReconcilesThroughRestAndRestTruthWins]' passed (0.150 seconds).
+Test Case '-[AEDResponseTests.AppStoreArchitectureTests testSocketStatusConfirmationRequestStrictlyParsesHint]' started.
+Test Case '-[AEDResponseTests.AppStoreArchitectureTests testSocketStatusConfirmationRequestStrictlyParsesHint]' passed (0.010 seconds).
+Test Case '-[AEDResponseTests.AppStoreArchitectureTests testSocketStrictlyParsesAssignmentAndAedPayloads]' started.
+Test Case '-[AEDResponseTests.AppStoreArchitectureTests testSocketStrictlyParsesAssignmentAndAedPayloads]' passed (0.079 seconds).
+Test Case '-[AEDResponseTests.AppStoreArchitectureTests testSocketTerminalEventsRequireCanonicalStatePairs]' started.
+Test Case '-[AEDResponseTests.AppStoreArchitectureTests testSocketTerminalEventsRequireCanonicalStatePairs]' passed (0.019 seconds).
+Test Case '-[AEDResponseTests.AppStoreArchitectureTests testSocketV2EnvelopeRejectsMalformedMessagesAndUsesBoundedDeduplication]' started.
+Test Case '-[AEDResponseTests.AppStoreArchitectureTests testSocketV2EnvelopeRejectsMalformedMessagesAndUsesBoundedDeduplication]' passed (0.009 seconds).
+Test Case '-[AEDResponseTests.AppStoreArchitectureTests testSoleResponderExitDoesNotCallRESTUntilThirdConfirmationAndClearsStaleSnapshot]' started.
+2026-10-26 02:22:38.713649+0800 AEDResponseTestHost[77663:6274557] AED_PUSH_DIAGNOSTIC phase=coordinator-client-connected httpStatus=none
+Test Case '-[AEDResponseTests.AppStoreArchitectureTests testSoleResponderExitDoesNotCallRESTUntilThirdConfirmationAndClearsStaleSnapshot]' passed (0.045 seconds).
+Test Case '-[AEDResponseTests.AppStoreArchitectureTests testStaleStatusConfirmationResponseCannotUpdateAfterDisconnect]' started.
+2026-10-26 02:22:38.763077+0800 AEDResponseTestHost[77663:6274557] AED_PUSH_DIAGNOSTIC phase=coordinator-client-connected httpStatus=none
+Test Case '-[AEDResponseTests.AppStoreArchitectureTests testStaleStatusConfirmationResponseCannotUpdateAfterDisconnect]' passed (0.029 seconds).
+Test Case '-[AEDResponseTests.AppStoreArchitectureTests testStaleTerminalAssignmentUpdateDoesNotPauseNewerActiveRevision]' started.
+2026-10-26 02:22:38.793644+0800 AEDResponseTestHost[77663:6274557] AED_PUSH_DIAGNOSTIC phase=coordinator-client-connected httpStatus=none
+Test Case '-[AEDResponseTests.AppStoreArchitectureTests testStaleTerminalAssignmentUpdateDoesNotPauseNewerActiveRevision]' passed (0.019 seconds).
+Test Case '-[AEDResponseTests.AppStoreArchitectureTests testTerminalAssignmentUpdatedPausesCurrentResponderDraftUntilRest]' started.
+2026-10-26 02:22:38.810751+0800 AEDResponseTestHost[77663:6274557] AED_PUSH_DIAGNOSTIC phase=coordinator-client-connected httpStatus=none
+Test Case '-[AEDResponseTests.AppStoreArchitectureTests testTerminalAssignmentUpdatedPausesCurrentResponderDraftUntilRest]' passed (0.015 seconds).
+Test Case '-[AEDResponseTests.AppStoreArchitectureTests testTerminalEventDrainsLateBatchWithoutChangingStandbyMode]' started.
+2026-10-26 02:22:38.832967+0800 AEDResponseTestHost[77663:6274557] AED_PUSH_DIAGNOSTIC phase=coordinator-client-connected httpStatus=none
+Test Case '-[AEDResponseTests.AppStoreArchitectureTests testTerminalEventDrainsLateBatchWithoutChangingStandbyMode]' passed (0.022 seconds).
+Test Case '-[AEDResponseTests.AppStoreArchitectureTests testTerminalSocketQueuesImmediateRestoreWhileInitialRestoreIsInFlight]' started.
+2026-10-26 02:22:39.013834+0800 AEDResponseTestHost[77663:6274557] AED_PUSH_DIAGNOSTIC phase=coordinator-client-connected httpStatus=none
+Test Case '-[AEDResponseTests.AppStoreArchitectureTests testTerminalSocketQueuesImmediateRestoreWhileInitialRestoreIsInFlight]' passed (0.193 seconds).
+Test Case '-[AEDResponseTests.AppStoreArchitectureTests testTestHostProductionEnvironmentCannotStartAnyLiveTransport]' started.
+Test Case '-[AEDResponseTests.AppStoreArchitectureTests testTestHostProductionEnvironmentCannotStartAnyLiveTransport]' passed (0.002 seconds).
+Test Case '-[AEDResponseTests.AppStoreArchitectureTests testUnauthenticatedStoreDoesNotStartBusinessServices]' started.
+Test Case '-[AEDResponseTests.AppStoreArchitectureTests testUnauthenticatedStoreDoesNotStartBusinessServices]' passed (0.002 seconds).
+Test Case '-[AEDResponseTests.AppStoreArchitectureTests testUnconfirmedCloseSocketHintPausesWithoutSealingUntilRestWindowArrives]' started.
+2026-10-26 02:22:39.054980+0800 AEDResponseTestHost[77663:6274557] AED_PUSH_DIAGNOSTIC phase=coordinator-client-connected httpStatus=none
+Test Case '-[AEDResponseTests.AppStoreArchitectureTests testUnconfirmedCloseSocketHintPausesWithoutSealingUntilRestWindowArrives]' passed (0.050 seconds).
+Test Case '-[AEDResponseTests.AppStoreArchitectureTests testUnconfirmedEndCannotBeBypassedByLogout]' started.
+2026-10-26 02:22:39.100975+0800 AEDResponseTestHost[77663:6274557] AED_PUSH_DIAGNOSTIC phase=coordinator-client-connected httpStatus=none
+Test Case '-[AEDResponseTests.AppStoreArchitectureTests testUnconfirmedEndCannotBeBypassedByLogout]' passed (0.151 seconds).
+Test Case '-[AEDResponseTests.AppStoreArchitectureTests testUnconfirmedPatientHintIsDiscardedByInitialRestSnapshot]' started.
+2026-10-26 02:22:39.251997+0800 AEDResponseTestHost[77663:6274557] AED_PUSH_DIAGNOSTIC phase=coordinator-client-connected httpStatus=none
+Test Case '-[AEDResponseTests.AppStoreArchitectureTests testUnconfirmedPatientHintIsDiscardedByInitialRestSnapshot]' passed (0.075 seconds).
+Test Case '-[AEDResponseTests.AppStoreArchitectureTests testWhenInUseLocationCannotOpenBusinessGate]' started.
+Test Case '-[AEDResponseTests.AppStoreArchitectureTests testWhenInUseLocationCannotOpenBusinessGate]' passed (0.033 seconds).
+Test Suite 'AppStoreArchitectureTests' failed at 2026-10-26 02:22:39.379.
+	 Executed 116 tests, with 1 failure (0 unexpected) in 30.820 (31.078) seconds
+Test Suite 'ClientRouteRefreshCoordinatorTests' started at 2026-10-26 02:22:39.380.
+Test Case '-[AEDResponseTests.ClientRouteRefreshCoordinatorTests testEventAssignmentAndConnectionChangesReplaceTheSchedule]' started.
+Test Case '-[AEDResponseTests.ClientRouteRefreshCoordinatorTests testEventAssignmentAndConnectionChangesReplaceTheSchedule]' passed (0.050 seconds).
+Test Case '-[AEDResponseTests.ClientRouteRefreshCoordinatorTests testRefreshCanStopItsOwnScheduleWithoutStartingAnotherWait]' started.
+Test Case '-[AEDResponseTests.ClientRouteRefreshCoordinatorTests testRefreshCanStopItsOwnScheduleWithoutStartingAnotherWait]' passed (0.001 seconds).
+Test Case '-[AEDResponseTests.ClientRouteRefreshCoordinatorTests testRepeatedContextKeepsTheExistingCadence]' started.
+Test Case '-[AEDResponseTests.ClientRouteRefreshCoordinatorTests testRepeatedContextKeepsTheExistingCadence]' passed (0.016 seconds).
+Test Case '-[AEDResponseTests.ClientRouteRefreshCoordinatorTests testStopAndRestartRejectsTheOldWaitEvenWhenSleepIgnoresCancellation]' started.
+Test Case '-[AEDResponseTests.ClientRouteRefreshCoordinatorTests testStopAndRestartRejectsTheOldWaitEvenWhenSleepIgnoresCancellation]' passed (0.001 seconds).
+Test Case '-[AEDResponseTests.ClientRouteRefreshCoordinatorTests testWaitingTaskDoesNotRetainItsOwner]' started.
+Test Case '-[AEDResponseTests.ClientRouteRefreshCoordinatorTests testWaitingTaskDoesNotRetainItsOwner]' passed (0.001 seconds).
+Test Suite 'ClientRouteRefreshCoordinatorTests' passed at 2026-10-26 02:22:39.452.
+	 Executed 5 tests, with 0 failures (0 unexpected) in 0.069 (0.072) seconds
+Test Suite 'EventOutcomePresentationTests' started at 2026-10-26 02:22:39.453.
+Test Case '-[AEDResponseTests.EventOutcomePresentationTests testActiveStateIsNotPresentedAsAnOutcome]' started.
+Test Case '-[AEDResponseTests.EventOutcomePresentationTests testActiveStateIsNotPresentedAsAnOutcome]' passed (0.112 seconds).
+Test Case '-[AEDResponseTests.EventOutcomePresentationTests testCancellationAndFalseAlarmReadDifferentlyForBothRoles]' started.
+Test Case '-[AEDResponseTests.EventOutcomePresentationTests testCancellationAndFalseAlarmReadDifferentlyForBothRoles]' passed (0.001 seconds).
+Test Case '-[AEDResponseTests.EventOutcomePresentationTests testEveryTerminalFactHasItsOwnPatientFacingTitle]' started.
+Test Case '-[AEDResponseTests.EventOutcomePresentationTests testEveryTerminalFactHasItsOwnPatientFacingTitle]' passed (0.001 seconds).
+Test Case '-[AEDResponseTests.EventOutcomePresentationTests testOnlyResolutionClaimsTheEmergencyWasResolved]' started.
+Test Case '-[AEDResponseTests.EventOutcomePresentationTests testOnlyResolutionClaimsTheEmergencyWasResolved]' passed (0.000 seconds).
+Test Case '-[AEDResponseTests.EventOutcomePresentationTests testResponderTaskEndAndEventOutcomeAreSeparateStatements]' started.
+Test Case '-[AEDResponseTests.EventOutcomePresentationTests testResponderTaskEndAndEventOutcomeAreSeparateStatements]' passed (0.000 seconds).
+Test Suite 'EventOutcomePresentationTests' passed at 2026-10-26 02:22:39.570.
+	 Executed 5 tests, with 0 failures (0 unexpected) in 0.115 (0.118) seconds
+Test Suite 'NearbyVolunteerSummaryTests' started at 2026-10-26 02:22:39.571.
+Test Case '-[AEDResponseTests.NearbyVolunteerSummaryTests testBoundaryRadiiAndIntegerCountsAreAccepted]' started.
+Test Case '-[AEDResponseTests.NearbyVolunteerSummaryTests testBoundaryRadiiAndIntegerCountsAreAccepted]' passed (0.004 seconds).
+Test Case '-[AEDResponseTests.NearbyVolunteerSummaryTests testConstructorRejectsDuplicateMissingExtraOrMisorderedRadii]' started.
+Test Case '-[AEDResponseTests.NearbyVolunteerSummaryTests testConstructorRejectsDuplicateMissingExtraOrMisorderedRadii]' passed (0.239 seconds).
+Test Case '-[AEDResponseTests.NearbyVolunteerSummaryTests testConstructorRejectsNegativeAndDecreasingCumulativeCounts]' started.
+Test Case '-[AEDResponseTests.NearbyVolunteerSummaryTests testConstructorRejectsNegativeAndDecreasingCumulativeCounts]' passed (0.052 seconds).
+Test Case '-[AEDResponseTests.NearbyVolunteerSummaryTests testDecodeRejectsInvalidRangeShapesAndValues]' started.
+Test Case '-[AEDResponseTests.NearbyVolunteerSummaryTests testDecodeRejectsInvalidRangeShapesAndValues]' passed (0.129 seconds).
+Test Case '-[AEDResponseTests.NearbyVolunteerSummaryTests testEncodingContainsOnlyContractFields]' started.
+Test Case '-[AEDResponseTests.NearbyVolunteerSummaryTests testEncodingContainsOnlyContractFields]' passed (0.059 seconds).
+Test Case '-[AEDResponseTests.NearbyVolunteerSummaryTests testFreshnessAcceptsBoundariesAndDoesNotZeroExpiredCounts]' started.
+Test Case '-[AEDResponseTests.NearbyVolunteerSummaryTests testFreshnessAcceptsBoundariesAndDoesNotZeroExpiredCounts]' passed (0.001 seconds).
+Test Case '-[AEDResponseTests.NearbyVolunteerSummaryTests testValidSummaryAndZeroPeoplePreserveFixedCumulativeRanges]' started.
+Test Case '-[AEDResponseTests.NearbyVolunteerSummaryTests testValidSummaryAndZeroPeoplePreserveFixedCumulativeRanges]' passed (0.002 seconds).
+Test Suite 'NearbyVolunteerSummaryTests' passed at 2026-10-26 02:22:40.063.
+	 Executed 7 tests, with 0 failures (0 unexpected) in 0.487 (0.492) seconds
+Test Suite 'ResponderExitTests' started at 2026-10-26 02:22:40.079.
+Test Case '-[AEDResponseTests.ResponderExitTests testAllRescueCancellationFlowsCanRequireThreeClicksWithoutSoleResponderWording]' started.
+Test Case '-[AEDResponseTests.ResponderExitTests testAllRescueCancellationFlowsCanRequireThreeClicksWithoutSoleResponderWording]' passed (0.005 seconds).
+Test Case '-[AEDResponseTests.ResponderExitTests testBackendSoleRequirementStaysStickyAgainstStaleN]' started.
+Test Case '-[AEDResponseTests.ResponderExitTests testBackendSoleRequirementStaysStickyAgainstStaleN]' passed (0.001 seconds).
+Test Case '-[AEDResponseTests.ResponderExitTests testCancelResetsSequenceAndInvalidatesStalePrompt]' started.
+Test Case '-[AEDResponseTests.ResponderExitTests testCancelResetsSequenceAndInvalidatesStalePrompt]' passed (0.001 seconds).
+Test Case '-[AEDResponseTests.ResponderExitTests testInvalidResponderCountCannotSubmit]' started.
+Test Case '-[AEDResponseTests.ResponderExitTests testInvalidResponderCountCannotSubmit]' passed (0.000 seconds).
+Test Case '-[AEDResponseTests.ResponderExitTests testMultiResponderUsesOneConfirmationWithoutSoleFlag]' started.
+Test Case '-[AEDResponseTests.ResponderExitTests testMultiResponderUsesOneConfirmationWithoutSoleFlag]' passed (0.001 seconds).
+Test Case '-[AEDResponseTests.ResponderExitTests testOrdinaryExitOmitsSoleResponderFlagAndTrueIsEncoded]' started.
+Test Case '-[AEDResponseTests.ResponderExitTests testOrdinaryExitOmitsSoleResponderFlagAndTrueIsEncoded]' passed (0.002 seconds).
+Test Case '-[AEDResponseTests.ResponderExitTests testSoleResponderRequiresThreeExplicitClicksAndOpeningDoesNotCount]' started.
+Test Case '-[AEDResponseTests.ResponderExitTests testSoleResponderRequiresThreeExplicitClicksAndOpeningDoesNotCount]' passed (0.003 seconds).
+Test Suite 'ResponderExitTests' passed at 2026-10-26 02:22:40.111.
+	 Executed 7 tests, with 0 failures (0 unexpected) in 0.013 (0.032) seconds
+Test Suite 'ResponsePrivacyProjectionTests' started at 2026-10-26 02:22:40.111.
+Test Case '-[AEDResponseTests.ResponsePrivacyProjectionTests testAcceptedResponderProjectionDecodesExactPatientDataAndCoordination]' started.
+Test Case '-[AEDResponseTests.ResponsePrivacyProjectionTests testAcceptedResponderProjectionDecodesExactPatientDataAndCoordination]' passed (0.050 seconds).
+Test Case '-[AEDResponseTests.ResponsePrivacyProjectionTests testEmergencyEventRequiresBothNullableParticipationWindowKeys]' started.
+Test Case '-[AEDResponseTests.ResponsePrivacyProjectionTests testEmergencyEventRequiresBothNullableParticipationWindowKeys]' passed (0.013 seconds).
+Test Case '-[AEDResponseTests.ResponsePrivacyProjectionTests testEmergencyEventRequiresCanPublishEventPositionField]' started.
+Test Case '-[AEDResponseTests.ResponsePrivacyProjectionTests testEmergencyEventRequiresCanPublishEventPositionField]' passed (0.001 seconds).
+Test Case '-[AEDResponseTests.ResponsePrivacyProjectionTests testMinimalTerminalProjectionDecodesWithoutConditionalFields]' started.
+Test Case '-[AEDResponseTests.ResponsePrivacyProjectionTests testMinimalTerminalProjectionDecodesWithoutConditionalFields]' passed (0.001 seconds).
+Test Case '-[AEDResponseTests.ResponsePrivacyProjectionTests testOfferExpiryBoundaryIsInclusiveAtExpiresAtAndExpiredAfterward]' started.
+Test Case '-[AEDResponseTests.ResponsePrivacyProjectionTests testOfferExpiryBoundaryIsInclusiveAtExpiresAtAndExpiredAfterward]' passed (0.066 seconds).
+Test Case '-[AEDResponseTests.ResponsePrivacyProjectionTests testPatientProjectionDecodesTriggerExactPatientAndCoordination]' started.
+Test Case '-[AEDResponseTests.ResponsePrivacyProjectionTests testPatientProjectionDecodesTriggerExactPatientAndCoordination]' passed (0.219 seconds).
+Test Case '-[AEDResponseTests.ResponsePrivacyProjectionTests testPendingResponderProjectionDecodesWithoutExactPatientOrCoordination]' started.
+Test Case '-[AEDResponseTests.ResponsePrivacyProjectionTests testPendingResponderProjectionDecodesWithoutExactPatientOrCoordination]' passed (0.004 seconds).
+Test Case '-[AEDResponseTests.ResponsePrivacyProjectionTests testPendingResponseRequestRejectsPatientPositionAndOtherSensitiveFields]' started.
+Test Case '-[AEDResponseTests.ResponsePrivacyProjectionTests testPendingResponseRequestRejectsPatientPositionAndOtherSensitiveFields]' passed (0.002 seconds).
+Test Case '-[AEDResponseTests.ResponsePrivacyProjectionTests testSecondarySameUserPatientProjectionIsExplicitlyReadOnly]' started.
+Test Case '-[AEDResponseTests.ResponsePrivacyProjectionTests testSecondarySameUserPatientProjectionIsExplicitlyReadOnly]' passed (0.002 seconds).
+Test Case '-[AEDResponseTests.ResponsePrivacyProjectionTests testSimulationOfferMarkerIsEventBoundAndDoesNotPermitPrivateFields]' started.
+Test Case '-[AEDResponseTests.ResponsePrivacyProjectionTests testSimulationOfferMarkerIsEventBoundAndDoesNotPermitPrivateFields]' passed (0.024 seconds).
+Test Case '-[AEDResponseTests.ResponsePrivacyProjectionTests testSimulationPatientIsExplicitAndContainsNoFallEvidence]' started.
+Test Case '-[AEDResponseTests.ResponsePrivacyProjectionTests testSimulationPatientIsExplicitAndContainsNoFallEvidence]' passed (0.030 seconds).
+Test Case '-[AEDResponseTests.ResponsePrivacyProjectionTests testWritableEventRequiresNonNullParticipationStart]' started.
+Test Case '-[AEDResponseTests.ResponsePrivacyProjectionTests testWritableEventRequiresNonNullParticipationStart]' passed (0.002 seconds).
+Test Suite 'ResponsePrivacyProjectionTests' passed at 2026-10-26 02:22:40.578.
+	 Executed 12 tests, with 0 failures (0 unexpected) in 0.416 (0.467) seconds
+Test Suite 'StateMachineTests' started at 2026-10-26 02:22:40.579.
+Test Case '-[AEDResponseTests.StateMachineTests testAedAcquiredReceiptIsIdempotentAndRejectsConflictingReceiptID]' started.
+Test Case '-[AEDResponseTests.StateMachineTests testAedAcquiredReceiptIsIdempotentAndRejectsConflictingReceiptID]' passed (0.003 seconds).
+Test Case '-[AEDResponseTests.StateMachineTests testAssignmentFormulaForOneThroughFiveAcceptedResponders]' started.
+Test Case '-[AEDResponseTests.StateMachineTests testAssignmentFormulaForOneThroughFiveAcceptedResponders]' passed (0.002 seconds).
+Test Case '-[AEDResponseTests.StateMachineTests testPassiveRecoverySignalsNeverEndActiveEvent]' started.
+Test Case '-[AEDResponseTests.StateMachineTests testPassiveRecoverySignalsNeverEndActiveEvent]' passed (0.004 seconds).
+Test Case '-[AEDResponseTests.StateMachineTests testPostCallFalseAlarmRequiresExplicitPatientAction]' started.
+Test Case '-[AEDResponseTests.StateMachineTests testPostCallFalseAlarmRequiresExplicitPatientAction]' passed (0.001 seconds).
+Test Case '-[AEDResponseTests.StateMachineTests testRealEventRequiresExplicitAuthorizedResolution]' started.
+Test Case '-[AEDResponseTests.StateMachineTests testRealEventRequiresExplicitAuthorizedResolution]' passed (0.001 seconds).
+Test Case '-[AEDResponseTests.StateMachineTests testReceiptMustAdvanceWithoutSkippingOrGoingBack]' started.
+Test Case '-[AEDResponseTests.StateMachineTests testReceiptMustAdvanceWithoutSkippingOrGoingBack]' passed (0.084 seconds).
+Test Suite 'StateMachineTests' passed at 2026-10-26 02:22:40.683.
+	 Executed 6 tests, with 0 failures (0 unexpected) in 0.095 (0.105) seconds
+Test Suite 'AEDResponseTests.xctest' failed at 2026-10-26 02:22:40.684.
+	 Executed 162 tests, with 1 failure (0 unexpected) in 32.284 (32.769) seconds
+Test Suite 'Selected tests' failed at 2026-10-26 02:22:40.684.
+	 Executed 162 tests, with 1 failure (0 unexpected) in 32.284 (32.844) seconds
+2026-10-26 02:23:12.815 xcodebuild[77076:6269091] [MT] IDETestOperationsObserverDebug: 222.503 elapsed -- Testing started completed.
+2026-10-26 02:23:12.816 xcodebuild[77076:6269091] [MT] IDETestOperationsObserverDebug: 0.000 sec, +0.000 sec -- start
+2026-10-26 02:23:12.816 xcodebuild[77076:6269091] [MT] IDETestOperationsObserverDebug: 222.504 sec, +222.504 sec -- end
+
+Test session results, code coverage, and logs:
+	[BUILD_CACHE]/action-map-first-20261026.hkwuih3c/UnitTests.xcresult
+
+Failing tests:
+	AppStoreArchitectureTests.testConnectAndLocationChangesPublishStrictResponderPositionThroughRest()
+
+** TEST EXECUTE FAILED **
+
+Testing started

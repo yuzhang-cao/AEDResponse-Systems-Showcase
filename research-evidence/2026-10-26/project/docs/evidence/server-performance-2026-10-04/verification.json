@@ -1,0 +1,98 @@
+{
+  "verifiedAtUTC": "2026-10-04T15:59:21.482Z",
+  "release": "notification-performance-20261004-r1",
+  "previousRelease": "lockscreen-notifications-20261001-r1",
+  "scope": "Idle maintenance, notification read/write cost and neutral server notification wording only",
+  "sourceChanges": [
+    "notification-outbox.ts",
+    "push-presentation.ts",
+    "service.ts",
+    "state-read.ts",
+    "store.ts"
+  ],
+  "contractsUnchanged": true,
+  "dependencyLockUnchanged": true,
+  "configurationUnchanged": true,
+  "loginPolicyUnchanged": true,
+  "sourceArchiveSHA256": "0097ae759c00ed9519af4fad88f3e82275ab40e5ca6307af08437919d6a07ec7",
+  "sourceHashes": {
+    "notification-outbox.ts": "8f0edf6d20354795043badc0ecdb1afcc1ef6a8b0cd35fc0bad0a97ead0be156",
+    "push-presentation.ts": "4f6dece77fdf371e594285639f39646926b6db9849410a3446fc86dc131bde1c",
+    "service.ts": "a7c9cd632b509374d1a8f8589d7c247494cbacf2614ec3a66704b7fa5e6ea976",
+    "state-read.ts": "0cb46c7fec774afefea75beac2679a2c9c55042677bb293efe2b00806497a93e",
+    "store.ts": "129475c65627a3d697b9c46564bfeb05cc8d25768b8feae8de4f96bf788db2ac"
+  },
+  "validation": {
+    "canonicalTests": {
+      "passed": 751,
+      "failed": 0,
+      "check": true,
+      "build": true
+    },
+    "linuxCandidateTests": {
+      "passed": 535,
+      "failed": 0,
+      "check": true,
+      "build": true
+    },
+    "consistentBackupIntegrity": "ok",
+    "candidateInitialReadPreservesPreviousState": true,
+    "candidateCommitAndReopen": true,
+    "previousParserReadsCandidateCommit": true,
+    "privateCompatibilityCopiesRemoved": true,
+    "liveDatabaseWrittenByValidation": false
+  },
+  "syntheticBenchmark": {
+    "scope": "Two offline Mac SQLite rounds; identical seeds and transport counts; not real-device or capacity acceptance",
+    "idleMeanMillisecondsApprox": {
+      "before": 1061,
+      "after": 1.314
+    },
+    "activeWithNotificationsMeanMillisecondsApprox": {
+      "before": 33933,
+      "after": 153.706
+    },
+    "activeFullStateClones": {
+      "before": 398,
+      "after": 2
+    },
+    "activeFullStateFlattens": {
+      "before": 133,
+      "after": 1
+    },
+    "socketMessagesEachRound": 44,
+    "fakePushCallsEachRound": 3
+  },
+  "livePostflight": {
+    "expectedProcessWorkingDirectory": true,
+    "productionMode": true,
+    "activeEvents": 0,
+    "historicalEvents": 8,
+    "deviceBindingsPreserved": true,
+    "APNsConfigured": true,
+    "watchAttestationEnabled": true,
+    "databaseQuickCheck": "ok",
+    "serviceActive": true,
+    "unexpectedRestarts": 0,
+    "localHealthMilliseconds": 0.988,
+    "anonymousAPIStatus": 401,
+    "publicHealthStatuses": [
+      200,
+      200,
+      200
+    ],
+    "publicHealthMilliseconds": [
+      1597.427,
+      274.592,
+      253.254
+    ]
+  },
+  "realDeviceBusinessValidatedThisPhase": false,
+  "deviceApplicationsUpdatedThisPhase": false,
+  "newSimulatedEventsCreatedThisPhase": false,
+  "remaining": [
+    "Install and verify the iPhone local notification wording fix",
+    "Repeat only the unfinished locked iPhone plus Watch controlled fall business flow",
+    "Complete AED and two-real-phone acceptance separately"
+  ]
+}

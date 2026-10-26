@@ -1,0 +1,21 @@
+{
+  "backendTests": {
+    "pass": 498,
+    "fail": 0
+  },
+  "contractSmoke": 5,
+  "backendSmoke": 18,
+  "sourceHashesMatched": 44,
+  "serviceObservationsPerRun": 42,
+  "boundaryChecksPerRun": 10,
+  "httpProfiles": 6,
+  "httpOperationsPerProfile": 19,
+  "httpInstrumentedTests": 3,
+  "allFarDistanceCallsZero": true,
+  "allWholeStateClonesZero": true,
+  "allCollectionEnumerationsZero": true,
+  "allGridRebuildVisitsZero": true,
+  "currentVsBaselineOutcomesEqual": true,
+  "instrumentedVsUnmodifiedOutcomesEqual": true,
+  "scopeGuardRejectsLegacy": true
+}

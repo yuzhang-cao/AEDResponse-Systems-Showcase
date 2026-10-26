@@ -1,0 +1,37 @@
+✔ a radius query never omits a device that is inside the radius (12.424208ms)
+✔ the pre-filter is a superset at other latitudes, including high ones (1.981916ms)
+✔ position changes move a device between cells without leaving a stale entry (0.37325ms)
+✔ devices without a usable coordinate are not indexed (0.1135ms)
+✔ an absurd radius is refused rather than walking an unbounded number of cells (0.267333ms)
+✔ tick() counts as a legacy run and never as a fallback (4.026625ms)
+✔ the counters are per operation, not per event (0.4215ms)
+✔ the three counters are distinct fields with distinct meanings (0.107375ms)
+✔ Memory: position operation rolls back after staging devices (17.450667ms)
+✔ Memory: position operation rolls back after staging positionUpdateReceiptsById (0.905208ms)
+✔ Memory: position operation rolls back after staging events (1.878542ms)
+✔ Memory: position operation rolls back after staging deliveries (1.609083ms)
+✔ Memory: position operation rolls back after staging timelineByEventId (1.053042ms)
+✔ Memory: position operation rolls back after staging notificationOutboxById (2.431125ms)
+✔ Memory: successful recruiting position write uses one business entity transaction before real outbox work (6.918709ms)
+✔ SQLite: position operation rolls back after staging devices (48.473625ms)
+✔ SQLite: position operation rolls back after staging positionUpdateReceiptsById (3.775917ms)
+✔ SQLite: position operation rolls back after staging events (4.395833ms)
+✔ SQLite: position operation rolls back after staging deliveries (4.014875ms)
+✔ SQLite: position operation rolls back after staging timelineByEventId (3.76875ms)
+✔ SQLite: position operation rolls back after staging notificationOutboxById (5.622416ms)
+✔ SQLite: successful recruiting position write uses one business entity transaction before real outbox work (9.456792ms)
+✔ Memory: business recruitment visits stay bounded while the real response tail remains separately measured (27.436458ms)
+ℹ {"unrelated":[0,250],"business":{"devices":14,"deliveries":16,"assignments":4,"aedReceipts":1},"wholeOperation":[{"devices":14,"deliveries":17,"assignments":5,"aedReceipts":1},{"devices":14,"deliveries":267,"assignments":255,"aedReceipts":1}]}
+✔ SQLite: business recruitment visits stay bounded while the real response tail remains separately measured (51.151ms)
+ℹ {"unrelated":[0,250],"business":{"devices":14,"deliveries":16,"assignments":4,"aedReceipts":1},"wholeOperation":[{"devices":14,"deliveries":17,"assignments":5,"aedReceipts":1},{"devices":14,"deliveries":267,"assignments":255,"aedReceipts":1}]}
+✔ position capability fallback, indexed recruitment and tick have distinct per-operation metrics (2.587084ms)
+✔ rollback guard rejects a store that commits the staged prefix before reporting failure (4.961458ms)
+✔ structural guard rejects a geographic candidate query that includes unrelated history (8.349375ms)
+ℹ tests 27
+ℹ suites 0
+ℹ pass 27
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 825.63725

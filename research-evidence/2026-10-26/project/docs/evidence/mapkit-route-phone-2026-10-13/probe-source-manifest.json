@@ -1,0 +1,8 @@
+{
+  "app/Sources/ProbeApp.swift": "e995e362b6ed6734b8d3b616d78031a056890617c6ca18a411168b414fddc594",
+  "app/Sources/ProductionDTOs.swift": "944c6b59a390fd448f99523aef3c8fda80c3be8aa5c5b3b0234c23cfe0882064",
+  "app/Sources/USBFileTransport.swift": "c58837efa339a5fc1fec2fbe4e2af79923a07027a1bdf53280ac8af02499b013",
+  "app/project.yml": "95237b2fb9208d722faffcee39fae7983b1ade0472f38512dcaffa187e94d642",
+  "backend-probe.mts": "24521399e3c9884ccfe0a7459b6c107682c23510c2c59fb5b528b2313c4ae291",
+  "usb-file-bridge.py": "beb13a38666f9d5ceef39f0a84267682d8ed73a81b93a2b4ca2ebd5e174df388"
+}

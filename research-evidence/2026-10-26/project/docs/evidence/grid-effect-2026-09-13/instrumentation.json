@@ -1,0 +1,7 @@
+{
+  "modified_copy_files": [
+    "backend/src/domain.ts",
+    "backend/src/device-position-index.ts"
+  ],
+  "purpose": "Count distance calls, far-input calls, grid cells and rebuild visits; do not change return values or business branches. Timings are not interpreted as a benchmark."
+}

@@ -1,0 +1,15 @@
+{
+  "device": "iPhone 17 Pro",
+  "bundleIdentifier": "dev.codex.aedresponse",
+  "version": "2.0",
+  "build": "13",
+  "installation": "success",
+  "independentDeviceReadback": true,
+  "uninstallPerformed": false,
+  "dataClearPerformed": false,
+  "appLaunchPerformed": false,
+  "watchDeviceInstallVerified": false,
+  "signedVerification": "signed-verification.json",
+  "installResult": "install.json",
+  "deviceReadback": "installed-after.json"
+}

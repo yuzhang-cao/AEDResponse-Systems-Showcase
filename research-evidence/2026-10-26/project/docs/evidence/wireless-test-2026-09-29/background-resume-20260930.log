@@ -1,0 +1,18 @@
+# Sanitized AEDResponse CompanionRelay records. Device archive rendered in Asia/Shanghai.
+# Query window: 2026-09-30 11:16:30+0800 through 11:19:30+0800.
+# Process/PID/device identifiers omitted; request IDs are not present in source logs.
+2026-09-30 11:16:56.296 background receive method=ping appState=2
+2026-09-30 11:16:56.321 immediate reply method=ping status=ok httpStatus=0
+2026-09-30 11:16:56.361 background reply method=ping status=ok appState=2
+2026-09-30 11:16:57.126 background response transfer succeeded=true appState=2
+2026-09-30 11:17:08.730 background receive method=ping appState=2
+2026-09-30 11:17:08.756 background reply method=ping status=ok appState=2
+2026-09-30 11:17:08.835 background response transfer succeeded=true appState=2
+2026-09-30 11:18:11.459 background receive method=ping appState=2
+2026-09-30 11:18:11.484 background reply method=ping status=ok appState=2
+2026-09-30 11:18:11.596 background response transfer succeeded=true appState=2
+2026-09-30 11:18:22.207 immediate reply method=ping status=ok httpStatus=0
+2026-09-30 11:19:16.735 background receive method=ping appState=2
+2026-09-30 11:19:17.205 background reply method=ping status=ok appState=2
+2026-09-30 11:19:17.328 background response transfer succeeded=true appState=2
+2026-09-30 11:19:18.147 immediate reply method=ping status=ok httpStatus=0

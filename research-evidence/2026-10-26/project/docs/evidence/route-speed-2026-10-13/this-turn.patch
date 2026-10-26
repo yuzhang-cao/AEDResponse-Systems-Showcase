@@ -1,0 +1,289 @@
+--- before/ios/AEDResponse/Services/AppleMapsDirections.swift
++++ after/ios/AEDResponse/Services/AppleMapsDirections.swift
+@@ -104,26 +104,54 @@
+     typealias LegCalculator = @MainActor (CLLocationCoordinate2D, CLLocationCoordinate2D) async throws -> Double
+ 
+     static func calculate(_ context: ClientAedRouteContext,
+-                          leg: LegCalculator = walkingDistance) async throws -> [ClientAedRouteDistance] {
++                          leg: @escaping LegCalculator = walkingDistance) async throws -> [ClientAedRouteDistance] {
+         guard context.aeds.count <= 8 else { throw AedRouteError.noEligibleAed }
++        try Task.checkCancellation()
+         let responder = CLLocationCoordinate2D(latitude: context.responder.latitude, longitude: context.responder.longitude)
+         let patient = CLLocationCoordinate2D(latitude: context.patient.latitude, longitude: context.patient.longitude)
+-        var result: [ClientAedRouteDistance] = []
+-        // Limit concurrency to two legs; MapKit throttles bursts of route requests.
+-        for aed in context.aeds {
++        let points = context.aeds.map {
++            CLLocationCoordinate2D(latitude: $0.aedPosition.latitude, longitude: $0.aedPosition.longitude)
++        }
++        typealias LegResult = (index: Int, distance: Double?)
++        let calculateLeg: @MainActor @Sendable (Int) async throws -> LegResult = { index in
+             try Task.checkCancellation()
+-            let point = CLLocationCoordinate2D(latitude: aed.aedPosition.latitude, longitude: aed.aedPosition.longitude)
++            let point = points[index / 2]
+             do {
+-                async let first = leg(responder, point)
+-                async let second = leg(point, patient)
+-                let (ra, ap) = try await (first, second)
+-                guard ra.isFinite, ap.isFinite, ra >= 0, ap >= 0 else { throw AedRouteError.noEligibleAed }
+-                result.append(ClientAedRouteDistance(aedId: aed.id, toAedMeters: ra, toPatientMeters: ap))
++                let distance = try await leg(index.isMultiple(of: 2) ? responder : point,
++                                             index.isMultiple(of: 2) ? point : patient)
++                try Task.checkCancellation()
++                guard distance.isFinite, distance >= 0 else { throw AedRouteError.noEligibleAed }
++                return (index, distance)
+             } catch let error as MKError where error.code == .directionsNotFound {
+-                continue
++                try Task.checkCancellation()
++                return (index, nil)
+             }
+         }
+-        return result
++        return try await withThrowingTaskGroup(of: LegResult.self) { group in
++            defer { group.cancelAll() }
++            let legCount = points.count * 2
++            var distances = [Double?](repeating: nil, count: legCount)
++            var nextIndex = 0
++            // Refill either free slot immediately; a slow partner leg must not idle it.
++            for index in 0..<min(2, legCount) {
++                group.addTask { try await calculateLeg(index) }
++                nextIndex += 1
++            }
++            while let result = try await group.next() {
++                try Task.checkCancellation()
++                distances[result.index] = result.distance
++                if nextIndex < legCount {
++                    let index = nextIndex
++                    group.addTask { try await calculateLeg(index) }
++                    nextIndex += 1
++                }
++            }
++            try Task.checkCancellation()
++            return context.aeds.enumerated().compactMap { index, aed in
++                guard let first = distances[index * 2], let second = distances[index * 2 + 1] else { return nil }
++                return ClientAedRouteDistance(aedId: aed.id, toAedMeters: first, toPatientMeters: second)
++            }
++        }
+     }
+ 
+     private static func walkingDistance(from: CLLocationCoordinate2D, to: CLLocationCoordinate2D) async throws -> Double {
+--- before/ios/AEDResponseTests/AppleMapsDirectionsTests.swift
++++ after/ios/AEDResponseTests/AppleMapsDirectionsTests.swift
+@@ -1,3 +1,4 @@
++import MapKit
+ import XCTest
+ @testable import AEDResponse
+ 
+@@ -117,4 +118,211 @@
+         XCTAssertTrue(legs.contains { $0 == (22, 22.001) })
+         XCTAssertTrue(legs.contains { $0 == (22.001, 22.002) })
+     }
+-}
++
++    func testAFreeLegSlotStartsTheNextCandidateAndResultsKeepInputOrder() async throws {
++        let context = try makeContext(count: 8)
++        let gate = RouteLegGate(context: context)
++        let task = Task { try await MapKitAedRouteCalculator.calculate(context, leg: gate.calculate) }
++        defer { task.cancel() }
++        await fulfillment(of: [gate.started[0], gate.started[1]], timeout: 2)
++        guard gate.isWaiting(0), gate.isWaiting(1) else {
++            task.cancel()
++            _ = try? await task.value
++            return
++        }
++        gate.finish(1, with: .success(101))
++
++        // Leg 0 stays blocked while every later leg uses the other slot. These
++        // gates prove scheduling order without depending on elapsed milliseconds.
++        for index in 2..<16 {
++            await fulfillment(of: [gate.started[index]], timeout: 2)
++            guard gate.isWaiting(index) else {
++                task.cancel()
++                _ = try? await task.value
++                return
++            }
++            XCTAssertTrue(gate.isWaiting(0))
++            gate.finish(index, with: .success(Double(100 + index)))
++        }
++        gate.finish(0, with: .success(100))
++        let distances = try await task.value
++        XCTAssertEqual(gate.peakActive, 2)
++        XCTAssertEqual(gate.startedIndices.count, 16)
++        XCTAssertEqual(gate.active, 0)
++        XCTAssertEqual(distances, context.aeds.enumerated().map { index, aed in
++            ClientAedRouteDistance(aedId: aed.id, toAedMeters: Double(100 + index * 2),
++                                  toPatientMeters: Double(101 + index * 2))
++        })
++    }
++
++    func testDirectionsNotFoundOnEitherLegOmitsTheWholeCandidate() async throws {
++        let context = try makeContext(count: 4)
++        let gate = RouteLegGate(context: context)
++        let distances = try await MapKitAedRouteCalculator.calculate(context) { from, to in
++            let index = try gate.index(from: from, to: to)
++            if index == 2 || index == 5 { throw MKError(.directionsNotFound) }
++            return Double(100 + index)
++        }
++        XCTAssertEqual(distances, [
++            .init(aedId: context.aeds[0].id, toAedMeters: 100, toPatientMeters: 101),
++            .init(aedId: context.aeds[3].id, toAedMeters: 106, toPatientMeters: 107)
++        ])
++    }
++
++    func testOtherErrorsPropagateAndCancelTheRemainingLeg() async throws {
++        let context = try makeContext(count: 3)
++        let gate = RouteLegGate(context: context)
++        let task = Task { try await MapKitAedRouteCalculator.calculate(context, leg: gate.calculate) }
++        defer { task.cancel() }
++        await fulfillment(of: [gate.started[0], gate.started[1]], timeout: 2)
++        guard gate.isWaiting(0), gate.isWaiting(1) else {
++            task.cancel()
++            _ = try? await task.value
++            return
++        }
++        gate.finish(0, with: .failure(RouteLegProbeError.failed))
++        do {
++            _ = try await task.value
++            XCTFail("A failed leg must fail the calculation")
++        } catch {
++            XCTAssertEqual(error as? RouteLegProbeError, .failed)
++        }
++        XCTAssertEqual(Set(gate.startedIndices), Set([0, 1]))
++        XCTAssertEqual(gate.cancelledIndices, [1])
++        XCTAssertEqual(gate.active, 0)
++    }
++
++    func testCancellationPropagatesWithoutStartingMoreLegs() async throws {
++        let context = try makeContext(count: 3)
++        let gate = RouteLegGate(context: context)
++        let task = Task { try await MapKitAedRouteCalculator.calculate(context, leg: gate.calculate) }
++        await fulfillment(of: [gate.started[0], gate.started[1]], timeout: 2)
++        task.cancel()
++        do {
++            _ = try await task.value
++            XCTFail("A cancelled calculation must not return partial routes")
++        } catch {
++            XCTAssertTrue(error is CancellationError)
++        }
++        XCTAssertEqual(Set(gate.startedIndices), Set([0, 1]))
++        XCTAssertEqual(Set(gate.cancelledIndices), Set([0, 1]))
++        XCTAssertEqual(gate.active, 0)
++    }
++
++    func testAlreadyCancelledCalculationDoesNotCallTheLegCalculator() async throws {
++        let context = try makeContext(count: 1)
++        var calls = 0
++        let task = Task {
++            try await MapKitAedRouteCalculator.calculate(context) { _, _ in
++                calls += 1
++                return 10
++            }
++        }
++        task.cancel()
++        do {
++            _ = try await task.value
++            XCTFail("An already cancelled calculation must stop before making requests")
++        } catch {
++            XCTAssertTrue(error is CancellationError)
++        }
++        XCTAssertEqual(calls, 0)
++    }
++
++    func testCandidateLimitRejectsBeforeStartingRequests() async throws {
++        let context = try makeContext(count: 9)
++        var calls = 0
++        do {
++            _ = try await MapKitAedRouteCalculator.calculate(context) { _, _ in
++                calls += 1
++                return 10
++            }
++            XCTFail("More than eight candidates must remain rejected")
++        } catch {
++            XCTAssertTrue(error is AedRouteError)
++        }
++        XCTAssertEqual(calls, 0)
++    }
++
++    private func makeContext(count: Int) throws -> ClientAedRouteContext {
++        let aeds = try (0..<count).map { index in
++            Aed(id: "aed-\(index)", name: "test", aedPosition: try AedPosition(
++                latitude: [COORDINATE_REMOVED] + Double(index) * 0.001, longitude: [COORDINATE_REMOVED] + Double(index) * 0.001),
++                openFrom: "00:00", openUntil: "00:00", floor: "1", floorTransferSeconds: 9999,
++                accessNote: "", accessDelaySeconds: 9999, verificationSeconds: 9999, available: true)
++        }
++        return ClientAedRouteContext(calculationId: UUID().uuidString, expiresAt: Date().addingTimeInterval(60),
++            responder: try ResponderPosition(latitude: 22, longitude: 113, accuracyMeters: 5),
++            patient: try PatientPosition(latitude: 22.05, longitude: 113.05, accuracyMeters: 5),
++            aeds: aeds, eligibleCandidateCount: count)
++    }
++}
++
++private enum RouteLegProbeError: Error, Equatable {
++    case failed
++    case unexpectedEndpoints
++}
++
++@MainActor
++private final class RouteLegGate {
++    let started: [XCTestExpectation]
++    private let context: ClientAedRouteContext
++    private var continuations: [Int: CheckedContinuation<Double, Error>] = [:]
++    private(set) var startedIndices: [Int] = []
++    private(set) var cancelledIndices: [Int] = []
++    private(set) var active = 0
++    private(set) var peakActive = 0
++
++    init(context: ClientAedRouteContext) {
++        self.context = context
++        started = (0..<(context.aeds.count * 2)).map { XCTestExpectation(description: "Leg \($0) started") }
++    }
++
++    func index(from: CLLocationCoordinate2D, to: CLLocationCoordinate2D) throws -> Int {
++        if from.latitude == context.responder.latitude, from.longitude == context.responder.longitude,
++           let index = context.aeds.firstIndex(where: {
++               $0.aedPosition.latitude == to.latitude && $0.aedPosition.longitude == to.longitude
++           }) {
++            return index * 2
++        }
++        if to.latitude == context.patient.latitude, to.longitude == context.patient.longitude,
++           let index = context.aeds.firstIndex(where: {
++               $0.aedPosition.latitude == from.latitude && $0.aedPosition.longitude == from.longitude
++           }) {
++            return index * 2 + 1
++        }
++        throw RouteLegProbeError.unexpectedEndpoints
++    }
++
++    func calculate(from: CLLocationCoordinate2D, to: CLLocationCoordinate2D) async throws -> Double {
++        let index = try index(from: from, to: to)
++        try Task.checkCancellation()
++        startedIndices.append(index)
++        active += 1
++        peakActive = max(peakActive, active)
++        defer { active -= 1 }
++        return try await withTaskCancellationHandler {
++            try Task.checkCancellation()
++            return try await withCheckedThrowingContinuation { continuation in
++                continuations[index] = continuation
++                started[index].fulfill()
++            }
++        } onCancel: {
++            Task { @MainActor in
++                if let continuation = self.continuations.removeValue(forKey: index) {
++                    self.cancelledIndices.append(index)
++                    continuation.resume(throwing: CancellationError())
++                }
++            }
++        }
++    }
++
++    func isWaiting(_ index: Int) -> Bool { continuations[index] != nil }
++
++    func finish(_ index: Int, with result: Result<Double, Error>) {
++        guard let continuation = continuations.removeValue(forKey: index) else {
++            XCTFail("Leg \(index) is not waiting")
++            return
++        }
++        continuation.resume(with: result)
++    }
++}

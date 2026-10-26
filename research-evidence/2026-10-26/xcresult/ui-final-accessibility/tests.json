@@ -1,0 +1,53 @@
+{
+  "devices": [
+    {
+      "architecture": "arm64",
+      "deviceId": "[REDACTED_ENVIRONMENT]",
+      "deviceName": "[REDACTED_ENVIRONMENT]",
+      "modelName": "iPhone 17 Pro",
+      "osBuildNumber": "23E254a",
+      "osVersion": "26.4.1",
+      "platform": "iOS Simulator"
+    }
+  ],
+  "testNodes": [
+    {
+      "children": [
+        {
+          "children": [
+            {
+              "children": [
+                {
+                  "duration": "1分钟20秒",
+                  "durationInSeconds": 80.06459999084473,
+                  "name": "testMapFirstDarkAccessibilityScreensKeepPrimaryActionsReachable()",
+                  "nodeIdentifier": "AEDResponseUITests/testMapFirstDarkAccessibilityScreensKeepPrimaryActionsReachable()",
+                  "nodeIdentifierURL": "test://com.apple.xcode/AEDResponse/AEDResponseUITests/AEDResponseUITests/testMapFirstDarkAccessibilityScreensKeepPrimaryActionsReachable",
+                  "nodeType": "Test Case",
+                  "result": "Passed"
+                }
+              ],
+              "name": "AEDResponseUITests",
+              "nodeIdentifierURL": "test://com.apple.xcode/AEDResponse/AEDResponseUITests/AEDResponseUITests",
+              "nodeType": "Test Suite",
+              "result": "Passed"
+            }
+          ],
+          "name": "AEDResponseUITests",
+          "nodeIdentifierURL": "test://com.apple.xcode/AEDResponse/AEDResponseUITests",
+          "nodeType": "UI test bundle",
+          "result": "Passed"
+        }
+      ],
+      "name": "AEDResponseTestHost",
+      "nodeType": "Test Plan",
+      "result": "Passed"
+    }
+  ],
+  "testPlanConfigurations": [
+    {
+      "configurationId": "1",
+      "configurationName": "Test Scheme Action"
+    }
+  ]
+}

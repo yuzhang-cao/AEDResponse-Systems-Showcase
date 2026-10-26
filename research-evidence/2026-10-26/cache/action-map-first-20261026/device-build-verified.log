@@ -1,0 +1,493 @@
+Command line invocation:
+    /Applications/Xcode.app/Contents/Developer/usr/bin/xcodebuild -project AEDResponse.xcodeproj -scheme AEDResponse -configuration Debug -destination generic/platform=iOS -derivedDataPath [BUILD_CACHE]/action-map-first-20261026.hkwuih3c/Signed -clonedSourcePackagesDirPath [BUILD_CACHE]/action-map-first-20261026.hkwuih3c/PackagesDevice -disableAutomaticPackageResolution -skipPackageUpdates -allowProvisioningUpdates AED_WATCH_SIMULATION_CONDITION=AED_WATCH_SIMULATION build
+
+Build settings from command line:
+    AED_WATCH_SIMULATION_CONDITION = AED_WATCH_SIMULATION
+
+Resolve Package Graph
+
+Fetching from https://github.com/socketio/socket.io-client-swift.git (cached)
+
+Fetching from https://github.com/daltoniam/Starscream (cached)
+
+Creating working copy of package ‘Starscream’
+
+Creating working copy of package ‘socket.io-client-swift’
+
+Checking out 4.0.8 of package ‘Starscream’
+
+Checking out 16.1.1 of package ‘socket.io-client-swift’
+
+
+Resolved source packages:
+  Starscream: [BUILD_CACHE]/action-map-first-20261026.hkwuih3c/Source/Dependencies/Starscream @ local
+  SocketIO: [BUILD_CACHE]/action-map-first-20261026.hkwuih3c/Source/Dependencies/SocketIO @ local
+
+ComputePackagePrebuildTargetDependencyGraph
+
+Prepare packages
+
+CreateBuildRequest
+
+SendProjectDescription
+
+CreateBuildOperation
+
+ComputeTargetDependencyGraph
+note: Building targets in dependency order
+note: Target dependency graph (7 targets)
+    Target 'AEDResponse' in project 'AEDResponse'
+        ➜ Explicit dependency on target 'AEDResponseWatch' in project 'AEDResponse'
+        ➜ Explicit dependency on target 'SocketIO' in project 'SocketIO'
+    Target 'SocketIO' in project 'SocketIO'
+        ➜ Explicit dependency on target 'SocketIO' in project 'SocketIO'
+        ➜ Explicit dependency on target 'Starscream' in project 'Starscream'
+    Target 'SocketIO' in project 'SocketIO'
+        ➜ Explicit dependency on target 'Starscream' in project 'Starscream'
+    Target 'Starscream' in project 'Starscream'
+        ➜ Explicit dependency on target 'Starscream' in project 'Starscream'
+        ➜ Explicit dependency on target 'Starscream_Starscream' in project 'Starscream'
+    Target 'Starscream' in project 'Starscream'
+        ➜ Explicit dependency on target 'Starscream_Starscream' in project 'Starscream'
+    Target 'Starscream_Starscream' in project 'Starscream' (no dependencies)
+    Target 'AEDResponseWatch' in project 'AEDResponse' (no dependencies)
+
+GatherProvisioningInputs
+
+CreateBuildDescription
+
+ExecuteExternalTool /Applications/Xcode.app/Contents/Developer/usr/bin/actool --print-asset-tag-combinations --output-format xml1 [BUILD_CACHE]/action-map-first-20261026.hkwuih3c/Source/ios/AEDResponseWatch/Assets.xcassets
+
+ExecuteExternalTool /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/swiftc --version
+
+ExecuteExternalTool /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -v -E -dM -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/WatchOS.platform/Developer/SDKs/WatchOS26.5.sdk -x c -c /dev/null
+
+ExecuteExternalTool /Applications/Xcode.app/Contents/Developer/usr/bin/actool --print-asset-tag-combinations --output-format xml1 [BUILD_CACHE]/action-map-first-20261026.hkwuih3c/Source/ios/AEDResponse/Assets.xcassets
+
+ExecuteExternalTool /Applications/Xcode.app/Contents/Developer/usr/bin/actool --version --output-format xml1
+
+ExecuteExternalTool /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -v -E -dM -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS26.5.sdk -x c -c /dev/null
+
+ExecuteExternalTool /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/ld -version_details
+
+Build description signature: 2ca3f2b9209e0da480f55c36b7bdbed5
+Build description path: [BUILD_CACHE]/action-map-first-20261026.hkwuih3c/Signed/Build/Intermediates.noindex/XCBuildData/2ca3f2b9209e0da480f55c36b7bdbed5.xcbuilddata
+ClangStatCache /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang-stat-cache /Applications/Xcode.app/Contents/Developer/Platforms/WatchOS.platform/Developer/SDKs/WatchOS26.5.sdk [BUILD_CACHE]/action-map-first-20261026.hkwuih3c/Signed/SDKStatCaches.noindex/watchos26.5-23T570-6c525d28bb7368d9e3b927c5b9753508.sdkstatcache
+    cd [BUILD_CACHE]/action-map-first-20261026.hkwuih3c/Source/ios/AEDResponse.xcodeproj
+    /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang-stat-cache /Applications/Xcode.app/Contents/Developer/Platforms/WatchOS.platform/Developer/SDKs/WatchOS26.5.sdk -o [BUILD_CACHE]/action-map-first-20261026.hkwuih3c/Signed/SDKStatCaches.noindex/watchos26.5-23T570-6c525d28bb7368d9e3b927c5b9753508.sdkstatcache
+
+WriteAuxiliaryFile [BUILD_CACHE]/action-map-first-20261026.hkwuih3c/Signed/Build/Intermediates.noindex/Starscream.build/Debug-iphoneos/Starscream.build/Objects-normal/arm64/Starscream-OutputFileMap.json (in target 'Starscream' from project 'Starscream')
+    cd [BUILD_CACHE]/action-map-first-20261026.hkwuih3c/Source/Dependencies/Starscream
+    write-file [BUILD_CACHE]/action-map-first-20261026.hkwuih3c/Signed/Build/Intermediates.noindex/Starscream.build/Debug-iphoneos/Starscream.build/Objects-normal/arm64/Starscream-OutputFileMap.json
+
+WriteAuxiliaryFile [BUILD_CACHE]/action-map-first-20261026.hkwuih3c/Signed/Build/Intermediates.noindex/Starscream.build/Debug-iphoneos/Starscream.build/Objects-normal/arm64/Starscream.SwiftFileList (in target 'Starscream' from project 'Starscream')
+    cd [BUILD_CACHE]/action-map-first-20261026.hkwuih3c/Source/Dependencies/Starscream
+    write-file [BUILD_CACHE]/action-map-first-20261026.hkwuih3c/Signed/Build/Intermediates.noindex/Starscream.build/Debug-iphoneos/Starscream.build/Objects-normal/arm64/Starscream.SwiftFileList
+
+ClangStatCache /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang-stat-cache /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS26.5.sdk [BUILD_CACHE]/action-map-first-20261026.hkwuih3c/Signed/SDKStatCaches.noindex/iphoneos26.5-23F81a-32daed1954a7d5dd0789fcaf2a9bb78b.sdkstatcache
+    cd [BUILD_CACHE]/action-map-first-20261026.hkwuih3c/Source/ios/AEDResponse.xcodeproj
+    /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang-stat-cache /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS26.5.sdk -o [BUILD_CACHE]/action-map-first-20261026.hkwuih3c/Signed/SDKStatCaches.noindex/iphoneos26.5-23F81a-32daed1954a7d5dd0789fcaf2a9bb78b.sdkstatcache
+
+SwiftDriver Starscream normal arm64 com.apple.xcode.tools.swift.compiler (in target 'Starscream' from project 'Starscream')
+    cd [BUILD_CACHE]/action-map-first-20261026.hkwuih3c/Source/ios/AEDResponse.xcodeproj
+    builtin-SwiftDriver -- /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/swiftc -module-name Starscream -Onone @[BUILD_CACHE]/action-map-first-20261026.hkwuih3c/Signed/Build/Intermediates.noindex/Starscream.build/Debug-iphoneos/Starscream.build/Objects-normal/arm64/Starscream.SwiftFileList -DSWIFT_PACKAGE -DDEBUG -DSWIFT_MODULE_RESOURCE_BUNDLE_AVAILABLE -DXcode -plugin-path /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/host/plugins/testing -enable-experimental-feature DebugDescriptionMacro -sdk /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS26.5.sdk -target arm64-apple-ios12.0 -g -module-cache-path [BUILD_CACHE]/action-map-first-20261026.hkwuih3c/Signed/ModuleCache.noindex -Xfrontend -serialize-debugging-options -enable-testing -suppress-warnings -index-store-path [BUILD_CACHE]/action-map-first-20261026.hkwuih3c/Signed/Index.noindex/DataStore -Xcc -D_LIBCPP_HARDENING_MODE\=_LIBCPP_HARDENING_MODE_DEBUG -swift-version 5 -I [BUILD_CACHE]/action-map-first-20261026.hkwuih3c/Signed/Build/Products/Debug-iphoneos -Isystem /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/usr/lib -F [BUILD_CACHE]/action-map-first-20261026.hkwuih3c/Signed/Build/Products/Debug-iphoneos -F /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/Library/Frameworks -F /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS26.5.sdk/Developer/Library/Frameworks -c -j8 -enable-batch-mode -incremental -Xcc -ivfsstatcache -Xcc [BUILD_CACHE]/action-map-first-20261026.hkwuih3c/Signed/SDKStatCaches.noindex/iphoneos26.5-23F81a-32daed1954a7d5dd0789fcaf2a9bb78b.sdkstatcache -output-file-map [BUILD_CACHE]/action-map-first-20261026.hkwuih3c/Signed/Build/Intermediates.noindex/Starscream.build/Debug-iphoneos/Starscream.build/Objects-normal/arm64/Starscream-OutputFileMap.json -use-frontend-parseable-output -save-temps -no-color-diagnostics -explicit-module-build -module-cache-path [BUILD_CACHE]/action-map-first-20261026.hkwuih3c/Signed/Build/Intermediates.noindex/SwiftExplicitPrecompiledModules -clang-scanner-module-cache-path [BUILD_CACHE]/action-map-first-20261026.hkwuih3c/Signed/ModuleCache.noindex -sdk-module-cache-path [BUILD_CACHE]/action-map-first-20261026.hkwuih3c/Signed/ModuleCache.noindex -serialize-diagnostics -emit-dependencies -emit-module -emit-module-path [BUILD_CACHE]/action-map-first-20261026.hkwuih3c/Signed/Build/Intermediates.noindex/Starscream.build/Debug-iphoneos/Starscream.build/Objects-normal/arm64/Starscream.swiftmodule -validate-clang-modules-once -clang-build-session-file [BUILD_CACHE]/action-map-first-20261026.hkwuih3c/Signed/ModuleCache.noindex/Session.modulevalidation -Xcc -I[BUILD_CACHE]/action-map-first-20261026.hkwuih3c/Signed/Build/Intermediates.noindex/Starscream.build/Debug-iphoneos/Starscream.build/swift-overrides.hmap -emit-const-values -Xfrontend -const-gather-protocols-file -Xfrontend [BUILD_CACHE]/action-map-first-20261026.hkwuih3c/Signed/Build/Intermediates.noindex/Starscream.build/Debug-iphoneos/Starscream.build/Objects-normal/arm64/Starscream_const_extract_protocols.json -Xcc -I[BUILD_CACHE]/action-map-first-20261026.hkwuih3c/Signed/Build/Products/Debug-iphoneos/include -Xcc -I[BUILD_CACHE]/action-map-first-20261026.hkwuih3c/Signed/Build/Intermediates.noindex/Starscream.build/Debug-iphoneos/Starscream.build/DerivedSources-normal/arm64 -Xcc -I[BUILD_CACHE]/action-map-first-20261026.hkwuih3c/Signed/Build/Intermediates.noindex/Starscream.build/Debug-iphoneos/Starscream.build/DerivedSources/arm64 -Xcc -I[BUILD_CACHE]/action-map-first-20261026.hkwuih3c/Signed/Build/Intermediates.noindex/Starscream.build/Debug-iphoneos/Starscream.build/DerivedSources -Xcc -DSWIFT_PACKAGE -Xcc -DDEBUG\=1 -emit-objc-header -emit-objc-header-path [BUILD_CACHE]/action-map-first-20261026.hkwuih3c/Signed/Build/Intermediates.noindex/Starscream.build/Debug-iphoneos/Starscream.build/Objects-normal/arm64/Starscream-Swift.h -working-directory [BUILD_CACHE]/action-map-first-20261026.hkwuih3c/Source/ios/AEDResponse.xcodeproj -experimental-emit-module-separately -disable-cmo
+
+SwiftEmitModule normal arm64 Emitting\ module\ for\ Starscream (in target 'Starscream' from project 'Starscream')
+
+EmitSwiftModule normal arm64 (in target 'Starscream' from project 'Starscream')
+    cd [BUILD_CACHE]/action-map-first-20261026.hkwuih3c/Source/ios/AEDResponse.xcodeproj
+    
+
+SwiftDriverJobDiscovery normal arm64 Emitting module for Starscream (in target 'Starscream' from project 'Starscream')
+
+SwiftDriver\ Compilation\ Requirements Starscream normal arm64 com.apple.xcode.tools.swift.compiler (in target 'Starscream' from project 'Starscream')
+    cd [BUILD_CACHE]/action-map-first-20261026.hkwuih3c/Source/ios/AEDResponse.xcodeproj
+    builtin-Swift-Compilation-Requirements -- /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/swiftc -module-name Starscream -Onone @[BUILD_CACHE]/action-map-first-20261026.hkwuih3c/Signed/Build/Intermediates.noindex/Starscream.build/Debug-iphoneos/Starscream.build/Objects-normal/arm64/Starscream.SwiftFileList -DSWIFT_PACKAGE -DDEBUG -DSWIFT_MODULE_RESOURCE_BUNDLE_AVAILABLE -DXcode -plugin-path /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/host/plugins/testing -enable-experimental-feature DebugDescriptionMacro -sdk /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS26.5.sdk -target arm64-apple-ios12.0 -g -module-cache-path [BUILD_CACHE]/action-map-first-20261026.hkwuih3c/Signed/ModuleCache.noindex -Xfrontend -serialize-debugging-options -enable-testing -suppress-warnings -index-store-path [BUILD_CACHE]/action-map-first-20261026.hkwuih3c/Signed/Index.noindex/DataStore -Xcc -D_LIBCPP_HARDENING_MODE\=_LIBCPP_HARDENING_MODE_DEBUG -swift-version 5 -I [BUILD_CACHE]/action-map-first-20261026.hkwuih3c/Signed/Build/Products/Debug-iphoneos -Isystem /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/usr/lib -F [BUILD_CACHE]/action-map-first-20261026.hkwuih3c/Signed/Build/Products/Debug-iphoneos -F /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/Library/Frameworks -F /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS26.5.sdk/Developer/Library/Frameworks -c -j8 -enable-batch-mode -incremental -Xcc -ivfsstatcache -Xcc [BUILD_CACHE]/action-map-first-20261026.hkwuih3c/Signed/SDKStatCaches.noindex/iphoneos26.5-23F81a-32daed1954a7d5dd0789fcaf2a9bb78b.sdkstatcache -output-file-map [BUILD_CACHE]/action-map-first-20261026.hkwuih3c/Signed/Build/Intermediates.noindex/Starscream.build/Debug-iphoneos/Starscream.build/Objects-normal/arm64/Starscream-OutputFileMap.json -use-frontend-parseable-output -save-temps -no-color-diagnostics -explicit-module-build -module-cache-path [BUILD_CACHE]/action-map-first-20261026.hkwuih3c/Signed/Build/Intermediates.noindex/SwiftExplicitPrecompiledModules -clang-scanner-module-cache-path [BUILD_CACHE]/action-map-first-20261026.hkwuih3c/Signed/ModuleCache.noindex -sdk-module-cache-path [BUILD_CACHE]/action-map-first-20261026.hkwuih3c/Signed/ModuleCache.noindex -serialize-diagnostics -emit-dependencies -emit-module -emit-module-path [BUILD_CACHE]/action-map-first-20261026.hkwuih3c/Signed/Build/Intermediates.noindex/Starscream.build/Debug-iphoneos/Starscream.build/Objects-normal/arm64/Starscream.swiftmodule -validate-clang-modules-once -clang-build-session-file [BUILD_CACHE]/action-map-first-20261026.hkwuih3c/Signed/ModuleCache.noindex/Session.modulevalidation -Xcc -I[BUILD_CACHE]/action-map-first-20261026.hkwuih3c/Signed/Build/Intermediates.noindex/Starscream.build/Debug-iphoneos/Starscream.build/swift-overrides.hmap -emit-const-values -Xfrontend -const-gather-protocols-file -Xfrontend [BUILD_CACHE]/action-map-first-20261026.hkwuih3c/Signed/Build/Intermediates.noindex/Starscream.build/Debug-iphoneos/Starscream.build/Objects-normal/arm64/Starscream_const_extract_protocols.json -Xcc -I[BUILD_CACHE]/action-map-first-20261026.hkwuih3c/Signed/Build/Products/Debug-iphoneos/include -Xcc -I[BUILD_CACHE]/action-map-first-20261026.hkwuih3c/Signed/Build/Intermediates.noindex/Starscream.build/Debug-iphoneos/Starscream.build/DerivedSources-normal/arm64 -Xcc -I[BUILD_CACHE]/action-map-first-20261026.hkwuih3c/Signed/Build/Intermediates.noindex/Starscream.build/Debug-iphoneos/Starscream.build/DerivedSources/arm64 -Xcc -I[BUILD_CACHE]/action-map-first-20261026.hkwuih3c/Signed/Build/Intermediates.noindex/Starscream.build/Debug-iphoneos/Starscream.build/DerivedSources -Xcc -DSWIFT_PACKAGE -Xcc -DDEBUG\=1 -emit-objc-header -emit-objc-header-path [BUILD_CACHE]/action-map-first-20261026.hkwuih3c/Signed/Build/Intermediates.noindex/Starscream.build/Debug-iphoneos/Starscream.build/Objects-normal/arm64/Starscream-Swift.h -working-directory [BUILD_CACHE]/action-map-first-20261026.hkwuih3c/Source/ios/AEDResponse.xcodeproj -experimental-emit-module-separately -disable-cmo
+
+Copy [BUILD_CACHE]/action-map-first-20261026.hkwuih3c/Signed/Build/Products/Debug-iphoneos/Starscream.swiftmodule/Project/arm64-apple-ios.swiftsourceinfo [BUILD_CACHE]/action-map-first-20261026.hkwuih3c/Signed/Build/Intermediates.noindex/Starscream.build/Debug-iphoneos/Starscream.build/Objects-normal/arm64/Starscream.swiftsourceinfo (in target 'Starscream' from project 'Starscream')
+    cd [BUILD_CACHE]/action-map-first-20261026.hkwuih3c/Source/Dependencies/Starscream
+    builtin-copy -exclude .DS_Store -exclude CVS -exclude .svn -exclude .git -exclude .hg -resolve-src-symlinks -rename [BUILD_CACHE]/action-map-first-20261026.hkwuih3c/Signed/Build/Intermediates.noindex/Starscream.build/Debug-iphoneos/Starscream.build/Objects-normal/arm64/Starscream.swiftsourceinfo [BUILD_CACHE]/action-map-first-20261026.hkwuih3c/Signed/Build/Products/Debug-iphoneos/Starscream.swiftmodule/Project/arm64-apple-ios.swiftsourceinfo
+
+Copy [BUILD_CACHE]/action-map-first-20261026.hkwuih3c/Signed/Build/Products/Debug-iphoneos/Starscream.swiftmodule/arm64-apple-ios.abi.json [BUILD_CACHE]/action-map-first-20261026.hkwuih3c/Signed/Build/Intermediates.noindex/Starscream.build/Debug-iphoneos/Starscream.build/Objects-normal/arm64/Starscream.abi.json (in target 'Starscream' from project 'Starscream')
+    cd [BUILD_CACHE]/action-map-first-20261026.hkwuih3c/Source/Dependencies/Starscream
+    builtin-copy -exclude .DS_Store -exclude CVS -exclude .svn -exclude .git -exclude .hg -resolve-src-symlinks -rename [BUILD_CACHE]/action-map-first-20261026.hkwuih3c/Signed/Build/Intermediates.noindex/Starscream.build/Debug-iphoneos/Starscream.build/Objects-normal/arm64/Starscream.abi.json [BUILD_CACHE]/action-map-first-20261026.hkwuih3c/Signed/Build/Products/Debug-iphoneos/Starscream.swiftmodule/arm64-apple-ios.abi.json
+
+WriteAuxiliaryFile [BUILD_CACHE]/action-map-first-20261026.hkwuih3c/Signed/Build/Intermediates.noindex/SocketIO.build/Debug-iphoneos/SocketIO.build/Objects-normal/arm64/SocketIO.SwiftFileList (in target 'SocketIO' from project 'SocketIO')
+    cd [BUILD_CACHE]/action-map-first-20261026.hkwuih3c/Source/Dependencies/SocketIO
+    write-file [BUILD_CACHE]/action-map-first-20261026.hkwuih3c/Signed/Build/Intermediates.noindex/SocketIO.build/Debug-iphoneos/SocketIO.build/Objects-normal/arm64/SocketIO.SwiftFileList
+
+WriteAuxiliaryFile [BUILD_CACHE]/action-map-first-20261026.hkwuih3c/Signed/Build/Intermediates.noindex/SocketIO.build/Debug-iphoneos/SocketIO.build/Objects-normal/arm64/SocketIO-OutputFileMap.json (in target 'SocketIO' from project 'SocketIO')
+    cd [BUILD_CACHE]/action-map-first-20261026.hkwuih3c/Source/Dependencies/SocketIO
+    write-file [BUILD_CACHE]/action-map-first-20261026.hkwuih3c/Signed/Build/Intermediates.noindex/SocketIO.build/Debug-iphoneos/SocketIO.build/Objects-normal/arm64/SocketIO-OutputFileMap.json
+
+SwiftDriver SocketIO normal arm64 com.apple.xcode.tools.swift.compiler (in target 'SocketIO' from project 'SocketIO')
+    cd [BUILD_CACHE]/action-map-first-20261026.hkwuih3c/Source/ios/AEDResponse.xcodeproj
+    builtin-SwiftDriver -- /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/swiftc -module-name SocketIO -Onone @[BUILD_CACHE]/action-map-first-20261026.hkwuih3c/Signed/Build/Intermediates.noindex/SocketIO.build/Debug-iphoneos/SocketIO.build/Objects-normal/arm64/SocketIO.SwiftFileList -DSWIFT_PACKAGE -DDEBUG -DSWIFT_MODULE_RESOURCE_BUNDLE_UNAVAILABLE -DXcode -plugin-path /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/host/plugins/testing -enable-experimental-feature DebugDescriptionMacro -sdk /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS26.5.sdk -target arm64-apple-ios12.0 -g -module-cache-path [BUILD_CACHE]/action-map-first-20261026.hkwuih3c/Signed/ModuleCache.noindex -Xfrontend -serialize-debugging-options -enable-testing -suppress-warnings -index-store-path [BUILD_CACHE]/action-map-first-20261026.hkwuih3c/Signed/Index.noindex/DataStore -Xcc -D_LIBCPP_HARDENING_MODE\=_LIBCPP_HARDENING_MODE_DEBUG -swift-version 5 -I [BUILD_CACHE]/action-map-first-20261026.hkwuih3c/Signed/Build/Products/Debug-iphoneos -Isystem /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/usr/lib -F [BUILD_CACHE]/action-map-first-20261026.hkwuih3c/Signed/Build/Products/Debug-iphoneos/PackageFrameworks -F [BUILD_CACHE]/action-map-first-20261026.hkwuih3c/Signed/Build/Products/Debug-iphoneos -F /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/Library/Frameworks -F /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS26.5.sdk/Developer/Library/Frameworks -c -j8 -enable-batch-mode -incremental -Xcc -ivfsstatcache -Xcc [BUILD_CACHE]/action-map-first-20261026.hkwuih3c/Signed/SDKStatCaches.noindex/iphoneos26.5-23F81a-32daed1954a7d5dd0789fcaf2a9bb78b.sdkstatcache -output-file-map [BUILD_CACHE]/action-map-first-20261026.hkwuih3c/Signed/Build/Intermediates.noindex/SocketIO.build/Debug-iphoneos/SocketIO.build/Objects-normal/arm64/SocketIO-OutputFileMap.json -use-frontend-parseable-output -save-temps -no-color-diagnostics -explicit-module-build -module-cache-path [BUILD_CACHE]/action-map-first-20261026.hkwuih3c/Signed/Build/Intermediates.noindex/SwiftExplicitPrecompiledModules -clang-scanner-module-cache-path [BUILD_CACHE]/action-map-first-20261026.hkwuih3c/Signed/ModuleCache.noindex -sdk-module-cache-path [BUILD_CACHE]/action-map-first-20261026.hkwuih3c/Signed/ModuleCache.noindex -serialize-diagnostics -emit-dependencies -emit-module -emit-module-path [BUILD_CACHE]/action-map-first-20261026.hkwuih3c/Signed/Build/Intermediates.noindex/SocketIO.build/Debug-iphoneos/SocketIO.build/Objects-normal/arm64/SocketIO.swiftmodule -validate-clang-modules-once -clang-build-session-file [BUILD_CACHE]/action-map-first-20261026.hkwuih3c/Signed/ModuleCache.noindex/Session.modulevalidation -Xcc -I[BUILD_CACHE]/action-map-first-20261026.hkwuih3c/Signed/Build/Intermediates.noindex/SocketIO.build/Debug-iphoneos/SocketIO.build/swift-overrides.hmap -emit-const-values -Xfrontend -const-gather-protocols-file -Xfrontend [BUILD_CACHE]/action-map-first-20261026.hkwuih3c/Signed/Build/Intermediates.noindex/SocketIO.build/Debug-iphoneos/SocketIO.build/Objects-normal/arm64/SocketIO_const_extract_protocols.json -Xcc -I[BUILD_CACHE]/action-map-first-20261026.hkwuih3c/Signed/Build/Products/Debug-iphoneos/include -Xcc -I[BUILD_CACHE]/action-map-first-20261026.hkwuih3c/Signed/Build/Intermediates.noindex/SocketIO.build/Debug-iphoneos/SocketIO.build/DerivedSources-normal/arm64 -Xcc -I[BUILD_CACHE]/action-map-first-20261026.hkwuih3c/Signed/Build/Intermediates.noindex/SocketIO.build/Debug-iphoneos/SocketIO.build/DerivedSources/arm64 -Xcc -I[BUILD_CACHE]/action-map-first-20261026.hkwuih3c/Signed/Build/Intermediates.noindex/SocketIO.build/Debug-iphoneos/SocketIO.build/DerivedSources -Xcc -DSWIFT_PACKAGE -Xcc -DDEBUG\=1 -emit-objc-header -emit-objc-header-path [BUILD_CACHE]/action-map-first-20261026.hkwuih3c/Signed/Build/Intermediates.noindex/SocketIO.build/Debug-iphoneos/SocketIO.build/Objects-normal/arm64/SocketIO-Swift.h -working-directory [BUILD_CACHE]/action-map-first-20261026.hkwuih3c/Source/ios/AEDResponse.xcodeproj -experimental-emit-module-separately -disable-cmo
+
+SwiftEmitModule normal arm64 Emitting\ module\ for\ SocketIO (in target 'SocketIO' from project 'SocketIO')
+
+EmitSwiftModule normal arm64 (in target 'SocketIO' from project 'SocketIO')
+    cd [BUILD_CACHE]/action-map-first-20261026.hkwuih3c/Source/ios/AEDResponse.xcodeproj
+    
+
+SwiftDriverJobDiscovery normal arm64 Emitting module for SocketIO (in target 'SocketIO' from project 'SocketIO')
+
+SwiftDriver\ Compilation\ Requirements SocketIO normal arm64 com.apple.xcode.tools.swift.compiler (in target 'SocketIO' from project 'SocketIO')
+    cd [BUILD_CACHE]/action-map-first-20261026.hkwuih3c/Source/ios/AEDResponse.xcodeproj
+    builtin-Swift-Compilation-Requirements -- /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/swiftc -module-name SocketIO -Onone @[BUILD_CACHE]/action-map-first-20261026.hkwuih3c/Signed/Build/Intermediates.noindex/SocketIO.build/Debug-iphoneos/SocketIO.build/Objects-normal/arm64/SocketIO.SwiftFileList -DSWIFT_PACKAGE -DDEBUG -DSWIFT_MODULE_RESOURCE_BUNDLE_UNAVAILABLE -DXcode -plugin-path /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/host/plugins/testing -enable-experimental-feature DebugDescriptionMacro -sdk /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS26.5.sdk -target arm64-apple-ios12.0 -g -module-cache-path [BUILD_CACHE]/action-map-first-20261026.hkwuih3c/Signed/ModuleCache.noindex -Xfrontend -serialize-debugging-options -enable-testing -suppress-warnings -index-store-path [BUILD_CACHE]/action-map-first-20261026.hkwuih3c/Signed/Index.noindex/DataStore -Xcc -D_LIBCPP_HARDENING_MODE\=_LIBCPP_HARDENING_MODE_DEBUG -swift-version 5 -I [BUILD_CACHE]/action-map-first-20261026.hkwuih3c/Signed/Build/Products/Debug-iphoneos -Isystem /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/usr/lib -F [BUILD_CACHE]/action-map-first-20261026.hkwuih3c/Signed/Build/Products/Debug-iphoneos/PackageFrameworks -F [BUILD_CACHE]/action-map-first-20261026.hkwuih3c/Signed/Build/Products/Debug-iphoneos -F /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/Library/Frameworks -F /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS26.5.sdk/Developer/Library/Frameworks -c -j8 -enable-batch-mode -incremental -Xcc -ivfsstatcache -Xcc [BUILD_CACHE]/action-map-first-20261026.hkwuih3c/Signed/SDKStatCaches.noindex/iphoneos26.5-23F81a-32daed1954a7d5dd0789fcaf2a9bb78b.sdkstatcache -output-file-map [BUILD_CACHE]/action-map-first-20261026.hkwuih3c/Signed/Build/Intermediates.noindex/SocketIO.build/Debug-iphoneos/SocketIO.build/Objects-normal/arm64/SocketIO-OutputFileMap.json -use-frontend-parseable-output -save-temps -no-color-diagnostics -explicit-module-build -module-cache-path [BUILD_CACHE]/action-map-first-20261026.hkwuih3c/Signed/Build/Intermediates.noindex/SwiftExplicitPrecompiledModules -clang-scanner-module-cache-path [BUILD_CACHE]/action-map-first-20261026.hkwuih3c/Signed/ModuleCache.noindex -sdk-module-cache-path [BUILD_CACHE]/action-map-first-20261026.hkwuih3c/Signed/ModuleCache.noindex -serialize-diagnostics -emit-dependencies -emit-module -emit-module-path [BUILD_CACHE]/action-map-first-20261026.hkwuih3c/Signed/Build/Intermediates.noindex/SocketIO.build/Debug-iphoneos/SocketIO.build/Objects-normal/arm64/SocketIO.swiftmodule -validate-clang-modules-once -clang-build-session-file [BUILD_CACHE]/action-map-first-20261026.hkwuih3c/Signed/ModuleCache.noindex/Session.modulevalidation -Xcc -I[BUILD_CACHE]/action-map-first-20261026.hkwuih3c/Signed/Build/Intermediates.noindex/SocketIO.build/Debug-iphoneos/SocketIO.build/swift-overrides.hmap -emit-const-values -Xfrontend -const-gather-protocols-file -Xfrontend [BUILD_CACHE]/action-map-first-20261026.hkwuih3c/Signed/Build/Intermediates.noindex/SocketIO.build/Debug-iphoneos/SocketIO.build/Objects-normal/arm64/SocketIO_const_extract_protocols.json -Xcc -I[BUILD_CACHE]/action-map-first-20261026.hkwuih3c/Signed/Build/Products/Debug-iphoneos/include -Xcc -I[BUILD_CACHE]/action-map-first-20261026.hkwuih3c/Signed/Build/Intermediates.noindex/SocketIO.build/Debug-iphoneos/SocketIO.build/DerivedSources-normal/arm64 -Xcc -I[BUILD_CACHE]/action-map-first-20261026.hkwuih3c/Signed/Build/Intermediates.noindex/SocketIO.build/Debug-iphoneos/SocketIO.build/DerivedSources/arm64 -Xcc -I[BUILD_CACHE]/action-map-first-20261026.hkwuih3c/Signed/Build/Intermediates.noindex/SocketIO.build/Debug-iphoneos/SocketIO.build/DerivedSources -Xcc -DSWIFT_PACKAGE -Xcc -DDEBUG\=1 -emit-objc-header -emit-objc-header-path [BUILD_CACHE]/action-map-first-20261026.hkwuih3c/Signed/Build/Intermediates.noindex/SocketIO.build/Debug-iphoneos/SocketIO.build/Objects-normal/arm64/SocketIO-Swift.h -working-directory [BUILD_CACHE]/action-map-first-20261026.hkwuih3c/Source/ios/AEDResponse.xcodeproj -experimental-emit-module-separately -disable-cmo
+
+Copy [BUILD_CACHE]/action-map-first-20261026.hkwuih3c/Signed/Build/Products/Debug-iphoneos/SocketIO.swiftmodule/Project/arm64-apple-ios.swiftsourceinfo [BUILD_CACHE]/action-map-first-20261026.hkwuih3c/Signed/Build/Intermediates.noindex/SocketIO.build/Debug-iphoneos/SocketIO.build/Objects-normal/arm64/SocketIO.swiftsourceinfo (in target 'SocketIO' from project 'SocketIO')
+    cd [BUILD_CACHE]/action-map-first-20261026.hkwuih3c/Source/Dependencies/SocketIO
+    builtin-copy -exclude .DS_Store -exclude CVS -exclude .svn -exclude .git -exclude .hg -resolve-src-symlinks -rename [BUILD_CACHE]/action-map-first-20261026.hkwuih3c/Signed/Build/Intermediates.noindex/SocketIO.build/Debug-iphoneos/SocketIO.build/Objects-normal/arm64/SocketIO.swiftsourceinfo [BUILD_CACHE]/action-map-first-20261026.hkwuih3c/Signed/Build/Products/Debug-iphoneos/SocketIO.swiftmodule/Project/arm64-apple-ios.swiftsourceinfo
+
+Copy [BUILD_CACHE]/action-map-first-20261026.hkwuih3c/Signed/Build/Products/Debug-iphoneos/SocketIO.swiftmodule/arm64-apple-ios.abi.json [BUILD_CACHE]/action-map-first-20261026.hkwuih3c/Signed/Build/Intermediates.noindex/SocketIO.build/Debug-iphoneos/SocketIO.build/Objects-normal/arm64/SocketIO.abi.json (in target 'SocketIO' from project 'SocketIO')
+    cd [BUILD_CACHE]/action-map-first-20261026.hkwuih3c/Source/Dependencies/SocketIO
+    builtin-copy -exclude .DS_Store -exclude CVS -exclude .svn -exclude .git -exclude .hg -resolve-src-symlinks -rename [BUILD_CACHE]/action-map-first-20261026.hkwuih3c/Signed/Build/Intermediates.noindex/SocketIO.build/Debug-iphoneos/SocketIO.build/Objects-normal/arm64/SocketIO.abi.json [BUILD_CACHE]/action-map-first-20261026.hkwuih3c/Signed/Build/Products/Debug-iphoneos/SocketIO.swiftmodule/arm64-apple-ios.abi.json
+
+ProcessInfoPlistFile [BUILD_CACHE]/action-map-first-20261026.hkwuih3c/Signed/Build/Products/Debug-watchos/AEDResponseWatch.app/Info.plist [BUILD_CACHE]/action-map-first-20261026.hkwuih3c/Source/ios/AEDResponseWatch/Info.plist (in target 'AEDResponseWatch' from project 'AEDResponse')
+    cd [BUILD_CACHE]/action-map-first-20261026.hkwuih3c/Source/ios
+    builtin-infoPlistUtility [BUILD_CACHE]/action-map-first-20261026.hkwuih3c/Source/ios/AEDResponseWatch/Info.plist -producttype com.apple.product-type.application -genpkginfo [BUILD_CACHE]/action-map-first-20261026.hkwuih3c/Signed/Build/Products/Debug-watchos/AEDResponseWatch.app/PkgInfo -expandbuildsettings -format binary -platform watchos -additionalcontentfile [BUILD_CACHE]/action-map-first-20261026.hkwuih3c/Signed/Build/Intermediates.noindex/AEDResponse.build/Debug-watchos/AEDResponseWatch.build/assetcatalog_generated_info.plist -o [BUILD_CACHE]/action-map-first-20261026.hkwuih3c/Signed/Build/Products/Debug-watchos/AEDResponseWatch.app/Info.plist
+
+CopySwiftLibs [BUILD_CACHE]/action-map-first-20261026.hkwuih3c/Signed/Build/Products/Debug-watchos/AEDResponseWatch.app (in target 'AEDResponseWatch' from project 'AEDResponse')
+    cd [BUILD_CACHE]/action-map-first-20261026.hkwuih3c/Source/ios
+    builtin-swiftStdLibTool --copy --verbose --sign [REDACTED_SIGNING_FINGERPRINT] --scan-executable [BUILD_CACHE]/action-map-first-20261026.hkwuih3c/Signed/Build/Products/Debug-watchos/AEDResponseWatch.app/AEDResponseWatch.debug.dylib --scan-folder [BUILD_CACHE]/action-map-first-20261026.hkwuih3c/Signed/Build/Products/Debug-watchos/AEDResponseWatch.app/Frameworks --scan-folder [BUILD_CACHE]/action-map-first-20261026.hkwuih3c/Signed/Build/Products/Debug-watchos/AEDResponseWatch.app/PlugIns --scan-folder [BUILD_CACHE]/action-map-first-20261026.hkwuih3c/Signed/Build/Products/Debug-watchos/AEDResponseWatch.app/SystemExtensions --scan-folder [BUILD_CACHE]/action-map-first-20261026.hkwuih3c/Signed/Build/Products/Debug-watchos/AEDResponseWatch.app/Extensions --platform watchos --toolchain /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain --destination [BUILD_CACHE]/action-map-first-20261026.hkwuih3c/Signed/Build/Products/Debug-watchos/AEDResponseWatch.app/Frameworks --strip-bitcode --strip-bitcode-tool /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/bitcode_strip --emit-dependency-info [BUILD_CACHE]/action-map-first-20261026.hkwuih3c/Signed/Build/Intermediates.noindex/AEDResponse.build/Debug-watchos/AEDResponseWatch.build/SwiftStdLibToolInputDependencies.dep --filter-for-swift-os --back-deploy-swift-span
+
+CpResource [BUILD_CACHE]/action-map-first-20261026.hkwuih3c/Signed/Build/Products/Debug-iphoneos/Starscream_Starscream.bundle/PrivacyInfo.xcprivacy [BUILD_CACHE]/action-map-first-20261026.hkwuih3c/Source/Dependencies/Starscream/Sources/PrivacyInfo.xcprivacy (in target 'Starscream_Starscream' from project 'Starscream')
+    cd [BUILD_CACHE]/action-map-first-20261026.hkwuih3c/Source/Dependencies/Starscream
+    builtin-copy -exclude .DS_Store -exclude CVS -exclude .svn -exclude .git -exclude .hg -resolve-src-symlinks [BUILD_CACHE]/action-map-first-20261026.hkwuih3c/Source/Dependencies/Starscream/Sources/PrivacyInfo.xcprivacy [BUILD_CACHE]/action-map-first-20261026.hkwuih3c/Signed/Build/Products/Debug-iphoneos/Starscream_Starscream.bundle
+
+ProcessInfoPlistFile [BUILD_CACHE]/action-map-first-20261026.hkwuih3c/Signed/Build/Products/Debug-iphoneos/Starscream_Starscream.bundle/Info.plist [BUILD_CACHE]/action-map-first-20261026.hkwuih3c/Signed/Build/Intermediates.noindex/Starscream.build/Debug-iphoneos/Starscream_Starscream.build/empty-Starscream_Starscream.plist (in target 'Starscream_Starscream' from project 'Starscream')
+    cd [BUILD_CACHE]/action-map-first-20261026.hkwuih3c/Source/Dependencies/Starscream
+    builtin-infoPlistUtility [BUILD_CACHE]/action-map-first-20261026.hkwuih3c/Signed/Build/Intermediates.noindex/Starscream.build/Debug-iphoneos/Starscream_Starscream.build/empty-Starscream_Starscream.plist -producttype com.apple.product-type.bundle -expandbuildsettings -format binary -platform iphoneos -requiredArchitecture arm64 -o [BUILD_CACHE]/action-map-first-20261026.hkwuih3c/Signed/Build/Products/Debug-iphoneos/Starscream_Starscream.bundle/Info.plist
+
+SwiftCompile normal arm64 Compiling\ WSEngine.swift,\ FoundationHTTPHandler.swift,\ FoundationHTTPServerHandler.swift [BUILD_CACHE]/action-map-first-20261026.hkwuih3c/Source/Dependencies/Starscream/Sources/Engine/WSEngine.swift [BUILD_CACHE]/action-map-first-20261026.hkwuih3c/Source/Dependencies/Starscream/Sources/Framer/FoundationHTTPHandler.swift [BUILD_CACHE]/action-map-first-20261026.hkwuih3c/Source/Dependencies/Starscream/Sources/Framer/FoundationHTTPServerHandler.swift (in target 'Starscream' from project 'Starscream')
+
+SwiftCompile normal arm64 [BUILD_CACHE]/action-map-first-20261026.hkwuih3c/Source/Dependencies/Starscream/Sources/Engine/WSEngine.swift (in target 'Starscream' from project 'Starscream')
+    cd [BUILD_CACHE]/action-map-first-20261026.hkwuih3c/Source/ios/AEDResponse.xcodeproj
+    
+
+SwiftCompile normal arm64 [BUILD_CACHE]/action-map-first-20261026.hkwuih3c/Source/Dependencies/Starscream/Sources/Framer/FoundationHTTPHandler.swift (in target 'Starscream' from project 'Starscream')
+    cd [BUILD_CACHE]/action-map-first-20261026.hkwuih3c/Source/ios/AEDResponse.xcodeproj
+    
+
+SwiftCompile normal arm64 [BUILD_CACHE]/action-map-first-20261026.hkwuih3c/Source/Dependencies/Starscream/Sources/Framer/FoundationHTTPServerHandler.swift (in target 'Starscream' from project 'Starscream')
+    cd [BUILD_CACHE]/action-map-first-20261026.hkwuih3c/Source/ios/AEDResponse.xcodeproj
+    
+
+SwiftCompile normal arm64 Compiling\ resource_bundle_accessor.swift,\ Compression.swift,\ WSCompression.swift [BUILD_CACHE]/action-map-first-20261026.hkwuih3c/Signed/Build/Intermediates.noindex/Starscream.build/Debug-iphoneos/Starscream.build/DerivedSources/resource_bundle_accessor.swift [BUILD_CACHE]/action-map-first-20261026.hkwuih3c/Source/Dependencies/Starscream/Sources/Compression/Compression.swift [BUILD_CACHE]/action-map-first-20261026.hkwuih3c/Source/Dependencies/Starscream/Sources/Compression/WSCompression.swift (in target 'Starscream' from project 'Starscream')
+SwiftCompile normal arm64 [BUILD_CACHE]/action-map-first-20261026.hkwuih3c/Signed/Build/Intermediates.noindex/Starscream.build/Debug-iphoneos/Starscream.build/DerivedSources/resource_bundle_accessor.swift (in target 'Starscream' from project 'Starscream')
+    cd [BUILD_CACHE]/action-map-first-20261026.hkwuih3c/Source/ios/AEDResponse.xcodeproj
+    
+
+SwiftCompile normal arm64 [BUILD_CACHE]/action-map-first-20261026.hkwuih3c/Source/Dependencies/Starscream/Sources/Compression/Compression.swift (in target 'Starscream' from project 'Starscream')
+    cd [BUILD_CACHE]/action-map-first-20261026.hkwuih3c/Source/ios/AEDResponse.xcodeproj
+    
+
+SwiftCompile normal arm64 [BUILD_CACHE]/action-map-first-20261026.hkwuih3c/Source/Dependencies/Starscream/Sources/Compression/WSCompression.swift (in target 'Starscream' from project 'Starscream')
+    cd [BUILD_CACHE]/action-map-first-20261026.hkwuih3c/Source/ios/AEDResponse.xcodeproj
+    
+
+SwiftCompile normal arm64 Compiling\ Data+Extensions.swift,\ Engine.swift,\ NativeEngine.swift [BUILD_CACHE]/action-map-first-20261026.hkwuih3c/Source/Dependencies/Starscream/Sources/DataBytes/Data+Extensions.swift [BUILD_CACHE]/action-map-first-20261026.hkwuih3c/Source/Dependencies/Starscream/Sources/Engine/Engine.swift [BUILD_CACHE]/action-map-first-20261026.hkwuih3c/Source/Dependencies/Starscream/Sources/Engine/NativeEngine.swift (in target 'Starscream' from project 'Starscream')
+
+SwiftCompile normal arm64 [BUILD_CACHE]/action-map-first-20261026.hkwuih3c/Source/Dependencies/Starscream/Sources/DataBytes/Data+Extensions.swift (in target 'Starscream' from project 'Starscream')
+    cd [BUILD_CACHE]/action-map-first-20261026.hkwuih3c/Source/ios/AEDResponse.xcodeproj
+    
+
+SwiftCompile normal arm64 [BUILD_CACHE]/action-map-first-20261026.hkwuih3c/Source/Dependencies/Starscream/Sources/Engine/Engine.swift (in target 'Starscream' from project 'Starscream')
+    cd [BUILD_CACHE]/action-map-first-20261026.hkwuih3c/Source/ios/AEDResponse.xcodeproj
+    
+
+SwiftCompile normal arm64 [BUILD_CACHE]/action-map-first-20261026.hkwuih3c/Source/Dependencies/Starscream/Sources/Engine/NativeEngine.swift (in target 'Starscream' from project 'Starscream')
+    cd [BUILD_CACHE]/action-map-first-20261026.hkwuih3c/Source/ios/AEDResponse.xcodeproj
+    
+
+SwiftCompile normal arm64 Compiling\ TCPTransport.swift,\ Transport.swift [BUILD_CACHE]/action-map-first-20261026.hkwuih3c/Source/Dependencies/Starscream/Sources/Transport/TCPTransport.swift [BUILD_CACHE]/action-map-first-20261026.hkwuih3c/Source/Dependencies/Starscream/Sources/Transport/Transport.swift (in target 'Starscream' from project 'Starscream')
+
+SwiftCompile normal arm64 [BUILD_CACHE]/action-map-first-20261026.hkwuih3c/Source/Dependencies/Starscream/Sources/Transport/TCPTransport.swift (in target 'Starscream' from project 'Starscream')
+    cd [BUILD_CACHE]/action-map-first-20261026.hkwuih3c/Source/ios/AEDResponse.xcodeproj
+    
+
+SwiftCompile normal arm64 [BUILD_CACHE]/action-map-first-20261026.hkwuih3c/Source/Dependencies/Starscream/Sources/Transport/Transport.swift (in target 'Starscream' from project 'Starscream')
+    cd [BUILD_CACHE]/action-map-first-20261026.hkwuih3c/Source/ios/AEDResponse.xcodeproj
+    
+
+SwiftCompile normal arm64 Compiling\ FrameCollector.swift,\ Framer.swift,\ HTTPHandler.swift [BUILD_CACHE]/action-map-first-20261026.hkwuih3c/Source/Dependencies/Starscream/Sources/Framer/FrameCollector.swift [BUILD_CACHE]/action-map-first-20261026.hkwuih3c/Source/Dependencies/Starscream/Sources/Framer/Framer.swift [BUILD_CACHE]/action-map-first-20261026.hkwuih3c/Source/Dependencies/Starscream/Sources/Framer/HTTPHandler.swift (in target 'Starscream' from project 'Starscream')
+SwiftCompile normal arm64 [BUILD_CACHE]/action-map-first-20261026.hkwuih3c/Source/Dependencies/Starscream/Sources/Framer/FrameCollector.swift (in target 'Starscream' from project 'Starscream')
+    cd [BUILD_CACHE]/action-map-first-20261026.hkwuih3c/Source/ios/AEDResponse.xcodeproj
+    
+
+SwiftCompile normal arm64 [BUILD_CACHE]/action-map-first-20261026.hkwuih3c/Source/Dependencies/Starscream/Sources/Framer/Framer.swift (in target 'Starscream' from project 'Starscream')
+    cd [BUILD_CACHE]/action-map-first-20261026.hkwuih3c/Source/ios/AEDResponse.xcodeproj
+    
+
+SwiftCompile normal arm64 [BUILD_CACHE]/action-map-first-20261026.hkwuih3c/Source/Dependencies/Starscream/Sources/Framer/HTTPHandler.swift (in target 'Starscream' from project 'Starscream')
+    cd [BUILD_CACHE]/action-map-first-20261026.hkwuih3c/Source/ios/AEDResponse.xcodeproj
+    
+
+SwiftCompile normal arm64 Compiling\ Server.swift,\ WebSocketServer.swift [BUILD_CACHE]/action-map-first-20261026.hkwuih3c/Source/Dependencies/Starscream/Sources/Server/Server.swift [BUILD_CACHE]/action-map-first-20261026.hkwuih3c/Source/Dependencies/Starscream/Sources/Server/WebSocketServer.swift (in target 'Starscream' from project 'Starscream')
+
+SwiftCompile normal arm64 [BUILD_CACHE]/action-map-first-20261026.hkwuih3c/Source/Dependencies/Starscream/Sources/Server/Server.swift (in target 'Starscream' from project 'Starscream')
+    cd [BUILD_CACHE]/action-map-first-20261026.hkwuih3c/Source/ios/AEDResponse.xcodeproj
+    
+
+SwiftCompile normal arm64 [BUILD_CACHE]/action-map-first-20261026.hkwuih3c/Source/Dependencies/Starscream/Sources/Server/WebSocketServer.swift (in target 'Starscream' from project 'Starscream')
+    cd [BUILD_CACHE]/action-map-first-20261026.hkwuih3c/Source/ios/AEDResponse.xcodeproj
+    
+
+SwiftCompile normal arm64 Compiling\ StringHTTPHandler.swift,\ FoundationSecurity.swift,\ Security.swift [BUILD_CACHE]/action-map-first-20261026.hkwuih3c/Source/Dependencies/Starscream/Sources/Framer/StringHTTPHandler.swift [BUILD_CACHE]/action-map-first-20261026.hkwuih3c/Source/Dependencies/Starscream/Sources/Security/FoundationSecurity.swift [BUILD_CACHE]/action-map-first-20261026.hkwuih3c/Source/Dependencies/Starscream/Sources/Security/Security.swift (in target 'Starscream' from project 'Starscream')
+
+SwiftCompile normal arm64 [BUILD_CACHE]/action-map-first-20261026.hkwuih3c/Source/Dependencies/Starscream/Sources/Framer/StringHTTPHandler.swift (in target 'Starscream' from project 'Starscream')
+    cd [BUILD_CACHE]/action-map-first-20261026.hkwuih3c/Source/ios/AEDResponse.xcodeproj
+    
+
+SwiftCompile normal arm64 [BUILD_CACHE]/action-map-first-20261026.hkwuih3c/Source/Dependencies/Starscream/Sources/Security/FoundationSecurity.swift (in target 'Starscream' from project 'Starscream')
+    cd [BUILD_CACHE]/action-map-first-20261026.hkwuih3c/Source/ios/AEDResponse.xcodeproj
+    
+
+SwiftCompile normal arm64 [BUILD_CACHE]/action-map-first-20261026.hkwuih3c/Source/Dependencies/Starscream/Sources/Security/Security.swift (in target 'Starscream' from project 'Starscream')
+    cd [BUILD_CACHE]/action-map-first-20261026.hkwuih3c/Source/ios/AEDResponse.xcodeproj
+    
+
+SwiftCompile normal arm64 Compiling\ WebSocket.swift,\ FoundationTransport.swift [BUILD_CACHE]/action-map-first-20261026.hkwuih3c/Source/Dependencies/Starscream/Sources/Starscream/WebSocket.swift [BUILD_CACHE]/action-map-first-20261026.hkwuih3c/Source/Dependencies/Starscream/Sources/Transport/FoundationTransport.swift (in target 'Starscream' from project 'Starscream')
+
+SwiftCompile normal arm64 [BUILD_CACHE]/action-map-first-20261026.hkwuih3c/Source/Dependencies/Starscream/Sources/Starscream/WebSocket.swift (in target 'Starscream' from project 'Starscream')
+    cd [BUILD_CACHE]/action-map-first-20261026.hkwuih3c/Source/ios/AEDResponse.xcodeproj
+    
+
+SwiftCompile normal arm64 [BUILD_CACHE]/action-map-first-20261026.hkwuih3c/Source/Dependencies/Starscream/Sources/Transport/FoundationTransport.swift (in target 'Starscream' from project 'Starscream')
+    cd [BUILD_CACHE]/action-map-first-20261026.hkwuih3c/Source/ios/AEDResponse.xcodeproj
+    
+
+SwiftDriverJobDiscovery normal arm64 Compiling TCPTransport.swift, Transport.swift (in target 'Starscream' from project 'Starscream')
+
+SwiftDriverJobDiscovery normal arm64 Compiling Data+Extensions.swift, Engine.swift, NativeEngine.swift (in target 'Starscream' from project 'Starscream')
+
+SwiftDriverJobDiscovery normal arm64 Compiling Server.swift, WebSocketServer.swift (in target 'Starscream' from project 'Starscream')
+
+SwiftDriverJobDiscovery normal arm64 Compiling WSEngine.swift, FoundationHTTPHandler.swift, FoundationHTTPServerHandler.swift (in target 'Starscream' from project 'Starscream')
+
+SwiftDriverJobDiscovery normal arm64 Compiling StringHTTPHandler.swift, FoundationSecurity.swift, Security.swift (in target 'Starscream' from project 'Starscream')
+
+SwiftDriverJobDiscovery normal arm64 Compiling WebSocket.swift, FoundationTransport.swift (in target 'Starscream' from project 'Starscream')
+
+SwiftDriverJobDiscovery normal arm64 Compiling resource_bundle_accessor.swift, Compression.swift, WSCompression.swift (in target 'Starscream' from project 'Starscream')
+
+SwiftDriverJobDiscovery normal arm64 Compiling FrameCollector.swift, Framer.swift, HTTPHandler.swift (in target 'Starscream' from project 'Starscream')
+
+SwiftDriver\ Compilation Starscream normal arm64 com.apple.xcode.tools.swift.compiler (in target 'Starscream' from project 'Starscream')
+    cd [BUILD_CACHE]/action-map-first-20261026.hkwuih3c/Source/ios/AEDResponse.xcodeproj
+    builtin-Swift-Compilation -- /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/swiftc -module-name Starscream -Onone @[BUILD_CACHE]/action-map-first-20261026.hkwuih3c/Signed/Build/Intermediates.noindex/Starscream.build/Debug-iphoneos/Starscream.build/Objects-normal/arm64/Starscream.SwiftFileList -DSWIFT_PACKAGE -DDEBUG -DSWIFT_MODULE_RESOURCE_BUNDLE_AVAILABLE -DXcode -plugin-path /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/host/plugins/testing -enable-experimental-feature DebugDescriptionMacro -sdk /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS26.5.sdk -target arm64-apple-ios12.0 -g -module-cache-path [BUILD_CACHE]/action-map-first-20261026.hkwuih3c/Signed/ModuleCache.noindex -Xfrontend -serialize-debugging-options -enable-testing -suppress-warnings -index-store-path [BUILD_CACHE]/action-map-first-20261026.hkwuih3c/Signed/Index.noindex/DataStore -Xcc -D_LIBCPP_HARDENING_MODE\=_LIBCPP_HARDENING_MODE_DEBUG -swift-version 5 -I [BUILD_CACHE]/action-map-first-20261026.hkwuih3c/Signed/Build/Products/Debug-iphoneos -Isystem /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/usr/lib -F [BUILD_CACHE]/action-map-first-20261026.hkwuih3c/Signed/Build/Products/Debug-iphoneos -F /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/Library/Frameworks -F /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS26.5.sdk/Developer/Library/Frameworks -c -j8 -enable-batch-mode -incremental -Xcc -ivfsstatcache -Xcc [BUILD_CACHE]/action-map-first-20261026.hkwuih3c/Signed/SDKStatCaches.noindex/iphoneos26.5-23F81a-32daed1954a7d5dd0789fcaf2a9bb78b.sdkstatcache -output-file-map [BUILD_CACHE]/action-map-first-20261026.hkwuih3c/Signed/Build/Intermediates.noindex/Starscream.build/Debug-iphoneos/Starscream.build/Objects-normal/arm64/Starscream-OutputFileMap.json -use-frontend-parseable-output -save-temps -no-color-diagnostics -explicit-module-build -module-cache-path [BUILD_CACHE]/action-map-first-20261026.hkwuih3c/Signed/Build/Intermediates.noindex/SwiftExplicitPrecompiledModules -clang-scanner-module-cache-path [BUILD_CACHE]/action-map-first-20261026.hkwuih3c/Signed/ModuleCache.noindex -sdk-module-cache-path [BUILD_CACHE]/action-map-first-20261026.hkwuih3c/Signed/ModuleCache.noindex -serialize-diagnostics -emit-dependencies -emit-module -emit-module-path [BUILD_CACHE]/action-map-first-20261026.hkwuih3c/Signed/Build/Intermediates.noindex/Starscream.build/Debug-iphoneos/Starscream.build/Objects-normal/arm64/Starscream.swiftmodule -validate-clang-modules-once -clang-build-session-file [BUILD_CACHE]/action-map-first-20261026.hkwuih3c/Signed/ModuleCache.noindex/Session.modulevalidation -Xcc -I[BUILD_CACHE]/action-map-first-20261026.hkwuih3c/Signed/Build/Intermediates.noindex/Starscream.build/Debug-iphoneos/Starscream.build/swift-overrides.hmap -emit-const-values -Xfrontend -const-gather-protocols-file -Xfrontend [BUILD_CACHE]/action-map-first-20261026.hkwuih3c/Signed/Build/Intermediates.noindex/Starscream.build/Debug-iphoneos/Starscream.build/Objects-normal/arm64/Starscream_const_extract_protocols.json -Xcc -I[BUILD_CACHE]/action-map-first-20261026.hkwuih3c/Signed/Build/Products/Debug-iphoneos/include -Xcc -I[BUILD_CACHE]/action-map-first-20261026.hkwuih3c/Signed/Build/Intermediates.noindex/Starscream.build/Debug-iphoneos/Starscream.build/DerivedSources-normal/arm64 -Xcc -I[BUILD_CACHE]/action-map-first-20261026.hkwuih3c/Signed/Build/Intermediates.noindex/Starscream.build/Debug-iphoneos/Starscream.build/DerivedSources/arm64 -Xcc -I[BUILD_CACHE]/action-map-first-20261026.hkwuih3c/Signed/Build/Intermediates.noindex/Starscream.build/Debug-iphoneos/Starscream.build/DerivedSources -Xcc -DSWIFT_PACKAGE -Xcc -DDEBUG\=1 -emit-objc-header -emit-objc-header-path [BUILD_CACHE]/action-map-first-20261026.hkwuih3c/Signed/Build/Intermediates.noindex/Starscream.build/Debug-iphoneos/Starscream.build/Objects-normal/arm64/Starscream-Swift.h -working-directory [BUILD_CACHE]/action-map-first-20261026.hkwuih3c/Source/ios/AEDResponse.xcodeproj -experimental-emit-module-separately -disable-cmo
+
+Ld [BUILD_CACHE]/action-map-first-20261026.hkwuih3c/Signed/Build/Products/Debug-iphoneos/Starscream.o normal (in target 'Starscream' from project 'Starscream')
+    cd [BUILD_CACHE]/action-map-first-20261026.hkwuih3c/Source/Dependencies/Starscream
+    /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -Xlinker -reproducible -target arm64-apple-ios12.0 -r -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS26.5.sdk -O0 -w -F[BUILD_CACHE]/action-map-first-20261026.hkwuih3c/Signed/Build/Intermediates.noindex/EagerLinkingTBDs/Debug-iphoneos -F[BUILD_CACHE]/action-map-first-20261026.hkwuih3c/Signed/Build/Products/Debug-iphoneos -iframework /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/Library/Frameworks -iframework /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS26.5.sdk/Developer/Library/Frameworks -filelist [BUILD_CACHE]/action-map-first-20261026.hkwuih3c/Signed/Build/Intermediates.noindex/Starscream.build/Debug-iphoneos/Starscream.build/Objects-normal/arm64/Starscream.LinkFileList -nostdlib -Xlinker -object_path_lto -Xlinker [BUILD_CACHE]/action-map-first-20261026.hkwuih3c/Signed/Build/Intermediates.noindex/Starscream.build/Debug-iphoneos/Starscream.build/Objects-normal/arm64/Starscream_lto.o -Xlinker -no_deduplicate -Xlinker -dependency_info -Xlinker [BUILD_CACHE]/action-map-first-20261026.hkwuih3c/Signed/Build/Intermediates.noindex/Starscream.build/Debug-iphoneos/Starscream.build/Objects-normal/arm64/Starscream_dependency_info.dat -fobjc-link-runtime -L/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos -L/usr/lib/swift -Xlinker -add_ast_path -Xlinker [BUILD_CACHE]/action-map-first-20261026.hkwuih3c/Signed/Build/Intermediates.noindex/Starscream.build/Debug-iphoneos/Starscream.build/Objects-normal/arm64/Starscream.swiftmodule @[BUILD_CACHE]/action-map-first-20261026.hkwuih3c/Signed/Build/Intermediates.noindex/Starscream.build/Debug-iphoneos/Starscream.build/Objects-normal/arm64/Starscream-linker-args.resp -o [BUILD_CACHE]/action-map-first-20261026.hkwuih3c/Signed/Build/Products/Debug-iphoneos/Starscream.o
+
+ExtractAppIntentsMetadata (in target 'Starscream' from project 'Starscream')
+    cd [BUILD_CACHE]/action-map-first-20261026.hkwuih3c/Source/Dependencies/Starscream
+    /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/appintentsmetadataprocessor --toolchain-dir /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain --module-name Starscream --sdk-root /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS26.5.sdk --xcode-version 17F113 --platform-family iOS --deployment-target 12.0 --bundle-identifier starscream.Starscream --output [BUILD_CACHE]/action-map-first-20261026.hkwuih3c/Signed/Build/Products/Debug-iphoneos/Starscream.appintents --target-triple arm64-apple-ios12.0 --binary-file [BUILD_CACHE]/action-map-first-20261026.hkwuih3c/Signed/Build/Products/Debug-iphoneos/Starscream.o --dependency-file [BUILD_CACHE]/action-map-first-20261026.hkwuih3c/Signed/Build/Intermediates.noindex/Starscream.build/Debug-iphoneos/Starscream.build/Objects-normal/arm64/Starscream_dependency_info.dat --stringsdata-file [BUILD_CACHE]/action-map-first-20261026.hkwuih3c/Signed/Build/Intermediates.noindex/Starscream.build/Debug-iphoneos/Starscream.build/Objects-normal/arm64/ExtractedAppShortcutsMetadata.stringsdata --source-file-list [BUILD_CACHE]/action-map-first-20261026.hkwuih3c/Signed/Build/Intermediates.noindex/Starscream.build/Debug-iphoneos/Starscream.build/Objects-normal/arm64/Starscream.SwiftFileList --metadata-file-list [BUILD_CACHE]/action-map-first-20261026.hkwuih3c/Signed/Build/Intermediates.noindex/Starscream.build/Debug-iphoneos/Starscream.build/Starscream.DependencyMetadataFileList --static-metadata-file-list [BUILD_CACHE]/action-map-first-20261026.hkwuih3c/Signed/Build/Intermediates.noindex/Starscream.build/Debug-iphoneos/Starscream.build/Starscream.DependencyStaticMetadataFileList --swift-const-vals-list [BUILD_CACHE]/action-map-first-20261026.hkwuih3c/Signed/Build/Intermediates.noindex/Starscream.build/Debug-iphoneos/Starscream.build/Objects-normal/arm64/Starscream.SwiftConstValuesFileList --force --compile-time-extraction --deployment-aware-processing --validate-assistant-intents --no-app-shortcuts-localization
+2026-10-26 02:57:52.735 appintentsmetadataprocessor[84945:6362083] Starting appintentsmetadataprocessor export
+2026-10-26 02:57:52.775 appintentsmetadataprocessor[84945:6362083] Extracted no relevant App Intents symbols, skipping writing output
+
+RegisterExecutionPolicyException [BUILD_CACHE]/action-map-first-20261026.hkwuih3c/Signed/Build/Products/Debug-iphoneos/Starscream.o (in target 'Starscream' from project 'Starscream')
+    cd [BUILD_CACHE]/action-map-first-20261026.hkwuih3c/Source/Dependencies/Starscream
+    builtin-RegisterExecutionPolicyException [BUILD_CACHE]/action-map-first-20261026.hkwuih3c/Signed/Build/Products/Debug-iphoneos/Starscream.o
+
+SwiftCompile normal arm64 Compiling\ SocketAckEmitter.swift,\ SocketAckManager.swift,\ SocketAnyEvent.swift [BUILD_CACHE]/action-map-first-20261026.hkwuih3c/Source/Dependencies/SocketIO/Source/SocketIO/Ack/SocketAckEmitter.swift [BUILD_CACHE]/action-map-first-20261026.hkwuih3c/Source/Dependencies/SocketIO/Source/SocketIO/Ack/SocketAckManager.swift [BUILD_CACHE]/action-map-first-20261026.hkwuih3c/Source/Dependencies/SocketIO/Source/SocketIO/Client/SocketAnyEvent.swift (in target 'SocketIO' from project 'SocketIO')
+
+SwiftCompile normal arm64 [BUILD_CACHE]/action-map-first-20261026.hkwuih3c/Source/Dependencies/SocketIO/Source/SocketIO/Ack/SocketAckEmitter.swift (in target 'SocketIO' from project 'SocketIO')
+    cd [BUILD_CACHE]/action-map-first-20261026.hkwuih3c/Source/ios/AEDResponse.xcodeproj
+    
+
+SwiftCompile normal arm64 [BUILD_CACHE]/action-map-first-20261026.hkwuih3c/Source/Dependencies/SocketIO/Source/SocketIO/Ack/SocketAckManager.swift (in target 'SocketIO' from project 'SocketIO')
+    cd [BUILD_CACHE]/action-map-first-20261026.hkwuih3c/Source/ios/AEDResponse.xcodeproj
+    
+
+SwiftCompile normal arm64 [BUILD_CACHE]/action-map-first-20261026.hkwuih3c/Source/Dependencies/SocketIO/Source/SocketIO/Client/SocketAnyEvent.swift (in target 'SocketIO' from project 'SocketIO')
+    cd [BUILD_CACHE]/action-map-first-20261026.hkwuih3c/Source/ios/AEDResponse.xcodeproj
+    
+
+SwiftCompile normal arm64 Compiling\ SocketEventHandler.swift,\ SocketIOClient.swift,\ SocketIOClientConfiguration.swift [BUILD_CACHE]/action-map-first-20261026.hkwuih3c/Source/Dependencies/SocketIO/Source/SocketIO/Client/SocketEventHandler.swift [BUILD_CACHE]/action-map-first-20261026.hkwuih3c/Source/Dependencies/SocketIO/Source/SocketIO/Client/SocketIOClient.swift [BUILD_CACHE]/action-map-first-20261026.hkwuih3c/Source/Dependencies/SocketIO/Source/SocketIO/Client/SocketIOClientConfiguration.swift (in target 'SocketIO' from project 'SocketIO')
+SwiftCompile normal arm64 [BUILD_CACHE]/action-map-first-20261026.hkwuih3c/Source/Dependencies/SocketIO/Source/SocketIO/Client/SocketEventHandler.swift (in target 'SocketIO' from project 'SocketIO')
+    cd [BUILD_CACHE]/action-map-first-20261026.hkwuih3c/Source/ios/AEDResponse.xcodeproj
+    
+
+SwiftCompile normal arm64 [BUILD_CACHE]/action-map-first-20261026.hkwuih3c/Source/Dependencies/SocketIO/Source/SocketIO/Client/SocketIOClient.swift (in target 'SocketIO' from project 'SocketIO')
+    cd [BUILD_CACHE]/action-map-first-20261026.hkwuih3c/Source/ios/AEDResponse.xcodeproj
+    
+
+SwiftCompile normal arm64 [BUILD_CACHE]/action-map-first-20261026.hkwuih3c/Source/Dependencies/SocketIO/Source/SocketIO/Client/SocketIOClientConfiguration.swift (in target 'SocketIO' from project 'SocketIO')
+    cd [BUILD_CACHE]/action-map-first-20261026.hkwuih3c/Source/ios/AEDResponse.xcodeproj
+    
+
+SwiftCompile normal arm64 Compiling\ SocketIOClientOption.swift,\ SocketIOClientSpec.swift,\ SocketIOStatus.swift [BUILD_CACHE]/action-map-first-20261026.hkwuih3c/Source/Dependencies/SocketIO/Source/SocketIO/Client/SocketIOClientOption.swift [BUILD_CACHE]/action-map-first-20261026.hkwuih3c/Source/Dependencies/SocketIO/Source/SocketIO/Client/SocketIOClientSpec.swift [BUILD_CACHE]/action-map-first-20261026.hkwuih3c/Source/Dependencies/SocketIO/Source/SocketIO/Client/SocketIOStatus.swift (in target 'SocketIO' from project 'SocketIO')
+
+SwiftCompile normal arm64 [BUILD_CACHE]/action-map-first-20261026.hkwuih3c/Source/Dependencies/SocketIO/Source/SocketIO/Client/SocketIOClientOption.swift (in target 'SocketIO' from project 'SocketIO')
+    cd [BUILD_CACHE]/action-map-first-20261026.hkwuih3c/Source/ios/AEDResponse.xcodeproj
+    
+
+SwiftCompile normal arm64 [BUILD_CACHE]/action-map-first-20261026.hkwuih3c/Source/Dependencies/SocketIO/Source/SocketIO/Client/SocketIOClientSpec.swift (in target 'SocketIO' from project 'SocketIO')
+    cd [BUILD_CACHE]/action-map-first-20261026.hkwuih3c/Source/ios/AEDResponse.xcodeproj
+    
+
+SwiftCompile normal arm64 [BUILD_CACHE]/action-map-first-20261026.hkwuih3c/Source/Dependencies/SocketIO/Source/SocketIO/Client/SocketIOStatus.swift (in target 'SocketIO' from project 'SocketIO')
+    cd [BUILD_CACHE]/action-map-first-20261026.hkwuih3c/Source/ios/AEDResponse.xcodeproj
+    
+
+SwiftCompile normal arm64 Compiling\ SocketLogger.swift,\ SocketStringReader.swift,\ SocketTypes.swift [BUILD_CACHE]/action-map-first-20261026.hkwuih3c/Source/Dependencies/SocketIO/Source/SocketIO/Util/SocketLogger.swift [BUILD_CACHE]/action-map-first-20261026.hkwuih3c/Source/Dependencies/SocketIO/Source/SocketIO/Util/SocketStringReader.swift [BUILD_CACHE]/action-map-first-20261026.hkwuih3c/Source/Dependencies/SocketIO/Source/SocketIO/Util/SocketTypes.swift (in target 'SocketIO' from project 'SocketIO')
+
+SwiftCompile normal arm64 [BUILD_CACHE]/action-map-first-20261026.hkwuih3c/Source/Dependencies/SocketIO/Source/SocketIO/Util/SocketLogger.swift (in target 'SocketIO' from project 'SocketIO')
+    cd [BUILD_CACHE]/action-map-first-20261026.hkwuih3c/Source/ios/AEDResponse.xcodeproj
+    
+
+SwiftCompile normal arm64 [BUILD_CACHE]/action-map-first-20261026.hkwuih3c/Source/Dependencies/SocketIO/Source/SocketIO/Util/SocketStringReader.swift (in target 'SocketIO' from project 'SocketIO')
+    cd [BUILD_CACHE]/action-map-first-20261026.hkwuih3c/Source/ios/AEDResponse.xcodeproj
+    
+
+SwiftCompile normal arm64 [BUILD_CACHE]/action-map-first-20261026.hkwuih3c/Source/Dependencies/SocketIO/Source/SocketIO/Util/SocketTypes.swift (in target 'SocketIO' from project 'SocketIO')
+    cd [BUILD_CACHE]/action-map-first-20261026.hkwuih3c/Source/ios/AEDResponse.xcodeproj
+    
+
+SwiftCompile normal arm64 Compiling\ SocketRawView.swift,\ SocketEngine.swift,\ SocketEngineClient.swift [BUILD_CACHE]/action-map-first-20261026.hkwuih3c/Source/Dependencies/SocketIO/Source/SocketIO/Client/SocketRawView.swift [BUILD_CACHE]/action-map-first-20261026.hkwuih3c/Source/Dependencies/SocketIO/Source/SocketIO/Engine/SocketEngine.swift [BUILD_CACHE]/action-map-first-20261026.hkwuih3c/Source/Dependencies/SocketIO/Source/SocketIO/Engine/SocketEngineClient.swift (in target 'SocketIO' from project 'SocketIO')
+SwiftCompile normal arm64 [BUILD_CACHE]/action-map-first-20261026.hkwuih3c/Source/Dependencies/SocketIO/Source/SocketIO/Client/SocketRawView.swift (in target 'SocketIO' from project 'SocketIO')
+    cd [BUILD_CACHE]/action-map-first-20261026.hkwuih3c/Source/ios/AEDResponse.xcodeproj
+    
+
+SwiftCompile normal arm64 [BUILD_CACHE]/action-map-first-20261026.hkwuih3c/Source/Dependencies/SocketIO/Source/SocketIO/Engine/SocketEngine.swift (in target 'SocketIO' from project 'SocketIO')
+    cd [BUILD_CACHE]/action-map-first-20261026.hkwuih3c/Source/ios/AEDResponse.xcodeproj
+    
+
+SwiftCompile normal arm64 [BUILD_CACHE]/action-map-first-20261026.hkwuih3c/Source/Dependencies/SocketIO/Source/SocketIO/Engine/SocketEngineClient.swift (in target 'SocketIO' from project 'SocketIO')
+    cd [BUILD_CACHE]/action-map-first-20261026.hkwuih3c/Source/ios/AEDResponse.xcodeproj
+    
+
+SwiftCompile normal arm64 Compiling\ SocketPacket.swift,\ SocketParsable.swift,\ SocketExtensions.swift [BUILD_CACHE]/action-map-first-20261026.hkwuih3c/Source/Dependencies/SocketIO/Source/SocketIO/Parse/SocketPacket.swift [BUILD_CACHE]/action-map-first-20261026.hkwuih3c/Source/Dependencies/SocketIO/Source/SocketIO/Parse/SocketParsable.swift [BUILD_CACHE]/action-map-first-20261026.hkwuih3c/Source/Dependencies/SocketIO/Source/SocketIO/Util/SocketExtensions.swift (in target 'SocketIO' from project 'SocketIO')
+
+SwiftCompile normal arm64 [BUILD_CACHE]/action-map-first-20261026.hkwuih3c/Source/Dependencies/SocketIO/Source/SocketIO/Parse/SocketPacket.swift (in target 'SocketIO' from project 'SocketIO')
+    cd [BUILD_CACHE]/action-map-first-20261026.hkwuih3c/Source/ios/AEDResponse.xcodeproj
+    
+
+SwiftCompile normal arm64 [BUILD_CACHE]/action-map-first-20261026.hkwuih3c/Source/Dependencies/SocketIO/Source/SocketIO/Parse/SocketParsable.swift (in target 'SocketIO' from project 'SocketIO')
+    cd [BUILD_CACHE]/action-map-first-20261026.hkwuih3c/Source/ios/AEDResponse.xcodeproj
+    
+
+SwiftCompile normal arm64 [BUILD_CACHE]/action-map-first-20261026.hkwuih3c/Source/Dependencies/SocketIO/Source/SocketIO/Util/SocketExtensions.swift (in target 'SocketIO' from project 'SocketIO')
+    cd [BUILD_CACHE]/action-map-first-20261026.hkwuih3c/Source/ios/AEDResponse.xcodeproj
+    
+
+SwiftCompile normal arm64 Compiling\ SocketEnginePacketType.swift,\ SocketEnginePollable.swift,\ SocketEngineSpec.swift [BUILD_CACHE]/action-map-first-20261026.hkwuih3c/Source/Dependencies/SocketIO/Source/SocketIO/Engine/SocketEnginePacketType.swift [BUILD_CACHE]/action-map-first-20261026.hkwuih3c/Source/Dependencies/SocketIO/Source/SocketIO/Engine/SocketEnginePollable.swift [BUILD_CACHE]/action-map-first-20261026.hkwuih3c/Source/Dependencies/SocketIO/Source/SocketIO/Engine/SocketEngineSpec.swift (in target 'SocketIO' from project 'SocketIO')
+
+SwiftCompile normal arm64 [BUILD_CACHE]/action-map-first-20261026.hkwuih3c/Source/Dependencies/SocketIO/Source/SocketIO/Engine/SocketEnginePacketType.swift (in target 'SocketIO' from project 'SocketIO')
+    cd [BUILD_CACHE]/action-map-first-20261026.hkwuih3c/Source/ios/AEDResponse.xcodeproj
+    
+
+SwiftCompile normal arm64 [BUILD_CACHE]/action-map-first-20261026.hkwuih3c/Source/Dependencies/SocketIO/Source/SocketIO/Engine/SocketEnginePollable.swift (in target 'SocketIO' from project 'SocketIO')
+    cd [BUILD_CACHE]/action-map-first-20261026.hkwuih3c/Source/ios/AEDResponse.xcodeproj
+    
+
+SwiftCompile normal arm64 [BUILD_CACHE]/action-map-first-20261026.hkwuih3c/Source/Dependencies/SocketIO/Source/SocketIO/Engine/SocketEngineSpec.swift (in target 'SocketIO' from project 'SocketIO')
+    cd [BUILD_CACHE]/action-map-first-20261026.hkwuih3c/Source/ios/AEDResponse.xcodeproj
+    
+
+SwiftCompile normal arm64 Compiling\ SocketEngineWebsocket.swift,\ SocketManager.swift,\ SocketManagerSpec.swift [BUILD_CACHE]/action-map-first-20261026.hkwuih3c/Source/Dependencies/SocketIO/Source/SocketIO/Engine/SocketEngineWebsocket.swift [BUILD_CACHE]/action-map-first-20261026.hkwuih3c/Source/Dependencies/SocketIO/Source/SocketIO/Manager/SocketManager.swift [BUILD_CACHE]/action-map-first-20261026.hkwuih3c/Source/Dependencies/SocketIO/Source/SocketIO/Manager/SocketManagerSpec.swift (in target 'SocketIO' from project 'SocketIO')
+
+SwiftCompile normal arm64 [BUILD_CACHE]/action-map-first-20261026.hkwuih3c/Source/Dependencies/SocketIO/Source/SocketIO/Engine/SocketEngineWebsocket.swift (in target 'SocketIO' from project 'SocketIO')
+    cd [BUILD_CACHE]/action-map-first-20261026.hkwuih3c/Source/ios/AEDResponse.xcodeproj
+    
+
+SwiftCompile normal arm64 [BUILD_CACHE]/action-map-first-20261026.hkwuih3c/Source/Dependencies/SocketIO/Source/SocketIO/Manager/SocketManager.swift (in target 'SocketIO' from project 'SocketIO')
+    cd [BUILD_CACHE]/action-map-first-20261026.hkwuih3c/Source/ios/AEDResponse.xcodeproj
+    
+
+SwiftCompile normal arm64 [BUILD_CACHE]/action-map-first-20261026.hkwuih3c/Source/Dependencies/SocketIO/Source/SocketIO/Manager/SocketManagerSpec.swift (in target 'SocketIO' from project 'SocketIO')
+    cd [BUILD_CACHE]/action-map-first-20261026.hkwuih3c/Source/ios/AEDResponse.xcodeproj
+    
+
+SwiftDriverJobDiscovery normal arm64 Compiling SocketIOClientOption.swift, SocketIOClientSpec.swift, SocketIOStatus.swift (in target 'SocketIO' from project 'SocketIO')
+
+SwiftDriverJobDiscovery normal arm64 Compiling SocketLogger.swift, SocketStringReader.swift, SocketTypes.swift (in target 'SocketIO' from project 'SocketIO')
+
+SwiftDriverJobDiscovery normal arm64 Compiling SocketAckEmitter.swift, SocketAckManager.swift, SocketAnyEvent.swift (in target 'SocketIO' from project 'SocketIO')
+
+SwiftDriverJobDiscovery normal arm64 Compiling SocketEnginePacketType.swift, SocketEnginePollable.swift, SocketEngineSpec.swift (in target 'SocketIO' from project 'SocketIO')
+
+SwiftDriverJobDiscovery normal arm64 Compiling SocketPacket.swift, SocketParsable.swift, SocketExtensions.swift (in target 'SocketIO' from project 'SocketIO')
+
+SwiftDriverJobDiscovery normal arm64 Compiling SocketEventHandler.swift, SocketIOClient.swift, SocketIOClientConfiguration.swift (in target 'SocketIO' from project 'SocketIO')
+
+SwiftDriverJobDiscovery normal arm64 Compiling SocketEngineWebsocket.swift, SocketManager.swift, SocketManagerSpec.swift (in target 'SocketIO' from project 'SocketIO')
+
+SwiftDriverJobDiscovery normal arm64 Compiling SocketRawView.swift, SocketEngine.swift, SocketEngineClient.swift (in target 'SocketIO' from project 'SocketIO')
+
+SwiftDriver\ Compilation SocketIO normal arm64 com.apple.xcode.tools.swift.compiler (in target 'SocketIO' from project 'SocketIO')
+    cd [BUILD_CACHE]/action-map-first-20261026.hkwuih3c/Source/ios/AEDResponse.xcodeproj
+    builtin-Swift-Compilation -- /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/swiftc -module-name SocketIO -Onone @[BUILD_CACHE]/action-map-first-20261026.hkwuih3c/Signed/Build/Intermediates.noindex/SocketIO.build/Debug-iphoneos/SocketIO.build/Objects-normal/arm64/SocketIO.SwiftFileList -DSWIFT_PACKAGE -DDEBUG -DSWIFT_MODULE_RESOURCE_BUNDLE_UNAVAILABLE -DXcode -plugin-path /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/host/plugins/testing -enable-experimental-feature DebugDescriptionMacro -sdk /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS26.5.sdk -target arm64-apple-ios12.0 -g -module-cache-path [BUILD_CACHE]/action-map-first-20261026.hkwuih3c/Signed/ModuleCache.noindex -Xfrontend -serialize-debugging-options -enable-testing -suppress-warnings -index-store-path [BUILD_CACHE]/action-map-first-20261026.hkwuih3c/Signed/Index.noindex/DataStore -Xcc -D_LIBCPP_HARDENING_MODE\=_LIBCPP_HARDENING_MODE_DEBUG -swift-version 5 -I [BUILD_CACHE]/action-map-first-20261026.hkwuih3c/Signed/Build/Products/Debug-iphoneos -Isystem /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/usr/lib -F [BUILD_CACHE]/action-map-first-20261026.hkwuih3c/Signed/Build/Products/Debug-iphoneos/PackageFrameworks -F [BUILD_CACHE]/action-map-first-20261026.hkwuih3c/Signed/Build/Products/Debug-iphoneos -F /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/Library/Frameworks -F /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS26.5.sdk/Developer/Library/Frameworks -c -j8 -enable-batch-mode -incremental -Xcc -ivfsstatcache -Xcc [BUILD_CACHE]/action-map-first-20261026.hkwuih3c/Signed/SDKStatCaches.noindex/iphoneos26.5-23F81a-32daed1954a7d5dd0789fcaf2a9bb78b.sdkstatcache -output-file-map [BUILD_CACHE]/action-map-first-20261026.hkwuih3c/Signed/Build/Intermediates.noindex/SocketIO.build/Debug-iphoneos/SocketIO.build/Objects-normal/arm64/SocketIO-OutputFileMap.json -use-frontend-parseable-output -save-temps -no-color-diagnostics -explicit-module-build -module-cache-path [BUILD_CACHE]/action-map-first-20261026.hkwuih3c/Signed/Build/Intermediates.noindex/SwiftExplicitPrecompiledModules -clang-scanner-module-cache-path [BUILD_CACHE]/action-map-first-20261026.hkwuih3c/Signed/ModuleCache.noindex -sdk-module-cache-path [BUILD_CACHE]/action-map-first-20261026.hkwuih3c/Signed/ModuleCache.noindex -serialize-diagnostics -emit-dependencies -emit-module -emit-module-path [BUILD_CACHE]/action-map-first-20261026.hkwuih3c/Signed/Build/Intermediates.noindex/SocketIO.build/Debug-iphoneos/SocketIO.build/Objects-normal/arm64/SocketIO.swiftmodule -validate-clang-modules-once -clang-build-session-file [BUILD_CACHE]/action-map-first-20261026.hkwuih3c/Signed/ModuleCache.noindex/Session.modulevalidation -Xcc -I[BUILD_CACHE]/action-map-first-20261026.hkwuih3c/Signed/Build/Intermediates.noindex/SocketIO.build/Debug-iphoneos/SocketIO.build/swift-overrides.hmap -emit-const-values -Xfrontend -const-gather-protocols-file -Xfrontend [BUILD_CACHE]/action-map-first-20261026.hkwuih3c/Signed/Build/Intermediates.noindex/SocketIO.build/Debug-iphoneos/SocketIO.build/Objects-normal/arm64/SocketIO_const_extract_protocols.json -Xcc -I[BUILD_CACHE]/action-map-first-20261026.hkwuih3c/Signed/Build/Products/Debug-iphoneos/include -Xcc -I[BUILD_CACHE]/action-map-first-20261026.hkwuih3c/Signed/Build/Intermediates.noindex/SocketIO.build/Debug-iphoneos/SocketIO.build/DerivedSources-normal/arm64 -Xcc -I[BUILD_CACHE]/action-map-first-20261026.hkwuih3c/Signed/Build/Intermediates.noindex/SocketIO.build/Debug-iphoneos/SocketIO.build/DerivedSources/arm64 -Xcc -I[BUILD_CACHE]/action-map-first-20261026.hkwuih3c/Signed/Build/Intermediates.noindex/SocketIO.build/Debug-iphoneos/SocketIO.build/DerivedSources -Xcc -DSWIFT_PACKAGE -Xcc -DDEBUG\=1 -emit-objc-header -emit-objc-header-path [BUILD_CACHE]/action-map-first-20261026.hkwuih3c/Signed/Build/Intermediates.noindex/SocketIO.build/Debug-iphoneos/SocketIO.build/Objects-normal/arm64/SocketIO-Swift.h -working-directory [BUILD_CACHE]/action-map-first-20261026.hkwuih3c/Source/ios/AEDResponse.xcodeproj -experimental-emit-module-separately -disable-cmo
+
+Ld [BUILD_CACHE]/action-map-first-20261026.hkwuih3c/Signed/Build/Products/Debug-iphoneos/SocketIO.o normal (in target 'SocketIO' from project 'SocketIO')
+    cd [BUILD_CACHE]/action-map-first-20261026.hkwuih3c/Source/Dependencies/SocketIO
+    /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -Xlinker -reproducible -target arm64-apple-ios12.0 -r -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS26.5.sdk -O0 -w -F[BUILD_CACHE]/action-map-first-20261026.hkwuih3c/Signed/Build/Intermediates.noindex/EagerLinkingTBDs/Debug-iphoneos -F[BUILD_CACHE]/action-map-first-20261026.hkwuih3c/Signed/Build/Products/Debug-iphoneos/PackageFrameworks -F[BUILD_CACHE]/action-map-first-20261026.hkwuih3c/Signed/Build/Products/Debug-iphoneos -iframework /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/Library/Frameworks -iframework /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS26.5.sdk/Developer/Library/Frameworks -filelist [BUILD_CACHE]/action-map-first-20261026.hkwuih3c/Signed/Build/Intermediates.noindex/SocketIO.build/Debug-iphoneos/SocketIO.build/Objects-normal/arm64/SocketIO.LinkFileList -nostdlib -Xlinker -object_path_lto -Xlinker [BUILD_CACHE]/action-map-first-20261026.hkwuih3c/Signed/Build/Intermediates.noindex/SocketIO.build/Debug-iphoneos/SocketIO.build/Objects-normal/arm64/SocketIO_lto.o -Xlinker -no_deduplicate -Xlinker -dependency_info -Xlinker [BUILD_CACHE]/action-map-first-20261026.hkwuih3c/Signed/Build/Intermediates.noindex/SocketIO.build/Debug-iphoneos/SocketIO.build/Objects-normal/arm64/SocketIO_dependency_info.dat -fobjc-link-runtime -L/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos -L/usr/lib/swift -Xlinker -add_ast_path -Xlinker [BUILD_CACHE]/action-map-first-20261026.hkwuih3c/Signed/Build/Intermediates.noindex/SocketIO.build/Debug-iphoneos/SocketIO.build/Objects-normal/arm64/SocketIO.swiftmodule @[BUILD_CACHE]/action-map-first-20261026.hkwuih3c/Signed/Build/Intermediates.noindex/SocketIO.build/Debug-iphoneos/SocketIO.build/Objects-normal/arm64/SocketIO-linker-args.resp -o [BUILD_CACHE]/action-map-first-20261026.hkwuih3c/Signed/Build/Products/Debug-iphoneos/SocketIO.o
+
+ExtractAppIntentsMetadata (in target 'SocketIO' from project 'SocketIO')
+    cd [BUILD_CACHE]/action-map-first-20261026.hkwuih3c/Source/Dependencies/SocketIO
+    /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/appintentsmetadataprocessor --toolchain-dir /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain --module-name SocketIO --sdk-root /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS26.5.sdk --xcode-version 17F113 --platform-family iOS --deployment-target 12.0 --bundle-identifier socketio.SocketIO --output [BUILD_CACHE]/action-map-first-20261026.hkwuih3c/Signed/Build/Products/Debug-iphoneos/SocketIO.appintents --target-triple arm64-apple-ios12.0 --binary-file [BUILD_CACHE]/action-map-first-20261026.hkwuih3c/Signed/Build/Products/Debug-iphoneos/SocketIO.o --dependency-file [BUILD_CACHE]/action-map-first-20261026.hkwuih3c/Signed/Build/Intermediates.noindex/SocketIO.build/Debug-iphoneos/SocketIO.build/Objects-normal/arm64/SocketIO_dependency_info.dat --stringsdata-file [BUILD_CACHE]/action-map-first-20261026.hkwuih3c/Signed/Build/Intermediates.noindex/SocketIO.build/Debug-iphoneos/SocketIO.build/Objects-normal/arm64/ExtractedAppShortcutsMetadata.stringsdata --source-file-list [BUILD_CACHE]/action-map-first-20261026.hkwuih3c/Signed/Build/Intermediates.noindex/SocketIO.build/Debug-iphoneos/SocketIO.build/Objects-normal/arm64/SocketIO.SwiftFileList --metadata-file-list [BUILD_CACHE]/action-map-first-20261026.hkwuih3c/Signed/Build/Intermediates.noindex/SocketIO.build/Debug-iphoneos/SocketIO.build/SocketIO.DependencyMetadataFileList --static-metadata-file-list [BUILD_CACHE]/action-map-first-20261026.hkwuih3c/Signed/Build/Intermediates.noindex/SocketIO.build/Debug-iphoneos/SocketIO.build/SocketIO.DependencyStaticMetadataFileList --swift-const-vals-list [BUILD_CACHE]/action-map-first-20261026.hkwuih3c/Signed/Build/Intermediates.noindex/SocketIO.build/Debug-iphoneos/SocketIO.build/Objects-normal/arm64/SocketIO.SwiftConstValuesFileList --force --compile-time-extraction --deployment-aware-processing --validate-assistant-intents --no-app-shortcuts-localization
+2026-10-26 02:57:54.368 appintentsmetadataprocessor[84957:6362164] Starting appintentsmetadataprocessor export
+2026-10-26 02:57:54.406 appintentsmetadataprocessor[84957:6362164] Extracted no relevant App Intents symbols, skipping writing output
+
+RegisterExecutionPolicyException [BUILD_CACHE]/action-map-first-20261026.hkwuih3c/Signed/Build/Products/Debug-iphoneos/SocketIO.o (in target 'SocketIO' from project 'SocketIO')
+    cd [BUILD_CACHE]/action-map-first-20261026.hkwuih3c/Source/Dependencies/SocketIO
+    builtin-RegisterExecutionPolicyException [BUILD_CACHE]/action-map-first-20261026.hkwuih3c/Signed/Build/Products/Debug-iphoneos/SocketIO.o
+
+Ld [BUILD_CACHE]/action-map-first-20261026.hkwuih3c/Signed/Build/Products/Debug-iphoneos/AEDResponse.app/AEDResponse.debug.dylib normal (in target 'AEDResponse' from project 'AEDResponse')
+    cd [BUILD_CACHE]/action-map-first-20261026.hkwuih3c/Source/ios
+    /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -Xlinker -reproducible -target arm64-apple-ios17.0 -dynamiclib -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS26.5.sdk -O0 -L[BUILD_CACHE]/action-map-first-20261026.hkwuih3c/Signed/Build/Intermediates.noindex/EagerLinkingTBDs/Debug-iphoneos -L[BUILD_CACHE]/action-map-first-20261026.hkwuih3c/Signed/Build/Products/Debug-iphoneos -F[BUILD_CACHE]/action-map-first-20261026.hkwuih3c/Signed/Build/Intermediates.noindex/EagerLinkingTBDs/Debug-iphoneos -F[BUILD_CACHE]/action-map-first-20261026.hkwuih3c/Signed/Build/Products/Debug-iphoneos/PackageFrameworks -F[BUILD_CACHE]/action-map-first-20261026.hkwuih3c/Signed/Build/Products/Debug-iphoneos/PackageFrameworks -F[BUILD_CACHE]/action-map-first-20261026.hkwuih3c/Signed/Build/Products/Debug-iphoneos -filelist [BUILD_CACHE]/action-map-first-20261026.hkwuih3c/Signed/Build/Intermediates.noindex/AEDResponse.build/Debug-iphoneos/AEDResponse.build/Objects-normal/arm64/AEDResponse.LinkFileList -install_name @rpath/AEDResponse.debug.dylib -Xlinker -rpath -Xlinker /usr/lib/swift -Xlinker -rpath -Xlinker [BUILD_CACHE]/action-map-first-20261026.hkwuih3c/Signed/Build/Products/Debug-iphoneos/PackageFrameworks -Xlinker -rpath -Xlinker @executable_path/Frameworks -Xlinker -dead_strip -Xlinker -object_path_lto -Xlinker [BUILD_CACHE]/action-map-first-20261026.hkwuih3c/Signed/Build/Intermediates.noindex/AEDResponse.build/Debug-iphoneos/AEDResponse.build/Objects-normal/arm64/AEDResponse_lto.o -rdynamic -Xlinker -no_deduplicate -Xlinker -dependency_info -Xlinker [BUILD_CACHE]/action-map-first-20261026.hkwuih3c/Signed/Build/Intermediates.noindex/AEDResponse.build/Debug-iphoneos/AEDResponse.build/Objects-normal/arm64/AEDResponse_dependency_info.dat -fobjc-link-runtime -L/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos -L/usr/lib/swift -Xlinker -add_ast_path -Xlinker [BUILD_CACHE]/action-map-first-20261026.hkwuih3c/Signed/Build/Intermediates.noindex/AEDResponse.build/Debug-iphoneos/AEDResponse.build/Objects-normal/arm64/AEDResponse.swiftmodule @[BUILD_CACHE]/action-map-first-20261026.hkwuih3c/Signed/Build/Intermediates.noindex/AEDResponse.build/Debug-iphoneos/AEDResponse.build/Objects-normal/arm64/AEDResponse-linker-args.resp -Wl,-no_warn_duplicate_libraries -Wl,-no_warn_duplicate_libraries -Xlinker -alias -Xlinker _main -Xlinker ___debug_main_executable_dylib_entry_point -Xlinker -no_adhoc_codesign -o [BUILD_CACHE]/action-map-first-20261026.hkwuih3c/Signed/Build/Products/Debug-iphoneos/AEDResponse.app/AEDResponse.debug.dylib -Xlinker -add_ast_path -Xlinker [BUILD_CACHE]/action-map-first-20261026.hkwuih3c/Signed/Build/Intermediates.noindex/SocketIO.build/Debug-iphoneos/SocketIO.build/Objects-normal/arm64/SocketIO.swiftmodule @[BUILD_CACHE]/action-map-first-20261026.hkwuih3c/Signed/Build/Intermediates.noindex/SocketIO.build/Debug-iphoneos/SocketIO.build/Objects-normal/arm64/SocketIO-linker-args.resp -Xlinker -add_ast_path -Xlinker [BUILD_CACHE]/action-map-first-20261026.hkwuih3c/Signed/Build/Intermediates.noindex/Starscream.build/Debug-iphoneos/Starscream.build/Objects-normal/arm64/Starscream.swiftmodule @[BUILD_CACHE]/action-map-first-20261026.hkwuih3c/Signed/Build/Intermediates.noindex/Starscream.build/Debug-iphoneos/Starscream.build/Objects-normal/arm64/Starscream-linker-args.resp
+
+ConstructStubExecutorLinkFileList [BUILD_CACHE]/action-map-first-20261026.hkwuih3c/Signed/Build/Intermediates.noindex/AEDResponse.build/Debug-iphoneos/AEDResponse.build/AEDResponse-ExecutorLinkFileList-normal-arm64.txt (in target 'AEDResponse' from project 'AEDResponse')
+    cd [BUILD_CACHE]/action-map-first-20261026.hkwuih3c/Source/ios
+    construct-stub-executor-link-file-list [BUILD_CACHE]/action-map-first-20261026.hkwuih3c/Signed/Build/Products/Debug-iphoneos/AEDResponse.app/AEDResponse.debug.dylib /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/usr/lib/libPreviewsJITStubExecutor_no_swift_entry_point.a /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/usr/lib/libPreviewsJITStubExecutor.a --output [BUILD_CACHE]/action-map-first-20261026.hkwuih3c/Signed/Build/Intermediates.noindex/AEDResponse.build/Debug-iphoneos/AEDResponse.build/AEDResponse-ExecutorLinkFileList-normal-arm64.txt
+note: Using stub executor library with Swift entry point. (in target 'AEDResponse' from project 'AEDResponse')
+
+Ld [BUILD_CACHE]/action-map-first-20261026.hkwuih3c/Signed/Build/Products/Debug-iphoneos/AEDResponse.app/AEDResponse normal (in target 'AEDResponse' from project 'AEDResponse')
+    cd [BUILD_CACHE]/action-map-first-20261026.hkwuih3c/Source/ios
+    /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -Xlinker -reproducible -target arm64-apple-ios17.0 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS26.5.sdk -O0 -L[BUILD_CACHE]/action-map-first-20261026.hkwuih3c/Signed/Build/Products/Debug-iphoneos -F[BUILD_CACHE]/action-map-first-20261026.hkwuih3c/Signed/Build/Products/Debug-iphoneos/PackageFrameworks -F[BUILD_CACHE]/action-map-first-20261026.hkwuih3c/Signed/Build/Products/Debug-iphoneos/PackageFrameworks -F[BUILD_CACHE]/action-map-first-20261026.hkwuih3c/Signed/Build/Products/Debug-iphoneos -Xlinker -rpath -Xlinker @executable_path -Xlinker -rpath -Xlinker [BUILD_CACHE]/action-map-first-20261026.hkwuih3c/Signed/Build/Products/Debug-iphoneos/PackageFrameworks -Xlinker -rpath -Xlinker @executable_path/Frameworks -rdynamic -Xlinker -no_deduplicate -e ___debug_blank_executor_main -Xlinker -sectcreate -Xlinker __TEXT -Xlinker __debug_dylib -Xlinker [BUILD_CACHE]/action-map-first-20261026.hkwuih3c/Signed/Build/Intermediates.noindex/AEDResponse.build/Debug-iphoneos/AEDResponse.build/AEDResponse-DebugDylibPath-normal-arm64.txt -Xlinker -sectcreate -Xlinker __TEXT -Xlinker __debug_instlnm -Xlinker [BUILD_CACHE]/action-map-first-20261026.hkwuih3c/Signed/Build/Intermediates.noindex/AEDResponse.build/Debug-iphoneos/AEDResponse.build/AEDResponse-DebugDylibInstallName-normal-arm64.txt -Xlinker -filelist -Xlinker [BUILD_CACHE]/action-map-first-20261026.hkwuih3c/Signed/Build/Intermediates.noindex/AEDResponse.build/Debug-iphoneos/AEDResponse.build/AEDResponse-ExecutorLinkFileList-normal-arm64.txt [BUILD_CACHE]/action-map-first-20261026.hkwuih3c/Signed/Build/Products/Debug-iphoneos/AEDResponse.app/AEDResponse.debug.dylib -Xlinker -no_adhoc_codesign -o [BUILD_CACHE]/action-map-first-20261026.hkwuih3c/Signed/Build/Products/Debug-iphoneos/AEDResponse.app/AEDResponse
+
+ExtractAppIntentsMetadata (in target 'AEDResponse' from project 'AEDResponse')
+    cd [BUILD_CACHE]/action-map-first-20261026.hkwuih3c/Source/ios
+    /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/appintentsmetadataprocessor --toolchain-dir /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain --module-name AEDResponse --sdk-root /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS26.5.sdk --xcode-version 17F113 --platform-family iOS --deployment-target 17.0 --bundle-identifier dev.codex.aedresponse --output [BUILD_CACHE]/action-map-first-20261026.hkwuih3c/Signed/Build/Products/Debug-iphoneos/AEDResponse.app --target-triple arm64-apple-ios17.0 --binary-file [BUILD_CACHE]/action-map-first-20261026.hkwuih3c/Signed/Build/Products/Debug-iphoneos/AEDResponse.app/AEDResponse --dependency-file [BUILD_CACHE]/action-map-first-20261026.hkwuih3c/Signed/Build/Intermediates.noindex/AEDResponse.build/Debug-iphoneos/AEDResponse.build/Objects-normal/arm64/AEDResponse_dependency_info.dat --stringsdata-file [BUILD_CACHE]/action-map-first-20261026.hkwuih3c/Signed/Build/Intermediates.noindex/AEDResponse.build/Debug-iphoneos/AEDResponse.build/Objects-normal/arm64/ExtractedAppShortcutsMetadata.stringsdata --source-file-list [BUILD_CACHE]/action-map-first-20261026.hkwuih3c/Signed/Build/Intermediates.noindex/AEDResponse.build/Debug-iphoneos/AEDResponse.build/Objects-normal/arm64/AEDResponse.SwiftFileList --metadata-file-list [BUILD_CACHE]/action-map-first-20261026.hkwuih3c/Signed/Build/Intermediates.noindex/AEDResponse.build/Debug-iphoneos/AEDResponse.build/AEDResponse.DependencyMetadataFileList --static-metadata-file-list [BUILD_CACHE]/action-map-first-20261026.hkwuih3c/Signed/Build/Intermediates.noindex/AEDResponse.build/Debug-iphoneos/AEDResponse.build/AEDResponse.DependencyStaticMetadataFileList --swift-const-vals-list [BUILD_CACHE]/action-map-first-20261026.hkwuih3c/Signed/Build/Intermediates.noindex/AEDResponse.build/Debug-iphoneos/AEDResponse.build/Objects-normal/arm64/AEDResponse.SwiftConstValuesFileList --compile-time-extraction --deployment-aware-processing --validate-assistant-intents --no-app-shortcuts-localization
+2026-10-26 02:57:55.095 appintentsmetadataprocessor[84967:6362213] Starting appintentsmetadataprocessor export
+2026-10-26 02:57:55.098 appintentsmetadataprocessor[84967:6362213] warning: Metadata extraction skipped. No AppIntents.framework dependency found.
+
+Copy [BUILD_CACHE]/action-map-first-20261026.hkwuih3c/Signed/Build/Products/Debug-iphoneos/AEDResponse.app/Starscream_Starscream.bundle [BUILD_CACHE]/action-map-first-20261026.hkwuih3c/Signed/Build/Products/Debug-iphoneos/Starscream_Starscream.bundle (in target 'AEDResponse' from project 'AEDResponse')
+    cd [BUILD_CACHE]/action-map-first-20261026.hkwuih3c/Source/ios
+    builtin-copy -exclude .DS_Store -exclude CVS -exclude .svn -exclude .git -exclude .hg -resolve-src-symlinks [BUILD_CACHE]/action-map-first-20261026.hkwuih3c/Signed/Build/Products/Debug-iphoneos/Starscream_Starscream.bundle [BUILD_CACHE]/action-map-first-20261026.hkwuih3c/Signed/Build/Products/Debug-iphoneos/AEDResponse.app
+
+ProcessInfoPlistFile [BUILD_CACHE]/action-map-first-20261026.hkwuih3c/Signed/Build/Products/Debug-iphoneos/AEDResponse.app/Info.plist [BUILD_CACHE]/action-map-first-20261026.hkwuih3c/Source/ios/AEDResponse/Info.plist (in target 'AEDResponse' from project 'AEDResponse')
+    cd [BUILD_CACHE]/action-map-first-20261026.hkwuih3c/Source/ios
+    builtin-infoPlistUtility [BUILD_CACHE]/action-map-first-20261026.hkwuih3c/Source/ios/AEDResponse/Info.plist -producttype com.apple.product-type.application -genpkginfo [BUILD_CACHE]/action-map-first-20261026.hkwuih3c/Signed/Build/Products/Debug-iphoneos/AEDResponse.app/PkgInfo -expandbuildsettings -format binary -platform iphoneos -additionalcontentfile [BUILD_CACHE]/action-map-first-20261026.hkwuih3c/Signed/Build/Intermediates.noindex/AEDResponse.build/Debug-iphoneos/AEDResponse.build/assetcatalog_generated_info.plist -scanforprivacyfile [BUILD_CACHE]/action-map-first-20261026.hkwuih3c/Signed/Build/Products/Debug-iphoneos/AEDResponse.app/Starscream_Starscream.bundle -scanforprivacyfile [BUILD_CACHE]/action-map-first-20261026.hkwuih3c/Signed/Build/Products/Debug-iphoneos/AEDResponse.app/Watch/AEDResponseWatch.app -requiredArchitecture arm64 -o [BUILD_CACHE]/action-map-first-20261026.hkwuih3c/Signed/Build/Products/Debug-iphoneos/AEDResponse.app/Info.plist
+
+CopySwiftLibs [BUILD_CACHE]/action-map-first-20261026.hkwuih3c/Signed/Build/Products/Debug-iphoneos/AEDResponse.app (in target 'AEDResponse' from project 'AEDResponse')
+    cd [BUILD_CACHE]/action-map-first-20261026.hkwuih3c/Source/ios
+    builtin-swiftStdLibTool --copy --verbose --sign [REDACTED_SIGNING_FINGERPRINT] --scan-executable [BUILD_CACHE]/action-map-first-20261026.hkwuih3c/Signed/Build/Products/Debug-iphoneos/AEDResponse.app/AEDResponse.debug.dylib --scan-folder [BUILD_CACHE]/action-map-first-20261026.hkwuih3c/Signed/Build/Products/Debug-iphoneos/AEDResponse.app/Frameworks --scan-folder [BUILD_CACHE]/action-map-first-20261026.hkwuih3c/Signed/Build/Products/Debug-iphoneos/AEDResponse.app/PlugIns --scan-folder [BUILD_CACHE]/action-map-first-20261026.hkwuih3c/Signed/Build/Products/Debug-iphoneos/AEDResponse.app/SystemExtensions --scan-folder [BUILD_CACHE]/action-map-first-20261026.hkwuih3c/Signed/Build/Products/Debug-iphoneos/AEDResponse.app/Extensions --platform iphoneos --toolchain /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain --destination [BUILD_CACHE]/action-map-first-20261026.hkwuih3c/Signed/Build/Products/Debug-iphoneos/AEDResponse.app/Frameworks --strip-bitcode --strip-bitcode-tool /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/bitcode_strip --emit-dependency-info [BUILD_CACHE]/action-map-first-20261026.hkwuih3c/Signed/Build/Intermediates.noindex/AEDResponse.build/Debug-iphoneos/AEDResponse.build/SwiftStdLibToolInputDependencies.dep --filter-for-swift-os --back-deploy-swift-span
+
+CodeSign [BUILD_CACHE]/action-map-first-20261026.hkwuih3c/Signed/Build/Products/Debug-iphoneos/AEDResponse.app/AEDResponse.debug.dylib (in target 'AEDResponse' from project 'AEDResponse')
+    cd [BUILD_CACHE]/action-map-first-20261026.hkwuih3c/Source/ios
+    
+    Signing Identity:     "Apple Development: [REDACTED SIGNING IDENTITY]"
+    Provisioning Profile: "iOS Team Provisioning Profile: dev.codex.aedresponse"
+                          (REDACTED-ID-1853b8c1c38f8b6c)
+    
+    /usr/bin/codesign --force --sign [REDACTED_SIGNING_FINGERPRINT] --timestamp\=none --generate-entitlement-der [BUILD_CACHE]/action-map-first-20261026.hkwuih3c/Signed/Build/Products/Debug-iphoneos/AEDResponse.app/AEDResponse.debug.dylib
+
+CodeSign [BUILD_CACHE]/action-map-first-20261026.hkwuih3c/Signed/Build/Products/Debug-iphoneos/AEDResponse.app (in target 'AEDResponse' from project 'AEDResponse')
+    cd [BUILD_CACHE]/action-map-first-20261026.hkwuih3c/Source/ios
+    
+    Signing Identity:     "Apple Development: [REDACTED SIGNING IDENTITY]"
+    Provisioning Profile: "iOS Team Provisioning Profile: dev.codex.aedresponse"
+                          (REDACTED-ID-1853b8c1c38f8b6c)
+    
+    /usr/bin/codesign --force --sign [REDACTED_SIGNING_FINGERPRINT] --entitlements [BUILD_CACHE]/action-map-first-20261026.hkwuih3c/Signed/Build/Intermediates.noindex/AEDResponse.build/Debug-iphoneos/AEDResponse.build/AEDResponse.app.xcent --timestamp\=none --generate-entitlement-der [BUILD_CACHE]/action-map-first-20261026.hkwuih3c/Signed/Build/Products/Debug-iphoneos/AEDResponse.app
+
+Validate [BUILD_CACHE]/action-map-first-20261026.hkwuih3c/Signed/Build/Products/Debug-iphoneos/AEDResponse.app (in target 'AEDResponse' from project 'AEDResponse')
+    cd [BUILD_CACHE]/action-map-first-20261026.hkwuih3c/Source/ios
+    builtin-validationUtility [BUILD_CACHE]/action-map-first-20261026.hkwuih3c/Signed/Build/Products/Debug-iphoneos/AEDResponse.app -shallow-bundle -infoplist-subpath Info.plist
+
+** BUILD SUCCEEDED **
+

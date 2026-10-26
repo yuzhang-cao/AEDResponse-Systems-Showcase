@@ -1,0 +1,763 @@
+
+> aedresponse-backend@2.1.0 test
+> tsx --test --test-concurrency=1 test/config.test.ts test/cross-event-facts.test.ts test/store-commit-cache.test.ts test/release-gates.test.ts test/recruitment-scope-g13a.test.ts test/candidate-source-scope.test.ts test/retention.test.ts test/evidence-integrity.test.ts test/aed-assets.test.ts test/incremental-state.test.ts test/g13-operation-scope.test.ts test/recruitment-context-legacy.test.ts test/recruitment-audience.test.ts test/responder-eligibility.test.ts test/responder-nearby-eligibility.test.ts test/eligible-responders.test.ts test/recruitment-potential.test.ts test/recruitment-stage.test.ts test/delivery-creation.test.ts test/recruitment-refresh.test.ts test/recruitment-differential.test.ts test/response-decision-refresh-consumers.test.ts test/responder-exit-refresh-consumers.test.ts test/tx-recruitment-context.test.ts test/coordination-summary-domains.test.ts test/relevant-event-probe.test.ts test/responder-position-differential.test.ts test/responder-position-transaction.test.ts test/sqlite-index-lifecycle.test.ts test/tx-coordination-aed-reader.test.ts test/recruitment-run-metrics.test.ts test/delivery-index-route-consistency.test.ts test/recruitment-ordering.test.ts test/delivery-index.test.ts test/assignment-index.test.ts test/transaction-index-overlay.test.ts test/device-position-index.test.ts test/presence-freshness-contract.test.ts test/standby-freshness-baseline.test.ts test/position-freshness.test.ts test/position-expiry.test.ts test/state-projections.test.ts test/entity-transaction.test.ts test/presence-access.test.ts test/auth.test.ts test/apple-auth.test.ts test/amap-route.test.ts test/controlled-accounts.test.ts test/companion-link.test.ts test/domain.test.ts test/business-processing.test.ts test/business-requirement-gaps.test.ts test/api.integration.test.ts test/transport-boundary.test.ts test/store.test.ts test/windows-scripts.test.ts test/simulation.test.ts test/architecture-repair-native/response-decision-boundary.test.mts test/architecture-repair-native/responder-exit-boundary.test.mts test/architecture-repair-native/assignment-status-boundary.test.mts test/architecture-repair-native/event-resolution-boundary.test.mts test/architecture-repair-native/route-notification-boundary.test.mts test/architecture-repair-native/aed-replacement-notification-boundary.test.mts test/architecture-repair-native/reliable-notification-boundary.test.mts test/architecture-repair-native/route-provider-boundary.test.mts test/architecture-repair-native/status-confirmation-boundary.test.mts
+
+✔ Memory: HTTP asset actions enforce operator, revision, idempotency and verified availability (84.209708ms)
+✔ SQLite: HTTP asset actions enforce operator, revision, idempotency and verified availability (47.782167ms)
+✔ Amap converts derived coordinates, enforces 300-second detour and preserves WGS84 (28.9635ms)
+✔ quote cache coalesces requests and rejects different inputs or expired results (8.492875ms)
+✔ controlled account follows ordinary REST refresh, bootstrap, validation and position storage (69.597709ms)
+✔ revoking a session disconnects its existing Socket but preserves the same device's other session (32.193084ms)
+✔ HTTP logout disconnects the original Socket without requiring another business request (13.115542ms)
+✔ Watch recovery returns only its triggering event state and rejects other principals (50.428ms)
+✔ terminal outbox remains pending without a Socket and delivers after an authorized reconnect (34.702833ms)
+✔ recovery timeline never exports internal audit content to candidates or participants (74.975125ms)
+✔ HTTP bootstrap is account-authenticated, agreement-gated, scoped and strongly typed (30.442625ms)
+✔ Watch PUT drives targeted Socket.IO notifications and REST projections idempotently (136.622375ms)
+✔ Watch fallback is direct, network-gated, candidate-first and source-ordered through HTTP (82.8995ms)
+✔ iPhone P/R and presence REST drive multi-device coordination and reconnect recovery (124.064041ms)
+✔ AED and explicit-resolution endpoints preserve state truth and idempotent receipts (173.666125ms)
+✔ REFUSE does not enter N and notifies the patient plus accepted participants (51.91775ms)
+✔ arrival progress publishes coordination to every active participant and REST (85.3855ms)
+✔ an R update after activation creates and expires an offer as radius eligibility changes (1029.080417ms)
+✔ RESOLVED reaches every participant and REST clears active coordination while retaining timeline (157.864917ms)
+✔ HTTP writes survive a SQLite stop and reopen with current P/R presence task and bounded receipts (497.192833ms)
+✔ HTTP exposes the canonical patient end/status confirmation and responder exit boundaries (81.392584ms)
+✔ event position batches persist FIX/NO_NEW_FIX, are idempotent, and never regress current P/R (80.204792ms)
+✔ event position batches accept bounded late evidence after termination and reject post-event samples (82.049375ms)
+✔ standby position projection carries an explicit freshness verdict at the TTL boundary (9.575708ms)
+✔ Apple verifier binds a signed identity to a single server-issued challenge (12.056333ms)
+✔ Apple verifier rejects untrusted algorithms, claims, key URLs and invalid signatures (9.9215ms)
+✔ Apple challenges expire, cannot cross server instances, and cannot be consumed concurrently (1.763084ms)
+✔ Apple key-source outage returns 503 without consuming the login challenge (1.388708ms)
+✔ Apple REST challenge and signed login use the original account/session service (67.925417ms)
+✔ Apple audiences are explicit and malformed configuration fails closed (0.498958ms)
+✔ AED replacement assignment is enqueued before transport publication (7.093917ms)
+✔ AED acquisition has a separate transaction-owning use-case boundary (3.291833ms)
+✔ ordinary assignment status updates have one transaction-owning use-case boundary (3.7265ms)
+✔ canonical event resolution has one transaction-owning use-case boundary (3.303792ms)
+✔ false-alarm confirmation uses the same terminal use-case module (0.790458ms)
+✔ business notification paths persist before transport publication (4.103875ms)
+✔ responder exits have one transaction-owning use-case boundary (3.138708ms)
+✔ response decisions have one transaction-owning use-case boundary (3.158167ms)
+✔ patient route refreshes persist assignment emissions before transport publication (5.064708ms)
+✔ route provider is the deterministic authority for best and eligible routes (2.692791ms)
+✔ route provider fails closed for invalid geometry (0.099167ms)
+✔ service delegates route selection instead of owning a second algorithm (3.791458ms)
+✔ status confirmation response has one transaction-owning use-case entry (3.77775ms)
+✔ device ordinals survive identity updates and follow deletion, recreation, clear and rebuild (0.936709ms)
+✔ store device ordinals preserve creation order across canonical entity change sets (13.096083ms)
+✔ 1. an assignment created in the same transaction blocks immediately (0.30975ms)
+✔ 2. an assignment that exits within the same transaction stops blocking (0.191ms)
+✔ 3. an event leaving ACTIVE in the same transaction invalidates its assignment (0.1935ms)
+✔ 4. an event entering ACTIVE in the same transaction activates its existing assignment (0.279791ms)
+✔ 5. a second device sharing the identity is blocked too (0.164084ms)
+✔ 6. one of several assignments exiting leaves the device still busy (0.162459ms)
+✔ 7. an unbound device whose identity appears in this transaction is still found (0.1495ms)
+✔ 8. the check visits only the device's own assignments, not the whole collection (233.950875ms)
+✔ 9. a rolled-back transaction leaves the committed index untouched (0.201583ms)
+▶ publication revalidates committed access even without a logout notification
+  ✔ revocation (24.928959ms)
+  ✔ expiry (1.28775ms)
+  ✔ scope (1.176708ms)
+  ✔ rebinding (0.991375ms)
+✔ publication revalidates committed access even without a logout notification (29.280166ms)
+✔ failed revocation commit leaves session and its connection authorized (1.23775ms)
+✔ a fresh connection sharing a token cannot authorize the old binding's connection (0.886291ms)
+✔ post-commit observer failure cannot undo logout or prevent other revocation listeners (1.004625ms)
+✔ authorization snapshot failure disconnects connections and sends no data (0.743167ms)
+✔ unconfigured authentication providers fail closed (0.334ms)
+✔ Apple sign-in reuses one verified subject and never merges a different one (1.073333ms)
+✔ account refresh tokens rotate once and reuse revokes the token family (1.082667ms)
+✔ refresh survives access expiry and unrelated authentication cleanup (1.153375ms)
+✔ HTTP bootstrap and business paths require authenticated account/device sessions (48.87625ms)
+✔ legacy anonymous device sessions are retained as migration data but cannot authenticate (6.784166ms)
+✔ authentication and existing Socket revalidation use entity snapshots without the legacy full read (1.088334ms)
+✔ recovery/query entry points reject a principal captured before session revocation (0.948334ms)
+✔ account switch rejects legacy identity without mutation and preserves both identities on return (2.800416ms)
+✔ explicit logout can be acknowledged again without restoring business access (3.730667ms)
+✔ failed logout transaction never leaves a success receipt (1.041166ms)
+✔ expiry alone is not confirmation of explicit logout (0.8355ms)
+✔ HTTP logout repeats 204 only for a committed explicit logout (10.605833ms)
+✔ reauthenticated recovery of a cleaned device token preserves the new session (3.277875ms)
+✔ reauthenticated recovery revokes an expired old family but not the fresh login (1.539959ms)
+✔ in-app closure retains account information, marks CLOSED and revokes every session (3.98825ms)
+✔ account deletion is idempotent and requires an account-scoped bearer (1.10425ms)
+✔ HTTP account deletion returns 202 with a durable request and invalidates the bearer (30.542209ms)
+✔ business lifecycle: neutral R, patient P, private offers, acceptance, exit and durable replay (140.89775ms)
+✔ concurrent identical batches append once and conflicting same-second batches have one winner (35.657333ms)
+✔ a rejected mixed batch leaves evidence, latest projection and emissions unchanged (19.001209ms)
+✔ an unfinished final second rejects the whole batch then accepts the original retry at the boundary (13.404625ms)
+✔ sixty participant seconds recover out of order without fabricated fixes or latest-position regression (42.077083ms)
+✔ nearby volunteer summary uses the viewer R sample and cumulative unique users (11.725125ms)
+✔ nearby volunteer summary ignores volunteers beyond the widest ring without a shadow disagreement (5.276416ms)
+✔ nearby volunteer summary requires a fresh viewer location and excludes unusable responders (11.962917ms)
+✔ nearby volunteer summary excludes active patient and accepted responder identities (37.396709ms)
+✔ nearby volunteer summary includes the inclusive 1 km, 1.5 km and 2 km boundaries (6.98825ms)
+✔ sampling tier remains geographic after refused or expired offers and is recomputed on replay (53.733166ms)
+✔ V2-A09 control: five accepted responders use two distinct AEDs and three patient tasks (133.230333ms)
+✔ V2-A09: no available AED must still accept two responders and send both to the patient (24.948583ms)
+✔ V2-A09: one available AED at N=5 must yield one AED task and four patient tasks (113.584667ms)
+✔ V2-A08/A11: an unstarted AED responder exiting N=3 must refill the AED role at N=2 (83.23725ms)
+✔ V2-A11: an unconfirmed sole-responder exit is rejected without transaction mutation (13.101167ms)
+✔ V2-A11: a verified sole-responder exit is idempotent and the assertion is fingerprinted (17.297458ms)
+✔ V2-A11: serialized N=2 to N=1 exits require confirmation only for the second transaction (53.451083ms)
+✔ V2-A11: N=0 with no patient P remains ACTIVE and does not invoke a P-dependent replan (19.383542ms)
+✔ V2-A11: reopening recruitment after N=0 can issue a fresh offer without ending the event (37.604583ms)
+✔ V2-A11: a completed recruitment phase reopens and immediately replenishes below the target (55.8175ms)
+✔ V2-A11: exit-triggered replan timestamps changed assignments at receipt time, not a slow client claim (118.240791ms)
+✔ V2-A11 contract: soleResponderConfirmed accepts only true or omission (0.533958ms)
+✔ V2-A08/A11: exit replan preserves an acquired AED assignment and never reuses its AED (137.187167ms)
+✔ V2-A08/A11: an exiting AED owner leaves a handoff gap and the acquired AED stays reserved (106.53725ms)
+✔ V2-A08/A11: exit replacement ranks the complete local R-A-P ETA, not only R-A distance (85.979792ms)
+✔ an indexed candidate call resolves nothing from collection order (1.723416ms)
+✔ without an index the same call falls back to collection order (0.62025ms)
+✔ a ring with no fix still falls back instead of returning nothing (0.182833ms)
+✔ the ordinal comparator places index hits, staged keys and unknowns (0.286833ms)
+✔ the ordinal comparator resolves collection order only for unplaceable keys (0.126959ms)
+Notification dispatch incomplete; durable records retained for retry
+Notification dispatch incomplete; durable records retained for retry
+Notification dispatch incomplete; durable records retained for retry
+Notification dispatch incomplete; durable records retained for retry
+Notification dispatch incomplete; durable records retained for retry
+Notification dispatch incomplete; durable records retained for retry
+Notification dispatch incomplete; durable records retained for retry
+Notification dispatch incomplete; durable records retained for retry
+Notification dispatch incomplete; durable records retained for retry
+✔ companion link binds user/device/pair, computes verifier challenge, and issues Watch refresh (27.059333ms)
+✔ companion tickets reject provider absence, expiry, wrong pair/device and replay (2.5475ms)
+✔ companion ticket consumption is serialized and cannot be replayed concurrently (3.33825ms)
+✔ wrong-user Watch binding and iPhone logout revoke Watch access, refresh, and tickets (8.340042ms)
+✔ the same user cannot keep a responder role on another iPhone or pair (54.323416ms)
+✔ Watch refresh survives access expiry cleanup, then rotates once and detects reuse (4.267459ms)
+✔ HTTP exposes the single Watch redeem/refresh contract and rejects legacy Watch bootstrap (64.357167ms)
+✔ network and positioning policy are configurable without embedding a personal address (0.989583ms)
+✔ production requires explicit positioning boundaries (0.294917ms)
+✔ Apple simulation needs exactly two distinct explicit devices and private IPC (1.005625ms)
+✔ production refuses to start on a demo catalogue or the reference route (0.192834ms)
+✔ only declared proxy peers may supply the forwarded client address (0.148041ms)
+✔ controlled provisioning is disabled by default and never issues operator scope (17.136541ms)
+✔ controlled account uses normal consent, session, R validation and persistence (17.412334ms)
+✔ controlled identities and refresh rotation survive normal SQLite reopen (27.233584ms)
+✔ controlled test switch requires an explicit boolean string (0.716166ms)
+✔ the AED figure counts distinct acquired AEDs of this event only (19.593125ms)
+✔ every summary field agrees with an independent recomputation (1.357917ms)
+✔ R09: an active responder keeps its position when an older event's ACCEPTED delivery sorts first (11.113125ms)
+✔ R09 control: a responder with no live participation does have its old position reclaimed (1.600208ms)
+✔ R02: a new event never assigns an AED that another event already holds (135.957208ms)
+✔ R02 control: a second AED still lets both events each hold one (152.863167ms)
+✔ G06: actual acquisition and holder exit keep an AED unavailable until a verified return (322.003458ms)
+✔ patient withdrawal has its own terminal fact and permits later account logout (6.149458ms)
+✔ eligible device gets exactly one offer, with the documented shape (14.591541ms)
+✔ guard 1: an ineligible device gets nothing (0.316417ms)
+✔ guard 2: an existing offer to this device blocks a second one (0.614375ms)
+✔ guard 3: an existing offer to this user blocks another device of that user (0.521542ms)
+✔ guard 3 uses the user query, so an unbound device is judged on its own (0.799459ms)
+✔ read-your-writes: the same context sees the offer it just created (0.335833ms)
+✔ staged: creation does not touch committed state and is visible at once (1.282875ms)
+✔ staged: the write order is delivery, timeline, notification (1.237459ms)
+✔ rollback: discarding the staged context leaves committed state clean (0.399125ms)
+✔ insert-only is measured, not assumed: the counter stays at zero normally (0.525083ms)
+✔ both routes keep the delivery index current (7.475958ms)
+✔ the entity route keeps the delivery index current (1.231334ms)
+✔ 1. a committed delivery is found by (event, device) (1.118958ms)
+✔ 2. a committed delivery is found by (event, user) (0.173125ms)
+✔ 3. a delivery created in the same transaction is visible to both lookups (0.197292ms)
+✔ 4. a device bound inside the transaction makes its delivery findable by user (0.165667ms)
+✔ 5. a stale index entry is rejected by the transaction predicate (0.135291ms)
+✔ 6. the uniqueness invariant holds and a violation is surfaced, not silently resolved (0.107958ms)
+✔ 7. a rolled-back transaction leaves the committed delivery index untouched (0.116958ms)
+✔ 8. lookups visit only the candidates the composite key names, not the whole collection (256.686ms)
+✔ the composed eligibility path agrees with a full scan, and reacts within one transaction (0.703792ms)
+✔ a radius query never omits a device that is inside the radius (14.400542ms)
+✔ the pre-filter is a superset at other latitudes, including high ones (2.166292ms)
+✔ position changes move a device between cells without leaving a stale entry (0.205917ms)
+✔ devices without a usable coordinate are not indexed (0.112ms)
+✔ an absurd radius is refused rather than walking an unbounded number of cells (0.280166ms)
+✔ event position batches enforce unique UTC-second slots and strict FIX/gap shapes (7.273875ms)
+✔ Watch history survives receipt cache limits across events and SQLite restart (717.780875ms)
+✔ Watch history rejects corrupt or reversed authoritative event windows (15.75325ms)
+✔ a rebound Watch cannot replay or append facts for the previous patient identity (6.844292ms)
+Notification dispatch incomplete; durable records retained for retry
+Notification dispatch incomplete; durable records retained for retry
+Notification dispatch incomplete; durable records retained for retry
+Notification dispatch incomplete; durable records retained for retry
+Notification dispatch incomplete; durable records retained for retry
+✔ terminal Watch fallback accepts immutable in-window history without reviving current state (13.7965ms)
+✔ Watch trigger uses the original fix time rather than the later fall or call time (4.112833ms)
+✔ untimed legacy trigger coordinates remain evidence but never become current patient P (8.318917ms)
+✔ Watch fix timestamps reject future clock violations and timestamps without coordinates (0.828458ms)
+✔ frozen assignment formula returns N=1...5 and only P/A route roles (0.194042ms)
+✔ assignment transition graph rejects role mixing and dedicated AED states (0.115208ms)
+✔ fingerprints are stable across object key order but distinguish changed observations (0.083334ms)
+✔ canonical version-neutral UUID fixture strings remain accepted (0.061709ms)
+✔ bootstrap requires four separate v2 iPhone agreements and a pre-initialized Watch pair (2.497042ms)
+✔ Watch observation is idempotent, conflicting reuse is rejected, and timeline only appends once (3.566292ms)
+✔ Watch Fall responses choose the only two legal trigger sources and enforce 120/35-minute bounds (7.384125ms)
+✔ Watch fallback stores a candidate, promotes after 10 seconds, and iPhone P wins immediately (16.561792ms)
+✔ R position and presence updates are idempotent, latest-wins and clock-skew bounded (3.435667ms)
+✔ position idempotency receipts are bounded and contain no coordinate history (37.328625ms)
+✔ patient iPhone P updates recruit, move and replay without retaining a position timeline (21.139791ms)
+✔ recruitment expands only when potential is insufficient or a stage times out (116.923292ms)
+✔ offers are accepted at exactly 30 seconds and expire after the boundary (21.52575ms)
+✔ client action time claims are causal, server-capped, replay-stable, and end-exclusive (16.510208ms)
+✔ event resolution uses an authoritative end and exposes only the viewer's own evidence window (24.0205ms)
+✔ an open or fast-clock position slot returns retryable 425 and cannot block patient end (17.687709ms)
+✔ inclusive radius, freshness and accuracy boundaries exclude only values above policy (14.094583ms)
+✔ a responder with an active assignment is excluded from another event (20.26025ms)
+✔ acceptance revalidates the persisted R sample in the same transaction (8.24ms)
+✔ nearby filtering uses server positions, freshness and accuracy; projections are least-privilege (14.62275ms)
+✔ coarse patient accuracy creates the patient event without recruiting responders (3.197666ms)
+✔ an active patient is never recruited as a responder for another event (6.445834ms)
+✔ becoming a patient expires an existing acceptance and replans the old event (50.256333ms)
+✔ an expired responder request cannot be revived after the patient event ends (33.436791ms)
+✔ patient priority preserves another responder's already acquired AED work (63.5445ms)
+✔ accepted responders are replanned to the frozen N=1...5 role counts (227.579542ms)
+✔ new acceptances fill role gaps without changing an in-action assignment (88.337167ms)
+✔ TIMED_OUT and CANCELLED exit N while COMPLETED and AED_UNAVAILABLE remain participants (21.617166ms)
+✔ AED_ACQUIRED is idempotent and completion never auto-resolves the patient event (79.964666ms)
+✔ AED_UNAVAILABLE is idempotent and creates an R-A-P replacement using another AED (26.429459ms)
+✔ a second AED_UNAVAILABLE report in one event commits its own outbox intent (343.151333ms)
+✔ AED replacement assignment notification commits with the unavailable report (39.814667ms)
+✔ explicit patient false-alarm confirmation cancels coordination but elapsed time does not (16.015666ms)
+✔ committed end survives publisher failure and retries its durable messages once available (36.42725ms)
+✔ response decision fan-out commits in the outbox and replays once after reconnect (15.187959ms)
+✔ pending response decision delivery rechecks exit authorization before handoff (18.104666ms)
+✔ ordinary assignment updates commit in the outbox and replay after reconnect (29.24825ms)
+✔ pending assignment update is suppressed after the owner exits (22.4335ms)
+✔ exit replan assignment notifications commit and replay for the remaining responder (28.938459ms)
+✔ patient route refresh assignment notifications commit with the position transaction (39.684416ms)
+✔ outbox completes only the connected subset of an authorized audience (11.69125ms)
+✔ no publisher cannot consume a durable terminal notification (5.302417ms)
+Notification dispatch incomplete; durable records retained for retry
+Notification dispatch incomplete; durable records retained for retry
+Notification dispatch incomplete; durable records retained for retry
+Notification dispatch incomplete; durable records retained for retry
+Notification dispatch incomplete; durable records retained for retry
+Notification dispatch incomplete; durable records retained for retry
+Notification dispatch incomplete; durable records retained for retry
+Notification dispatch incomplete; durable records retained for retry
+✔ outbox restart uses persisted messages and suppresses rebound or withdrawn audiences (111.6645ms)
+✔ a failed end commit emits nothing and failed dispatch acknowledgement retries the same message (8.113834ms)
+✔ accept and end serialize without terminal assignments or new participation (20.935709ms)
+✔ the canonical patient end action maps each reason exactly once (13.222625ms)
+✔ responder exit revokes event access and permanently blocks stable user re-entry (20.288875ms)
+✔ a timed-out responder may ACK pre-exit evidence but cannot restore access or latest position (15.075833ms)
+✔ status confirmation requests at T+30, restarts on CONTINUE, and closes only at T+35 (7.282709ms)
+✔ CONTINUE is idempotent and restarts a durable status-confirmation cycle (6.806416ms)
+✔ expired Watch trigger recovery replays only the existing exact observation without recreating a terminal event (4.801792ms)
+✔ Watch absent snapshot may precede a trigger transaction already admitted before the creation deadline (2.636917ms)
+✔ Watch state recovery uses only selected entities and preserves original projection and denial semantics (2.243333ms)
+✔ Watch creation rolls back atomically and activation outbox survives lost dispatch ACK (3.956334ms)
+✔ answered status-confirmation notification is suppressed when delayed outbox retries (16.296625ms)
+✔ reachable iPhone admits Watch only after server silence and never promotes expired candidate (5.411417ms)
+✔ prepared walking quotes supply committed AED assignments instead of geometric ETA (21.731792ms)
+✔ case 1: candidates arrive reversed, the result is still ascending (25.271083ms)
+✔ case 2: two eligible devices of one identity keep the smaller id (0.5ms)
+✔ case 3: an ineligible small id must not evict an eligible larger one (0.490167ms)
+✔ case 4: different identities are all kept and ordered by device id (0.473ms)
+✔ case 5: unrelated candidates are filtered out without disturbing the result (0.7415ms)
+✔ candidate contract: no deviceInstanceId is handed out twice (0.139625ms)
+✔ commit 1 diagnostic: the legacy candidate set is still every device (3.185ms)
+✔ incremental transaction touches only the changed entity, never the whole state (10.300792ms)
+✔ empty change set performs no commit and no whole-state work (14.827959ms)
+✔ reads see staged writes and never expose store-owned references (0.30525ms)
+✔ appends are idempotent for identical content and rejected for different content (1.316209ms)
+✔ a failing transaction discards staged changes and leaves committed state intact (9.618375ms)
+✔ sealed transactions reject further mutation (0.322916ms)
+✔ change-set rules still protect evidence and reject illegal writes (0.416083ms)
+✔ incremental writes persist across a SQLite reopen (4.718584ms)
+✔ shadow validation is opt-in and attributed separately when enabled (0.757125ms)
+✔ publication: new deliveries keep creation order, not canonical order (2.874958ms)
+✔ publication: canonical change-set order is unchanged by the ordinal (0.2615ms)
+✔ publication: an entity's ordinal is assigned on first staging and never moves (0.26075ms)
+✔ publication: a rolled-back transaction leaves no ordinal trace (0.291917ms)
+✔ Memory: signed transactions verify data, rollback, replay and terminal manifest (28.501542ms)
+✔ SQLite: signed transactions verify data, rollback, replay and terminal manifest (15.486666ms)
+✔ evidence: unsigned legacy data receives a dated baseline, trust rotation keeps old signatures verifiable (2.1845ms)
+✔ evidence: signing key persists with restricted mode and is never silently replaced for signed data (17.602791ms)
+✔ evidence: SQLite commit failure does not advance the signature head or durable data (6.408417ms)
+✔ evidence: expiry erases the chain but leaves a verifiable signed purge authorization (2.441125ms)
+✔ evidence: a persisted key never silently re-baselines a database with missing signatures (9.259625ms)
+✔ Memory: all G13 HTTP entrypoints stay local with real tick/outbox and survive reopen (657.426875ms)
+ℹ {"kind":"Memory","farUsers":[0,250,1000],"rows":[{"phase":"create","candidates":40,"clones":0,"keyVisits":0,"entityLoads":56,"rebuilds":0},{"phase":"responder_position","candidates":15,"clones":0,"keyVisits":0,"entityLoads":22,"rebuilds":0},{"phase":"tick_and_event_read","candidates":20,"clones":0,"keyVisits":0,"entityLoads":19,"rebuilds":0},{"phase":"accept","candidates":35,"clones":0,"keyVisits":0,"entityLoads":67,"rebuilds":0},{"phase":"patient_position","candidates":35,"clones":0,"keyVisits":0,"entityLoads":75,"rebuilds":0},{"phase":"patient_batch","candidates":35,"clones":0,"keyVisits":0,"entityLoads":91,"rebuilds":0},{"phase":"batch_replay","candidates":0,"clones":0,"keyVisits":0,"entityLoads":3,"rebuilds":0},{"phase":"presence","candidates":35,"clones":0,"keyVisits":0,"entityLoads":95,"rebuilds":0},{"phase":"responder_batch","candidates":0,"clones":0,"keyVisits":0,"entityLoads":71,"rebuilds":0},{"phase":"exit","candidates":30,"clones":0,"keyVisits":0,"entityLoads":57,"rebuilds":0},{"phase":"presence_read","candidates":9,"clones":0,"keyVisits":0,"entityLoads":53,"rebuilds":0},{"phase":"nearby","candidates":0,"clones":0,"keyVisits":0,"entityLoads":9,"rebuilds":0},{"phase":"watch_read","candidates":0,"clones":0,"keyVisits":0,"entityLoads":0,"rebuilds":0},{"phase":"watch_fallback","candidates":29,"clones":0,"keyVisits":0,"entityLoads":168,"rebuilds":0},{"phase":"tick_expansion","candidates":28,"clones":0,"keyVisits":0,"entityLoads":161,"rebuilds":0},{"phase":"scheduled_tick","candidates":9,"clones":0,"keyVisits":0,"entityLoads":10,"rebuilds":0},{"phase":"end","candidates":24,"clones":0,"keyVisits":0,"entityLoads":50,"rebuilds":0},{"phase":"end_replay","candidates":4,"clones":0,"keyVisits":0,"entityLoads":45,"rebuilds":0},{"phase":"terminal_list","candidates":4,"clones":0,"keyVisits":0,"entityLoads":12,"rebuilds":0},{"phase":"terminal_aeds","candidates":4,"clones":0,"keyVisits":0,"entityLoads":12,"rebuilds":0}]}
+✔ SQLite: all G13 HTTP entrypoints stay local with real tick/outbox and survive reopen (734.639458ms)
+ℹ {"kind":"SQLite","farUsers":[0,250,1000],"rows":[{"phase":"create","candidates":40,"clones":0,"keyVisits":0,"entityLoads":56,"rebuilds":0},{"phase":"responder_position","candidates":15,"clones":0,"keyVisits":0,"entityLoads":22,"rebuilds":0},{"phase":"tick_and_event_read","candidates":20,"clones":0,"keyVisits":0,"entityLoads":19,"rebuilds":0},{"phase":"accept","candidates":35,"clones":0,"keyVisits":0,"entityLoads":67,"rebuilds":0},{"phase":"patient_position","candidates":35,"clones":0,"keyVisits":0,"entityLoads":75,"rebuilds":0},{"phase":"patient_batch","candidates":35,"clones":0,"keyVisits":0,"entityLoads":91,"rebuilds":0},{"phase":"batch_replay","candidates":0,"clones":0,"keyVisits":0,"entityLoads":3,"rebuilds":0},{"phase":"presence","candidates":35,"clones":0,"keyVisits":0,"entityLoads":95,"rebuilds":0},{"phase":"responder_batch","candidates":0,"clones":0,"keyVisits":0,"entityLoads":71,"rebuilds":0},{"phase":"exit","candidates":30,"clones":0,"keyVisits":0,"entityLoads":57,"rebuilds":0},{"phase":"presence_read","candidates":9,"clones":0,"keyVisits":0,"entityLoads":53,"rebuilds":0},{"phase":"nearby","candidates":0,"clones":0,"keyVisits":0,"entityLoads":9,"rebuilds":0},{"phase":"watch_read","candidates":0,"clones":0,"keyVisits":0,"entityLoads":0,"rebuilds":0},{"phase":"watch_fallback","candidates":29,"clones":0,"keyVisits":0,"entityLoads":168,"rebuilds":0},{"phase":"tick_expansion","candidates":28,"clones":0,"keyVisits":0,"entityLoads":161,"rebuilds":0},{"phase":"scheduled_tick","candidates":9,"clones":0,"keyVisits":0,"entityLoads":10,"rebuilds":0},{"phase":"end","candidates":24,"clones":0,"keyVisits":0,"entityLoads":50,"rebuilds":0},{"phase":"end_replay","candidates":4,"clones":0,"keyVisits":0,"entityLoads":45,"rebuilds":0},{"phase":"terminal_list","candidates":4,"clones":0,"keyVisits":0,"entityLoads":12,"rebuilds":0},{"phase":"terminal_aeds","candidates":4,"clones":0,"keyVisits":0,"entityLoads":12,"rebuilds":0}]}
+✔ G13 whole-operation guard rejects the real legacy transaction fallback (6693.220417ms)
+✔ Memory: entity draft overlays movement, deletion, identity, insertion order and detached return values (42.413208ms)
+✔ Memory: failed draft leaves geographic, relation and outbox deadline indexes unchanged (5.89175ms)
+✔ SQLite: entity draft overlays movement, deletion, identity, insertion order and detached return values (28.259833ms)
+✔ SQLite: failed draft leaves geographic, relation and outbox deadline indexes unchanged (8.277583ms)
+✔ SQLite: commit failure rolls back a flushed draft and every index, then the same operation can commit (7.343792ms)
+✔ deadline heap ignores future history, preserves due insertion order and stays bounded on retries (23.585875ms)
+✔ production logs an explicit warning when a store cannot provide recruitment indexes (1.127292ms)
+✔ popDue returns only devices whose expiry has passed, in expiry order (1.578834ms)
+✔ a superseded entry is discarded rather than reported as due (0.1045ms)
+✔ the heap stays bounded while a device keeps uploading (0.932584ms)
+✔ removal and rebuild keep the index consistent with committed devices (1.028041ms)
+✔ applyDeviceChanges maintains only the changed devices (0.334417ms)
+✔ the exact boundary is exclusive: exactly 600 s is still valid (4.436667ms)
+✔ future and unparseable timestamps keep their original treatment (0.115209ms)
+✔ the shared predicate agrees with the original expression over a wide sweep (0.424875ms)
+✔ a different maxAge moves the boundary consistently (0.0985ms)
+Notification dispatch incomplete; durable records retained for retry
+Notification dispatch incomplete; durable records retained for retry
+Notification dispatch incomplete; durable records retained for retry
+Notification dispatch incomplete; durable records retained for retry
+Notification dispatch incomplete; durable records retained for retry
+✔ narrow accessor materialises each collection at most once per computation (3.272291ms)
+✔ narrow accessor never enumerates devices and never exposes live state (0.590708ms)
+✔ view-path and live-path presence projections agree on a seeded scenario (59.037792ms)
+Notification dispatch incomplete; durable records retained for retry
+Notification dispatch incomplete; durable records retained for retry
+Notification dispatch incomplete; durable records retained for retry
+Notification dispatch incomplete; durable records retained for retry
+✔ response stage performs no whole-state read and loads no irrelevant collection (34.213667ms)
+✔ the readEntities compatibility helper falls back to a whole-state read when unsupported (0.527333ms)
+Notification dispatch incomplete; durable records retained for retry
+Notification dispatch incomplete; durable records retained for retry
+Notification dispatch incomplete; durable records retained for retry
+Notification dispatch incomplete; durable records retained for retry
+Notification dispatch incomplete; durable records retained for retry
+Notification dispatch incomplete; durable records retained for retry
+Notification dispatch incomplete; durable records retained for retry
+Notification dispatch incomplete; durable records retained for retry
+Notification dispatch incomplete; durable records retained for retry
+Notification dispatch incomplete; durable records retained for retry
+Notification dispatch incomplete; durable records retained for retry
+Notification dispatch incomplete; durable records retained for retry
+Notification dispatch incomplete; durable records retained for retry
+Notification dispatch incomplete; durable records retained for retry
+Notification dispatch incomplete; durable records retained for retry
+Notification dispatch incomplete; durable records retained for retry
+Notification dispatch incomplete; durable records retained for retry
+Notification dispatch incomplete; durable records retained for retry
+Notification dispatch incomplete; durable records retained for retry
+Notification dispatch incomplete; durable records retained for retry
+Notification dispatch incomplete; durable records retained for retry
+Notification dispatch incomplete; durable records retained for retry
+Notification dispatch incomplete; durable records retained for retry
+Notification dispatch incomplete; durable records retained for retry
+Notification dispatch incomplete; durable records retained for retry
+Notification dispatch incomplete; durable records retained for retry
+Notification dispatch incomplete; durable records retained for retry
+Notification dispatch incomplete; durable records retained for retry
+Notification dispatch incomplete; durable records retained for retry
+Notification dispatch incomplete; durable records retained for retry
+Notification dispatch incomplete; durable records retained for retry
+Notification dispatch incomplete; durable records retained for retry
+Notification dispatch incomplete; durable records retained for retry
+Notification dispatch incomplete; durable records retained for retry
+Notification dispatch incomplete; durable records retained for retry
+Notification dispatch incomplete; durable records retained for retry
+Notification dispatch incomplete; durable records retained for retry
+Notification dispatch incomplete; durable records retained for retry
+Notification dispatch incomplete; durable records retained for retry
+Notification dispatch incomplete; durable records retained for retry
+Notification dispatch incomplete; durable records retained for retry
+Notification dispatch incomplete; durable records retained for retry
+Notification dispatch incomplete; durable records retained for retry
+Notification dispatch incomplete; durable records retained for retry
+Notification dispatch incomplete; durable records retained for retry
+Notification dispatch incomplete; durable records retained for retry
+Notification dispatch incomplete; durable records retained for retry
+Notification dispatch incomplete; durable records retained for retry
+✔ freshness verdicts follow the frozen rule and boundary (1.795209ms)
+✔ an ACTIVE participant retains a last-known position and is marked past its window (270.96775ms)
+✔ no position at all is UNAVAILABLE, never FRESH or STALE (0.636125ms)
+✔ an uninterpretable timestamp is UNAVAILABLE even though the coordinate is retained (31.466667ms)
+✔ ageSeconds is a display value and freshness is the authority (41.693709ms)
+✔ lock 1: with no accepted responder the audience is patient-side only (3.133042ms)
+✔ lock 2: an accepted responder joins the audience, patient first (0.427209ms)
+✔ lock 3: two devices of one identity contribute a single audience entry (34.322125ms)
+✔ lock 4: a draft context sees an acceptance written in the same transaction (0.860333ms)
+✔ the accident: a committed context cannot see an in-transaction acceptance (0.417917ms)
+✔ assertDraftContext rejects committed semantics and accepts draft (1.823542ms)
+✔ the mode is carried on the value, not implied by the factory name (0.376791ms)
+✔ a committed context cannot satisfy the draft type (compile-time lock) (0.278042ms)
+✔ candidateDevices still answers with the whole collection (not yet narrowed) (3.228708ms)
+✔ deliveriesOfEvent still filters the whole collection rather than using an index (2.062166ms)
+✔ hasActiveAssignmentForDevice answers the same question the inline scan did (0.728084ms)
+✔ hasActiveAssignmentForDevice matches on identity, not only on the device (0.113792ms)
+✔ the context writes through to the same state the algorithm used to mutate (1.084792ms)
+✔ the baseline is a verbatim copy, not a retelling (1.049208ms)
+✔ differential: one free candidate receives an offer (25.103958ms)
+✔ differential: several candidates, mixed identities, offers in sorted order (2.352334ms)
+✔ differential: an expired offer is swept and the candidate is re-offered (1.386167ms)
+✔ differential: an offer whose device became ineligible is swept (4.527208ms)
+✔ differential: a live offer to an eligible device is left alone (1.375417ms)
+✔ differential: another event's expired offer is not touched (1.156917ms)
+✔ differential: the ring widens when potential is below target (0.799542ms)
+✔ differential: the ring widens only one stage at target with a stale clock (3.081416ms)
+✔ differential: an inactive event (0.989ms)
+✔ differential: a non-recruiting event with forceRevision (0.72025ms)
+✔ differential: an accepted responder blocks its own identity's second device (0.858333ms)
+✔ differential: an unrecognised radius is snapped before widening (0.953084ms)
+✔ differential: the comparison actually distinguishes the two sides (1.434584ms)
+Notification dispatch incomplete; durable records retained for retry
+Notification dispatch incomplete; durable records retained for retry
+Notification dispatch incomplete; durable records retained for retry
+Notification dispatch incomplete; durable records retained for retry
+Notification dispatch incomplete; durable records retained for retry
+Notification dispatch incomplete; durable records retained for retry
+Notification dispatch incomplete; durable records retained for retry
+Notification dispatch incomplete; durable records retained for retry
+✔ offers are created in ascending deviceInstanceId order, not enumeration order (39.144458ms)
+✔ identity deduplication keeps the lexicographically smallest device (10.786917ms)
+✔ deliveryIsLive status table: exactly SENT/DELIVERED/VIEWED are live (6.057167ms)
+✔ deliveryIsLive also depends on expiry, not only on status (1.263209ms)
+✔ the user/device lookup is a choice, not an OR (10.190542ms)
+✔ when both queries can hit, the user query is the one that decides (0.398625ms)
+✔ no delivery at all leaves the eligible set untouched (0.327167ms)
+✔ the delivery filter runs after identity de-duplication and does not back-fill (0.360416ms)
+✔ transaction semantics: a delivery written in this transaction is seen at once (0.284334ms)
+✔ commit 1 diagnostic: the legacy context still scans deliveries per candidate (9.855625ms)
+✔ sweep: an offer past its window expires once, with its own reason (25.847875ms)
+✔ sweep: an offer whose device stopped being eligible expires with the other reason (1.034959ms)
+✔ sweep: another event's offers are untouched (3.58875ms)
+✔ sweep: a live offer to a still-eligible device is left alone (0.466917ms)
+✔ sweep on a staged context: expiry is staged, and the sweep sees its own writes (0.825042ms)
+✔ selection order: the lexicographically first device of an identity gets the offer (0.714458ms)
+✔ selection order holds when the candidate source is reversed (0.475833ms)
+✔ offers are created for every ineligible-free candidate, in device id order (1.112ms)
+✔ the revision advances once, through the context, when anything changed (1.908458ms)
+✔ an inactive event writes nothing and reports no offers (0.83675ms)
+✔ a non-recruiting event only bumps the revision, and only when forced (1.099083ms)
+✔ read-your-writes: an offer created here is seen by the sweep's own lookup (2.019542ms)
+✔ offer deadline: staged create, live AT the deadline, expired one ms later (1.219625ms)
+✔ after an expiry both the device and the user lookup report EXPIRED (0.617625ms)
+✔ repeat refresh: the second pass emits no duplicate effects (1.278042ms)
+✔ cumulative revision: one per changed pass, and the committed event stays put (1.189ms)
+✔ cross-collection write order: expiries, then the event, then new offers (0.548583ms)
+✔ a missing updateDelivery aborts before any notification or timeline effect (1.104125ms)
+✔ tick() counts as an indexed run and never as a fallback (6.122833ms)
+✔ the counters are per operation, not per event (0.741125ms)
+✔ the three counters are distinct fields with distinct meanings (0.804708ms)
+✔ G13-A: creating an event does not visit volunteers outside the ring (227.556375ms)
+✔ G13-A: event creation enumerates no device keys while the indexes answer (181.1445ms)
+✔ G13-A control: the same candidate count holds at an intermediate history size (103.073167ms)
+✔ no patient position: nothing is written and the stage clock stays unset (3.144708ms)
+✔ first valid P starts the stage clock, then widens while short of target (0.788792ms)
+✔ an unrecognised radius is snapped to the first stage and the clock restarted (8.264875ms)
+✔ at target with a fresh clock nothing widens (0.371792ms)
+✔ at target with a stale clock the ring widens exactly one stage (0.460167ms)
+✔ exactly at the stage timeout does not widen (0.250667ms)
+✔ read-your-writes: the same context sees the write it just made (0.246042ms)
+✔ the updated event object is returned so the caller can rebind (0.283041ms)
+✔ updateEvent returns undefined for an event this view does not have (0.101333ms)
+✔ stage expansion stops at the widest ring even when short of target (0.241125ms)
+✔ the algorithm is already transaction-shaped: writes go through the context (0.550958ms)
+✔ a second call through the staged context sees the first call's staged state (0.389458ms)
+✔ an adapter that stages a change but returns nothing is refused, not absorbed (1.221292ms)
+✔ the legal readiness gate blocks placeholder legal info and passes complete info (336.742417ms)
+✔ the Caddyfile keeps header_up inside the reverse_proxy block (0.844042ms)
+✔ the relevance probe reports at least one, not exactly one (5.558334ms)
+✔ the legacy refresh set is every ACTIVE+RECRUITING event, not the probe's one (11.049458ms)
+✔ baseline: a fully eligible responder device passes (2.700625ms)
+✔ truth table: each rejection reason refuses on its own (2.2915ms)
+✔ assignment: only a live assignment on an ACTIVE event refuses (0.689417ms)
+✔ identity: an unbound device and its bound twin are judged separately (0.353ms)
+✔ time: the freshness boundary is unchanged by the context migration (0.976792ms)
+✔ commit 1 diagnostic: the legacy context still scans every assignment row (1.687333ms)
+✔ the exit refresh returns a detached object with a different revision (10.5965ms)
+✔ the exit notification receives the refreshed event, not the opened one (3.395166ms)
+✔ baseline: a base-eligible device inside the ring qualifies (5.819167ms)
+✔ ring: the comparison is `<=` on distance and the event radius (0.444875ms)
+✔ event relationship: state, recruitment stage, patient and exited responders (0.976541ms)
+✔ requireRecruiting=false ignores the stage, which is why presenceView passes it (0.353791ms)
+✔ accepted deliveries block by identity, not by device or user (0.489792ms)
+✔ transaction semantics: a delivery accepted in this transaction blocks at once (0.266875ms)
+✔ position inputs: missing, inaccurate and stale patient samples refuse (0.245125ms)
+✔ commit 1 diagnostic: the legacy context still scans every delivery row (6.083375ms)
+✔ full responder-position differential: a position and its receipt precede all recruitment writes (49.049ms)
+✔ full responder-position differential: same identity uses the first sorted device and sees its staged offer (13.454791ms)
+✔ full responder-position differential: just entered the ring reads the staged position missing from the committed index (10.978834ms)
+✔ full responder-position differential: just left one ring while another ring keeps the relevance gate open (23.468417ms)
+✔ full responder-position differential: a user bound in this transaction excludes its assigned sibling (2.666209ms)
+✔ full responder-position differential: an existing active assignment prevents another offer (1.534375ms)
+✔ full responder-position differential: accepted identity and assignment remain reflected in coordination (13.80875ms)
+✔ full responder-position differential: staged AED receipt is visible in the returned coordination and notification (10.230958ms)
+✔ full responder-position differential: multiple recruiting events include the distant event once the probe matches (44.754833ms)
+✔ full responder-position differential: offer remains live exactly at the expiresAt boundary (4.996542ms)
+✔ full responder-position differential: patient without R position and same-user different-pair iPhone receive coordination (9.736625ms)
+✔ full responder-position differential: patient audience keeps device insertion order across geographic and identity candidates (14.831166ms)
+✔ full responder-position differential: unchanged timestamp is idempotent and does not run recruitment (1.566083ms)
+✔ full responder-position differential: older position retains latest position and records a stale receipt (2.939625ms)
+✔ full responder-position differential: receipt replay retains the first evidence and emits no second recruitment update (7.666041ms)
+✔ full responder-position differential: staged position receipt participates in the 64-entry retention limit (15.292375ms)
+✔ full responder-position scope: unrelated events receive no recruitment at all (1.072541ms)
+✔ full responder-position scope: leaving every ring preserves the former no-recruitment branch (0.720208ms)
+✔ full responder-position capability: entity route without projections (17.744166ms)
+✔ full responder-position capability: entity route without devicePositions (19.6575ms)
+✔ full responder-position capability: entity route without assignmentIndex (14.625667ms)
+✔ full responder-position capability: entity route without deliveryIndex (15.896125ms)
+✔ full responder-position capability: entity route without projections + devicePositions + assignmentIndex + deliveryIndex (14.111958ms)
+✔ full responder-position rejection: missing device (1.038125ms)
+✔ full responder-position rejection: missing agreement (0.699625ms)
+✔ full responder-position rejection: location capability denied (0.725125ms)
+✔ full responder-position rejection: active patient identity (0.747584ms)
+✔ full responder-position rejection: conflicting same timestamp (0.969917ms)
+✔ full responder-position rejection: receipt identity reused (0.796333ms)
+✔ full responder-position rejection: invalid timestamp (0.588875ms)
+✔ full responder-position rejection: future timestamp (0.590625ms)
+✔ full responder-position rejection: missing scope (0.584166ms)
+✔ full responder-position rejection: Watch principal (0.555792ms)
+✔ Memory: position operation rolls back after staging devices (33.0645ms)
+✔ Memory: position operation rolls back after staging positionUpdateReceiptsById (1.26875ms)
+✔ Memory: position operation rolls back after staging events (3.241375ms)
+✔ Memory: position operation rolls back after staging deliveries (1.965792ms)
+✔ Memory: position operation rolls back after staging timelineByEventId (1.171375ms)
+✔ Memory: position operation rolls back after staging notificationOutboxById (5.214291ms)
+✔ Memory: successful recruiting position write uses one business entity transaction before real outbox work (6.886292ms)
+✔ SQLite: position operation rolls back after staging devices (31.222125ms)
+✔ SQLite: position operation rolls back after staging positionUpdateReceiptsById (4.203459ms)
+✔ SQLite: position operation rolls back after staging events (3.79625ms)
+✔ SQLite: position operation rolls back after staging deliveries (6.014625ms)
+✔ SQLite: position operation rolls back after staging timelineByEventId (3.760833ms)
+✔ SQLite: position operation rolls back after staging notificationOutboxById (4.645584ms)
+✔ SQLite: successful recruiting position write uses one business entity transaction before real outbox work (9.762ms)
+✔ Memory: business recruitment visits stay bounded while the real response tail remains separately measured (33.053542ms)
+ℹ {"unrelated":[0,250],"business":{"devices":14,"deliveries":16,"assignments":4,"aedReceipts":1},"wholeOperation":[{"devices":14,"deliveries":17,"assignments":5,"aedReceipts":1},{"devices":14,"deliveries":17,"assignments":5,"aedReceipts":1}]}
+✔ SQLite: business recruitment visits stay bounded while the real response tail remains separately measured (54.406917ms)
+ℹ {"unrelated":[0,250],"business":{"devices":14,"deliveries":16,"assignments":4,"aedReceipts":1},"wholeOperation":[{"devices":14,"deliveries":17,"assignments":5,"aedReceipts":1},{"devices":14,"deliveries":17,"assignments":5,"aedReceipts":1}]}
+✔ position capability fallback, indexed recruitment and tick have distinct per-operation metrics (3.875334ms)
+✔ rollback guard rejects a store that commits the staged prefix before reporting failure (6.017667ms)
+✔ structural guard rejects a geographic candidate query that includes unrelated history (15.902334ms)
+✔ Memory: a position write does not enumerate device keys once the indexes answer (89.6805ms)
+✔ SQLite: a position write does not enumerate device keys once the indexes answer (155.321417ms)
+✔ the refresh really does return a detached object with a different revision (9.545875ms)
+✔ every post-refresh consumer receives the refreshed event, not the opened one (0.178667ms)
+✔ retention: nothing happens before the 30-day boundary, sealing happens after it (55.137209ms)
+✔ retention: the 3-year purge deletes raw evidence and keeps only an aggregate (26.346917ms)
+✔ retention: a legal hold freezes the event and a release resumes the clock (26.273416ms)
+✔ retention: purging an unauthorised event is impossible (0.323167ms)
+✔ retention: the sweep is idempotent and makes no whole-state read when nothing is due (18.365083ms)
+✔ retention: the planner is a pure function of the clock (0.133958ms)
+✔ retention: an operator principal is required for legal holds (21.539542ms)
+✔ retention: failed deletion retries after restart and the authorization cannot be rewritten (32.776459ms)
+✔ retention: three calendar years do not purge a leap-year interval one day early (0.15575ms)
+Notification dispatch incomplete; durable records retained for retry
+Notification dispatch incomplete; durable records retained for retry
+Notification dispatch incomplete; durable records retained for retry
+Notification dispatch incomplete; durable records retained for retry
+Notification dispatch incomplete; durable records retained for retry
+Notification dispatch incomplete; durable records retained for retry
+✔ simulation is explicit, durable, scoped to two devices and uses ordinary task acceptance (66.570625ms)
+Notification dispatch incomplete; durable records retained for retry
+Notification dispatch incomplete; durable records retained for retry
+Notification dispatch incomplete; durable records retained for retry
+Notification dispatch incomplete; durable records retained for retry
+Notification dispatch incomplete; durable records retained for retry
+Notification dispatch incomplete; durable records retained for retry
+✔ explicit Apple device pair is isolated and retains normal acceptance (25.636417ms)
+✔ live private IPC delivers real Socket messages and reconnect replays only unexpired offers (56.774292ms)
+✔ private simulation IPC cannot be enabled implicitly or with an unsafe path (0.967334ms)
+✔ SQLite full commits maintain all indexes with instrumentation=true (18.293458ms)
+✔ SQLite full commits maintain all indexes with instrumentation=false (3.121875ms)
+✔ SQLite reopen initializes assignment, identity and delivery indexes before any write (4.903667ms)
+Notification dispatch incomplete; durable records retained for retry
+Notification dispatch incomplete; durable records retained for retry
+Notification dispatch incomplete; durable records retained for retry
+Notification dispatch incomplete; durable records retained for retry
+Notification dispatch incomplete; durable records retained for retry
+Notification dispatch incomplete; durable records retained for retry
+Notification dispatch incomplete; durable records retained for retry
+Notification dispatch incomplete; durable records retained for retry
+Notification dispatch incomplete; durable records retained for retry
+Notification dispatch incomplete; durable records retained for retry
+Notification dispatch incomplete; durable records retained for retry
+Notification dispatch incomplete; durable records retained for retry
+Notification dispatch incomplete; durable records retained for retry
+Notification dispatch incomplete; durable records retained for retry
+Notification dispatch incomplete; durable records retained for retry
+Notification dispatch incomplete; durable records retained for retry
+Notification dispatch incomplete; durable records retained for retry
+Notification dispatch incomplete; durable records retained for retry
+Notification dispatch incomplete; durable records retained for retry
+Notification dispatch incomplete; durable records retained for retry
+Notification dispatch incomplete; durable records retained for retry
+Notification dispatch incomplete; durable records retained for retry
+Notification dispatch incomplete; durable records retained for retry
+Notification dispatch incomplete; durable records retained for retry
+Notification dispatch incomplete; durable records retained for retry
+Notification dispatch incomplete; durable records retained for retry
+Notification dispatch incomplete; durable records retained for retry
+Notification dispatch incomplete; durable records retained for retry
+Notification dispatch incomplete; durable records retained for retry
+Notification dispatch incomplete; durable records retained for retry
+Notification dispatch incomplete; durable records retained for retry
+Notification dispatch incomplete; durable records retained for retry
+Notification dispatch incomplete; durable records retained for retry
+Notification dispatch incomplete; durable records retained for retry
+Notification dispatch incomplete; durable records retained for retry
+Notification dispatch incomplete; durable records retained for retry
+Notification dispatch incomplete; durable records retained for retry
+Notification dispatch incomplete; durable records retained for retry
+Notification dispatch incomplete; durable records retained for retry
+Notification dispatch incomplete; durable records retained for retry
+Notification dispatch incomplete; durable records retained for retry
+Notification dispatch incomplete; durable records retained for retry
+Notification dispatch incomplete; durable records retained for retry
+Notification dispatch incomplete; durable records retained for retry
+Notification dispatch incomplete; durable records retained for retry
+Notification dispatch incomplete; durable records retained for retry
+Notification dispatch incomplete; durable records retained for retry
+Notification dispatch incomplete; durable records retained for retry
+Notification dispatch incomplete; durable records retained for retry
+Notification dispatch incomplete; durable records retained for retry
+Notification dispatch incomplete; durable records retained for retry
+Notification dispatch incomplete; durable records retained for retry
+Notification dispatch incomplete; durable records retained for retry
+Notification dispatch incomplete; durable records retained for retry
+Notification dispatch incomplete; durable records retained for retry
+Notification dispatch incomplete; durable records retained for retry
+Notification dispatch incomplete; durable records retained for retry
+Notification dispatch incomplete; durable records retained for retry
+Notification dispatch incomplete; durable records retained for retry
+Notification dispatch incomplete; durable records retained for retry
+Notification dispatch incomplete; durable records retained for retry
+Notification dispatch incomplete; durable records retained for retry
+Notification dispatch incomplete; durable records retained for retry
+Notification dispatch incomplete; durable records retained for retry
+Notification dispatch incomplete; durable records retained for retry
+Notification dispatch incomplete; durable records retained for retry
+Notification dispatch incomplete; durable records retained for retry
+Notification dispatch incomplete; durable records retained for retry
+Notification dispatch incomplete; durable records retained for retry
+Notification dispatch incomplete; durable records retained for retry
+Notification dispatch incomplete; durable records retained for retry
+Notification dispatch incomplete; durable records retained for retry
+Notification dispatch incomplete; durable records retained for retry
+Notification dispatch incomplete; durable records retained for retry
+Notification dispatch incomplete; durable records retained for retry
+Notification dispatch incomplete; durable records retained for retry
+Notification dispatch incomplete; durable records retained for retry
+Notification dispatch incomplete; durable records retained for retry
+Notification dispatch incomplete; durable records retained for retry
+Notification dispatch incomplete; durable records retained for retry
+Notification dispatch incomplete; durable records retained for retry
+Notification dispatch incomplete; durable records retained for retry
+Notification dispatch incomplete; durable records retained for retry
+Notification dispatch incomplete; durable records retained for retry
+Notification dispatch incomplete; durable records retained for retry
+Notification dispatch incomplete; durable records retained for retry
+Notification dispatch incomplete; durable records retained for retry
+Notification dispatch incomplete; durable records retained for retry
+Notification dispatch incomplete; durable records retained for retry
+Notification dispatch incomplete; durable records retained for retry
+Notification dispatch incomplete; durable records retained for retry
+Notification dispatch incomplete; durable records retained for retry
+Notification dispatch incomplete; durable records retained for retry
+Notification dispatch incomplete; durable records retained for retry
+Notification dispatch incomplete; durable records retained for retry
+Notification dispatch incomplete; durable records retained for retry
+Notification dispatch incomplete; durable records retained for retry
+Notification dispatch incomplete; durable records retained for retry
+Notification dispatch incomplete; durable records retained for retry
+Notification dispatch incomplete; durable records retained for retry
+Notification dispatch incomplete; durable records retained for retry
+Notification dispatch incomplete; durable records retained for retry
+Notification dispatch incomplete; durable records retained for retry
+Notification dispatch incomplete; durable records retained for retry
+Notification dispatch incomplete; durable records retained for retry
+Notification dispatch incomplete; durable records retained for retry
+Notification dispatch incomplete; durable records retained for retry
+Notification dispatch incomplete; durable records retained for retry
+Notification dispatch incomplete; durable records retained for retry
+Notification dispatch incomplete; durable records retained for retry
+Notification dispatch incomplete; durable records retained for retry
+Notification dispatch incomplete; durable records retained for retry
+Notification dispatch incomplete; durable records retained for retry
+Notification dispatch incomplete; durable records retained for retry
+Notification dispatch incomplete; durable records retained for retry
+Notification dispatch incomplete; durable records retained for retry
+Notification dispatch incomplete; durable records retained for retry
+Notification dispatch incomplete; durable records retained for retry
+Notification dispatch incomplete; durable records retained for retry
+Notification dispatch incomplete; durable records retained for retry
+Notification dispatch incomplete; durable records retained for retry
+Notification dispatch incomplete; durable records retained for retry
+Notification dispatch incomplete; durable records retained for retry
+Notification dispatch incomplete; durable records retained for retry
+Notification dispatch incomplete; durable records retained for retry
+Notification dispatch incomplete; durable records retained for retry
+Notification dispatch incomplete; durable records retained for retry
+Notification dispatch incomplete; durable records retained for retry
+Notification dispatch incomplete; durable records retained for retry
+Notification dispatch incomplete; durable records retained for retry
+Notification dispatch incomplete; durable records retained for retry
+Notification dispatch incomplete; durable records retained for retry
+✔ standby-position freshness behaves as recorded in the baseline (316.427791ms)
+✔ projection indexes only actively recruiting events (2.470375ms)
+✔ incremental maintenance tracks activation, deactivation and payload changes (0.310958ms)
+✔ a whole-state commit invalidates the index and it rebuilds from committed state (0.140625ms)
+✔ memory: devices and receipt commit preserves the materialized recruitment projection (14.490791ms)
+✔ sqlite: devices and receipt commit preserves the materialized recruitment projection (13.706958ms)
+✔ index size and lookup do not grow with ended-event history (plan §4.2 test 2) (15.201125ms)
+✔ grouped projection indexes deliveries per event (0.253375ms)
+✔ grouped membership follows the group key and tracks deletions (0.19575ms)
+✔ grouped index entries for one event do not grow with other events' history (12.708292ms)
+✔ R01: a failed entity write leaves the committed cache untouched (14.690709ms)
+✔ R01: after a failed entity write the legacy path still persists the change (4.395667ms)
+✔ R01 control: a committed entity write advances the cache and stays durable (3.404709ms)
+✔ R01: a rolled-back insert never appears in the cache or on disk (3.348583ms)
+✔ notification storage rejects corruption and preserves immutable queued and completed facts (8.848333ms)
+✔ durable store recovers the last valid backup instead of resetting truth (29.441ms)
+✔ durable store refuses to erase state when both main and backup are corrupt (1.444042ms)
+✔ failed transaction does not publish or persist its draft (7.53ms)
+✔ Memory, JSON, and SQLite stores protect append-only evidence and one-time intervals (29.527666ms)
+✔ SQLite store persists only the latest device position across close and reopen (6.061042ms)
+✔ SQLite transaction rollback and legacy JSON import preserve durable truth (17.142ms)
+✔ no-op transactions do not advance durable SQLite revision (4.83625ms)
+✔ explicit null recruitment stage survives a durable store reopen until the first valid P (35.116459ms)
+✔ legacy devices migrate fail-safe and SQLite close waits for queued persistence (6.511209ms)
+✔ legacy patient sources migrate without inferring a triggering Watch and bind only on replay (8.897125ms)
+✔ SQLite reopens append-only event position batches without reducing them to latest position state (3.770709ms)
+✔ SQLite quarantines legacy event position batches without losing raw evidence (6.11725ms)
+▶ entity views are detached committed snapshots for each built-in store
+  ✔ memory (0.339375ms)
+  ✔ json (11.370542ms)
+  ✔ sqlite (0.756708ms)
+✔ entity views are detached committed snapshots for each built-in store (21.178458ms)
+✔ legacy custom StateStore entity compatibility takes one detached read and propagates read failures (0.204625ms)
+✔ bounded entity selection never exposes live state and obeys limit (0.1495ms)
+✔ 1. a device that moves INTO the ring within the transaction is a candidate (1.278666ms)
+✔ 2. a device that moves OUT of the ring within the transaction is not eligible (0.18725ms)
+✔ 3. a delivery created in the same transaction is visible to a later check (0.164875ms)
+✔ 4. an assignment created in the same transaction is visible to a later check (0.130916ms)
+✔ 5. a rolled-back transaction leaves committed indexes untouched (0.898291ms)
+✔ REST JSON accepts 16 KiB and rejects 16 KiB plus one byte as payload-too-large (40.707792ms)
+✔ Socket.IO is notification-only while REST delivery receipts remain writable (126.820041ms)
+✔ position circuit trips only after ten sustained bursts, limits degraded seconds, and recovers (222.913417ms)
+✔ a declared proxy client address gets its own quota instead of sharing the proxy's (8.068958ms)
+✔ an undeclared peer cannot mint quota with a forged forwarded header (5.83125ms)
+✔ legacy and tx readers agree on a committed-only world (2.269291ms)
+✔ a receipt appended in this transaction is counted at once (0.768708ms)
+✔ a staged receipt for another event is not counted (0.321209ms)
+✔ with no projection the reader still answers correctly by scanning (0.541875ms)
+✔ rollback leaves the committed projection and state untouched (1.488458ms)
+✔ structure: unrelated receipts are not visited (2.510833ms)
+✔ behaviour: Legacy and Tx agree - a free candidate receives an offer (21.107041ms)
+✔ behaviour: Legacy and Tx agree - mixed identities, offers in sorted order (3.857166ms)
+✔ behaviour: Legacy and Tx agree - an expired offer is swept inside the transaction (2.709292ms)
+✔ behaviour: Legacy and Tx agree - an eligible holder of a live offer is left alone (1.049375ms)
+✔ behaviour: Legacy and Tx agree - an accepted responder blocks its own identity's second device (1.148125ms)
+✔ behaviour: Legacy and Tx agree - an offer on a device that became ineligible is swept (1.2035ms)
+✔ behaviour: Legacy and Tx agree - another event's expired offer is not touched (1.238ms)
+✔ behaviour: Legacy and Tx agree - a non-recruiting event only bumps the revision when forced (0.697167ms)
+✔ behaviour: Legacy and Tx agree - an inactive event writes nothing (0.644709ms)
+✔ behaviour: Legacy and Tx agree - the ring widens while potential is below target (4.679584ms)
+✔ transaction: a position moved in this transaction yields the transaction's device (1.102291ms)
+✔ transaction: consecutive refreshes in ONE transaction share their writes (1.06725ms)
+✔ transaction: a mid-way failure rolls everything back (0.853542ms)
+✔ transaction: separate transactions do not share state, and see each other's commits (1.1025ms)
+✔ structure: the target path's access counts do not grow with unrelated history (34.858292ms)
+✔ Windows lifecycle scripts use explicit IPv4 host/port and SQLite without Tailscale coupling (3.293084ms)
+ℹ tests 514
+ℹ suites 0
+ℹ pass 514
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 39819.847041

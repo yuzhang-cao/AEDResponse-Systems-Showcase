@@ -1,0 +1,759 @@
+{
+  "snapshotAt": "2026-09-08T17:13:05.172695+00:00",
+  "sourceRoot": "[PROJECT_ROOT]",
+  "head": "8362af26a1cfcadd7dc1753f3f4ba9310456ae2e",
+  "files": {
+    "README.md": {
+      "sha256": "00cce346075c3d97fafc7891b2301a17378a193f4fd7f6abd8c7a142f602691e",
+      "bytes": 5063
+    },
+    "HANDOFF.md": {
+      "sha256": "4a8e916263c75029c50a040658b41a3c5698eafda756f28e4db3d87d6b1bc943",
+      "bytes": 73669
+    },
+    "docs/requirements.md": {
+      "sha256": "088a59e72e7b0bb82f9696828ad381f98dcca187e76591d11f1ff79da6975c38",
+      "bytes": 35522
+    },
+    "docs/architecture.md": {
+      "sha256": "760f883b02b7a02a377dfdf258ceefc2fb43297fe3180df89ec4c788b212b7f8",
+      "bytes": 13507
+    },
+    "docs/controlled-account-position-validation-2026-09-08.md": {
+      "sha256": "6e2d4f98cec85eb2b2a95f515d240398b508e1c2a30a7a7a341bb96c9e8d5e6c",
+      "bytes": 6144
+    },
+    "docs/runtime-flow.md": {
+      "sha256": "2049ab1fdb1ccb81989674a9fc6450e518924636c54485b05933c11747538fce",
+      "bytes": 8701
+    },
+    "docs/simulation-run-2-2026-09-08.md": {
+      "sha256": "4aea4aa32423ed7a29b806350f788a260114ce438966fbebbda6062883f37b41",
+      "bytes": 3822
+    },
+    "docs/iphone16-network-observation-2026-09-08.md": {
+      "sha256": "5a6466a78204f8b0309e7702ec35742d991d0d3a7eff11749313209b3c4f68ed",
+      "bytes": 1913
+    },
+    "docs/azure-two-iphone-auth-audit-2026-09-08.md": {
+      "sha256": "f724ff1174eed3856a77f30300a5cd24ca3cfa2ca0ec99fe74cfed1114b527fd",
+      "bytes": 9557
+    },
+    "docs/connectivity-repair-2026-09-08.md": {
+      "sha256": "062f28ebc61b1f2c2b4f63e877d2ae40c35eccad6983f222d8e400ca3a1b8ea4",
+      "bytes": 5315
+    },
+    "docs/simulation-support-validation-2026-09-08.md": {
+      "sha256": "351741d54dbd0237237458f9021889f686576468c7f68d7bce1e854259e0a795",
+      "bytes": 5087
+    },
+    "docs/two-phone-communication-audit-2026-09-08.md": {
+      "sha256": "dba8e89ac7845c0d85cd5972627dbbb313987638d52d0bcf98be951a577605a7",
+      "bytes": 4737
+    },
+    "docs/nearby-volunteers-validation-2026-09-06.md": {
+      "sha256": "462be7953d09d3f5b71c4ca3b17ffe47b60c083cb288b2ed176857d84773ab79",
+      "bytes": 4944
+    },
+    "docs/simulation-run-1-2026-09-08.md": {
+      "sha256": "ca1072282da85eba0b7c3f9ac3c2bbc1e890a0409f612176d8aa67e7bd4130c5",
+      "bytes": 2232
+    },
+    "docs/ownership.md": {
+      "sha256": "50d16bbd42bb80c3f05d48ef058c740b11a16d4f37fe8660793603aaba46a2f2",
+      "bytes": 904
+    },
+    "docs/two-phone-simulation-plan-2026-09-08.md": {
+      "sha256": "7285a4c0b7df318622b3dc35cba69e64f34eda0cf4b2cf76e769740fb748e73b",
+      "bytes": 6487
+    },
+    "docs/formal-flow-progress-2026-09-08.md": {
+      "sha256": "846a06b955a1ac9b10b2419d8e19fa649af1b9e9092f037f2c167baffc5b126e",
+      "bytes": 6777
+    },
+    "docs/ui-validation-2026-09-06.md": {
+      "sha256": "1e34675256ad41ef488b1ff32e8511f947f21260792e73216b6e1c88c3bd9851",
+      "bytes": 5882
+    },
+    "docs/business-processing-validation.md": {
+      "sha256": "0d3961088dc067790369ca6f58b381915649324013072b524e04cbe61053d10e",
+      "bytes": 12548
+    },
+    "docs/adr/0001-cross-platform-client.md": {
+      "sha256": "e59ef6e72bf1fb68c89a4aec131a00c9468d86133e24518803fbb247a0b04062",
+      "bytes": 1249
+    },
+    "docs/ios-handoff/README 2.md": {
+      "sha256": "345f181d2fe322e480d6c0039755665a953329085c0f9f8fc8fcbb1b3b03d75a",
+      "bytes": 1419
+    },
+    "docs/ios-handoff/README.md": {
+      "sha256": "4b35286f8e08b708128ea5c3789d0dc499cc5a8585d041346fbcae4bbb8511b8",
+      "bytes": 1389
+    },
+    "docs/ios-handoff/0002-no-user-login-proposal 2.md": {
+      "sha256": "f0b15775ddeffae7865c91fe2dfddd5751acd9202d90da879b80794f4a8b4259",
+      "bytes": 2537
+    },
+    "docs/ios-handoff/0002-no-user-login-proposal.md": {
+      "sha256": "dcb5002a94cb009699ab31388e4dd9efb0c0f272732bba7f99d3c98d763a52a5",
+      "bytes": 1648
+    },
+    "docs/design/read-only-admin-v1/README.md": {
+      "sha256": "0687a182d8499aa9efe060a20f060df20c2f935334a5a3e3b00ac34cd8d0f831",
+      "bytes": 3712
+    },
+    "contracts/README.md": {
+      "sha256": "f28f7a8e70ca19d5a6d83bba2642fd3eaf29e430d6f4caee3205e8503ba26972",
+      "bytes": 1914
+    },
+    "contracts/safety.json": {
+      "sha256": "de9574f07c676ed244a2f94b45958ff604ea952e6f7b093167584af0362af30f",
+      "bytes": 998
+    },
+    "contracts/openapi.yaml": {
+      "sha256": "43065f43b70ff0edcafbf2b715830b54bb57ad9f225cd7df9b1c62bf00b40679",
+      "bytes": 76959
+    },
+    "contracts/events.md": {
+      "sha256": "04d8a9b767af8e117c7e686189a91ffa24355ec5eea3ab03b641c8bded84fe1f",
+      "bytes": 27621
+    },
+    "contracts/positioning-policy.schema.json": {
+      "sha256": "fcc93f64e3dd1940e53cf7e136768b2858992d21f6741dc01e094edf86259ef2",
+      "bytes": 1300
+    },
+    "contracts/fixtures/demo-scenario.json": {
+      "sha256": "2fa65518b26ed8a570d6d874d198eb51a89781cf30a1729775b1043470e3c293",
+      "bytes": 5109
+    },
+    "shared/positions.ts": {
+      "sha256": "dde05f2b02ffed102c6678f5c356c0898fead180b93eb4188456a3b15b866cf3",
+      "bytes": 854
+    },
+    "shared/domain.ts": {
+      "sha256": "4ad88472bba191ebe717e267c9fae94c7990bfaabcf181365e8bde224520e51c",
+      "bytes": 12144
+    },
+    "backend/src/simulation-admin.ts": {
+      "sha256": "4bd111d652610ecdf43d86b4aba675408e71704d37016371705a1769d8fdd6b3",
+      "bytes": 2107
+    },
+    "backend/src/main.ts": {
+      "sha256": "e22a3534a035aefdf7eef80f89ff5ed97b2678d44deea5a652e7cdbc1bf33b1a",
+      "bytes": 930
+    },
+    "backend/src/errors.ts": {
+      "sha256": "b5abdaca95e58d699c6af836ae70e22897732237ec161d4f02afdbe04bd6c7c6",
+      "bytes": 2412
+    },
+    "backend/src/contracts.ts": {
+      "sha256": "116a8baf8bb8cbe16b98728e9a6a2429227debe6fbd1ffe6847bb72068121712",
+      "bytes": 17000
+    },
+    "backend/src/apple-auth.ts": {
+      "sha256": "e40276872a406a2ee534d1a126ae1f8d881ab7e98986fe10e086a45cde561707",
+      "bytes": 8508
+    },
+    "backend/src/models.ts": {
+      "sha256": "ab4dc7ce8e008f350f246b00b2a63ffcc35d9e5add9da80255bc4e13995fb6d1",
+      "bytes": 19530
+    },
+    "backend/src/domain.ts": {
+      "sha256": "50a6d2d5d06faf5f3034b6f01d25ac6934f49f62c2ab442f2e39842b900d531d",
+      "bytes": 5012
+    },
+    "backend/src/config.ts": {
+      "sha256": "7398b1442ef5548fb8e2ce16bcdaf03b362f40ead1c766d2d5bf312c772f0a04",
+      "bytes": 5929
+    },
+    "backend/src/server.ts": {
+      "sha256": "182a611503b083ad114eef83665adf743c009cb2b16abffef40bf02b721f4af5",
+      "bytes": 23258
+    },
+    "backend/src/service.ts": {
+      "sha256": "52d6cf3578d2d253638cee674396e10af3497d0703639d4dadbc870830826388",
+      "bytes": 243876
+    },
+    "backend/src/auth.ts": {
+      "sha256": "371d9d171e6ceaadb51690480cee11d863939fb69e5c28cddc0c805acaa9ec9f",
+      "bytes": 6991
+    },
+    "backend/src/store.ts": {
+      "sha256": "20cd28ffe4518686ff1f7a7703000765e1b6cc301e0c9ec0aea7d767e142029e",
+      "bytes": 54422
+    },
+    "backend/src/simulation.ts": {
+      "sha256": "58b3c88d28e0644c617be1d46156946ef7d8d73f61bdec6b3aa59f29d13a98a1",
+      "bytes": 1795
+    },
+    "backend/test/store.test.ts": {
+      "sha256": "b1a5fa8ac0e2b00a31cd3ab5be61b66f0555dadc2593b8557843cfe395c86de1",
+      "bytes": 34827
+    },
+    "backend/test/api.integration.test.ts": {
+      "sha256": "0008d53c22b6db7ed24600796a9e98a82dbe6afd8d82da5a6ed397befc5cb206",
+      "bytes": 103436
+    },
+    "backend/test/auth.test.ts": {
+      "sha256": "42cb7126dcc5fb9aa7471841113d8d523609f8112b16397550fc4a956612228a",
+      "bytes": 14813
+    },
+    "backend/test/windows-scripts.test.ts": {
+      "sha256": "2b9f4d4934ff8a1deeeb164d7cd8e71da0ad29daa2a7bcd844997097ec2a80d8",
+      "bytes": 1231
+    },
+    "backend/test/domain.test.ts": {
+      "sha256": "63adeab9fb95d14a9ca879278e2c508df50b493e5397afb6a7168f06645549d2",
+      "bytes": 86347
+    },
+    "backend/test/simulation.test.ts": {
+      "sha256": "646cb1d8b0ce7835320dc7663a3cb3922d194b32c64161ed0f6b27f6b2d81bfe",
+      "bytes": 10998
+    },
+    "backend/test/apple-auth.test.ts": {
+      "sha256": "02ae26f799db5bb90cc4b33269ebee3b1ac6ead2a1ea2191b664543b6d57f261",
+      "bytes": 7828
+    },
+    "backend/test/business-processing.test.ts": {
+      "sha256": "99c1e3a6b0fa819740f4f359876a160fe912b555a2dffde5c12416188d70709b",
+      "bytes": 28551
+    },
+    "backend/test/config.test.ts": {
+      "sha256": "bd039f783b17630a7fe300c7efc62bf9d96894ef63ea8e35997d919e7e4cc64f",
+      "bytes": 2351
+    },
+    "backend/test/transport-boundary.test.ts": {
+      "sha256": "35a93cf413b64cb19a89571eeabff24547445a2f6f358876b8eda25d9b62202b",
+      "bytes": 13584
+    },
+    "backend/test/companion-link.test.ts": {
+      "sha256": "ecb15ad963b9ad838fe911cb9e5f15db76c9965c97646ca98c21d29af13ad12f",
+      "bytes": 20428
+    },
+    "backend/test/business-requirement-gaps.test.ts": {
+      "sha256": "e835716f3a9efdbb80ccdff47ffc0247daa0f4fbaec4ac280070965236526d65",
+      "bytes": 27193
+    },
+    "backend/test/controlled-accounts.test.ts": {
+      "sha256": "e9df16bbc94d980d7be24d50ba87a3c48c1eb118e4da79b65204f39480c5e522",
+      "bytes": 5728
+    },
+    "backend/test/helpers/no-network.mjs": {
+      "sha256": "00f4590704a448900ea187dd93c08d5b95ba6023f953250720e6a1b55b7a8d4d",
+      "bytes": 1088
+    },
+    "backend/README.md": {
+      "sha256": "270bdda0422dd10a46d4f2d90661a84dd4ebb833914fcdb73b8a5bfeea21adf6",
+      "bytes": 21909
+    },
+    "backend/package.json": {
+      "sha256": "db574dffe821b0dc05b64d4e0a57560c8c419c68e19676de768f6dd2ed7a6277",
+      "bytes": 1248
+    },
+    "backend/deploy/azure/initialize-env.mjs": {
+      "sha256": "d3fb4377f9d8568e21c0ba7ed59264327b05f3f8e93a03daef715da019b0a8b2",
+      "bytes": 951
+    },
+    "backend/deploy/azure/native-cellular-probe.mjs": {
+      "sha256": "5705dc58614a48ad29923622df54d790581ed1877adcfeb31b8771413f1fcbd6",
+      "bytes": 3827
+    },
+    "backend/deploy/azure/README.md": {
+      "sha256": "05901882c73177f3ea9d5aa25c769a51e7bdc6b2cbd96337ebb5bef0e01a8687",
+      "bytes": 8999
+    },
+    "backend/deploy/azure/verify-public.mjs": {
+      "sha256": "8f20390f2fa92c27e7beb4c409152224e19797f870270bc1a128e0b33361bf23",
+      "bytes": 2332
+    },
+    "backend/deploy/azure/create-simulated-event.mjs": {
+      "sha256": "49e747705817da50f63120f2dbe57ea3ddeb2b19516890cefc393ca7c76e3c67",
+      "bytes": 2156
+    },
+    "backend/deploy/azure/provision-controlled-account.mjs": {
+      "sha256": "34cc335dc56928569333b690191c5e239c0824432484287f48a97588b4dd7cea",
+      "bytes": 2239
+    },
+    "backend/deploy/azure/phone-transport-probe.mjs": {
+      "sha256": "431afc0bdfd008cd9d24de163e84e80df745af2785b38bbfb9e3ee35349d6237",
+      "bytes": 9541
+    },
+    "ios/ARCHITECTURE.md": {
+      "sha256": "111ca93b7939e390d17acd3515613ed2d40e5943fb413f15a2e19def5b836709",
+      "bytes": 10482
+    },
+    "ios/README.md": {
+      "sha256": "4a57cdc93307e6744b864edd4aafdb3b5a1a1777192a872ff1d9becd85071fec",
+      "bytes": 14611
+    },
+    "ios/VALIDATION.md": {
+      "sha256": "1b5421c7e8e50066637c6528ea252cf60af07e61d260f3eecdd79c2fa2ebd430",
+      "bytes": 19783
+    },
+    "ios/project.yml": {
+      "sha256": "c61ea2c33dc95021ac821d23935a18baa9c5ea442660183f0560be1f835a9aec",
+      "bytes": 11095
+    },
+    "ios/AEDResponse/Info 2.plist": {
+      "sha256": "8bd108bae5b4cc8a3a37d304fbe026a1bdc29c91c24f08147e73814ecc1b6460",
+      "bytes": 1577
+    },
+    "ios/AEDResponse/AEDResponse.entitlements": {
+      "sha256": "b2cff52cf90d8cc5be5a2803c78f759d1dffcf00f0f54615b5330c53fea46d29",
+      "bytes": 278
+    },
+    "ios/AEDResponse/Info.plist": {
+      "sha256": "1f259c1de692ff9fda90bc651784823453be6a8da89bd308214abcc1e2d89a88",
+      "bytes": 2215
+    },
+    "ios/AEDResponse/App/AEDResponseApp.swift": {
+      "sha256": "03e19da7fc90573cde71f400817ecd8acfe06043d7519c81cedeb4e9b363ca93",
+      "bytes": 705
+    },
+    "ios/AEDResponse/App/AppStore.swift": {
+      "sha256": "239ef1bad660d95f55cce0a991bc51a9e8766fd4387202baf89dc6862f0bbeb1",
+      "bytes": 214388
+    },
+    "ios/AEDResponse/Networking/APIClient.swift": {
+      "sha256": "c0da6eb45fc1e00b9bc47826b8a8f5e2d080e1e47d9e6140c19add92b9b1b33e",
+      "bytes": 31885
+    },
+    "ios/AEDResponse/Networking/SocketIOEventStream.swift": {
+      "sha256": "925eb273911a102534dc358a17d20a67ea88a3b17e36e8b8697bcc59b5dc114a",
+      "bytes": 18242
+    },
+    "ios/AEDResponse/Networking/SocketIOEventStream 2.swift": {
+      "sha256": "c2a4763a9ff530081204ef8ba7ecc124f3e29d08f80e660a2a248b47b56cb228",
+      "bytes": 6392
+    },
+    "ios/AEDResponse/Application/AppState.swift": {
+      "sha256": "ab522392ac77080c3988402e226a7dcaba5bb46878b3554222da3d111f372cb9",
+      "bytes": 5460
+    },
+    "ios/AEDResponse/Application/LiveSession.swift": {
+      "sha256": "82c830172ee3f524280753d95c7fd3eb9d9a269903cd6443e8300236ca78d8a4",
+      "bytes": 1226
+    },
+    "ios/AEDResponse/Application/TimelineReducer.swift": {
+      "sha256": "039798d010e739e80e3f007738025cb551627bfa949f2e81b3a16ed279088b20",
+      "bytes": 1028
+    },
+    "ios/AEDResponse/Application/AppFeatureFlags.swift": {
+      "sha256": "6f9fec52a38669f862b7c006f87caa5c4d6cd3028ba2e849fd13a03613d470e4",
+      "bytes": 1508
+    },
+    "ios/AEDResponse/Application/Ports.swift": {
+      "sha256": "6a340eb59151a6ad0ad8cdbe550f49a4b5830e9c286c7009120fa3a6960a9f27",
+      "bytes": 9684
+    },
+    "ios/AEDResponse/Application/DemoScenarioEngine.swift": {
+      "sha256": "88f6e0392fb2ef97170a505345483370d179a4227efa3ebf7dc9dee2691b66d8",
+      "bytes": 2553
+    },
+    "ios/AEDResponse/Application/AuthModels.swift": {
+      "sha256": "8391fbc37e43c4949a0682350bd1aa2f87ebe32644a7ea4f8b57cfa99523f115",
+      "bytes": 9027
+    },
+    "ios/AEDResponse/Application/AppEnvironment.swift": {
+      "sha256": "bfbd7b5d2ab02580bf4143dd607b3182b1870d25a0d47f069dfe29945b593304",
+      "bytes": 4999
+    },
+    "ios/AEDResponse/Application/DemoAssignmentFactory.swift": {
+      "sha256": "5d5e36aae25bd7f5c0a01362676f18f0e9afe43b494cac1eb84b95fa31460969",
+      "bytes": 2287
+    },
+    "ios/AEDResponse/Views/PatientDashboardView.swift": {
+      "sha256": "7e87e3cec0007d04865440377b8b2da4978b237442974974788bb9c1f4752522",
+      "bytes": 6979
+    },
+    "ios/AEDResponse/Views/SettingsView.swift": {
+      "sha256": "0b87df7d7d5355452c49a8328bb9784ad975238bb3423bc69fe3e88e5befb71d",
+      "bytes": 10309
+    },
+    "ios/AEDResponse/Views/NearbyVolunteersView.swift": {
+      "sha256": "472de003d66d52495cb4b78d57c22ab87f628f08ffaf2b5874bbb4b9cc9b4c86",
+      "bytes": 11780
+    },
+    "ios/AEDResponse/Views/ResponderDashboardView.swift": {
+      "sha256": "23a5df29cf67e6a75fbd6a6a26bd89bd01e34e3fc9cadd2dc53ddd34e45a3dac",
+      "bytes": 7423
+    },
+    "ios/AEDResponse/Views/RootView.swift": {
+      "sha256": "cc1653c1d9083cb68ed6cf0bc398e81a43cd05cbd1eec26c04fa9be6a5213dc0",
+      "bytes": 10664
+    },
+    "ios/AEDResponse/Views/AuthView.swift": {
+      "sha256": "3a81c9db8a35086c3ceaf7f88956c4720c23a3e0637f74756b247acc3d9febb4",
+      "bytes": 13997
+    },
+    "ios/AEDResponse/Views/OnboardingView.swift": {
+      "sha256": "23da9a0231a59f67f7e7d756cb05380a71f4d4597c219d3dd1da6359fc3cb3c0",
+      "bytes": 5017
+    },
+    "ios/AEDResponse/Views/ResponderNavigationView.swift": {
+      "sha256": "085e8972b9ff3e08d3fcf57e870e34e79142bc18059875489ba2a158c3f94336",
+      "bytes": 16655
+    },
+    "ios/AEDResponse/Domain/LatestPositionUploadPolicy.swift": {
+      "sha256": "1bbf63f0fdc82dde08cba0bda0afe5d855658a3fb8175e369650dd5812452ddb",
+      "bytes": 1814
+    },
+    "ios/AEDResponse/Domain/StateMachines.swift": {
+      "sha256": "0217504ae150935b973710af20f7b45ff63e2f09fe9f77ff2c5118a9d482f83a",
+      "bytes": 5087
+    },
+    "ios/AEDResponse/Domain/SafetyPolicy.swift": {
+      "sha256": "76068c897b6ee2a750a4d6b756146f65dd891e55be2ba583a0db05125d9cc236",
+      "bytes": 3154
+    },
+    "ios/AEDResponse/Domain/ExitConfirmationCoordinator.swift": {
+      "sha256": "9a233948472dd0b8fbe04b9a0e8d207c213b6ffbe3f5519e027a5e8fc4daa253",
+      "bytes": 6816
+    },
+    "ios/AEDResponse/Domain/Models.swift": {
+      "sha256": "408792b349e07d48ed0b0be53c43bcdf0b705e1b9242f29b94129e2fddeebcc1",
+      "bytes": 76440
+    },
+    "ios/AEDResponse/Domain/NearbyVolunteerSummary.swift": {
+      "sha256": "c29f1057ece883c01333e0693efc0ecf49d109c40144454931241acece4daf05",
+      "bytes": 1763
+    },
+    "ios/AEDResponse/Domain/AedRouteEstimator.swift": {
+      "sha256": "f3666c3a6179a01c6564964330078714ef59a020403691add8db58729f107c70",
+      "bytes": 4523
+    },
+    "ios/AEDResponse/Services/IntegrationDiagnostics.swift": {
+      "sha256": "ea4b90028d336bbc95c9358dfd657f6110d84080b9e2132a459e800388fae3a0",
+      "bytes": 3530
+    },
+    "ios/AEDResponse/Services/ControlledTestAuthSessionStore.swift": {
+      "sha256": "d604adef4e908ea8193a90c9f73572194214bb6175963d1cca0713daab0cc287",
+      "bytes": 4662
+    },
+    "ios/AEDResponse/Services/AuthSessionStore.swift": {
+      "sha256": "711293f1bca48b7bb10b80a9f7cf120adcad792d58084861b6cfb8141aa17f43",
+      "bytes": 5795
+    },
+    "ios/AEDResponse/Services/EventPositionPersistence.swift": {
+      "sha256": "16d674078492485f9c1cafbc3d6e4672cb9b994caa81c5a13af2d6d7692b7e69",
+      "bytes": 5390
+    },
+    "ios/AEDResponse/Services/ServerConnectionProbe.swift": {
+      "sha256": "14085914df6c931f50989faa7eb2243d8db780e2dc0802b5742c9298ad2723e8",
+      "bytes": 3687
+    },
+    "ios/AEDResponse/Services/DeviceServices.swift": {
+      "sha256": "f90ee31d60016d1ce3780e2617f351ea6bf04c37d348f1457abe2d682bec7b6a",
+      "bytes": 17105
+    },
+    "ios/AEDResponseWatch/AEDResponseWatch.entitlements": {
+      "sha256": "11c03695bd2dee476ae60aec083b90ded0edbdd729985311738ea96119af8046",
+      "bytes": 365
+    },
+    "ios/AEDResponseWatch/Info.plist": {
+      "sha256": "b3bdabe3329ac36ca009f30eb2f2fbe67262060fd08035a95e327e0fcb6c297f",
+      "bytes": 1471
+    },
+    "ios/AEDResponseWatch/App/WatchRuntimeModel.swift": {
+      "sha256": "fd2ca41e04f7f83f99d0ae1d510de396044aec1ab47817968997c054057a529a",
+      "bytes": 22212
+    },
+    "ios/AEDResponseWatch/App/AEDResponseWatchApp.swift": {
+      "sha256": "2da85ffa26bb27a7e76799625cde5ca46e87e82aea973653e3ae22779963ea3b",
+      "bytes": 3504
+    },
+    "ios/AEDResponseWatch/Networking/WatchAPIReporter.swift": {
+      "sha256": "131f8f458f3ddf7ea8d107eb115203c94aa6ca6162932aa22a83bb2034c6cb29",
+      "bytes": 20288
+    },
+    "ios/AEDResponseWatch/Domain/WatchFallbackCoordinator.swift": {
+      "sha256": "524ce79f5a3c3ad0a6673619f3181d1c045f6caa329d774785ce2ffe68113b72",
+      "bytes": 16550
+    },
+    "ios/AEDResponseWatch/Domain/FallEmergencyCoordinator.swift": {
+      "sha256": "4707ffce84bb7787efe4d811ccc687b94dac56bf7d5d01e31491fb7ff294bce9",
+      "bytes": 16382
+    },
+    "ios/AEDResponseWatch/Services/WatchAppAttest.swift": {
+      "sha256": "afb33020236e857c2025d43b13564f43c2d124bf2263bb183a6e0890784c291d",
+      "bytes": 1739
+    },
+    "ios/AEDResponseWatch/Services/WatchPersistence.swift": {
+      "sha256": "db0572d4a7e6ee9a8f7b67156c320c72c3b9a32c26f98edfd81b5a95d9ca729c",
+      "bytes": 23799
+    },
+    "ios/AEDResponseWatch/Services/WatchSystemMonitors.swift": {
+      "sha256": "5f7104577f703e1d3d37352770b282c7b91a8578a8f038f86ee849c48d9b1f40",
+      "bytes": 13782
+    },
+    "ios/AEDResponseTests/APIClientSessionRotationTests.swift": {
+      "sha256": "96afb11a2424ae842bef67d61ef533034afc15b56c6b6c4d17f34cc1dc6b559d",
+      "bytes": 12492
+    },
+    "ios/AEDResponseTests/ApprovedUIScenarioTests.swift": {
+      "sha256": "8a65faf23575f8098497ff5884bccb974790aac4919e593bdc54c008e5cfc5e5",
+      "bytes": 3253
+    },
+    "ios/AEDResponseTests/ControlledSessionStoreTests.swift": {
+      "sha256": "197b8d1e59e740bb9eca8e92edebe15e6d9343fa4be3ff4299aa5cc17408d06d",
+      "bytes": 4021
+    },
+    "ios/AEDResponseTests/ResponderExitTests.swift": {
+      "sha256": "d46b2bfa88653a5f803fc24380d42744e1b5777aa0bcbe3afac73fef271b48c4",
+      "bytes": 6593
+    },
+    "ios/AEDResponseTests/NearbyVolunteerSummaryTests.swift": {
+      "sha256": "1f6e8f4d4be8be79bf34fe6aa147be9a65e4a4fe01016862cf04d0cee9a94de8",
+      "bytes": 5378
+    },
+    "ios/AEDResponseTests/SafetyPolicyTests.swift": {
+      "sha256": "b28fbd1861c94d165add0c2b6946f030528ab23a014f8517a24e8e2ff619034d",
+      "bytes": 1437
+    },
+    "ios/AEDResponseTests/WatchMonitoringTests.swift": {
+      "sha256": "086030b94606ab54175737babce6e3218fb57cf92390a0057ee23f7d1024f79e",
+      "bytes": 16498
+    },
+    "ios/AEDResponseTests/ResponsePrivacyProjectionTests.swift": {
+      "sha256": "e3eb0edae74f485130aa13d414a3da9757a4794e5fe9d64163f1a559992de8a8",
+      "bytes": 12219
+    },
+    "ios/AEDResponseTests/EventPositionBatchTests.swift": {
+      "sha256": "f72945ab815d45274812ed76e9bd42b9dce582d8028f82aa51f72968253dd579",
+      "bytes": 28206
+    },
+    "ios/AEDResponseTests/AppStoreArchitectureTests.swift": {
+      "sha256": "c0bb4615e2d1cb000d66bad1904569b554634479b4c4fa464a413b81f649ad40",
+      "bytes": 195794
+    },
+    "ios/AEDResponseTests/AuthenticationArchitectureTests.swift": {
+      "sha256": "9ca5d581c78f7ef258e3aee0cefe9ea5c48c2c0f09f80286e6d08dbe9dc95606",
+      "bytes": 37287
+    },
+    "ios/AEDResponseTests/LatestPositionUploadPolicyTests.swift": {
+      "sha256": "0a8655945c7a2577a40a2ef797537bdb590b50aa95244d2b8acf551cbca526f6",
+      "bytes": 2686
+    },
+    "ios/AEDResponseTests/ApplicationServicesTests.swift": {
+      "sha256": "da4918a98523a7fb0489a13079dc22ae244bad6e35e9b35179c263eb435840de",
+      "bytes": 5739
+    },
+    "ios/AEDResponseTests/WatchFallbackCoordinatorTests.swift": {
+      "sha256": "f91cb2ec7270c1679f8af3350083461cba77f2fdf197102eb18582694e44b470",
+      "bytes": 14543
+    },
+    "ios/AEDResponseTests/ArchitectureBoundaryTests.swift": {
+      "sha256": "a22131348cdbeeb9cdd135747d7048ccd5505b134495af71f3b20ee35fe7992f",
+      "bytes": 20482
+    },
+    "ios/AEDResponseTests/ServerConnectionProbeTests.swift": {
+      "sha256": "3405e9f81030d4c82780d2223e8da8bfb915545ba2bef0576c223b86228f1163",
+      "bytes": 4212
+    },
+    "ios/AEDResponseTests/StateMachineTests.swift": {
+      "sha256": "8787558aacf737208c06853bcd287c5359bd66ce565f0970d0302b90ebaa4dc0",
+      "bytes": 5215
+    },
+    "ios/AEDResponseTests/FixtureContractTests.swift": {
+      "sha256": "e7252cfac167ce40db4f2011cf8388024f5380b73904f7916077cb55312f8464",
+      "bytes": 7441
+    },
+    "ios/AEDResponseTests/PositionContractTests.swift": {
+      "sha256": "391036823c93cc84f0ce05bf12e6a2b3acbaef8816d0219524c4d058b8f392dc",
+      "bytes": 5985
+    },
+    "ios/AEDResponseTests/AedRouteEstimatorTests.swift": {
+      "sha256": "9e3b78ad596c80c444d7e6e15327d3003de3781d4e748937a8e8eccbf76103a0",
+      "bytes": 3025
+    },
+    "ios/AEDResponseTests/WatchFallbackAPIContractTests.swift": {
+      "sha256": "4616dee495860687b0401c7ac3d19ae0ee13db2d049dd5263f541626ac993d6e",
+      "bytes": 8359
+    },
+    "ios/AEDResponseTests/LiveAzureTransportTests.swift": {
+      "sha256": "11ef4d1db99f3211ab639bd95dee954b534e0579a18a194ef667aeab989e220e",
+      "bytes": 6271
+    },
+    "ios/AEDResponseWatchTests/WatchCoordinatorContractTests.swift": {
+      "sha256": "89dce25259a36dc7cb3c429fc3ff5ec823c2c98990dfec10848e0c404c4053d8",
+      "bytes": 1258
+    },
+    "ios/AEDResponseWatchTests/WatchCompanionLinkTests.swift": {
+      "sha256": "ce3a0c91dded226d15e1132cca715ae94ca4d08f99bad92934cf4cbde7a877d7",
+      "bytes": 17008
+    },
+    "backend/scripts/ensure-windows-firewall.ps1": {
+      "sha256": "5db03f0a51ba544f112fb32661e056e4e57affe291362c055291f0d9445e3f2a",
+      "bytes": 1724
+    },
+    "backend/scripts/stop-windows.ps1": {
+      "sha256": "785b855d65f4cb608c9ab712947bb6c8f5d4ba94c1f76c6ee6a5bd5f06a9f3bc",
+      "bytes": 2781
+    },
+    "backend/scripts/run-windows.ps1": {
+      "sha256": "d0a716fac87b7e4f4ab0354b976ebfa4e1df1a1e400e65874f5869ba97f63aa5",
+      "bytes": 2114
+    },
+    "backend/scripts/status-windows.ps1": {
+      "sha256": "1a295cb1f0719df091938231b7462112ee0ce2484826e1dbfb140abcc3cc4e8a",
+      "bytes": 1461
+    },
+    "backend/scripts/start-windows.ps1": {
+      "sha256": "8ab5a3bced8cf14f1e8abd20e3f61125986c8789671cab70273f39284adb779b",
+      "bytes": 3732
+    },
+    "backend/deploy/azure/backup-sqlite.sh": {
+      "sha256": "7836dc210698c5244455ce5bb1f45877102777b89a2256e0b50e446805135353",
+      "bytes": 663
+    },
+    "backend/deploy/azure/caddy.env.example": {
+      "sha256": "a37f2ea4992102ecd8b7d455e5a8cf82d4abf10e810d7ed43c2d8407937a2a2b",
+      "bytes": 116
+    },
+    "backend/deploy/azure/backend.env.example": {
+      "sha256": "f45df33b8d2da891518ef96facaf1322c8494da2093eabf62609c06d4b9e757d",
+      "bytes": 961
+    },
+    "backend/deploy/azure/aedresponse-simulation-admin.conf": {
+      "sha256": "be33a38aa411925630dcd5a5d5a8d9e4927c6a749797b4f5623df5ba94e55868",
+      "bytes": 214
+    },
+    "backend/deploy/azure/aedresponse-backup.timer": {
+      "sha256": "278063ca7a3dd3915d81dd1128425f63ffe53b5be303b65e7ef1a57a15941103",
+      "bytes": 163
+    },
+    "backend/deploy/azure/Caddyfile": {
+      "sha256": "0e71413720f651824c30f58cd527dd52347190996bb779b60030f963b44592d0",
+      "bytes": 547
+    },
+    "backend/deploy/azure/aedresponse-controlled-test.conf": {
+      "sha256": "0222ca8b3617440b5627756481b69dcf5a0fab8ede26146127d7b010f296f48f",
+      "bytes": 141
+    },
+    "backend/deploy/azure/aedresponse.service": {
+      "sha256": "24ba463c436889e637a596a540778890064e1d52d8b5a1a3eb4028bf69bca79f",
+      "bytes": 944
+    },
+    "backend/deploy/azure/caddy-aedresponse.conf": {
+      "sha256": "64f20b47c9e0333d136102348ca8622dbce7b682f0f0891f35b36b6a00948c36",
+      "bytes": 53
+    },
+    "backend/deploy/azure/aedresponse-backup.service": {
+      "sha256": "8c2156b130e11e1489723461c8c7a9d95ff3ac1eb9919756f8795072efe4bf87",
+      "bytes": 347
+    },
+    "backend/tsconfig.json": {
+      "sha256": "dc495653dd09ec19e8556d59886a125e4cc4b74f9928e53a9d855b7dab14b8fc",
+      "bytes": 515
+    },
+    "ios/scripts/cellular-upload-probe.mm": {
+      "sha256": "cd86626fab56a47670e8dd7b5f4078033b677ca4b8b51b9b67eb3b09c1af9f63",
+      "bytes": 8300
+    },
+    "ios/scripts/cellular-health-probe.mm": {
+      "sha256": "97b612e2cb05214e8d4d89729dcf3caeadd01d4d868f1c2ed5de0af363427e2d",
+      "bytes": 4845
+    },
+    "ios/scripts/cellular-health-lldb.mjs": {
+      "sha256": "4b9f91f4b5cbc25a50ec8aa1d3d0c64e5732d09c304ea6ae439b1cea71ca7d4f",
+      "bytes": 1650
+    },
+    "ios/scripts/verify-responder-exit.swift": {
+      "sha256": "beefa3482a525d01da63338755a9b4e0b2262231ff3ebd292501ce31a75255f5",
+      "bytes": 4742
+    },
+    "ios/AEDResponseTestHost/LocalTestScenarioView.swift": {
+      "sha256": "5fec390f0b63f770dea033d3c4eeae18897cc1f7c84b0a977a1613cd38cf2cb2",
+      "bytes": 3599
+    },
+    "ios/AEDResponseTestHost/Info.plist": {
+      "sha256": "256fd1a9abbaff5ca66dc73a821b71487252260abaab6394049648f27949814e",
+      "bytes": 1754
+    },
+    "ios/AEDResponseUITests/AEDResponseUITests.swift": {
+      "sha256": "367e9886e788f3fc6d54bbd1411b5c91ecdb33bd0f9bd65f139441d7a202e753",
+      "bytes": 18577
+    },
+    "ios/AEDResponseControlledTests/Info.plist": {
+      "sha256": "134293d65c8f8ad8b72f01239431461a8d73b1e77faf2f2584281633091af751",
+      "bytes": 1897
+    },
+    "ios/Config/Signing.xcconfig": {
+      "sha256": "0dfbd60c4cd06622b5833cb0ae98378ba826db52974cef56ea546abf7bd9a112",
+      "bytes": 110
+    },
+    "ios/Config/Signing.local.xcconfig.example": {
+      "sha256": "baea75d6c27ebcd41b5624e0010c084b61342f3731db673673166e30633f1fc3",
+      "bytes": 107
+    },
+    "ios/AEDResponse.xcodeproj/project.pbxproj": {
+      "sha256": "74191f260eaa77cd5e1d77ac9bad92e1255d3842d8ef9424fd68ae221ad824eb",
+      "bytes": 96270
+    }
+  },
+  "reviewKind": "static code and architecture review; no product test or deployment executed",
+  "dependencyAudit": {
+    "backendModules": 13,
+    "runtimeImportEdges": 21,
+    "runtimeImportCycles": [],
+    "allImportCyclesIncludingTypeOnly": [],
+    "graph": {
+      "backend/src/apple-auth.ts": [
+        "backend/src/auth.ts",
+        "backend/src/errors.ts"
+      ],
+      "backend/src/auth.ts": [],
+      "backend/src/config.ts": [],
+      "backend/src/contracts.ts": [],
+      "backend/src/domain.ts": [
+        "backend/src/contracts.ts"
+      ],
+      "backend/src/errors.ts": [],
+      "backend/src/main.ts": [
+        "backend/src/config.ts",
+        "backend/src/server.ts",
+        "backend/src/apple-auth.ts"
+      ],
+      "backend/src/models.ts": [],
+      "backend/src/server.ts": [
+        "backend/src/config.ts",
+        "backend/src/simulation-admin.ts",
+        "backend/src/contracts.ts",
+        "backend/src/errors.ts",
+        "backend/src/service.ts",
+        "backend/src/store.ts"
+      ],
+      "backend/src/service.ts": [
+        "backend/src/config.ts",
+        "backend/src/auth.ts",
+        "backend/src/simulation.ts",
+        "backend/src/contracts.ts",
+        "backend/src/domain.ts",
+        "backend/src/errors.ts"
+      ],
+      "backend/src/simulation-admin.ts": [],
+      "backend/src/simulation.ts": [],
+      "backend/src/store.ts": [
+        "backend/src/simulation.ts",
+        "backend/src/contracts.ts",
+        "backend/src/models.ts"
+      ]
+    },
+    "method": "Static relative import declarations in backend/src/*.ts; excludes dynamic imports, callback flow and Swift same-target references."
+  },
+  "sourceUnchangedWhenCheckedAt": "2026-09-08T17:45:22.440555+00:00",
+  "documentSha256": "bb41bbfa14c9eb03731aeb5dad98748aa1d6cf319fa6be4e5e3151b97ae57bd7",
+  "reviewArtifact": "AEDResponse业务逻辑与架构设计评审稿-2026-09-09.md",
+  "artifactChecks": {
+    "twoParts": true,
+    "sourceReferences": 59,
+    "businessQuestions": 16,
+    "architectureRisks": 18,
+    "mermaidSourceBlocks": 5,
+    "tableStructure": "passed",
+    "riskFields": "passed",
+    "sourceSnapshotUnchanged": 172,
+    "note": "Markdown source structure and link checks only; no product tests and no Mermaid visual render executed."
+  }
+}

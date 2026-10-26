@@ -1,0 +1,36 @@
+{
+  "name": "aedresponse-backend",
+  "version": "2.1.0",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": ">=18.20.0"
+  },
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "check": "tsc -p tsconfig.json --noEmit",
+    "test:performance": "node --import tsx --import ./test/helpers/no-network.mjs --test --test-concurrency=1 test/tick-performance.test.ts test/notification-outbox-performance.test.ts test/sqlite-entity-rollback.test.ts",
+    "posttest": "npm run test:performance",
+    "architecture:storage-load": "tsx test/architecture-repair-native/storage-load.mts",
+    "dev": "tsx watch src/main.ts",
+    "start": "node dist/src/main.js",
+    "test:business": "node --import tsx --import ./test/helpers/no-network.mjs --test --test-concurrency=1 test/domain.test.ts test/store.test.ts test/business-processing.test.ts test/business-requirement-gaps.test.ts test/controlled-accounts.test.ts test/architecture-repair-native/response-decision-boundary.test.mts test/architecture-repair-native/responder-exit-boundary.test.mts test/architecture-repair-native/assignment-status-boundary.test.mts test/architecture-repair-native/event-resolution-boundary.test.mts test/architecture-repair-native/route-notification-boundary.test.mts test/architecture-repair-native/aed-replacement-notification-boundary.test.mts test/architecture-repair-native/reliable-notification-boundary.test.mts test/architecture-repair-native/route-provider-boundary.test.mts test/architecture-repair-native/status-confirmation-boundary.test.mts",
+    "smoke:backend": "tsx test/smoke/backend.smoke.ts",
+    "smoke:contract": "tsx test/smoke/contract.smoke.ts",
+    "smoke": "npm run smoke:contract && npm run smoke:backend",
+    "test": "tsx --test --test-concurrency=1 test/config.test.ts test/cross-event-facts.test.ts test/store-commit-cache.test.ts test/release-gates.test.ts test/recruitment-scope-g13a.test.ts test/candidate-source-scope.test.ts test/retention.test.ts test/self-access.test.ts test/restore-guard.test.ts test/security-log.test.ts test/leakage-boundaries.test.ts test/privilege-separation.test.ts test/team-signals.test.ts test/apple-notifications.test.ts test/ops-status.test.ts test/found-patient.test.ts test/ops-event-status.test.ts test/restore-drill.test.ts test/backup-verification.test.ts test/position-window-reconciliation.test.ts test/service-reconciliation.test.ts test/push-notifications.test.ts test/apple-account.test.ts test/aed-reroute.test.ts test/access-audit.test.ts test/coordination-team.test.ts test/watch-attestation.test.ts test/lifecycle-combinations.test.ts test/sealed-store.test.ts test/evidence-integrity.test.ts test/aed-assets.test.ts test/aed-handover.test.ts test/incremental-state.test.ts test/g13-operation-scope.test.ts test/recruitment-context-legacy.test.ts test/recruitment-audience.test.ts test/responder-eligibility.test.ts test/responder-nearby-eligibility.test.ts test/eligible-responders.test.ts test/recruitment-potential.test.ts test/recruitment-stage.test.ts test/delivery-creation.test.ts test/recruitment-refresh.test.ts test/recruitment-differential.test.ts test/response-decision-refresh-consumers.test.ts test/responder-exit-refresh-consumers.test.ts test/tx-recruitment-context.test.ts test/coordination-summary-domains.test.ts test/relevant-event-probe.test.ts test/responder-position-differential.test.ts test/responder-position-transaction.test.ts test/sqlite-index-lifecycle.test.ts test/tx-coordination-aed-reader.test.ts test/recruitment-run-metrics.test.ts test/delivery-index-route-consistency.test.ts test/recruitment-ordering.test.ts test/delivery-index.test.ts test/assignment-index.test.ts test/transaction-index-overlay.test.ts test/device-position-index.test.ts test/presence-freshness-contract.test.ts test/standby-freshness-baseline.test.ts test/position-freshness.test.ts test/position-expiry.test.ts test/state-projections.test.ts test/entity-transaction.test.ts test/presence-access.test.ts test/auth.test.ts test/apple-auth.test.ts test/amap-route.test.ts test/client-mapkit-routes.test.ts test/controlled-accounts.test.ts test/companion-link.test.ts test/watch-relay-http.test.ts test/watch-simulation.test.ts test/watch-simulation-runner.test.mjs test/domain.test.ts test/business-processing.test.ts test/business-requirement-gaps.test.ts test/api.integration.test.ts test/transport-boundary.test.ts test/store.test.ts test/windows-scripts.test.ts test/simulation.test.ts test/architecture-repair-native/response-decision-boundary.test.mts test/architecture-repair-native/responder-exit-boundary.test.mts test/architecture-repair-native/assignment-status-boundary.test.mts test/architecture-repair-native/event-resolution-boundary.test.mts test/architecture-repair-native/route-notification-boundary.test.mts test/architecture-repair-native/aed-replacement-notification-boundary.test.mts test/architecture-repair-native/reliable-notification-boundary.test.mts test/architecture-repair-native/route-provider-boundary.test.mts test/architecture-repair-native/status-confirmation-boundary.test.mts",
+    "check:apple-login": "tsx scripts/check-apple-login.ts"
+  },
+  "dependencies": {
+    "better-sqlite3": "11.10.0",
+    "socket.io": "4.8.3",
+    "zod": "4.5.4"
+  },
+  "devDependencies": {
+    "@types/better-sqlite3": "7.6.13",
+    "@types/node": "18.19.130",
+    "socket.io-client": "4.8.3",
+    "tsx": "4.23.13",
+    "typescript": "7.0.2"
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "version": "0.6",
+  "generator": "openstreetmap-cgimap 2.1.0 (244689 spike-07.openstreetmap.org)",
+  "copyright": "OpenStreetMap and contributors",
+  "attribution": "http://www.openstreetmap.org/copyright",
+  "license": "http://redacted-host.invalid/licenses/odbl/1-0/",
+  "elements": [
+    {
+      "type": "node",
+      "id": 12147655839,
+      "lat": 22.838261,
+      "lon": 113.2505867,
+      "timestamp": "2024-08-31T11:33:53Z",
+      "version": 1,
+      "changeset": 156010729,
+      "user": "user_11435438",
+      "uid": 11435438,
+      "tags": {
+        "emergency": "defibrillator"
+      }
+    }
+  ]
+}

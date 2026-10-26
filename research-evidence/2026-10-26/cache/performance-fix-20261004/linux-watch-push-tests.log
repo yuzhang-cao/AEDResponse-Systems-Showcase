@@ -1,0 +1,44 @@
+✔ push registration replaces the token of the calling device only (110.449702ms)
+✔ push registration rejects malformed tokens and unbound devices (11.100317ms)
+✔ sign-out clears the push registration so the phone stops receiving that account (19.466705ms)
+✔ unregistering is idempotent and leaves other devices alone (28.903715ms)
+✔ an outbox drain hands notifications to APNs and records the attempt (451.720148ms)
+✔ a token APNs rejects is forgotten instead of retried forever (168.752637ms)
+✔ without provider credentials the attempt is recorded as not delivered (130.482554ms)
+✔ a device without a push registration is socket-only, not an error (430.352022ms)
+✔ APNs retry survives successful socket handoff and does not alert again on socket retries (210.483003ms)
+✔ the default APNs adapter actually speaks HTTP/2 (250.92345ms)
+✔ lock-screen content is phase-aware, private and not a position-tick alert (0.472493ms)
+✔ only emergency-class notifications are allowed to make a sound (0.162153ms)
+✔ a notification tap resolves through REST truth, not the push body (248.450309ms)
+✔ the stored push credential never reaches a client-visible projection (1.596131ms)
+✔ APNs credentials are accepted only as a complete, well-formed set (10.045707ms)
+✔ APNs responses map onto delivery, retry and forget-this-token (8.535716ms)
+✔ the APNs client signs a provider token and posts the opaque payload (129.585748ms)
+✔ an unreadable APNs key is an operator problem, not a lost notification (0.37518ms)
+✔ Apple's signed example has valid build extensions with the ED flag unset (29.855865ms)
+✔ Apple's real CMS receipt verifies without signed attributes and rejects tampering (140.502007ms)
+✔ the embedded trust anchors are Apple's real roots (0.772203ms)
+✔ a verifier cannot be constructed without an app id and bundle allowlist (0.709686ms)
+✔ a malformed or unbound attestation is refused, never accepted by default (10.453088ms)
+✔ a valid binding still fails without a genuine Apple attestation (0.878792ms)
+✔ rejection diagnostics expose only a validation stage and cannot grant admission (18.52106ms)
+✔ the verifier never echoes a caller-supplied device identity on failure (0.894531ms)
+✔ the expected client data hash is an independent derivation, not a passthrough (8.685245ms)
+✔ Watch signing category is independent from the production attestation environment (19.84319ms)
+✔ production Watch deployment fails closed until both trust settings are explicit (0.908437ms)
+✔ HTTP phone relay binds, preserves strict facts, replays and isolates Watch credentials (1619.402003ms)
+✔ controlled Watch run config is explicit, bounded and has no duplicate devices (40.626356ms)
+✔ a slow APNs provider cannot hold the actual Watch relay HTTP acknowledgement (1291.407797ms)
+✔ Watch simulation rejects disabled, expired, foreign, unmarked and malformed inputs without creating events (789.343778ms)
+✔ synthetic Watch payload uses real HTTP/Socket, isolated recruitment, AED tasks and final event state (7593.477362ms)
+✔ ordinary private simulation admin cannot inject a synthetic Watch observation (108.210849ms)
+✔ the actual controlled runner completes receipt progression, acceptance, navigation and AED over real HTTP (7333.923907ms)
+ℹ tests 36
+ℹ suites 0
+ℹ pass 36
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 43124.800912

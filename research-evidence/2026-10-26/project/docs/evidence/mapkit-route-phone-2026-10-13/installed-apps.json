@@ -1,0 +1,20 @@
+[
+  {
+    "CFBundleIdentifier": "dev.codex.aedresponse.routeacceptance",
+    "CFBundleDisplayName": "路线验收",
+    "CFBundleShortVersionString": "1.0",
+    "CFBundleVersion": "2"
+  },
+  {
+    "CFBundleIdentifier": "dev.codex.aedresponse",
+    "CFBundleDisplayName": "AEDResponse",
+    "CFBundleShortVersionString": "2.0",
+    "CFBundleVersion": "12"
+  },
+  {
+    "CFBundleIdentifier": "dev.codex.aedresponse.testhost",
+    "CFBundleDisplayName": "AEDResponse Tests",
+    "CFBundleShortVersionString": "2.0",
+    "CFBundleVersion": "3"
+  }
+]

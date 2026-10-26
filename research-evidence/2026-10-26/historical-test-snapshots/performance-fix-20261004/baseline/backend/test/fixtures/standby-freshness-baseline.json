@@ -1,0 +1,752 @@
+{
+  "ACTIVE @ T0+9:59": {
+    "standby": {
+      "stateLatestPositionPresent": true,
+      "stateLatestPositionObservedAt": "2026-08-31T01:02:00.000Z",
+      "viewPositionPresent": true,
+      "viewPositionObservedAt": "2026-08-31T01:02:00.000Z",
+      "viewFreshness": "FRESH",
+      "viewAgeSeconds": 599,
+      "viewPositioningTier": "SEARCH_RING",
+      "viewAvailableForResponse": true,
+      "nearby": {
+        "outcome": "ok",
+        "generatedAt": "2026-08-31T01:11:59.000Z",
+        "ranges": [
+          {
+            "radiusMeters": 1000,
+            "count": 0
+          },
+          {
+            "radiusMeters": 1500,
+            "count": 0
+          },
+          {
+            "radiusMeters": 2000,
+            "count": 0
+          }
+        ]
+      },
+      "events": []
+    },
+    "patient": {
+      "stateLatestPositionPresent": true,
+      "stateLatestPositionObservedAt": "2026-08-31T01:02:00.000Z",
+      "viewPositionPresent": true,
+      "viewPositionObservedAt": "2026-08-31T01:02:00.000Z",
+      "viewFreshness": "FRESH",
+      "viewAgeSeconds": 599,
+      "viewPositioningTier": "EVENT_PARTICIPANT",
+      "viewAvailableForResponse": true,
+      "nearby": {
+        "outcome": "rejected",
+        "status": 403,
+        "detail": "Nearby volunteer counts are available only in neutral standby"
+      },
+      "events": [
+        {
+          "state": "ACTIVE",
+          "viewerRelationship": "PATIENT",
+          "positioningTier": "EVENT_PARTICIPANT",
+          "pendingOffer": false,
+          "assignmentStatus": null,
+          "coordinationPresent": true
+        }
+      ]
+    },
+    "acceptedResponder": {
+      "stateLatestPositionPresent": true,
+      "stateLatestPositionObservedAt": "2026-08-31T01:02:00.000Z",
+      "viewPositionPresent": true,
+      "viewPositionObservedAt": "2026-08-31T01:02:00.000Z",
+      "viewFreshness": "FRESH",
+      "viewAgeSeconds": 599,
+      "viewPositioningTier": "EVENT_PARTICIPANT",
+      "viewAvailableForResponse": true,
+      "nearby": {
+        "outcome": "rejected",
+        "status": 403,
+        "detail": "Nearby volunteer counts are available only in neutral standby"
+      },
+      "events": [
+        {
+          "state": "ACTIVE",
+          "viewerRelationship": "RESPONDER",
+          "positioningTier": "EVENT_PARTICIPANT",
+          "pendingOffer": false,
+          "assignmentStatus": "ASSIGNED",
+          "coordinationPresent": true
+        }
+      ]
+    },
+    "exitedResponder": {
+      "stateLatestPositionPresent": false,
+      "stateLatestPositionObservedAt": null,
+      "viewPositionPresent": false,
+      "viewPositionObservedAt": null,
+      "viewFreshness": "UNAVAILABLE",
+      "viewAgeSeconds": null,
+      "viewPositioningTier": "STANDBY",
+      "viewAvailableForResponse": true,
+      "nearby": {
+        "outcome": "rejected",
+        "status": 422,
+        "detail": "A fresh responder position is required before nearby volunteer counts can be shown"
+      },
+      "events": []
+    }
+  },
+  "ACTIVE @ T0+10:00": {
+    "standby": {
+      "stateLatestPositionPresent": true,
+      "stateLatestPositionObservedAt": "2026-08-31T01:02:00.000Z",
+      "viewPositionPresent": true,
+      "viewPositionObservedAt": "2026-08-31T01:02:00.000Z",
+      "viewFreshness": "FRESH",
+      "viewAgeSeconds": 600,
+      "viewPositioningTier": "SEARCH_RING",
+      "viewAvailableForResponse": true,
+      "nearby": {
+        "outcome": "ok",
+        "generatedAt": "2026-08-31T01:12:00.000Z",
+        "ranges": [
+          {
+            "radiusMeters": 1000,
+            "count": 0
+          },
+          {
+            "radiusMeters": 1500,
+            "count": 0
+          },
+          {
+            "radiusMeters": 2000,
+            "count": 0
+          }
+        ]
+      },
+      "events": []
+    },
+    "patient": {
+      "stateLatestPositionPresent": true,
+      "stateLatestPositionObservedAt": "2026-08-31T01:02:00.000Z",
+      "viewPositionPresent": true,
+      "viewPositionObservedAt": "2026-08-31T01:02:00.000Z",
+      "viewFreshness": "FRESH",
+      "viewAgeSeconds": 600,
+      "viewPositioningTier": "EVENT_PARTICIPANT",
+      "viewAvailableForResponse": true,
+      "nearby": {
+        "outcome": "rejected",
+        "status": 403,
+        "detail": "Nearby volunteer counts are available only in neutral standby"
+      },
+      "events": [
+        {
+          "state": "ACTIVE",
+          "viewerRelationship": "PATIENT",
+          "positioningTier": "EVENT_PARTICIPANT",
+          "pendingOffer": false,
+          "assignmentStatus": null,
+          "coordinationPresent": true
+        }
+      ]
+    },
+    "acceptedResponder": {
+      "stateLatestPositionPresent": true,
+      "stateLatestPositionObservedAt": "2026-08-31T01:02:00.000Z",
+      "viewPositionPresent": true,
+      "viewPositionObservedAt": "2026-08-31T01:02:00.000Z",
+      "viewFreshness": "FRESH",
+      "viewAgeSeconds": 600,
+      "viewPositioningTier": "EVENT_PARTICIPANT",
+      "viewAvailableForResponse": true,
+      "nearby": {
+        "outcome": "rejected",
+        "status": 403,
+        "detail": "Nearby volunteer counts are available only in neutral standby"
+      },
+      "events": [
+        {
+          "state": "ACTIVE",
+          "viewerRelationship": "RESPONDER",
+          "positioningTier": "EVENT_PARTICIPANT",
+          "pendingOffer": false,
+          "assignmentStatus": "ASSIGNED",
+          "coordinationPresent": true
+        }
+      ]
+    },
+    "exitedResponder": {
+      "stateLatestPositionPresent": false,
+      "stateLatestPositionObservedAt": null,
+      "viewPositionPresent": false,
+      "viewPositionObservedAt": null,
+      "viewFreshness": "UNAVAILABLE",
+      "viewAgeSeconds": null,
+      "viewPositioningTier": "STANDBY",
+      "viewAvailableForResponse": true,
+      "nearby": {
+        "outcome": "rejected",
+        "status": 422,
+        "detail": "A fresh responder position is required before nearby volunteer counts can be shown"
+      },
+      "events": []
+    }
+  },
+  "ACTIVE @ T0+10:00.001": {
+    "standby": {
+      "stateLatestPositionPresent": false,
+      "stateLatestPositionObservedAt": null,
+      "viewPositionPresent": false,
+      "viewPositionObservedAt": null,
+      "viewFreshness": "UNAVAILABLE",
+      "viewAgeSeconds": null,
+      "viewPositioningTier": "STANDBY",
+      "viewAvailableForResponse": true,
+      "nearby": {
+        "outcome": "rejected",
+        "status": 422,
+        "detail": "A fresh responder position is required before nearby volunteer counts can be shown"
+      },
+      "events": []
+    },
+    "patient": {
+      "stateLatestPositionPresent": true,
+      "stateLatestPositionObservedAt": "2026-08-31T01:02:00.000Z",
+      "viewPositionPresent": true,
+      "viewPositionObservedAt": "2026-08-31T01:02:00.000Z",
+      "viewFreshness": "STALE",
+      "viewAgeSeconds": 600,
+      "viewPositioningTier": "EVENT_PARTICIPANT",
+      "viewAvailableForResponse": true,
+      "nearby": {
+        "outcome": "rejected",
+        "status": 403,
+        "detail": "Nearby volunteer counts are available only in neutral standby"
+      },
+      "events": [
+        {
+          "state": "ACTIVE",
+          "viewerRelationship": "PATIENT",
+          "positioningTier": "EVENT_PARTICIPANT",
+          "pendingOffer": false,
+          "assignmentStatus": null,
+          "coordinationPresent": true
+        }
+      ]
+    },
+    "acceptedResponder": {
+      "stateLatestPositionPresent": true,
+      "stateLatestPositionObservedAt": "2026-08-31T01:02:00.000Z",
+      "viewPositionPresent": true,
+      "viewPositionObservedAt": "2026-08-31T01:02:00.000Z",
+      "viewFreshness": "STALE",
+      "viewAgeSeconds": 600,
+      "viewPositioningTier": "EVENT_PARTICIPANT",
+      "viewAvailableForResponse": true,
+      "nearby": {
+        "outcome": "rejected",
+        "status": 403,
+        "detail": "Nearby volunteer counts are available only in neutral standby"
+      },
+      "events": [
+        {
+          "state": "ACTIVE",
+          "viewerRelationship": "RESPONDER",
+          "positioningTier": "EVENT_PARTICIPANT",
+          "pendingOffer": false,
+          "assignmentStatus": "ASSIGNED",
+          "coordinationPresent": true
+        }
+      ]
+    },
+    "exitedResponder": {
+      "stateLatestPositionPresent": false,
+      "stateLatestPositionObservedAt": null,
+      "viewPositionPresent": false,
+      "viewPositionObservedAt": null,
+      "viewFreshness": "UNAVAILABLE",
+      "viewAgeSeconds": null,
+      "viewPositioningTier": "STANDBY",
+      "viewAvailableForResponse": true,
+      "nearby": {
+        "outcome": "rejected",
+        "status": 422,
+        "detail": "A fresh responder position is required before nearby volunteer counts can be shown"
+      },
+      "events": []
+    }
+  },
+  "ACTIVE @ T0+20:00": {
+    "standby": {
+      "stateLatestPositionPresent": false,
+      "stateLatestPositionObservedAt": null,
+      "viewPositionPresent": false,
+      "viewPositionObservedAt": null,
+      "viewFreshness": "UNAVAILABLE",
+      "viewAgeSeconds": null,
+      "viewPositioningTier": "STANDBY",
+      "viewAvailableForResponse": true,
+      "nearby": {
+        "outcome": "rejected",
+        "status": 422,
+        "detail": "A fresh responder position is required before nearby volunteer counts can be shown"
+      },
+      "events": []
+    },
+    "patient": {
+      "stateLatestPositionPresent": true,
+      "stateLatestPositionObservedAt": "2026-08-31T01:02:00.000Z",
+      "viewPositionPresent": true,
+      "viewPositionObservedAt": "2026-08-31T01:02:00.000Z",
+      "viewFreshness": "STALE",
+      "viewAgeSeconds": 1200,
+      "viewPositioningTier": "EVENT_PARTICIPANT",
+      "viewAvailableForResponse": true,
+      "nearby": {
+        "outcome": "rejected",
+        "status": 403,
+        "detail": "Nearby volunteer counts are available only in neutral standby"
+      },
+      "events": [
+        {
+          "state": "ACTIVE",
+          "viewerRelationship": "PATIENT",
+          "positioningTier": "EVENT_PARTICIPANT",
+          "pendingOffer": false,
+          "assignmentStatus": null,
+          "coordinationPresent": true
+        }
+      ]
+    },
+    "acceptedResponder": {
+      "stateLatestPositionPresent": true,
+      "stateLatestPositionObservedAt": "2026-08-31T01:02:00.000Z",
+      "viewPositionPresent": true,
+      "viewPositionObservedAt": "2026-08-31T01:02:00.000Z",
+      "viewFreshness": "STALE",
+      "viewAgeSeconds": 1200,
+      "viewPositioningTier": "EVENT_PARTICIPANT",
+      "viewAvailableForResponse": true,
+      "nearby": {
+        "outcome": "rejected",
+        "status": 403,
+        "detail": "Nearby volunteer counts are available only in neutral standby"
+      },
+      "events": [
+        {
+          "state": "ACTIVE",
+          "viewerRelationship": "RESPONDER",
+          "positioningTier": "EVENT_PARTICIPANT",
+          "pendingOffer": false,
+          "assignmentStatus": "ASSIGNED",
+          "coordinationPresent": true
+        }
+      ]
+    },
+    "exitedResponder": {
+      "stateLatestPositionPresent": false,
+      "stateLatestPositionObservedAt": null,
+      "viewPositionPresent": false,
+      "viewPositionObservedAt": null,
+      "viewFreshness": "UNAVAILABLE",
+      "viewAgeSeconds": null,
+      "viewPositioningTier": "STANDBY",
+      "viewAvailableForResponse": true,
+      "nearby": {
+        "outcome": "rejected",
+        "status": 422,
+        "detail": "A fresh responder position is required before nearby volunteer counts can be shown"
+      },
+      "events": []
+    }
+  },
+  "RESOLVED @ T0+9:59": {
+    "standby": {
+      "stateLatestPositionPresent": true,
+      "stateLatestPositionObservedAt": "2026-08-31T01:02:00.000Z",
+      "viewPositionPresent": true,
+      "viewPositionObservedAt": "2026-08-31T01:02:00.000Z",
+      "viewFreshness": "FRESH",
+      "viewAgeSeconds": 599,
+      "viewPositioningTier": "STANDBY",
+      "viewAvailableForResponse": true,
+      "nearby": {
+        "outcome": "ok",
+        "generatedAt": "2026-08-31T01:11:59.000Z",
+        "ranges": [
+          {
+            "radiusMeters": 1000,
+            "count": 1
+          },
+          {
+            "radiusMeters": 1500,
+            "count": 1
+          },
+          {
+            "radiusMeters": 2000,
+            "count": 1
+          }
+        ]
+      },
+      "events": []
+    },
+    "patient": {
+      "stateLatestPositionPresent": false,
+      "stateLatestPositionObservedAt": null,
+      "viewPositionPresent": false,
+      "viewPositionObservedAt": null,
+      "viewFreshness": "UNAVAILABLE",
+      "viewAgeSeconds": null,
+      "viewPositioningTier": "STANDBY",
+      "viewAvailableForResponse": true,
+      "nearby": {
+        "outcome": "rejected",
+        "status": 422,
+        "detail": "A fresh responder position is required before nearby volunteer counts can be shown"
+      },
+      "events": [
+        {
+          "state": "RESOLVED",
+          "viewerRelationship": "NEUTRAL",
+          "positioningTier": "STANDBY",
+          "pendingOffer": false,
+          "assignmentStatus": null,
+          "coordinationPresent": false
+        }
+      ]
+    },
+    "acceptedResponder": {
+      "stateLatestPositionPresent": true,
+      "stateLatestPositionObservedAt": "2026-08-31T01:02:00.000Z",
+      "viewPositionPresent": true,
+      "viewPositionObservedAt": "2026-08-31T01:02:00.000Z",
+      "viewFreshness": "FRESH",
+      "viewAgeSeconds": 599,
+      "viewPositioningTier": "STANDBY",
+      "viewAvailableForResponse": true,
+      "nearby": {
+        "outcome": "ok",
+        "generatedAt": "2026-08-31T01:11:59.000Z",
+        "ranges": [
+          {
+            "radiusMeters": 1000,
+            "count": 1
+          },
+          {
+            "radiusMeters": 1500,
+            "count": 1
+          },
+          {
+            "radiusMeters": 2000,
+            "count": 1
+          }
+        ]
+      },
+      "events": [
+        {
+          "state": "RESOLVED",
+          "viewerRelationship": "NEUTRAL",
+          "positioningTier": "STANDBY",
+          "pendingOffer": false,
+          "assignmentStatus": null,
+          "coordinationPresent": false
+        }
+      ]
+    },
+    "exitedResponder": {
+      "stateLatestPositionPresent": false,
+      "stateLatestPositionObservedAt": null,
+      "viewPositionPresent": false,
+      "viewPositionObservedAt": null,
+      "viewFreshness": "UNAVAILABLE",
+      "viewAgeSeconds": null,
+      "viewPositioningTier": "STANDBY",
+      "viewAvailableForResponse": true,
+      "nearby": {
+        "outcome": "rejected",
+        "status": 422,
+        "detail": "A fresh responder position is required before nearby volunteer counts can be shown"
+      },
+      "events": []
+    }
+  },
+  "RESOLVED @ T0+10:00": {
+    "standby": {
+      "stateLatestPositionPresent": true,
+      "stateLatestPositionObservedAt": "2026-08-31T01:02:00.000Z",
+      "viewPositionPresent": true,
+      "viewPositionObservedAt": "2026-08-31T01:02:00.000Z",
+      "viewFreshness": "FRESH",
+      "viewAgeSeconds": 600,
+      "viewPositioningTier": "STANDBY",
+      "viewAvailableForResponse": true,
+      "nearby": {
+        "outcome": "ok",
+        "generatedAt": "2026-08-31T01:12:00.000Z",
+        "ranges": [
+          {
+            "radiusMeters": 1000,
+            "count": 1
+          },
+          {
+            "radiusMeters": 1500,
+            "count": 1
+          },
+          {
+            "radiusMeters": 2000,
+            "count": 1
+          }
+        ]
+      },
+      "events": []
+    },
+    "patient": {
+      "stateLatestPositionPresent": false,
+      "stateLatestPositionObservedAt": null,
+      "viewPositionPresent": false,
+      "viewPositionObservedAt": null,
+      "viewFreshness": "UNAVAILABLE",
+      "viewAgeSeconds": null,
+      "viewPositioningTier": "STANDBY",
+      "viewAvailableForResponse": true,
+      "nearby": {
+        "outcome": "rejected",
+        "status": 422,
+        "detail": "A fresh responder position is required before nearby volunteer counts can be shown"
+      },
+      "events": [
+        {
+          "state": "RESOLVED",
+          "viewerRelationship": "NEUTRAL",
+          "positioningTier": "STANDBY",
+          "pendingOffer": false,
+          "assignmentStatus": null,
+          "coordinationPresent": false
+        }
+      ]
+    },
+    "acceptedResponder": {
+      "stateLatestPositionPresent": true,
+      "stateLatestPositionObservedAt": "2026-08-31T01:02:00.000Z",
+      "viewPositionPresent": true,
+      "viewPositionObservedAt": "2026-08-31T01:02:00.000Z",
+      "viewFreshness": "FRESH",
+      "viewAgeSeconds": 600,
+      "viewPositioningTier": "STANDBY",
+      "viewAvailableForResponse": true,
+      "nearby": {
+        "outcome": "ok",
+        "generatedAt": "2026-08-31T01:12:00.000Z",
+        "ranges": [
+          {
+            "radiusMeters": 1000,
+            "count": 1
+          },
+          {
+            "radiusMeters": 1500,
+            "count": 1
+          },
+          {
+            "radiusMeters": 2000,
+            "count": 1
+          }
+        ]
+      },
+      "events": [
+        {
+          "state": "RESOLVED",
+          "viewerRelationship": "NEUTRAL",
+          "positioningTier": "STANDBY",
+          "pendingOffer": false,
+          "assignmentStatus": null,
+          "coordinationPresent": false
+        }
+      ]
+    },
+    "exitedResponder": {
+      "stateLatestPositionPresent": false,
+      "stateLatestPositionObservedAt": null,
+      "viewPositionPresent": false,
+      "viewPositionObservedAt": null,
+      "viewFreshness": "UNAVAILABLE",
+      "viewAgeSeconds": null,
+      "viewPositioningTier": "STANDBY",
+      "viewAvailableForResponse": true,
+      "nearby": {
+        "outcome": "rejected",
+        "status": 422,
+        "detail": "A fresh responder position is required before nearby volunteer counts can be shown"
+      },
+      "events": []
+    }
+  },
+  "RESOLVED @ T0+10:00.001": {
+    "standby": {
+      "stateLatestPositionPresent": false,
+      "stateLatestPositionObservedAt": null,
+      "viewPositionPresent": false,
+      "viewPositionObservedAt": null,
+      "viewFreshness": "UNAVAILABLE",
+      "viewAgeSeconds": null,
+      "viewPositioningTier": "STANDBY",
+      "viewAvailableForResponse": true,
+      "nearby": {
+        "outcome": "rejected",
+        "status": 422,
+        "detail": "A fresh responder position is required before nearby volunteer counts can be shown"
+      },
+      "events": []
+    },
+    "patient": {
+      "stateLatestPositionPresent": false,
+      "stateLatestPositionObservedAt": null,
+      "viewPositionPresent": false,
+      "viewPositionObservedAt": null,
+      "viewFreshness": "UNAVAILABLE",
+      "viewAgeSeconds": null,
+      "viewPositioningTier": "STANDBY",
+      "viewAvailableForResponse": true,
+      "nearby": {
+        "outcome": "rejected",
+        "status": 422,
+        "detail": "A fresh responder position is required before nearby volunteer counts can be shown"
+      },
+      "events": [
+        {
+          "state": "RESOLVED",
+          "viewerRelationship": "NEUTRAL",
+          "positioningTier": "STANDBY",
+          "pendingOffer": false,
+          "assignmentStatus": null,
+          "coordinationPresent": false
+        }
+      ]
+    },
+    "acceptedResponder": {
+      "stateLatestPositionPresent": false,
+      "stateLatestPositionObservedAt": null,
+      "viewPositionPresent": false,
+      "viewPositionObservedAt": null,
+      "viewFreshness": "UNAVAILABLE",
+      "viewAgeSeconds": null,
+      "viewPositioningTier": "STANDBY",
+      "viewAvailableForResponse": true,
+      "nearby": {
+        "outcome": "rejected",
+        "status": 422,
+        "detail": "A fresh responder position is required before nearby volunteer counts can be shown"
+      },
+      "events": [
+        {
+          "state": "RESOLVED",
+          "viewerRelationship": "NEUTRAL",
+          "positioningTier": "STANDBY",
+          "pendingOffer": false,
+          "assignmentStatus": null,
+          "coordinationPresent": false
+        }
+      ]
+    },
+    "exitedResponder": {
+      "stateLatestPositionPresent": false,
+      "stateLatestPositionObservedAt": null,
+      "viewPositionPresent": false,
+      "viewPositionObservedAt": null,
+      "viewFreshness": "UNAVAILABLE",
+      "viewAgeSeconds": null,
+      "viewPositioningTier": "STANDBY",
+      "viewAvailableForResponse": true,
+      "nearby": {
+        "outcome": "rejected",
+        "status": 422,
+        "detail": "A fresh responder position is required before nearby volunteer counts can be shown"
+      },
+      "events": []
+    }
+  },
+  "RESOLVED @ T0+20:00": {
+    "standby": {
+      "stateLatestPositionPresent": false,
+      "stateLatestPositionObservedAt": null,
+      "viewPositionPresent": false,
+      "viewPositionObservedAt": null,
+      "viewFreshness": "UNAVAILABLE",
+      "viewAgeSeconds": null,
+      "viewPositioningTier": "STANDBY",
+      "viewAvailableForResponse": true,
+      "nearby": {
+        "outcome": "rejected",
+        "status": 422,
+        "detail": "A fresh responder position is required before nearby volunteer counts can be shown"
+      },
+      "events": []
+    },
+    "patient": {
+      "stateLatestPositionPresent": false,
+      "stateLatestPositionObservedAt": null,
+      "viewPositionPresent": false,
+      "viewPositionObservedAt": null,
+      "viewFreshness": "UNAVAILABLE",
+      "viewAgeSeconds": null,
+      "viewPositioningTier": "STANDBY",
+      "viewAvailableForResponse": true,
+      "nearby": {
+        "outcome": "rejected",
+        "status": 422,
+        "detail": "A fresh responder position is required before nearby volunteer counts can be shown"
+      },
+      "events": [
+        {
+          "state": "RESOLVED",
+          "viewerRelationship": "NEUTRAL",
+          "positioningTier": "STANDBY",
+          "pendingOffer": false,
+          "assignmentStatus": null,
+          "coordinationPresent": false
+        }
+      ]
+    },
+    "acceptedResponder": {
+      "stateLatestPositionPresent": false,
+      "stateLatestPositionObservedAt": null,
+      "viewPositionPresent": false,
+      "viewPositionObservedAt": null,
+      "viewFreshness": "UNAVAILABLE",
+      "viewAgeSeconds": null,
+      "viewPositioningTier": "STANDBY",
+      "viewAvailableForResponse": true,
+      "nearby": {
+        "outcome": "rejected",
+        "status": 422,
+        "detail": "A fresh responder position is required before nearby volunteer counts can be shown"
+      },
+      "events": [
+        {
+          "state": "RESOLVED",
+          "viewerRelationship": "NEUTRAL",
+          "positioningTier": "STANDBY",
+          "pendingOffer": false,
+          "assignmentStatus": null,
+          "coordinationPresent": false
+        }
+      ]
+    },
+    "exitedResponder": {
+      "stateLatestPositionPresent": false,
+      "stateLatestPositionObservedAt": null,
+      "viewPositionPresent": false,
+      "viewPositionObservedAt": null,
+      "viewFreshness": "UNAVAILABLE",
+      "viewAgeSeconds": null,
+      "viewPositioningTier": "STANDBY",
+      "viewAvailableForResponse": true,
+      "nearby": {
+        "outcome": "rejected",
+        "status": 422,
+        "detail": "A fresh responder position is required before nearby volunteer counts can be shown"
+      },
+      "events": []
+    }
+  }
+}

@@ -1,0 +1,111 @@
+{
+  "attribution": "© OpenStreetMap contributors",
+  "license": "ODbL 1.0",
+  "licenseURL": "https://www.openstreetmap.org/copyright",
+  "candidates": [
+    {
+      "source": "OpenStreetMap",
+      "sourceURL": "https://www.openstreetmap.org/node/12147655839",
+      "sourceNodeId": 12147655839,
+      "sourceUpdatedAt": "2024-08-31T11:33:53Z",
+      "retrievedAt": "2026-09-13",
+      "coordinateSystem": "WGS84",
+      "latitude": 22.838261,
+      "longitude": 113.2505867,
+      "address": "清晖路, 大良街道, 顺德区, 佛山市, 顺德区, 广东省, 528300, 中国",
+      "mapDescription": null,
+      "sourceTags": {
+        "emergency": "defibrillator"
+      },
+      "verificationStatus": "UNVERIFIED_MAP_LISTING",
+      "usableForDispatch": false,
+      "missing": [
+        "physical_verification",
+        "current_availability",
+        "maintenance_contact",
+        "access_hours",
+        "position_accuracy",
+        "verification_expiry"
+      ]
+    },
+    {
+      "source": "OpenStreetMap",
+      "sourceURL": "https://www.openstreetmap.org/node/9633878276",
+      "sourceNodeId": 9633878276,
+      "sourceUpdatedAt": "2022-04-03T16:56:30Z",
+      "retrievedAt": "2026-09-13",
+      "coordinateSystem": "WGS84",
+      "latitude": 23.1506706,
+      "longitude": 113.0231916,
+      "address": "校园二路, 大学城社区, 狮山镇, 南海区, 佛山市, 南海区, 广东省, 528225, 中国",
+      "mapDescription": "体育馆门口",
+      "sourceTags": {
+        "defibrillator:location": "体育馆门口",
+        "emergency": "defibrillator",
+        "indoor": "no"
+      },
+      "verificationStatus": "UNVERIFIED_MAP_LISTING",
+      "usableForDispatch": false,
+      "missing": [
+        "physical_verification",
+        "current_availability",
+        "maintenance_contact",
+        "access_hours",
+        "position_accuracy",
+        "verification_expiry"
+      ]
+    },
+    {
+      "source": "OpenStreetMap",
+      "sourceURL": "https://www.openstreetmap.org/node/13232737188",
+      "sourceNodeId": 13232737188,
+      "sourceUpdatedAt": "2025-11-11T03:33:46Z",
+      "retrievedAt": "2026-09-13",
+      "coordinateSystem": "WGS84",
+      "latitude": 23.1498419,
+      "longitude": 113.0225249,
+      "address": "康有为广场, 大学城社区, 狮山镇, 南海区, 佛山市, 南海区, 广东省, 528225, 中国",
+      "mapDescription": "教学楼A 一层;Teaching building A  1F",
+      "sourceTags": {
+        "defibrillator:location": "教学楼A 一层;Teaching building A  1F",
+        "emergency": "defibrillator",
+        "indoor": "yes"
+      },
+      "verificationStatus": "UNVERIFIED_MAP_LISTING",
+      "usableForDispatch": false,
+      "missing": [
+        "physical_verification",
+        "current_availability",
+        "maintenance_contact",
+        "access_hours",
+        "position_accuracy",
+        "verification_expiry"
+      ]
+    },
+    {
+      "source": "OpenStreetMap",
+      "sourceURL": "https://www.openstreetmap.org/node/12147675208",
+      "sourceNodeId": 12147675208,
+      "sourceUpdatedAt": "2024-08-31T11:33:51Z",
+      "retrievedAt": "2026-09-13",
+      "coordinateSystem": "WGS84",
+      "latitude": 22.8388159,
+      "longitude": 113.2490699,
+      "address": "蓝田路, 大良街道, 顺德区, 佛山市, 顺德区, 广东省, 528399, 中国",
+      "mapDescription": null,
+      "sourceTags": {
+        "emergency": "defibrillator"
+      },
+      "verificationStatus": "UNVERIFIED_MAP_LISTING",
+      "usableForDispatch": false,
+      "missing": [
+        "physical_verification",
+        "current_availability",
+        "maintenance_contact",
+        "access_hours",
+        "position_accuracy",
+        "verification_expiry"
+      ]
+    }
+  ]
+}

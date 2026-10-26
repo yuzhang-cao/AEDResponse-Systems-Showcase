@@ -1,0 +1,32 @@
+[
+  {
+    "app": "AEDResponse.app",
+    "signature": {
+      "application-identifier": "[REDACTED_ENVIRONMENT]",
+      "aps-environment": "development"
+    },
+    "profileCreatedAt": "2026-09-19 09:41:16",
+    "profileExpiresAt": "2027-09-19 09:41:16",
+    "profile": {
+      "aps-environment": "development",
+      "application-identifier": "[REDACTED_ENVIRONMENT]"
+    }
+  },
+  {
+    "app": "AEDResponseWatch.app",
+    "signature": {
+      "application-identifier": "[REDACTED_ENVIRONMENT]",
+      "com.apple.developer.health.fall-detection": true
+    },
+    "profileCreatedAt": "2026-09-17 13:12:43",
+    "profileExpiresAt": "2027-09-17 13:12:43",
+    "profile": {
+      "application-identifier": "[REDACTED_ENVIRONMENT]",
+      "com.apple.developer.health.fall-detection": true,
+      "com.apple.developer.devicecheck.appattest-environment": [
+        "development",
+        "production"
+      ]
+    }
+  }
+]

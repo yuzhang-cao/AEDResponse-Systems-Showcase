@@ -1,0 +1,7 @@
+{
+  "business_outcomes_equal": true,
+  "original_counters_equal": true,
+  "source_files_unchanged": true,
+  "phase_observations_per_run": 42,
+  "correctness_checks_per_run": 10
+}

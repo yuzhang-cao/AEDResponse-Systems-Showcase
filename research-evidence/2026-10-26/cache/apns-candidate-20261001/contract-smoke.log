@@ -1,0 +1,19 @@
+
+> aedresponse-backend@2.1.0 smoke:contract
+> tsx test/smoke/contract.smoke.ts
+
+AEDResponse v2 contract smoke -> [BUILD_CACHE]/apns-candidate-20261001.N2KoQ3/candidate/contracts/openapi.yaml
+
+live conformance target: http://127.0.0.1:55673
+
+  PASS  C01  the contract keeps its identity and production entry (1 ms)
+        44 operations, 44 operationIds, 239 internal refs resolve, 86 documented error schemas
+  PASS  C02  every operation is identified and every internal $ref resolves (1 ms)
+        8 live responses validated against documented schemas
+  PASS  C03  live responses conform to the documented schemas (94 ms)
+        35 implemented route templates are all documented (excluding the /healthz liveness probe, asserted in C03)
+  PASS  C04  server routes and contract paths cover each other (0 ms)
+        2 fixture AEDs match the AED contract schema
+  PASS  C05  the demo fixture stays schema-valid and internally consistent (0 ms)
+
+contract smoke passed: 5 steps

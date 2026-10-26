@@ -1,0 +1,505 @@
+Command line invocation:
+    /Applications/Xcode.app/Contents/Developer/usr/bin/xcodebuild -project ios/AEDResponse.xcodeproj -scheme AEDResponseUnitTests -configuration Debug -destination "platform=iOS Simulator,id=REDACTED-ID-a164ba335eca5c1d" -derivedDataPath /tmp/aedresponse-smoke/iphone -clonedSourcePackagesDirPath ios/.build/SourcePackages -parallel-testing-enabled NO "-only-testing:AEDResponseTests/AppStoreArchitectureTests" "-only-testing:AEDResponseTests/AuthenticationArchitectureTests" "-only-testing:AEDResponseTests/ResponderExitTests" test
+
+Resolve Package Graph
+
+
+Resolved source packages:
+  Starscream: https://github.com/daltoniam/Starscream @ 4.0.8
+  SocketIO: https://github.com/socketio/socket.io-client-swift.git @ 16.1.1
+
+ComputePackagePrebuildTargetDependencyGraph
+
+Prepare packages
+
+CreateBuildRequest
+
+SendProjectDescription
+
+CreateBuildOperation
+
+ComputeTargetDependencyGraph
+note: Building targets in dependency order
+note: Target dependency graph (8 targets)
+    Target 'AEDResponseTests' in project 'AEDResponse'
+        ➜ Explicit dependency on target 'AEDResponseTestHost' in project 'AEDResponse'
+        ➜ Explicit dependency on target 'AEDResponseWatchLogic' in project 'AEDResponse'
+    Target 'AEDResponseWatchLogic' in project 'AEDResponse' (no dependencies)
+    Target 'AEDResponseTestHost' in project 'AEDResponse'
+        ➜ Explicit dependency on target 'SocketIO' in project 'SocketIO'
+    Target 'SocketIO' in project 'SocketIO'
+        ➜ Explicit dependency on target 'SocketIO' in project 'SocketIO'
+        ➜ Explicit dependency on target 'Starscream' in project 'Starscream'
+    Target 'SocketIO' in project 'SocketIO'
+        ➜ Explicit dependency on target 'Starscream' in project 'Starscream'
+    Target 'Starscream' in project 'Starscream'
+        ➜ Explicit dependency on target 'Starscream' in project 'Starscream'
+        ➜ Explicit dependency on target 'Starscream_Starscream' in project 'Starscream'
+    Target 'Starscream' in project 'Starscream'
+        ➜ Explicit dependency on target 'Starscream_Starscream' in project 'Starscream'
+    Target 'Starscream_Starscream' in project 'Starscream' (no dependencies)
+
+GatherProvisioningInputs
+
+CreateBuildDescription
+
+ExecuteExternalTool /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/swiftc --version
+
+ExecuteExternalTool /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -v -E -dM -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator26.5.sdk -x c -c /dev/null
+
+ExecuteExternalTool /Applications/Xcode.app/Contents/Developer/usr/bin/actool --print-asset-tag-combinations --output-format xml1 [PROJECT_ROOT]/ios/AEDResponse/Assets.xcassets
+
+ExecuteExternalTool /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -v -E -dM -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator26.5.sdk -x c -c /dev/null
+
+ExecuteExternalTool /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/libtool -V
+
+ExecuteExternalTool /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/ld -version_details
+
+ExecuteExternalTool /Applications/Xcode.app/Contents/Developer/usr/bin/actool --version --output-format xml1
+
+Build description signature: 8db51d28f6df39988d693fa960880f79
+Build description path: /tmp/aedresponse-smoke/iphone/Build/Intermediates.noindex/XCBuildData/8db51d28f6df39988d693fa960880f79.xcbuilddata
+ClangStatCache /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang-stat-cache /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator26.5.sdk /tmp/aedresponse-smoke/iphone/SDKStatCaches.noindex/iphonesimulator26.5-23F81a-6cfe768891a92b912361537c460fe42b.sdkstatcache
+    cd [PROJECT_ROOT]/ios/AEDResponse.xcodeproj
+    /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang-stat-cache /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator26.5.sdk -o /tmp/aedresponse-smoke/iphone/SDKStatCaches.noindex/iphonesimulator26.5-23F81a-6cfe768891a92b912361537c460fe42b.sdkstatcache
+
+ProcessInfoPlistFile /tmp/aedresponse-smoke/iphone/Build/Products/Debug-iphonesimulator/AEDResponseWatchLogic.framework/Info.plist /tmp/aedresponse-smoke/iphone/Build/Intermediates.noindex/AEDResponse.build/Debug-iphonesimulator/AEDResponseWatchLogic.build/empty-AEDResponseWatchLogic.plist (in target 'AEDResponseWatchLogic' from project 'AEDResponse')
+    cd [PROJECT_ROOT]/ios
+    builtin-infoPlistUtility /tmp/aedresponse-smoke/iphone/Build/Intermediates.noindex/AEDResponse.build/Debug-iphonesimulator/AEDResponseWatchLogic.build/empty-AEDResponseWatchLogic.plist -producttype com.apple.product-type.framework.static -expandbuildsettings -format binary -platform iphonesimulator -o /tmp/aedresponse-smoke/iphone/Build/Products/Debug-iphonesimulator/AEDResponseWatchLogic.framework/Info.plist
+
+SwiftDriver AEDResponseTests normal arm64 com.apple.xcode.tools.swift.compiler (in target 'AEDResponseTests' from project 'AEDResponse')
+    cd [PROJECT_ROOT]/ios
+    builtin-SwiftDriver -- /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/swiftc -module-name AEDResponseTests -Onone @/tmp/aedresponse-smoke/iphone/Build/Intermediates.noindex/AEDResponse.build/Debug-iphonesimulator/AEDResponseTests.build/Objects-normal/arm64/AEDResponseTests.SwiftFileList -DDEBUG -plugin-path /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/host/plugins/testing -enable-experimental-feature DebugDescriptionMacro -sdk /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator26.5.sdk -target arm64-apple-ios17.0-simulator -g -module-cache-path /tmp/aedresponse-smoke/iphone/ModuleCache.noindex -Xfrontend -serialize-debugging-options -enable-testing -index-store-path /tmp/aedresponse-smoke/iphone/Index.noindex/DataStore -Xcc -D_LIBCPP_HARDENING_MODE\=_LIBCPP_HARDENING_MODE_DEBUG -swift-version 6 -I /tmp/aedresponse-smoke/iphone/Build/Products/Debug-iphonesimulator -Isystem /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/lib -F /tmp/aedresponse-smoke/iphone/Build/Products/Debug-iphonesimulator/PackageFrameworks -F /tmp/aedresponse-smoke/iphone/Build/Products/Debug-iphonesimulator/PackageFrameworks -F /tmp/aedresponse-smoke/iphone/Build/Products/Debug-iphonesimulator -F /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/Library/Frameworks -F /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator26.5.sdk/Developer/Library/Frameworks -c -j8 -enable-batch-mode -incremental -Xcc -ivfsstatcache -Xcc /tmp/aedresponse-smoke/iphone/SDKStatCaches.noindex/iphonesimulator26.5-23F81a-6cfe768891a92b912361537c460fe42b.sdkstatcache -output-file-map /tmp/aedresponse-smoke/iphone/Build/Intermediates.noindex/AEDResponse.build/Debug-iphonesimulator/AEDResponseTests.build/Objects-normal/arm64/AEDResponseTests-OutputFileMap.json -use-frontend-parseable-output -save-temps -no-color-diagnostics -explicit-module-build -module-cache-path /tmp/aedresponse-smoke/iphone/Build/Intermediates.noindex/SwiftExplicitPrecompiledModules -clang-scanner-module-cache-path /tmp/aedresponse-smoke/iphone/ModuleCache.noindex -sdk-module-cache-path /tmp/aedresponse-smoke/iphone/ModuleCache.noindex -serialize-diagnostics -emit-dependencies -emit-module -emit-module-path /tmp/aedresponse-smoke/iphone/Build/Intermediates.noindex/AEDResponse.build/Debug-iphonesimulator/AEDResponseTests.build/Objects-normal/arm64/AEDResponseTests.swiftmodule -validate-clang-modules-once -clang-build-session-file /tmp/aedresponse-smoke/iphone/ModuleCache.noindex/Session.modulevalidation -Xcc -I/tmp/aedresponse-smoke/iphone/Build/Intermediates.noindex/AEDResponse.build/Debug-iphonesimulator/AEDResponseTests.build/swift-overrides.hmap -emit-const-values -Xfrontend -const-gather-protocols-file -Xfrontend /tmp/aedresponse-smoke/iphone/Build/Intermediates.noindex/AEDResponse.build/Debug-iphonesimulator/AEDResponseTests.build/Objects-normal/arm64/AEDResponseTests_const_extract_protocols.json -Xcc -iquote -Xcc /tmp/aedresponse-smoke/iphone/Build/Intermediates.noindex/AEDResponse.build/Debug-iphonesimulator/AEDResponseTests.build/AEDResponseTests-generated-files.hmap -Xcc -I/tmp/aedresponse-smoke/iphone/Build/Intermediates.noindex/AEDResponse.build/Debug-iphonesimulator/AEDResponseTests.build/AEDResponseTests-own-target-headers.hmap -Xcc -I/tmp/aedresponse-smoke/iphone/Build/Intermediates.noindex/AEDResponse.build/Debug-iphonesimulator/AEDResponseTests.build/AEDResponseTests-all-non-framework-target-headers.hmap -Xcc -ivfsoverlay -Xcc /tmp/aedresponse-smoke/iphone/Build/Intermediates.noindex/AEDResponse.build/Debug-iphonesimulator/AEDResponse-6bd22f9cbf7786c2b1426c62e612aeac-VFS-iphonesimulator/all-product-headers.yaml -Xcc -iquote -Xcc /tmp/aedresponse-smoke/iphone/Build/Intermediates.noindex/AEDResponse.build/Debug-iphonesimulator/AEDResponseTests.build/AEDResponseTests-project-headers.hmap -Xcc -I/tmp/aedresponse-smoke/iphone/Build/Products/Debug-iphonesimulator/include -Xcc -I/tmp/aedresponse-smoke/iphone/Build/Intermediates.noindex/AEDResponse.build/Debug-iphonesimulator/AEDResponseTests.build/DerivedSources-normal/arm64 -Xcc -I/tmp/aedresponse-smoke/iphone/Build/Intermediates.noindex/AEDResponse.build/Debug-iphonesimulator/AEDResponseTests.build/DerivedSources/arm64 -Xcc -I/tmp/aedresponse-smoke/iphone/Build/Intermediates.noindex/AEDResponse.build/Debug-iphonesimulator/AEDResponseTests.build/DerivedSources -Xcc -DDEBUG\=1 -emit-objc-header -emit-objc-header-path /tmp/aedresponse-smoke/iphone/Build/Intermediates.noindex/AEDResponse.build/Debug-iphonesimulator/AEDResponseTests.build/Objects-normal/arm64/AEDResponseTests-Swift.h -working-directory [PROJECT_ROOT]/ios -experimental-emit-module-separately -disable-cmo
+
+ProcessInfoPlistFile /tmp/aedresponse-smoke/iphone/Build/Products/Debug-iphonesimulator/Starscream_Starscream.bundle/Info.plist /tmp/aedresponse-smoke/iphone/Build/Intermediates.noindex/Starscream.build/Debug-iphonesimulator/Starscream_Starscream.build/empty-Starscream_Starscream.plist (in target 'Starscream_Starscream' from project 'Starscream')
+    cd [PROJECT_ROOT]/ios/.build/SourcePackages/checkouts/Starscream
+    builtin-infoPlistUtility /tmp/aedresponse-smoke/iphone/Build/Intermediates.noindex/Starscream.build/Debug-iphonesimulator/Starscream_Starscream.build/empty-Starscream_Starscream.plist -producttype com.apple.product-type.bundle -expandbuildsettings -format binary -platform iphonesimulator -o /tmp/aedresponse-smoke/iphone/Build/Products/Debug-iphonesimulator/Starscream_Starscream.bundle/Info.plist
+
+Ld /tmp/aedresponse-smoke/iphone/Build/Products/Debug-iphonesimulator/Starscream.o normal (in target 'Starscream' from project 'Starscream')
+    cd [PROJECT_ROOT]/ios/.build/SourcePackages/checkouts/Starscream
+    /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -Xlinker -reproducible -target arm64-apple-ios12.0-simulator -r -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator26.5.sdk -O0 -w -F/tmp/aedresponse-smoke/iphone/Build/Intermediates.noindex/EagerLinkingTBDs/Debug-iphonesimulator -F/tmp/aedresponse-smoke/iphone/Build/Products/Debug-iphonesimulator -iframework /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/Library/Frameworks -iframework /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator26.5.sdk/Developer/Library/Frameworks -filelist /tmp/aedresponse-smoke/iphone/Build/Intermediates.noindex/Starscream.build/Debug-iphonesimulator/Starscream.build/Objects-normal/arm64/Starscream.LinkFileList -nostdlib -Xlinker -object_path_lto -Xlinker /tmp/aedresponse-smoke/iphone/Build/Intermediates.noindex/Starscream.build/Debug-iphonesimulator/Starscream.build/Objects-normal/arm64/Starscream_lto.o -Xlinker -no_deduplicate -Xlinker -objc_abi_version -Xlinker 2 -Xlinker -dependency_info -Xlinker /tmp/aedresponse-smoke/iphone/Build/Intermediates.noindex/Starscream.build/Debug-iphonesimulator/Starscream.build/Objects-normal/arm64/Starscream_dependency_info.dat -fobjc-link-runtime -L/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator -L/usr/lib/swift -Xlinker -add_ast_path -Xlinker /tmp/aedresponse-smoke/iphone/Build/Intermediates.noindex/Starscream.build/Debug-iphonesimulator/Starscream.build/Objects-normal/arm64/Starscream.swiftmodule @/tmp/aedresponse-smoke/iphone/Build/Intermediates.noindex/Starscream.build/Debug-iphonesimulator/Starscream.build/Objects-normal/arm64/Starscream-linker-args.resp -o /tmp/aedresponse-smoke/iphone/Build/Products/Debug-iphonesimulator/Starscream.o
+
+ExtractAppIntentsMetadata (in target 'Starscream' from project 'Starscream')
+    cd [PROJECT_ROOT]/ios/.build/SourcePackages/checkouts/Starscream
+    /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/appintentsmetadataprocessor --toolchain-dir /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain --module-name Starscream --sdk-root /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator26.5.sdk --xcode-version 17F113 --platform-family iOS --deployment-target 12.0 --bundle-identifier starscream.Starscream --output /tmp/aedresponse-smoke/iphone/Build/Products/Debug-iphonesimulator/Starscream.appintents --target-triple arm64-apple-ios12.0-simulator --binary-file /tmp/aedresponse-smoke/iphone/Build/Products/Debug-iphonesimulator/Starscream.o --dependency-file /tmp/aedresponse-smoke/iphone/Build/Intermediates.noindex/Starscream.build/Debug-iphonesimulator/Starscream.build/Objects-normal/arm64/Starscream_dependency_info.dat --stringsdata-file /tmp/aedresponse-smoke/iphone/Build/Intermediates.noindex/Starscream.build/Debug-iphonesimulator/Starscream.build/Objects-normal/arm64/ExtractedAppShortcutsMetadata.stringsdata --source-file-list /tmp/aedresponse-smoke/iphone/Build/Intermediates.noindex/Starscream.build/Debug-iphonesimulator/Starscream.build/Objects-normal/arm64/Starscream.SwiftFileList --metadata-file-list /tmp/aedresponse-smoke/iphone/Build/Intermediates.noindex/Starscream.build/Debug-iphonesimulator/Starscream.build/Starscream.DependencyMetadataFileList --static-metadata-file-list /tmp/aedresponse-smoke/iphone/Build/Intermediates.noindex/Starscream.build/Debug-iphonesimulator/Starscream.build/Starscream.DependencyStaticMetadataFileList --swift-const-vals-list /tmp/aedresponse-smoke/iphone/Build/Intermediates.noindex/Starscream.build/Debug-iphonesimulator/Starscream.build/Objects-normal/arm64/Starscream.SwiftConstValuesFileList --force --compile-time-extraction --deployment-aware-processing --validate-assistant-intents --no-app-shortcuts-localization
+2026-09-13 19:37:37.775 appintentsmetadataprocessor[29987:21161600] Starting appintentsmetadataprocessor export
+2026-09-13 19:37:37.970 appintentsmetadataprocessor[29987:21161600] Extracted no relevant App Intents symbols, skipping writing output
+
+RegisterExecutionPolicyException /tmp/aedresponse-smoke/iphone/Build/Products/Debug-iphonesimulator/Starscream.o (in target 'Starscream' from project 'Starscream')
+    cd [PROJECT_ROOT]/ios/.build/SourcePackages/checkouts/Starscream
+    builtin-RegisterExecutionPolicyException /tmp/aedresponse-smoke/iphone/Build/Products/Debug-iphonesimulator/Starscream.o
+
+Ld /tmp/aedresponse-smoke/iphone/Build/Products/Debug-iphonesimulator/SocketIO.o normal (in target 'SocketIO' from project 'SocketIO')
+    cd [PROJECT_ROOT]/ios/.build/SourcePackages/checkouts/socket.io-client-swift
+    /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -Xlinker -reproducible -target arm64-apple-ios12.0-simulator -r -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator26.5.sdk -O0 -w -F/tmp/aedresponse-smoke/iphone/Build/Intermediates.noindex/EagerLinkingTBDs/Debug-iphonesimulator -F/tmp/aedresponse-smoke/iphone/Build/Products/Debug-iphonesimulator/PackageFrameworks -F/tmp/aedresponse-smoke/iphone/Build/Products/Debug-iphonesimulator -iframework /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/Library/Frameworks -iframework /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator26.5.sdk/Developer/Library/Frameworks -filelist /tmp/aedresponse-smoke/iphone/Build/Intermediates.noindex/SocketIO.build/Debug-iphonesimulator/SocketIO.build/Objects-normal/arm64/SocketIO.LinkFileList -nostdlib -Xlinker -object_path_lto -Xlinker /tmp/aedresponse-smoke/iphone/Build/Intermediates.noindex/SocketIO.build/Debug-iphonesimulator/SocketIO.build/Objects-normal/arm64/SocketIO_lto.o -Xlinker -no_deduplicate -Xlinker -objc_abi_version -Xlinker 2 -Xlinker -dependency_info -Xlinker /tmp/aedresponse-smoke/iphone/Build/Intermediates.noindex/SocketIO.build/Debug-iphonesimulator/SocketIO.build/Objects-normal/arm64/SocketIO_dependency_info.dat -fobjc-link-runtime -L/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator -L/usr/lib/swift -Xlinker -add_ast_path -Xlinker /tmp/aedresponse-smoke/iphone/Build/Intermediates.noindex/SocketIO.build/Debug-iphonesimulator/SocketIO.build/Objects-normal/arm64/SocketIO.swiftmodule @/tmp/aedresponse-smoke/iphone/Build/Intermediates.noindex/SocketIO.build/Debug-iphonesimulator/SocketIO.build/Objects-normal/arm64/SocketIO-linker-args.resp -o /tmp/aedresponse-smoke/iphone/Build/Products/Debug-iphonesimulator/SocketIO.o
+
+ExtractAppIntentsMetadata (in target 'SocketIO' from project 'SocketIO')
+    cd [PROJECT_ROOT]/ios/.build/SourcePackages/checkouts/socket.io-client-swift
+    /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/appintentsmetadataprocessor --toolchain-dir /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain --module-name SocketIO --sdk-root /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator26.5.sdk --xcode-version 17F113 --platform-family iOS --deployment-target 12.0 --bundle-identifier socket.io-client-swift.SocketIO --output /tmp/aedresponse-smoke/iphone/Build/Products/Debug-iphonesimulator/SocketIO.appintents --target-triple arm64-apple-ios12.0-simulator --binary-file /tmp/aedresponse-smoke/iphone/Build/Products/Debug-iphonesimulator/SocketIO.o --dependency-file /tmp/aedresponse-smoke/iphone/Build/Intermediates.noindex/SocketIO.build/Debug-iphonesimulator/SocketIO.build/Objects-normal/arm64/SocketIO_dependency_info.dat --stringsdata-file /tmp/aedresponse-smoke/iphone/Build/Intermediates.noindex/SocketIO.build/Debug-iphonesimulator/SocketIO.build/Objects-normal/arm64/ExtractedAppShortcutsMetadata.stringsdata --source-file-list /tmp/aedresponse-smoke/iphone/Build/Intermediates.noindex/SocketIO.build/Debug-iphonesimulator/SocketIO.build/Objects-normal/arm64/SocketIO.SwiftFileList --metadata-file-list /tmp/aedresponse-smoke/iphone/Build/Intermediates.noindex/SocketIO.build/Debug-iphonesimulator/SocketIO.build/SocketIO.DependencyMetadataFileList --static-metadata-file-list /tmp/aedresponse-smoke/iphone/Build/Intermediates.noindex/SocketIO.build/Debug-iphonesimulator/SocketIO.build/SocketIO.DependencyStaticMetadataFileList --swift-const-vals-list /tmp/aedresponse-smoke/iphone/Build/Intermediates.noindex/SocketIO.build/Debug-iphonesimulator/SocketIO.build/Objects-normal/arm64/SocketIO.SwiftConstValuesFileList --force --compile-time-extraction --deployment-aware-processing --validate-assistant-intents --no-app-shortcuts-localization
+2026-09-13 19:37:39.787 appintentsmetadataprocessor[29991:21161764] Starting appintentsmetadataprocessor export
+2026-09-13 19:37:39.840 appintentsmetadataprocessor[29991:21161764] Extracted no relevant App Intents symbols, skipping writing output
+
+SwiftEmitModule normal arm64 Emitting\ module\ for\ AEDResponseTests (in target 'AEDResponseTests' from project 'AEDResponse')
+
+EmitSwiftModule normal arm64 (in target 'AEDResponseTests' from project 'AEDResponse')
+    cd [PROJECT_ROOT]/ios
+    
+
+SwiftCompile normal arm64 Compiling\ AuthenticationArchitectureTests.swift [PROJECT_ROOT]/ios/AEDResponseTests/AuthenticationArchitectureTests.swift (in target 'AEDResponseTests' from project 'AEDResponse')
+SwiftCompile normal arm64 [PROJECT_ROOT]/ios/AEDResponseTests/AuthenticationArchitectureTests.swift (in target 'AEDResponseTests' from project 'AEDResponse')
+    cd [PROJECT_ROOT]/ios
+    
+
+RegisterExecutionPolicyException /tmp/aedresponse-smoke/iphone/Build/Products/Debug-iphonesimulator/SocketIO.o (in target 'SocketIO' from project 'SocketIO')
+    cd [PROJECT_ROOT]/ios/.build/SourcePackages/checkouts/socket.io-client-swift
+    builtin-RegisterExecutionPolicyException /tmp/aedresponse-smoke/iphone/Build/Products/Debug-iphonesimulator/SocketIO.o
+
+Ld /tmp/aedresponse-smoke/iphone/Build/Products/Debug-iphonesimulator/AEDResponseTestHost.app/__preview.dylib normal (in target 'AEDResponseTestHost' from project 'AEDResponse')
+    cd [PROJECT_ROOT]/ios
+    /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -Xlinker -reproducible -target arm64-apple-ios17.0-simulator -dynamiclib -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator26.5.sdk -O0 -L/tmp/aedresponse-smoke/iphone/Build/Products/Debug-iphonesimulator -F/tmp/aedresponse-smoke/iphone/Build/Products/Debug-iphonesimulator/PackageFrameworks -F/tmp/aedresponse-smoke/iphone/Build/Products/Debug-iphonesimulator/PackageFrameworks -F/tmp/aedresponse-smoke/iphone/Build/Products/Debug-iphonesimulator -install_name @rpath/AEDResponseTestHost.debug.dylib -Xlinker -dead_strip -rdynamic -Xlinker -no_deduplicate -Xlinker -objc_abi_version -Xlinker 2 -Xlinker -dependency_info -Xlinker /tmp/aedresponse-smoke/iphone/Build/Intermediates.noindex/AEDResponse.build/Debug-iphonesimulator/AEDResponseTestHost.build/Objects-normal/arm64/AEDResponseTestHost_dependency_info.dat -Xlinker -sectcreate -Xlinker __TEXT -Xlinker __entitlements -Xlinker /tmp/aedresponse-smoke/iphone/Build/Intermediates.noindex/AEDResponse.build/Debug-iphonesimulator/AEDResponseTestHost.build/AEDResponseTestHost.app-Simulated.xcent -Xlinker -sectcreate -Xlinker __TEXT -Xlinker __ents_der -Xlinker /tmp/aedresponse-smoke/iphone/Build/Intermediates.noindex/AEDResponse.build/Debug-iphonesimulator/AEDResponseTestHost.build/AEDResponseTestHost.app-Simulated.xcent.der -Xlinker -no_adhoc_codesign -o /tmp/aedresponse-smoke/iphone/Build/Products/Debug-iphonesimulator/AEDResponseTestHost.app/__preview.dylib
+
+Ld /tmp/aedresponse-smoke/iphone/Build/Products/Debug-iphonesimulator/AEDResponseTestHost.app/AEDResponseTestHost.debug.dylib normal (in target 'AEDResponseTestHost' from project 'AEDResponse')
+    cd [PROJECT_ROOT]/ios
+    /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -Xlinker -reproducible -target arm64-apple-ios17.0-simulator -dynamiclib -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator26.5.sdk -O0 -L/tmp/aedresponse-smoke/iphone/Build/Intermediates.noindex/EagerLinkingTBDs/Debug-iphonesimulator -L/tmp/aedresponse-smoke/iphone/Build/Products/Debug-iphonesimulator -F/tmp/aedresponse-smoke/iphone/Build/Intermediates.noindex/EagerLinkingTBDs/Debug-iphonesimulator -F/tmp/aedresponse-smoke/iphone/Build/Products/Debug-iphonesimulator/PackageFrameworks -F/tmp/aedresponse-smoke/iphone/Build/Products/Debug-iphonesimulator/PackageFrameworks -F/tmp/aedresponse-smoke/iphone/Build/Products/Debug-iphonesimulator -filelist /tmp/aedresponse-smoke/iphone/Build/Intermediates.noindex/AEDResponse.build/Debug-iphonesimulator/AEDResponseTestHost.build/Objects-normal/arm64/AEDResponseTestHost.LinkFileList -install_name @rpath/AEDResponseTestHost.debug.dylib -Xlinker -rpath -Xlinker /usr/lib/swift -Xlinker -rpath -Xlinker /tmp/aedresponse-smoke/iphone/Build/Products/Debug-iphonesimulator/PackageFrameworks -Xlinker -rpath -Xlinker @executable_path/Frameworks -Xlinker -dead_strip -Xlinker -object_path_lto -Xlinker /tmp/aedresponse-smoke/iphone/Build/Intermediates.noindex/AEDResponse.build/Debug-iphonesimulator/AEDResponseTestHost.build/Objects-normal/arm64/AEDResponseTestHost_lto.o -rdynamic -Xlinker -no_deduplicate -Xlinker -objc_abi_version -Xlinker 2 -Xlinker -dependency_info -Xlinker /tmp/aedresponse-smoke/iphone/Build/Intermediates.noindex/AEDResponse.build/Debug-iphonesimulator/AEDResponseTestHost.build/Objects-normal/arm64/AEDResponseTestHost_dependency_info.dat -fobjc-link-runtime -L/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator -L/usr/lib/swift -Xlinker -add_ast_path -Xlinker /tmp/aedresponse-smoke/iphone/Build/Intermediates.noindex/AEDResponse.build/Debug-iphonesimulator/AEDResponseTestHost.build/Objects-normal/arm64/AEDResponse.swiftmodule @/tmp/aedresponse-smoke/iphone/Build/Intermediates.noindex/AEDResponse.build/Debug-iphonesimulator/AEDResponseTestHost.build/Objects-normal/arm64/AEDResponse-linker-args.resp -Wl,-no_warn_duplicate_libraries -Wl,-no_warn_duplicate_libraries -Xlinker -alias -Xlinker _main -Xlinker ___debug_main_executable_dylib_entry_point -Xlinker -no_adhoc_codesign -o /tmp/aedresponse-smoke/iphone/Build/Products/Debug-iphonesimulator/AEDResponseTestHost.app/AEDResponseTestHost.debug.dylib -Xlinker -add_ast_path -Xlinker /tmp/aedresponse-smoke/iphone/Build/Intermediates.noindex/SocketIO.build/Debug-iphonesimulator/SocketIO.build/Objects-normal/arm64/SocketIO.swiftmodule @/tmp/aedresponse-smoke/iphone/Build/Intermediates.noindex/SocketIO.build/Debug-iphonesimulator/SocketIO.build/Objects-normal/arm64/SocketIO-linker-args.resp -Xlinker -add_ast_path -Xlinker /tmp/aedresponse-smoke/iphone/Build/Intermediates.noindex/Starscream.build/Debug-iphonesimulator/Starscream.build/Objects-normal/arm64/Starscream.swiftmodule @/tmp/aedresponse-smoke/iphone/Build/Intermediates.noindex/Starscream.build/Debug-iphonesimulator/Starscream.build/Objects-normal/arm64/Starscream-linker-args.resp
+
+ConstructStubExecutorLinkFileList /tmp/aedresponse-smoke/iphone/Build/Intermediates.noindex/AEDResponse.build/Debug-iphonesimulator/AEDResponseTestHost.build/AEDResponseTestHost-ExecutorLinkFileList-normal-arm64.txt (in target 'AEDResponseTestHost' from project 'AEDResponse')
+    cd [PROJECT_ROOT]/ios
+    construct-stub-executor-link-file-list /tmp/aedresponse-smoke/iphone/Build/Products/Debug-iphonesimulator/AEDResponseTestHost.app/AEDResponseTestHost.debug.dylib /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/lib/libPreviewsJITStubExecutor_no_swift_entry_point.a /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/lib/libPreviewsJITStubExecutor.a --output /tmp/aedresponse-smoke/iphone/Build/Intermediates.noindex/AEDResponse.build/Debug-iphonesimulator/AEDResponseTestHost.build/AEDResponseTestHost-ExecutorLinkFileList-normal-arm64.txt
+note: Using stub executor library with Swift entry point. (in target 'AEDResponseTestHost' from project 'AEDResponse')
+
+ProcessInfoPlistFile /tmp/aedresponse-smoke/iphone/Build/Products/Debug-iphonesimulator/AEDResponseTestHost.app/Info.plist [PROJECT_ROOT]/ios/AEDResponseTestHost/Info.plist (in target 'AEDResponseTestHost' from project 'AEDResponse')
+    cd [PROJECT_ROOT]/ios
+    builtin-infoPlistUtility [PROJECT_ROOT]/ios/AEDResponseTestHost/Info.plist -producttype com.apple.product-type.application -genpkginfo /tmp/aedresponse-smoke/iphone/Build/Products/Debug-iphonesimulator/AEDResponseTestHost.app/PkgInfo -expandbuildsettings -format binary -platform iphonesimulator -additionalcontentfile /tmp/aedresponse-smoke/iphone/Build/Intermediates.noindex/AEDResponse.build/Debug-iphonesimulator/AEDResponseTestHost.build/assetcatalog_generated_info.plist -scanforprivacyfile /tmp/aedresponse-smoke/iphone/Build/Products/Debug-iphonesimulator/AEDResponseTestHost.app/Starscream_Starscream.bundle -o /tmp/aedresponse-smoke/iphone/Build/Products/Debug-iphonesimulator/AEDResponseTestHost.app/Info.plist
+
+Ld /tmp/aedresponse-smoke/iphone/Build/Products/Debug-iphonesimulator/AEDResponseTestHost.app/AEDResponseTestHost normal (in target 'AEDResponseTestHost' from project 'AEDResponse')
+    cd [PROJECT_ROOT]/ios
+    /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -Xlinker -reproducible -target arm64-apple-ios17.0-simulator -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator26.5.sdk -O0 -L/tmp/aedresponse-smoke/iphone/Build/Products/Debug-iphonesimulator -F/tmp/aedresponse-smoke/iphone/Build/Products/Debug-iphonesimulator/PackageFrameworks -F/tmp/aedresponse-smoke/iphone/Build/Products/Debug-iphonesimulator/PackageFrameworks -F/tmp/aedresponse-smoke/iphone/Build/Products/Debug-iphonesimulator -Xlinker -rpath -Xlinker @executable_path -Xlinker -rpath -Xlinker /tmp/aedresponse-smoke/iphone/Build/Products/Debug-iphonesimulator/PackageFrameworks -Xlinker -rpath -Xlinker @executable_path/Frameworks -rdynamic -Xlinker -no_deduplicate -Xlinker -objc_abi_version -Xlinker 2 -e ___debug_blank_executor_main -Xlinker -sectcreate -Xlinker __TEXT -Xlinker __debug_dylib -Xlinker /tmp/aedresponse-smoke/iphone/Build/Intermediates.noindex/AEDResponse.build/Debug-iphonesimulator/AEDResponseTestHost.build/AEDResponseTestHost-DebugDylibPath-normal-arm64.txt -Xlinker -sectcreate -Xlinker __TEXT -Xlinker __debug_instlnm -Xlinker /tmp/aedresponse-smoke/iphone/Build/Intermediates.noindex/AEDResponse.build/Debug-iphonesimulator/AEDResponseTestHost.build/AEDResponseTestHost-DebugDylibInstallName-normal-arm64.txt -Xlinker -filelist -Xlinker /tmp/aedresponse-smoke/iphone/Build/Intermediates.noindex/AEDResponse.build/Debug-iphonesimulator/AEDResponseTestHost.build/AEDResponseTestHost-ExecutorLinkFileList-normal-arm64.txt -Xlinker -sectcreate -Xlinker __TEXT -Xlinker __entitlements -Xlinker /tmp/aedresponse-smoke/iphone/Build/Intermediates.noindex/AEDResponse.build/Debug-iphonesimulator/AEDResponseTestHost.build/AEDResponseTestHost.app-Simulated.xcent -Xlinker -sectcreate -Xlinker __TEXT -Xlinker __ents_der -Xlinker /tmp/aedresponse-smoke/iphone/Build/Intermediates.noindex/AEDResponse.build/Debug-iphonesimulator/AEDResponseTestHost.build/AEDResponseTestHost.app-Simulated.xcent.der /tmp/aedresponse-smoke/iphone/Build/Products/Debug-iphonesimulator/AEDResponseTestHost.app/AEDResponseTestHost.debug.dylib -Xlinker -no_adhoc_codesign -o /tmp/aedresponse-smoke/iphone/Build/Products/Debug-iphonesimulator/AEDResponseTestHost.app/AEDResponseTestHost
+
+CopySwiftLibs /tmp/aedresponse-smoke/iphone/Build/Products/Debug-iphonesimulator/AEDResponseTestHost.app (in target 'AEDResponseTestHost' from project 'AEDResponse')
+    cd [PROJECT_ROOT]/ios
+    builtin-swiftStdLibTool --copy --verbose --sign - --scan-executable /tmp/aedresponse-smoke/iphone/Build/Products/Debug-iphonesimulator/AEDResponseTestHost.app/AEDResponseTestHost.debug.dylib --scan-folder /tmp/aedresponse-smoke/iphone/Build/Products/Debug-iphonesimulator/AEDResponseTestHost.app/Frameworks --scan-folder /tmp/aedresponse-smoke/iphone/Build/Products/Debug-iphonesimulator/AEDResponseTestHost.app/PlugIns --scan-folder /tmp/aedresponse-smoke/iphone/Build/Products/Debug-iphonesimulator/AEDResponseTestHost.app/SystemExtensions --scan-folder /tmp/aedresponse-smoke/iphone/Build/Products/Debug-iphonesimulator/AEDResponseTestHost.app/Extensions --platform iphonesimulator --toolchain /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain --destination /tmp/aedresponse-smoke/iphone/Build/Products/Debug-iphonesimulator/AEDResponseTestHost.app/Frameworks --strip-bitcode --strip-bitcode-tool /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/bitcode_strip --emit-dependency-info /tmp/aedresponse-smoke/iphone/Build/Intermediates.noindex/AEDResponse.build/Debug-iphonesimulator/AEDResponseTestHost.build/SwiftStdLibToolInputDependencies.dep --filter-for-swift-os
+
+ExtractAppIntentsMetadata (in target 'AEDResponseTestHost' from project 'AEDResponse')
+    cd [PROJECT_ROOT]/ios
+    /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/appintentsmetadataprocessor --toolchain-dir /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain --module-name AEDResponse --sdk-root /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator26.5.sdk --xcode-version 17F113 --platform-family iOS --deployment-target 17.0 --bundle-identifier dev.codex.aedresponse.testhost --output /tmp/aedresponse-smoke/iphone/Build/Products/Debug-iphonesimulator/AEDResponseTestHost.app --target-triple arm64-apple-ios17.0-simulator --binary-file /tmp/aedresponse-smoke/iphone/Build/Products/Debug-iphonesimulator/AEDResponseTestHost.app/AEDResponseTestHost --dependency-file /tmp/aedresponse-smoke/iphone/Build/Intermediates.noindex/AEDResponse.build/Debug-iphonesimulator/AEDResponseTestHost.build/Objects-normal/arm64/AEDResponseTestHost_dependency_info.dat --stringsdata-file /tmp/aedresponse-smoke/iphone/Build/Intermediates.noindex/AEDResponse.build/Debug-iphonesimulator/AEDResponseTestHost.build/Objects-normal/arm64/ExtractedAppShortcutsMetadata.stringsdata --source-file-list /tmp/aedresponse-smoke/iphone/Build/Intermediates.noindex/AEDResponse.build/Debug-iphonesimulator/AEDResponseTestHost.build/Objects-normal/arm64/AEDResponseTestHost.SwiftFileList --metadata-file-list /tmp/aedresponse-smoke/iphone/Build/Intermediates.noindex/AEDResponse.build/Debug-iphonesimulator/AEDResponseTestHost.build/AEDResponseTestHost.DependencyMetadataFileList --static-metadata-file-list /tmp/aedresponse-smoke/iphone/Build/Intermediates.noindex/AEDResponse.build/Debug-iphonesimulator/AEDResponseTestHost.build/AEDResponseTestHost.DependencyStaticMetadataFileList --swift-const-vals-list /tmp/aedresponse-smoke/iphone/Build/Intermediates.noindex/AEDResponse.build/Debug-iphonesimulator/AEDResponseTestHost.build/Objects-normal/arm64/AEDResponseTestHost.SwiftConstValuesFileList --compile-time-extraction --deployment-aware-processing --validate-assistant-intents --no-app-shortcuts-localization
+2026-09-13 19:37:41.175 appintentsmetadataprocessor[30003:21161829] Starting appintentsmetadataprocessor export
+2026-09-13 19:37:41.216 appintentsmetadataprocessor[30003:21161829] warning: Metadata extraction skipped. No AppIntents.framework dependency found.
+
+SwiftDriverJobDiscovery normal arm64 Compiling AuthenticationArchitectureTests.swift (in target 'AEDResponseTests' from project 'AEDResponse')
+
+SwiftCompile normal arm64 Compiling\ AppStoreArchitectureTests.swift [PROJECT_ROOT]/ios/AEDResponseTests/AppStoreArchitectureTests.swift (in target 'AEDResponseTests' from project 'AEDResponse')
+
+SwiftCompile normal arm64 [PROJECT_ROOT]/ios/AEDResponseTests/AppStoreArchitectureTests.swift (in target 'AEDResponseTests' from project 'AEDResponse')
+    cd [PROJECT_ROOT]/ios
+    
+[PROJECT_ROOT]/ios/AEDResponseTests/AppStoreArchitectureTests.swift:4256:13: warning: initialization of immutable value 'prompt' was never used; consider replacing with assignment to '_' or removing it
+        let prompt = try XCTUnwrap(store.exitConfirmationPrompt)
+        ~~~~^~~~~~
+        _
+
+SwiftDriverJobDiscovery normal arm64 Compiling AppStoreArchitectureTests.swift (in target 'AEDResponseTests' from project 'AEDResponse')
+
+SwiftDriver\ Compilation AEDResponseTests normal arm64 com.apple.xcode.tools.swift.compiler (in target 'AEDResponseTests' from project 'AEDResponse')
+    cd [PROJECT_ROOT]/ios
+    builtin-Swift-Compilation -- /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/swiftc -module-name AEDResponseTests -Onone @/tmp/aedresponse-smoke/iphone/Build/Intermediates.noindex/AEDResponse.build/Debug-iphonesimulator/AEDResponseTests.build/Objects-normal/arm64/AEDResponseTests.SwiftFileList -DDEBUG -plugin-path /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/host/plugins/testing -enable-experimental-feature DebugDescriptionMacro -sdk /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator26.5.sdk -target arm64-apple-ios17.0-simulator -g -module-cache-path /tmp/aedresponse-smoke/iphone/ModuleCache.noindex -Xfrontend -serialize-debugging-options -enable-testing -index-store-path /tmp/aedresponse-smoke/iphone/Index.noindex/DataStore -Xcc -D_LIBCPP_HARDENING_MODE\=_LIBCPP_HARDENING_MODE_DEBUG -swift-version 6 -I /tmp/aedresponse-smoke/iphone/Build/Products/Debug-iphonesimulator -Isystem /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/lib -F /tmp/aedresponse-smoke/iphone/Build/Products/Debug-iphonesimulator/PackageFrameworks -F /tmp/aedresponse-smoke/iphone/Build/Products/Debug-iphonesimulator/PackageFrameworks -F /tmp/aedresponse-smoke/iphone/Build/Products/Debug-iphonesimulator -F /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/Library/Frameworks -F /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator26.5.sdk/Developer/Library/Frameworks -c -j8 -enable-batch-mode -incremental -Xcc -ivfsstatcache -Xcc /tmp/aedresponse-smoke/iphone/SDKStatCaches.noindex/iphonesimulator26.5-23F81a-6cfe768891a92b912361537c460fe42b.sdkstatcache -output-file-map /tmp/aedresponse-smoke/iphone/Build/Intermediates.noindex/AEDResponse.build/Debug-iphonesimulator/AEDResponseTests.build/Objects-normal/arm64/AEDResponseTests-OutputFileMap.json -use-frontend-parseable-output -save-temps -no-color-diagnostics -explicit-module-build -module-cache-path /tmp/aedresponse-smoke/iphone/Build/Intermediates.noindex/SwiftExplicitPrecompiledModules -clang-scanner-module-cache-path /tmp/aedresponse-smoke/iphone/ModuleCache.noindex -sdk-module-cache-path /tmp/aedresponse-smoke/iphone/ModuleCache.noindex -serialize-diagnostics -emit-dependencies -emit-module -emit-module-path /tmp/aedresponse-smoke/iphone/Build/Intermediates.noindex/AEDResponse.build/Debug-iphonesimulator/AEDResponseTests.build/Objects-normal/arm64/AEDResponseTests.swiftmodule -validate-clang-modules-once -clang-build-session-file /tmp/aedresponse-smoke/iphone/ModuleCache.noindex/Session.modulevalidation -Xcc -I/tmp/aedresponse-smoke/iphone/Build/Intermediates.noindex/AEDResponse.build/Debug-iphonesimulator/AEDResponseTests.build/swift-overrides.hmap -emit-const-values -Xfrontend -const-gather-protocols-file -Xfrontend /tmp/aedresponse-smoke/iphone/Build/Intermediates.noindex/AEDResponse.build/Debug-iphonesimulator/AEDResponseTests.build/Objects-normal/arm64/AEDResponseTests_const_extract_protocols.json -Xcc -iquote -Xcc /tmp/aedresponse-smoke/iphone/Build/Intermediates.noindex/AEDResponse.build/Debug-iphonesimulator/AEDResponseTests.build/AEDResponseTests-generated-files.hmap -Xcc -I/tmp/aedresponse-smoke/iphone/Build/Intermediates.noindex/AEDResponse.build/Debug-iphonesimulator/AEDResponseTests.build/AEDResponseTests-own-target-headers.hmap -Xcc -I/tmp/aedresponse-smoke/iphone/Build/Intermediates.noindex/AEDResponse.build/Debug-iphonesimulator/AEDResponseTests.build/AEDResponseTests-all-non-framework-target-headers.hmap -Xcc -ivfsoverlay -Xcc /tmp/aedresponse-smoke/iphone/Build/Intermediates.noindex/AEDResponse.build/Debug-iphonesimulator/AEDResponse-6bd22f9cbf7786c2b1426c62e612aeac-VFS-iphonesimulator/all-product-headers.yaml -Xcc -iquote -Xcc /tmp/aedresponse-smoke/iphone/Build/Intermediates.noindex/AEDResponse.build/Debug-iphonesimulator/AEDResponseTests.build/AEDResponseTests-project-headers.hmap -Xcc -I/tmp/aedresponse-smoke/iphone/Build/Products/Debug-iphonesimulator/include -Xcc -I/tmp/aedresponse-smoke/iphone/Build/Intermediates.noindex/AEDResponse.build/Debug-iphonesimulator/AEDResponseTests.build/DerivedSources-normal/arm64 -Xcc -I/tmp/aedresponse-smoke/iphone/Build/Intermediates.noindex/AEDResponse.build/Debug-iphonesimulator/AEDResponseTests.build/DerivedSources/arm64 -Xcc -I/tmp/aedresponse-smoke/iphone/Build/Intermediates.noindex/AEDResponse.build/Debug-iphonesimulator/AEDResponseTests.build/DerivedSources -Xcc -DDEBUG\=1 -emit-objc-header -emit-objc-header-path /tmp/aedresponse-smoke/iphone/Build/Intermediates.noindex/AEDResponse.build/Debug-iphonesimulator/AEDResponseTests.build/Objects-normal/arm64/AEDResponseTests-Swift.h -working-directory [PROJECT_ROOT]/ios -experimental-emit-module-separately -disable-cmo
+
+SwiftDriverJobDiscovery normal arm64 Emitting module for AEDResponseTests (in target 'AEDResponseTests' from project 'AEDResponse')
+
+SwiftDriver\ Compilation\ Requirements AEDResponseTests normal arm64 com.apple.xcode.tools.swift.compiler (in target 'AEDResponseTests' from project 'AEDResponse')
+    cd [PROJECT_ROOT]/ios
+    builtin-Swift-Compilation-Requirements -- /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/swiftc -module-name AEDResponseTests -Onone @/tmp/aedresponse-smoke/iphone/Build/Intermediates.noindex/AEDResponse.build/Debug-iphonesimulator/AEDResponseTests.build/Objects-normal/arm64/AEDResponseTests.SwiftFileList -DDEBUG -plugin-path /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/host/plugins/testing -enable-experimental-feature DebugDescriptionMacro -sdk /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator26.5.sdk -target arm64-apple-ios17.0-simulator -g -module-cache-path /tmp/aedresponse-smoke/iphone/ModuleCache.noindex -Xfrontend -serialize-debugging-options -enable-testing -index-store-path /tmp/aedresponse-smoke/iphone/Index.noindex/DataStore -Xcc -D_LIBCPP_HARDENING_MODE\=_LIBCPP_HARDENING_MODE_DEBUG -swift-version 6 -I /tmp/aedresponse-smoke/iphone/Build/Products/Debug-iphonesimulator -Isystem /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/lib -F /tmp/aedresponse-smoke/iphone/Build/Products/Debug-iphonesimulator/PackageFrameworks -F /tmp/aedresponse-smoke/iphone/Build/Products/Debug-iphonesimulator/PackageFrameworks -F /tmp/aedresponse-smoke/iphone/Build/Products/Debug-iphonesimulator -F /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/Library/Frameworks -F /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator26.5.sdk/Developer/Library/Frameworks -c -j8 -enable-batch-mode -incremental -Xcc -ivfsstatcache -Xcc /tmp/aedresponse-smoke/iphone/SDKStatCaches.noindex/iphonesimulator26.5-23F81a-6cfe768891a92b912361537c460fe42b.sdkstatcache -output-file-map /tmp/aedresponse-smoke/iphone/Build/Intermediates.noindex/AEDResponse.build/Debug-iphonesimulator/AEDResponseTests.build/Objects-normal/arm64/AEDResponseTests-OutputFileMap.json -use-frontend-parseable-output -save-temps -no-color-diagnostics -explicit-module-build -module-cache-path /tmp/aedresponse-smoke/iphone/Build/Intermediates.noindex/SwiftExplicitPrecompiledModules -clang-scanner-module-cache-path /tmp/aedresponse-smoke/iphone/ModuleCache.noindex -sdk-module-cache-path /tmp/aedresponse-smoke/iphone/ModuleCache.noindex -serialize-diagnostics -emit-dependencies -emit-module -emit-module-path /tmp/aedresponse-smoke/iphone/Build/Intermediates.noindex/AEDResponse.build/Debug-iphonesimulator/AEDResponseTests.build/Objects-normal/arm64/AEDResponseTests.swiftmodule -validate-clang-modules-once -clang-build-session-file /tmp/aedresponse-smoke/iphone/ModuleCache.noindex/Session.modulevalidation -Xcc -I/tmp/aedresponse-smoke/iphone/Build/Intermediates.noindex/AEDResponse.build/Debug-iphonesimulator/AEDResponseTests.build/swift-overrides.hmap -emit-const-values -Xfrontend -const-gather-protocols-file -Xfrontend /tmp/aedresponse-smoke/iphone/Build/Intermediates.noindex/AEDResponse.build/Debug-iphonesimulator/AEDResponseTests.build/Objects-normal/arm64/AEDResponseTests_const_extract_protocols.json -Xcc -iquote -Xcc /tmp/aedresponse-smoke/iphone/Build/Intermediates.noindex/AEDResponse.build/Debug-iphonesimulator/AEDResponseTests.build/AEDResponseTests-generated-files.hmap -Xcc -I/tmp/aedresponse-smoke/iphone/Build/Intermediates.noindex/AEDResponse.build/Debug-iphonesimulator/AEDResponseTests.build/AEDResponseTests-own-target-headers.hmap -Xcc -I/tmp/aedresponse-smoke/iphone/Build/Intermediates.noindex/AEDResponse.build/Debug-iphonesimulator/AEDResponseTests.build/AEDResponseTests-all-non-framework-target-headers.hmap -Xcc -ivfsoverlay -Xcc /tmp/aedresponse-smoke/iphone/Build/Intermediates.noindex/AEDResponse.build/Debug-iphonesimulator/AEDResponse-6bd22f9cbf7786c2b1426c62e612aeac-VFS-iphonesimulator/all-product-headers.yaml -Xcc -iquote -Xcc /tmp/aedresponse-smoke/iphone/Build/Intermediates.noindex/AEDResponse.build/Debug-iphonesimulator/AEDResponseTests.build/AEDResponseTests-project-headers.hmap -Xcc -I/tmp/aedresponse-smoke/iphone/Build/Products/Debug-iphonesimulator/include -Xcc -I/tmp/aedresponse-smoke/iphone/Build/Intermediates.noindex/AEDResponse.build/Debug-iphonesimulator/AEDResponseTests.build/DerivedSources-normal/arm64 -Xcc -I/tmp/aedresponse-smoke/iphone/Build/Intermediates.noindex/AEDResponse.build/Debug-iphonesimulator/AEDResponseTests.build/DerivedSources/arm64 -Xcc -I/tmp/aedresponse-smoke/iphone/Build/Intermediates.noindex/AEDResponse.build/Debug-iphonesimulator/AEDResponseTests.build/DerivedSources -Xcc -DDEBUG\=1 -emit-objc-header -emit-objc-header-path /tmp/aedresponse-smoke/iphone/Build/Intermediates.noindex/AEDResponse.build/Debug-iphonesimulator/AEDResponseTests.build/Objects-normal/arm64/AEDResponseTests-Swift.h -working-directory [PROJECT_ROOT]/ios -experimental-emit-module-separately -disable-cmo
+
+Copy /tmp/aedresponse-smoke/iphone/Build/Products/Debug-iphonesimulator/AEDResponseTests.swiftmodule/arm64-apple-ios-simulator.abi.json /tmp/aedresponse-smoke/iphone/Build/Intermediates.noindex/AEDResponse.build/Debug-iphonesimulator/AEDResponseTests.build/Objects-normal/arm64/AEDResponseTests.abi.json (in target 'AEDResponseTests' from project 'AEDResponse')
+    cd [PROJECT_ROOT]/ios
+    builtin-copy -exclude .DS_Store -exclude CVS -exclude .svn -exclude .git -exclude .hg -resolve-src-symlinks -rename /tmp/aedresponse-smoke/iphone/Build/Intermediates.noindex/AEDResponse.build/Debug-iphonesimulator/AEDResponseTests.build/Objects-normal/arm64/AEDResponseTests.abi.json /tmp/aedresponse-smoke/iphone/Build/Products/Debug-iphonesimulator/AEDResponseTests.swiftmodule/arm64-apple-ios-simulator.abi.json
+
+Copy /tmp/aedresponse-smoke/iphone/Build/Products/Debug-iphonesimulator/AEDResponseTests.swiftmodule/Project/arm64-apple-ios-simulator.swiftsourceinfo /tmp/aedresponse-smoke/iphone/Build/Intermediates.noindex/AEDResponse.build/Debug-iphonesimulator/AEDResponseTests.build/Objects-normal/arm64/AEDResponseTests.swiftsourceinfo (in target 'AEDResponseTests' from project 'AEDResponse')
+    cd [PROJECT_ROOT]/ios
+    builtin-copy -exclude .DS_Store -exclude CVS -exclude .svn -exclude .git -exclude .hg -resolve-src-symlinks -rename /tmp/aedresponse-smoke/iphone/Build/Intermediates.noindex/AEDResponse.build/Debug-iphonesimulator/AEDResponseTests.build/Objects-normal/arm64/AEDResponseTests.swiftsourceinfo /tmp/aedresponse-smoke/iphone/Build/Products/Debug-iphonesimulator/AEDResponseTests.swiftmodule/Project/arm64-apple-ios-simulator.swiftsourceinfo
+
+Ld /tmp/aedresponse-smoke/iphone/Build/Products/Debug-iphonesimulator/AEDResponseTestHost.app/PlugIns/AEDResponseTests.xctest/AEDResponseTests normal (in target 'AEDResponseTests' from project 'AEDResponse')
+    cd [PROJECT_ROOT]/ios
+    /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -Xlinker -reproducible -target arm64-apple-ios17.0-simulator -bundle -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator26.5.sdk -O0 -L/tmp/aedresponse-smoke/iphone/Build/Intermediates.noindex/EagerLinkingTBDs/Debug-iphonesimulator -L/tmp/aedresponse-smoke/iphone/Build/Products/Debug-iphonesimulator -L/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/lib -F/tmp/aedresponse-smoke/iphone/Build/Intermediates.noindex/EagerLinkingTBDs/Debug-iphonesimulator -F/tmp/aedresponse-smoke/iphone/Build/Products/Debug-iphonesimulator/PackageFrameworks -F/tmp/aedresponse-smoke/iphone/Build/Products/Debug-iphonesimulator/PackageFrameworks -F/tmp/aedresponse-smoke/iphone/Build/Products/Debug-iphonesimulator -iframework /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/Library/Frameworks -iframework /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator26.5.sdk/Developer/Library/Frameworks -filelist /tmp/aedresponse-smoke/iphone/Build/Intermediates.noindex/AEDResponse.build/Debug-iphonesimulator/AEDResponseTests.build/Objects-normal/arm64/AEDResponseTests.LinkFileList -Xlinker -rpath -Xlinker /usr/lib/swift -Xlinker -rpath -Xlinker /tmp/aedresponse-smoke/iphone/Build/Products/Debug-iphonesimulator/PackageFrameworks -Xlinker -rpath -Xlinker @loader_path/Frameworks -Xlinker -rpath -Xlinker @executable_path/Frameworks -Xlinker -dead_strip -bundle_loader /tmp/aedresponse-smoke/iphone/Build/Products/Debug-iphonesimulator/AEDResponseTestHost.app/AEDResponseTestHost -Xlinker -object_path_lto -Xlinker /tmp/aedresponse-smoke/iphone/Build/Intermediates.noindex/AEDResponse.build/Debug-iphonesimulator/AEDResponseTests.build/Objects-normal/arm64/AEDResponseTests_lto.o -rdynamic -Xlinker -no_deduplicate -Xlinker -objc_abi_version -Xlinker 2 -Xlinker -dependency_info -Xlinker /tmp/aedresponse-smoke/iphone/Build/Intermediates.noindex/AEDResponse.build/Debug-iphonesimulator/AEDResponseTests.build/Objects-normal/arm64/AEDResponseTests_dependency_info.dat -fobjc-link-runtime -L/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator -L/usr/lib/swift -Xlinker -add_ast_path -Xlinker /tmp/aedresponse-smoke/iphone/Build/Intermediates.noindex/AEDResponse.build/Debug-iphonesimulator/AEDResponseTests.build/Objects-normal/arm64/AEDResponseTests.swiftmodule @/tmp/aedresponse-smoke/iphone/Build/Intermediates.noindex/AEDResponse.build/Debug-iphonesimulator/AEDResponseTests.build/Objects-normal/arm64/AEDResponseTests-linker-args.resp -Wl,-no_warn_duplicate_libraries -Wl,-no_warn_duplicate_libraries -Xlinker -needed_framework -Xlinker XCTest -framework XCTest -Xlinker -needed-lXCTestSwiftSupport -lXCTestSwiftSupport -framework AEDResponseWatchLogic /tmp/aedresponse-smoke/iphone/Build/Products/Debug-iphonesimulator/AEDResponseTestHost.app/AEDResponseTestHost.debug.dylib -Xlinker -no_adhoc_codesign -o /tmp/aedresponse-smoke/iphone/Build/Products/Debug-iphonesimulator/AEDResponseTestHost.app/PlugIns/AEDResponseTests.xctest/AEDResponseTests
+
+Copy /tmp/aedresponse-smoke/iphone/Build/Products/Debug-iphonesimulator/AEDResponseTests.swiftmodule/arm64-apple-ios-simulator.swiftmodule /tmp/aedresponse-smoke/iphone/Build/Intermediates.noindex/AEDResponse.build/Debug-iphonesimulator/AEDResponseTests.build/Objects-normal/arm64/AEDResponseTests.swiftmodule (in target 'AEDResponseTests' from project 'AEDResponse')
+    cd [PROJECT_ROOT]/ios
+    builtin-copy -exclude .DS_Store -exclude CVS -exclude .svn -exclude .git -exclude .hg -resolve-src-symlinks -rename /tmp/aedresponse-smoke/iphone/Build/Intermediates.noindex/AEDResponse.build/Debug-iphonesimulator/AEDResponseTests.build/Objects-normal/arm64/AEDResponseTests.swiftmodule /tmp/aedresponse-smoke/iphone/Build/Products/Debug-iphonesimulator/AEDResponseTests.swiftmodule/arm64-apple-ios-simulator.swiftmodule
+
+CodeSign /tmp/aedresponse-smoke/iphone/Build/Products/Debug-iphonesimulator/AEDResponseTestHost.app/PlugIns/AEDResponseTests.xctest/Frameworks/AEDResponseWatchLogic.framework (in target 'AEDResponseTests' from project 'AEDResponse')
+    cd [PROJECT_ROOT]/ios
+    
+    Signing Identity:     "Sign to Run Locally"
+    
+    /usr/bin/codesign --force --sign - --timestamp\=none --preserve-metadata\=identifier,entitlements,flags --generate-entitlement-der /tmp/aedresponse-smoke/iphone/Build/Products/Debug-iphonesimulator/AEDResponseTestHost.app/PlugIns/AEDResponseTests.xctest/Frameworks/AEDResponseWatchLogic.framework
+/tmp/aedresponse-smoke/iphone/Build/Products/Debug-iphonesimulator/AEDResponseTestHost.app/PlugIns/AEDResponseTests.xctest/Frameworks/AEDResponseWatchLogic.framework: replacing existing signature
+
+ProcessInfoPlistFile /tmp/aedresponse-smoke/iphone/Build/Products/Debug-iphonesimulator/AEDResponseTestHost.app/PlugIns/AEDResponseTests.xctest/Info.plist /tmp/aedresponse-smoke/iphone/Build/Intermediates.noindex/AEDResponse.build/Debug-iphonesimulator/AEDResponseTests.build/empty-AEDResponseTests.plist (in target 'AEDResponseTests' from project 'AEDResponse')
+    cd [PROJECT_ROOT]/ios
+    builtin-infoPlistUtility /tmp/aedresponse-smoke/iphone/Build/Intermediates.noindex/AEDResponse.build/Debug-iphonesimulator/AEDResponseTests.build/empty-AEDResponseTests.plist -producttype com.apple.product-type.bundle.unit-test -expandbuildsettings -format binary -platform iphonesimulator -scanforprivacyfile /tmp/aedresponse-smoke/iphone/Build/Products/Debug-iphonesimulator/AEDResponseTestHost.app/PlugIns/AEDResponseTests.xctest/Starscream_Starscream.bundle -o /tmp/aedresponse-smoke/iphone/Build/Products/Debug-iphonesimulator/AEDResponseTestHost.app/PlugIns/AEDResponseTests.xctest/Info.plist
+
+ExtractAppIntentsMetadata (in target 'AEDResponseTests' from project 'AEDResponse')
+    cd [PROJECT_ROOT]/ios
+    /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/appintentsmetadataprocessor --toolchain-dir /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain --module-name AEDResponseTests --sdk-root /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator26.5.sdk --xcode-version 17F113 --platform-family iOS --deployment-target 17.0 --bundle-identifier dev.codex.aedresponse.tests --output /tmp/aedresponse-smoke/iphone/Build/Products/Debug-iphonesimulator/AEDResponseTestHost.app/PlugIns/AEDResponseTests.xctest --target-triple arm64-apple-ios17.0-simulator --binary-file /tmp/aedresponse-smoke/iphone/Build/Products/Debug-iphonesimulator/AEDResponseTestHost.app/PlugIns/AEDResponseTests.xctest/AEDResponseTests --dependency-file /tmp/aedresponse-smoke/iphone/Build/Intermediates.noindex/AEDResponse.build/Debug-iphonesimulator/AEDResponseTests.build/Objects-normal/arm64/AEDResponseTests_dependency_info.dat --stringsdata-file /tmp/aedresponse-smoke/iphone/Build/Intermediates.noindex/AEDResponse.build/Debug-iphonesimulator/AEDResponseTests.build/Objects-normal/arm64/ExtractedAppShortcutsMetadata.stringsdata --source-file-list /tmp/aedresponse-smoke/iphone/Build/Intermediates.noindex/AEDResponse.build/Debug-iphonesimulator/AEDResponseTests.build/Objects-normal/arm64/AEDResponseTests.SwiftFileList --metadata-file-list /tmp/aedresponse-smoke/iphone/Build/Intermediates.noindex/AEDResponse.build/Debug-iphonesimulator/AEDResponseTests.build/AEDResponseTests.DependencyMetadataFileList --static-metadata-file-list /tmp/aedresponse-smoke/iphone/Build/Intermediates.noindex/AEDResponse.build/Debug-iphonesimulator/AEDResponseTests.build/AEDResponseTests.DependencyStaticMetadataFileList --swift-const-vals-list /tmp/aedresponse-smoke/iphone/Build/Intermediates.noindex/AEDResponse.build/Debug-iphonesimulator/AEDResponseTests.build/Objects-normal/arm64/AEDResponseTests.SwiftConstValuesFileList --compile-time-extraction --deployment-aware-processing --validate-assistant-intents --no-app-shortcuts-localization
+2026-09-13 19:37:48.039 appintentsmetadataprocessor[30009:21162093] Starting appintentsmetadataprocessor export
+2026-09-13 19:37:48.047 appintentsmetadataprocessor[30009:21162093] warning: Metadata extraction skipped. No AppIntents.framework dependency found.
+
+CopySwiftLibs /tmp/aedresponse-smoke/iphone/Build/Products/Debug-iphonesimulator/AEDResponseTestHost.app/PlugIns/AEDResponseTests.xctest (in target 'AEDResponseTests' from project 'AEDResponse')
+    cd [PROJECT_ROOT]/ios
+    builtin-swiftStdLibTool --copy --verbose --sign - --scan-executable /tmp/aedresponse-smoke/iphone/Build/Products/Debug-iphonesimulator/AEDResponseTestHost.app/PlugIns/AEDResponseTests.xctest/AEDResponseTests --scan-folder /tmp/aedresponse-smoke/iphone/Build/Products/Debug-iphonesimulator/AEDResponseTestHost.app/PlugIns/AEDResponseTests.xctest/Frameworks --scan-folder /tmp/aedresponse-smoke/iphone/Build/Products/Debug-iphonesimulator/AEDResponseTestHost.app/PlugIns/AEDResponseTests.xctest/PlugIns --scan-folder /tmp/aedresponse-smoke/iphone/Build/Products/Debug-iphonesimulator/AEDResponseTestHost.app/PlugIns/AEDResponseTests.xctest/SystemExtensions --scan-folder /tmp/aedresponse-smoke/iphone/Build/Products/Debug-iphonesimulator/AEDResponseTestHost.app/PlugIns/AEDResponseTests.xctest/Extensions --scan-folder /tmp/aedresponse-smoke/iphone/Build/Products/Debug-iphonesimulator/AEDResponseWatchLogic.framework --platform iphonesimulator --toolchain /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain --destination /tmp/aedresponse-smoke/iphone/Build/Products/Debug-iphonesimulator/AEDResponseTestHost.app/PlugIns/AEDResponseTests.xctest/Frameworks --strip-bitcode --scan-executable /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/lib/libXCTestSwiftSupport.dylib --strip-bitcode-tool /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/bitcode_strip --emit-dependency-info /tmp/aedresponse-smoke/iphone/Build/Intermediates.noindex/AEDResponse.build/Debug-iphonesimulator/AEDResponseTests.build/SwiftStdLibToolInputDependencies.dep --filter-for-swift-os
+
+CodeSign /tmp/aedresponse-smoke/iphone/Build/Products/Debug-iphonesimulator/AEDResponseTestHost.app/PlugIns/AEDResponseTests.xctest (in target 'AEDResponseTests' from project 'AEDResponse')
+    cd [PROJECT_ROOT]/ios
+    
+    Signing Identity:     "Sign to Run Locally"
+    
+    /usr/bin/codesign --force --sign - --timestamp\=none --generate-entitlement-der /tmp/aedresponse-smoke/iphone/Build/Products/Debug-iphonesimulator/AEDResponseTestHost.app/PlugIns/AEDResponseTests.xctest
+
+CodeSign /tmp/aedresponse-smoke/iphone/Build/Products/Debug-iphonesimulator/AEDResponseTestHost.app/AEDResponseTestHost.debug.dylib (in target 'AEDResponseTestHost' from project 'AEDResponse')
+    cd [PROJECT_ROOT]/ios
+    
+    Signing Identity:     "Sign to Run Locally"
+    
+    /usr/bin/codesign --force --sign - --timestamp\=none --generate-entitlement-der /tmp/aedresponse-smoke/iphone/Build/Products/Debug-iphonesimulator/AEDResponseTestHost.app/AEDResponseTestHost.debug.dylib
+
+CodeSign /tmp/aedresponse-smoke/iphone/Build/Products/Debug-iphonesimulator/AEDResponseTestHost.app/__preview.dylib (in target 'AEDResponseTestHost' from project 'AEDResponse')
+    cd [PROJECT_ROOT]/ios
+    
+    Signing Identity:     "Sign to Run Locally"
+    
+    /usr/bin/codesign --force --sign - --timestamp\=none --generate-entitlement-der /tmp/aedresponse-smoke/iphone/Build/Products/Debug-iphonesimulator/AEDResponseTestHost.app/__preview.dylib
+
+CodeSign /tmp/aedresponse-smoke/iphone/Build/Products/Debug-iphonesimulator/AEDResponseTestHost.app (in target 'AEDResponseTestHost' from project 'AEDResponse')
+    cd [PROJECT_ROOT]/ios
+    
+    Signing Identity:     "Sign to Run Locally"
+    
+    /usr/bin/codesign --force --sign - --timestamp\=none --generate-entitlement-der /tmp/aedresponse-smoke/iphone/Build/Products/Debug-iphonesimulator/AEDResponseTestHost.app
+
+Validate /tmp/aedresponse-smoke/iphone/Build/Products/Debug-iphonesimulator/AEDResponseTestHost.app (in target 'AEDResponseTestHost' from project 'AEDResponse')
+    cd [PROJECT_ROOT]/ios
+    builtin-validationUtility /tmp/aedresponse-smoke/iphone/Build/Products/Debug-iphonesimulator/AEDResponseTestHost.app -shallow-bundle -infoplist-subpath Info.plist
+
+2026-09-13 19:38:33.529089+0800 AEDResponseTestHost[30079:21163894] [General] Failed to send CA Event for app launch measurements for ca_event_type: 0 event_name: com.apple.app_launch_measurement.FirstFramePresentationMetric
+objc[30079]: Class UIAccessibilityLoaderWebShared is implemented in both /Library/Developer/CoreSimulator/Volumes/iOS_23F77/Library/Developer/CoreSimulator/Profiles/Runtimes/iOS 26.5.simruntime/Contents/Resources/RuntimeRoot/System/Library/AccessibilityBundles/WebCore.axbundle/WebCore (0x121c28310) and /Library/Developer/CoreSimulator/Volumes/iOS_23F77/Library/Developer/CoreSimulator/Profiles/Runtimes/iOS 26.5.simruntime/Contents/Resources/RuntimeRoot/System/Library/AccessibilityBundles/WebKit.axbundle/WebKit (0x121764398). This may cause spurious casting failures and mysterious crashes. One of the duplicates must be removed or renamed.
+2026-09-13 19:38:36.271528+0800 AEDResponseTestHost[30079:21163932] [General] Failed to send CA Event for app launch measurements for ca_event_type: 1 event_name: com.apple.app_launch_measurement.ExtendedLaunchMetrics
+Test Suite 'Selected tests' started at 2026-09-13 19:38:37.734.
+Test Suite 'AEDResponseTests.xctest' started at 2026-09-13 19:38:37.738.
+Test Suite 'AppStoreArchitectureTests' started at 2026-09-13 19:38:37.738.
+Test Case '-[AEDResponseTests.AppStoreArchitectureTests testAccountBearerCannotBeSentToDifferentIssuer]' started.
+Test Case '-[AEDResponseTests.AppStoreArchitectureTests testAccountBearerCannotBeSentToDifferentIssuer]' passed (0.146 seconds).
+Test Case '-[AEDResponseTests.AppStoreArchitectureTests testAccountDeletionAsksTheServerAndClearsEveryLocalIdentityFact]' started.
+Test Case '-[AEDResponseTests.AppStoreArchitectureTests testAccountDeletionAsksTheServerAndClearsEveryLocalIdentityFact]' passed (0.028 seconds).
+Test Case '-[AEDResponseTests.AppStoreArchitectureTests testActivePatientAndResponderCannotLogoutOrCloseAccountLocally]' started.
+Test Case '-[AEDResponseTests.AppStoreArchitectureTests testActivePatientAndResponderCannotLogoutOrCloseAccountLocally]' passed (0.006 seconds).
+Test Case '-[AEDResponseTests.AppStoreArchitectureTests testActiveStartOnlyProjectionQuarantinesLegacyFloorSlotInPendingAndOpenDraft]' started.
+Test Case '-[AEDResponseTests.AppStoreArchitectureTests testActiveStartOnlyProjectionQuarantinesLegacyFloorSlotInPendingAndOpenDraft]' passed (0.004 seconds).
+Test Case '-[AEDResponseTests.AppStoreArchitectureTests testAssignmentTimeoutHintAlsoWaitsForNeutralRestWindowBeforeSealing]' started.
+Test Case '-[AEDResponseTests.AppStoreArchitectureTests testAssignmentTimeoutHintAlsoWaitsForNeutralRestWindowBeforeSealing]' passed (0.018 seconds).
+Test Case '-[AEDResponseTests.AppStoreArchitectureTests testAuthenticatedBootstrapCarriesFourAgreementsAndNoCredentials]' started.
+Test Case '-[AEDResponseTests.AppStoreArchitectureTests testAuthenticatedBootstrapCarriesFourAgreementsAndNoCredentials]' passed (0.009 seconds).
+Test Case '-[AEDResponseTests.AppStoreArchitectureTests testAuthoritativeEndClocksAndSealsValidUnclockedFinalFix]' started.
+Test Case '-[AEDResponseTests.AppStoreArchitectureTests testAuthoritativeEndClocksAndSealsValidUnclockedFinalFix]' passed (0.002 seconds).
+Test Case '-[AEDResponseTests.AppStoreArchitectureTests testAuthoritativeEndRegroupsPendingLegalRecordsAndQuarantinesSuffix]' started.
+Test Case '-[AEDResponseTests.AppStoreArchitectureTests testAuthoritativeEndRegroupsPendingLegalRecordsAndQuarantinesSuffix]' passed (0.002 seconds).
+Test Case '-[AEDResponseTests.AppStoreArchitectureTests testAuthoritativeEndSealsOpenLegalPrefixAndQuarantinesInvalidDraftFacts]' started.
+Test Case '-[AEDResponseTests.AppStoreArchitectureTests testAuthoritativeEndSealsOpenLegalPrefixAndQuarantinesInvalidDraftFacts]' passed (0.002 seconds).
+Test Case '-[AEDResponseTests.AppStoreArchitectureTests testAutomaticConnectionCancelledByImmediateLogout]' started.
+Test Case '-[AEDResponseTests.AppStoreArchitectureTests testAutomaticConnectionCancelledByImmediateLogout]' passed (0.088 seconds).
+Test Case '-[AEDResponseTests.AppStoreArchitectureTests testAutomaticConnectionCannotOpenSocketAfterLogoutDuringBootstrap]' started.
+Test Case '-[AEDResponseTests.AppStoreArchitectureTests testAutomaticConnectionCannotOpenSocketAfterLogoutDuringBootstrap]' passed (0.099 seconds).
+Test Case '-[AEDResponseTests.AppStoreArchitectureTests testAutomaticConnectionPreservesAllGatesAndOfflineIsolation]' started.
+Test Case '-[AEDResponseTests.AppStoreArchitectureTests testAutomaticConnectionPreservesAllGatesAndOfflineIsolation]' passed (0.207 seconds).
+Test Case '-[AEDResponseTests.AppStoreArchitectureTests testAutomaticConnectionRetriesInitialFailureWithoutForegroundDuplicates]' started.
+Test Case '-[AEDResponseTests.AppStoreArchitectureTests testAutomaticConnectionRetriesInitialFailureWithoutForegroundDuplicates]' passed (1.044 seconds).
+Test Case '-[AEDResponseTests.AppStoreArchitectureTests testAutomaticConnectionStartsAfterPermissionBecomesEligible]' started.
+Test Case '-[AEDResponseTests.AppStoreArchitectureTests testAutomaticConnectionStartsAfterPermissionBecomesEligible]' passed (0.016 seconds).
+Test Case '-[AEDResponseTests.AppStoreArchitectureTests testAutomaticConnectionStartsOnceWithoutManualConnect]' started.
+Test Case '-[AEDResponseTests.AppStoreArchitectureTests testAutomaticConnectionStartsOnceWithoutManualConnect]' passed (0.098 seconds).
+Test Case '-[AEDResponseTests.AppStoreArchitectureTests testBackendSoleResponder409ReopensThreeConfirmationsWithoutAutomaticRetry]' started.
+Test Case '-[AEDResponseTests.AppStoreArchitectureTests testBackendSoleResponder409ReopensThreeConfirmationsWithoutAutomaticRetry]' passed (0.046 seconds).
+Test Case '-[AEDResponseTests.AppStoreArchitectureTests testCompanionTicketIsRequestedOnlyAfterDeviceSessionAndReachableWatch]' started.
+Test Case '-[AEDResponseTests.AppStoreArchitectureTests testCompanionTicketIsRequestedOnlyAfterDeviceSessionAndReachableWatch]' passed (0.099 seconds).
+Test Case '-[AEDResponseTests.AppStoreArchitectureTests testConnectAndLocationChangesPublishStrictResponderPositionThroughRest]' started.
+Test Case '-[AEDResponseTests.AppStoreArchitectureTests testConnectAndLocationChangesPublishStrictResponderPositionThroughRest]' passed (0.132 seconds).
+Test Case '-[AEDResponseTests.AppStoreArchitectureTests testConsentGateExposesReadableDocumentsWhenPresent]' started.
+Test Case '-[AEDResponseTests.AppStoreArchitectureTests testConsentGateExposesReadableDocumentsWhenPresent]' passed (0.004 seconds).
+Test Case '-[AEDResponseTests.AppStoreArchitectureTests testConsentGateFailsClosedWithoutReadableDocuments]' started.
+Test Case '-[AEDResponseTests.AppStoreArchitectureTests testConsentGateFailsClosedWithoutReadableDocuments]' passed (0.002 seconds).
+Test Case '-[AEDResponseTests.AppStoreArchitectureTests testDelayedAedUnavailableHTTPCompletionCannotOverwriteSocketReplacement]' started.
+Test Case '-[AEDResponseTests.AppStoreArchitectureTests testDelayedAedUnavailableHTTPCompletionCannotOverwriteSocketReplacement]' passed (0.039 seconds).
+Test Case '-[AEDResponseTests.AppStoreArchitectureTests testDelayedRestProjectionStartsAtAuthorityAndRetainsCompletedSlots]' started.
+Test Case '-[AEDResponseTests.AppStoreArchitectureTests testDelayedRestProjectionStartsAtAuthorityAndRetainsCompletedSlots]' passed (0.050 seconds).
+Test Case '-[AEDResponseTests.AppStoreArchitectureTests testDeliveryReceiptSurvivesAppStoreRestartAndDrainsFromSameProtectedQueue]' started.
+Test Case '-[AEDResponseTests.AppStoreArchitectureTests testDeliveryReceiptSurvivesAppStoreRestartAndDrainsFromSameProtectedQueue]' passed (0.028 seconds).
+Test Case '-[AEDResponseTests.AppStoreArchitectureTests testDeniedNotificationsCannotOpenBusinessGate]' started.
+Test Case '-[AEDResponseTests.AppStoreArchitectureTests testDeniedNotificationsCannotOpenBusinessGate]' passed (0.003 seconds).
+Test Case '-[AEDResponseTests.AppStoreArchitectureTests testEndRetryPreservesOperationIdentity]' started.
+Test Case '-[AEDResponseTests.AppStoreArchitectureTests testEndRetryPreservesOperationIdentity]' passed (0.030 seconds).
+Test Case '-[AEDResponseTests.AppStoreArchitectureTests testEventParticipantCapturesNoNewFixWithoutCopyingOldCoordinate]' started.
+Test Case '-[AEDResponseTests.AppStoreArchitectureTests testEventParticipantCapturesNoNewFixWithoutCopyingOldCoordinate]' passed (0.015 seconds).
+Test Case '-[AEDResponseTests.AppStoreArchitectureTests testEventParticipantFlushesFiveSecondBatchAndAcknowledgementRemovesIt]' started.
+Test Case '-[AEDResponseTests.AppStoreArchitectureTests testEventParticipantFlushesFiveSecondBatchAndAcknowledgementRemovesIt]' passed (0.027 seconds).
+Test Case '-[AEDResponseTests.AppStoreArchitectureTests testEventParticipantSendsEarlyAfterTenMetersAndDoesNotUseStandbyEndpoint]' started.
+Test Case '-[AEDResponseTests.AppStoreArchitectureTests testEventParticipantSendsEarlyAfterTenMetersAndDoesNotUseStandbyEndpoint]' passed (0.053 seconds).
+Test Case '-[AEDResponseTests.AppStoreArchitectureTests testEventPositionBatchFailureRetainsBatchUntilLaterACK]' started.
+Test Case '-[AEDResponseTests.AppStoreArchitectureTests testEventPositionBatchFailureRetainsBatchUntilLaterACK]' passed (0.026 seconds).
+Test Case '-[AEDResponseTests.AppStoreArchitectureTests testEventPositionGroupsBatchCallbackBySecondAndKeepsLatestFixPerSlot]' started.
+Test Case '-[AEDResponseTests.AppStoreArchitectureTests testEventPositionGroupsBatchCallbackBySecondAndKeepsLatestFixPerSlot]' passed (0.038 seconds).
+Test Case '-[AEDResponseTests.AppStoreArchitectureTests testEventPositionLateFixCannotOverwriteFinalizedSlot]' started.
+Test Case '-[AEDResponseTests.AppStoreArchitectureTests testEventPositionLateFixCannotOverwriteFinalizedSlot]' passed (0.049 seconds).
+Test Case '-[AEDResponseTests.AppStoreArchitectureTests testEventPositionPersistenceFailureDoesNotClaimQueuedOrSend]' started.
+Test Case '-[AEDResponseTests.AppStoreArchitectureTests testEventPositionPersistenceFailureDoesNotClaimQueuedOrSend]' passed (0.068 seconds).
+Test Case '-[AEDResponseTests.AppStoreArchitectureTests testEventSamplingContinuesOfflineAndKeepsBatchForReconnect]' started.
+Test Case '-[AEDResponseTests.AppStoreArchitectureTests testEventSamplingContinuesOfflineAndKeepsBatchForReconnect]' passed (0.025 seconds).
+Test Case '-[AEDResponseTests.AppStoreArchitectureTests testEverySocketStateMutationSchedulesRestReconciliation]' started.
+Test Case '-[AEDResponseTests.AppStoreArchitectureTests testEverySocketStateMutationSchedulesRestReconciliation]' passed (0.025 seconds).
+Test Case '-[AEDResponseTests.AppStoreArchitectureTests testExitACKAtWindowBoundaryRecoversAfterTemporaryQueueSaveFailure]' started.
+Test Case '-[AEDResponseTests.AppStoreArchitectureTests testExitACKAtWindowBoundaryRecoversAfterTemporaryQueueSaveFailure]' passed (0.042 seconds).
+Test Case '-[AEDResponseTests.AppStoreArchitectureTests testExitNetworkFailureRetriesTheExactSameDeclarationAndACKClearsTask]' started.
+Test Case '-[AEDResponseTests.AppStoreArchitectureTests testExitNetworkFailureRetriesTheExactSameDeclarationAndACKClearsTask]' passed (0.035 seconds).
+Test Case '-[AEDResponseTests.AppStoreArchitectureTests testFailedAccountDeletionKeepsTheSessionAndReportsTheFailure]' started.
+Test Case '-[AEDResponseTests.AppStoreArchitectureTests testFailedAccountDeletionKeepsTheSessionAndReportsTheFailure]' passed (0.014 seconds).
+Test Case '-[AEDResponseTests.AppStoreArchitectureTests testFailedRestReceiptRemainsPendingAndBlocksDecision]' started.
+Test Case '-[AEDResponseTests.AppStoreArchitectureTests testFailedRestReceiptRemainsPendingAndBlocksDecision]' passed (0.016 seconds).
+Test Case '-[AEDResponseTests.AppStoreArchitectureTests testForegroundNotificationRevocationStopsLiveBusiness]' started.
+Test Case '-[AEDResponseTests.AppStoreArchitectureTests testForegroundNotificationRevocationStopsLiveBusiness]' passed (0.015 seconds).
+Test Case '-[AEDResponseTests.AppStoreArchitectureTests testFractionalParticipationStartSkipsPartialFirstSecond]' started.
+Test Case '-[AEDResponseTests.AppStoreArchitectureTests testFractionalParticipationStartSkipsPartialFirstSecond]' passed (0.014 seconds).
+Test Case '-[AEDResponseTests.AppStoreArchitectureTests testIPhoneDoesNotActivateCompanionBeforeAllOnboardingGates]' started.
+Test Case '-[AEDResponseTests.AppStoreArchitectureTests testIPhoneDoesNotActivateCompanionBeforeAllOnboardingGates]' passed (0.002 seconds).
+Test Case '-[AEDResponseTests.AppStoreArchitectureTests testLatestPositionUploadCoordinatorOwnsStableRetryIdentity]' started.
+Test Case '-[AEDResponseTests.AppStoreArchitectureTests testLatestPositionUploadCoordinatorOwnsStableRetryIdentity]' passed (1.016 seconds).
+Test Case '-[AEDResponseTests.AppStoreArchitectureTests testLiveRoleTransitionInvalidatesResponderModeBeforePublishingPatientSample]' started.
+Test Case '-[AEDResponseTests.AppStoreArchitectureTests testLiveRoleTransitionInvalidatesResponderModeBeforePublishingPatientSample]' passed (0.050 seconds).
+Test Case '-[AEDResponseTests.AppStoreArchitectureTests testLocalTestHostScenarioCannotConnectOrBootstrapBackend]' started.
+Test Case '-[AEDResponseTests.AppStoreArchitectureTests testLocalTestHostScenarioCannotConnectOrBootstrapBackend]' passed (0.006 seconds).
+Test Case '-[AEDResponseTests.AppStoreArchitectureTests testLocalTestHostScenarioCannotStartAfterLiveConnectionAttempt]' started.
+Test Case '-[AEDResponseTests.AppStoreArchitectureTests testLocalTestHostScenarioCannotStartAfterLiveConnectionAttempt]' passed (0.003 seconds).
+Test Case '-[AEDResponseTests.AppStoreArchitectureTests testLocalTestHostScenariosDerivePatientAndResponderRoles]' started.
+Test Case '-[AEDResponseTests.AppStoreArchitectureTests testLocalTestHostScenariosDerivePatientAndResponderRoles]' passed (0.036 seconds).
+Test Case '-[AEDResponseTests.AppStoreArchitectureTests testLocationAuthorizationDowngradeStopsLiveBusinessImmediately]' started.
+Test Case '-[AEDResponseTests.AppStoreArchitectureTests testLocationAuthorizationDowngradeStopsLiveBusinessImmediately]' passed (0.025 seconds).
+Test Case '-[AEDResponseTests.AppStoreArchitectureTests testLogoutStopsLiveBusinessAndClearsIdentityState]' started.
+Test Case '-[AEDResponseTests.AppStoreArchitectureTests testLogoutStopsLiveBusinessAndClearsIdentityState]' passed (0.014 seconds).
+Test Case '-[AEDResponseTests.AppStoreArchitectureTests testOfferExpiryClearsOnlyMatchingEventAndDelivery]' started.
+Test Case '-[AEDResponseTests.AppStoreArchitectureTests testOfferExpiryClearsOnlyMatchingEventAndDelivery]' passed (0.004 seconds).
+Test Case '-[AEDResponseTests.AppStoreArchitectureTests testOlderDifferentAssignmentCreatedAndUpdatedCannotOverrideReplacementOrPause]' started.
+Test Case '-[AEDResponseTests.AppStoreArchitectureTests testOlderDifferentAssignmentCreatedAndUpdatedCannotOverrideReplacementOrPause]' passed (0.014 seconds).
+Test Case '-[AEDResponseTests.AppStoreArchitectureTests testOnboardingPersistsFourConsentsAndRequestsPermissions]' started.
+Test Case '-[AEDResponseTests.AppStoreArchitectureTests testOnboardingPersistsFourConsentsAndRequestsPermissions]' passed (0.004 seconds).
+Test Case '-[AEDResponseTests.AppStoreArchitectureTests testOnboardingRequiresSeparateAgreementAcceptance]' started.
+Test Case '-[AEDResponseTests.AppStoreArchitectureTests testOnboardingRequiresSeparateAgreementAcceptance]' passed (0.002 seconds).
+Test Case '-[AEDResponseTests.AppStoreArchitectureTests testPatientActivationImmediatelyOverridesResponseAndAssignment]' started.
+Test Case '-[AEDResponseTests.AppStoreArchitectureTests testPatientActivationImmediatelyOverridesResponseAndAssignment]' passed (0.013 seconds).
+Test Case '-[AEDResponseTests.AppStoreArchitectureTests testPatientCanSubmitContinueForRestStatusConfirmation]' started.
+Test Case '-[AEDResponseTests.AppStoreArchitectureTests testPatientCanSubmitContinueForRestStatusConfirmation]' passed (0.036 seconds).
+Test Case '-[AEDResponseTests.AppStoreArchitectureTests testPatientPriorityReadOnlyPhoneClosesOldResponderButNeverStartsPatientPublishing]' started.
+Test Case '-[AEDResponseTests.AppStoreArchitectureTests testPatientPriorityReadOnlyPhoneClosesOldResponderButNeverStartsPatientPublishing]' passed (0.026 seconds).
+Test Case '-[AEDResponseTests.AppStoreArchitectureTests testPatientPriorityRestSnapshotClosesMissingResponderContextAndStartsNewPatientStream]' started.
+Test Case '-[AEDResponseTests.AppStoreArchitectureTests testPatientPriorityRestSnapshotClosesMissingResponderContextAndStartsNewPatientStream]' passed (0.025 seconds).
+Test Case '-[AEDResponseTests.AppStoreArchitectureTests testPatientResolutionPerformsFullVisibleEventReconciliation]' started.
+Test Case '-[AEDResponseTests.AppStoreArchitectureTests testPatientResolutionPerformsFullVisibleEventReconciliation]' passed (0.052 seconds).
+Test Case '-[AEDResponseTests.AppStoreArchitectureTests testPermanentlyRejectedReceiptIsIsolatedAndDoesNotBlockLaterReceipts]' started.
+Test Case '-[AEDResponseTests.AppStoreArchitectureTests testPermanentlyRejectedReceiptIsIsolatedAndDoesNotBlockLaterReceipts]' passed (0.013 seconds).
+Test Case '-[AEDResponseTests.AppStoreArchitectureTests testPermanentRejectedBatchDoesNotBlockFollowingLegalBatch]' started.
+Test Case '-[AEDResponseTests.AppStoreArchitectureTests testPermanentRejectedBatchDoesNotBlockFollowingLegalBatch]' passed (0.014 seconds).
+Test Case '-[AEDResponseTests.AppStoreArchitectureTests testPositionRetryReusesStableUpdateIDWhenNoNewerSampleExists]' started.
+Test Case '-[AEDResponseTests.AppStoreArchitectureTests testPositionRetryReusesStableUpdateIDWhenNoNewerSampleExists]' passed (1.010 seconds).
+Test Case '-[AEDResponseTests.AppStoreArchitectureTests testPositionUploadRetriesLatestCoordinateAfterTransientFailure]' started.
+Test Case '-[AEDResponseTests.AppStoreArchitectureTests testPositionUploadRetriesLatestCoordinateAfterTransientFailure]' passed (1.018 seconds).
+Test Case '-[AEDResponseTests.AppStoreArchitectureTests testProductionStateNeverFallsBackToDemoLocationOrResponderPosition]' started.
+Test Case '-[AEDResponseTests.AppStoreArchitectureTests testProductionStateNeverFallsBackToDemoLocationOrResponderPosition]' passed (0.006 seconds).
+Test Case '-[AEDResponseTests.AppStoreArchitectureTests testReceivingRequestDoesNotMakeUserResponderBeforeAcceptance]' started.
+Test Case '-[AEDResponseTests.AppStoreArchitectureTests testReceivingRequestDoesNotMakeUserResponderBeforeAcceptance]' passed (0.005 seconds).
+Test Case '-[AEDResponseTests.AppStoreArchitectureTests testReconnectRestoresEventSnapshotBeforeResumingPatientPosition]' started.
+Test Case '-[AEDResponseTests.AppStoreArchitectureTests testReconnectRestoresEventSnapshotBeforeResumingPatientPosition]' passed (1.071 seconds).
+Test Case '-[AEDResponseTests.AppStoreArchitectureTests testRecoveredConnectionClearsOnlyItsOwnFailure]' started.
+Test Case '-[AEDResponseTests.AppStoreArchitectureTests testRecoveredConnectionClearsOnlyItsOwnFailure]' passed (0.011 seconds).
+Test Case '-[AEDResponseTests.AppStoreArchitectureTests testRecoveredConnectionDoesNotDismissANewerErrorWithTheSameMessage]' started.
+Test Case '-[AEDResponseTests.AppStoreArchitectureTests testRecoveredConnectionDoesNotDismissANewerErrorWithTheSameMessage]' passed (0.003 seconds).
+Test Case '-[AEDResponseTests.AppStoreArchitectureTests testRecoveryDoesNotDependOnInternalTimelineAvailability]' started.
+Test Case '-[AEDResponseTests.AppStoreArchitectureTests testRecoveryDoesNotDependOnInternalTimelineAvailability]' passed (0.014 seconds).
+Test Case '-[AEDResponseTests.AppStoreArchitectureTests testRecoveryKeepsExistingClockedGapsAsNoFixAndMarksOnlyDowntimeSlots]' started.
+Test Case '-[AEDResponseTests.AppStoreArchitectureTests testRecoveryKeepsExistingClockedGapsAsNoFixAndMarksOnlyDowntimeSlots]' passed (0.003 seconds).
+Test Case '-[AEDResponseTests.AppStoreArchitectureTests testReducedAccuracyCannotOpenBusinessGate]' started.
+Test Case '-[AEDResponseTests.AppStoreArchitectureTests testReducedAccuracyCannotOpenBusinessGate]' passed (0.002 seconds).
+Test Case '-[AEDResponseTests.AppStoreArchitectureTests testRepeatedConnectTearsDownOldSessionAndWaitsForSocketReady]' started.
+Test Case '-[AEDResponseTests.AppStoreArchitectureTests testRepeatedConnectTearsDownOldSessionAndWaitsForSocketReady]' passed (0.004 seconds).
+Test Case '-[AEDResponseTests.AppStoreArchitectureTests testRestoredContextCannotPersistNewFixBeforeActiveRestAuthority]' started.
+Test Case '-[AEDResponseTests.AppStoreArchitectureTests testRestoredContextCannotPersistNewFixBeforeActiveRestAuthority]' passed (0.027 seconds).
+Test Case '-[AEDResponseTests.AppStoreArchitectureTests testRestoredContextFillsMissingSlotsAsAppNotRunningAfterHistoricalFixGrace]' started.
+Test Case '-[AEDResponseTests.AppStoreArchitectureTests testRestoredContextFillsMissingSlotsAsAppNotRunningAfterHistoricalFixGrace]' passed (0.015 seconds).
+Test Case '-[AEDResponseTests.AppStoreArchitectureTests testSecondaryPatientProjectionWithCanPublishFalseNeverStartsEventPositionSampling]' started.
+Test Case '-[AEDResponseTests.AppStoreArchitectureTests testSecondaryPatientProjectionWithCanPublishFalseNeverStartsEventPositionSampling]' passed (0.025 seconds).
+Test Case '-[AEDResponseTests.AppStoreArchitectureTests testSnapshotSelectsOnlyActiveNonterminalResponderAssignment]' started.
+Test Case '-[AEDResponseTests.AppStoreArchitectureTests testSnapshotSelectsOnlyActiveNonterminalResponderAssignment]' passed (0.002 seconds).
+Test Case '-[AEDResponseTests.AppStoreArchitectureTests testSocketDisconnectRebootstrapsAuthenticatedSessionBeforeReconnect]' started.
+Test Case '-[AEDResponseTests.AppStoreArchitectureTests testSocketDisconnectRebootstrapsAuthenticatedSessionBeforeReconnect]' passed (1.010 seconds).
+Test Case '-[AEDResponseTests.AppStoreArchitectureTests testSocketOfferExpiredClearsThroughTypedEventWithoutPatientData]' started.
+Test Case '-[AEDResponseTests.AppStoreArchitectureTests testSocketOfferExpiredClearsThroughTypedEventWithoutPatientData]' passed (0.371 seconds).
+Test Case '-[AEDResponseTests.AppStoreArchitectureTests testSocketPositionAndCoordinationHintsDecodeBeforeRestReconciliation]' started.
+Test Case '-[AEDResponseTests.AppStoreArchitectureTests testSocketPositionAndCoordinationHintsDecodeBeforeRestReconciliation]' passed (0.018 seconds).
+Test Case '-[AEDResponseTests.AppStoreArchitectureTests testSocketResponseRequestUsesOnlyCoarseAllowlistedFields]' started.
+Test Case '-[AEDResponseTests.AppStoreArchitectureTests testSocketResponseRequestUsesOnlyCoarseAllowlistedFields]' passed (0.022 seconds).
+Test Case '-[AEDResponseTests.AppStoreArchitectureTests testSocketStateHintReconcilesThroughRestAndRestTruthWins]' started.
+Test Case '-[AEDResponseTests.AppStoreArchitectureTests testSocketStateHintReconcilesThroughRestAndRestTruthWins]' passed (0.022 seconds).
+Test Case '-[AEDResponseTests.AppStoreArchitectureTests testSocketStatusConfirmationRequestStrictlyParsesHint]' started.
+Test Case '-[AEDResponseTests.AppStoreArchitectureTests testSocketStatusConfirmationRequestStrictlyParsesHint]' passed (0.011 seconds).
+Test Case '-[AEDResponseTests.AppStoreArchitectureTests testSocketStrictlyParsesAssignmentAndAedPayloads]' started.
+Test Case '-[AEDResponseTests.AppStoreArchitectureTests testSocketStrictlyParsesAssignmentAndAedPayloads]' passed (0.023 seconds).
+Test Case '-[AEDResponseTests.AppStoreArchitectureTests testSocketTerminalEventsRequireCanonicalStatePairs]' started.
+Test Case '-[AEDResponseTests.AppStoreArchitectureTests testSocketTerminalEventsRequireCanonicalStatePairs]' passed (0.004 seconds).
+Test Case '-[AEDResponseTests.AppStoreArchitectureTests testSocketV2EnvelopeRejectsMalformedMessagesAndUsesBoundedDeduplication]' started.
+Test Case '-[AEDResponseTests.AppStoreArchitectureTests testSocketV2EnvelopeRejectsMalformedMessagesAndUsesBoundedDeduplication]' passed (0.005 seconds).
+Test Case '-[AEDResponseTests.AppStoreArchitectureTests testSoleResponderExitDoesNotCallRESTUntilThirdConfirmationAndClearsStaleSnapshot]' started.
+Test Case '-[AEDResponseTests.AppStoreArchitectureTests testSoleResponderExitDoesNotCallRESTUntilThirdConfirmationAndClearsStaleSnapshot]' passed (0.025 seconds).
+Test Case '-[AEDResponseTests.AppStoreArchitectureTests testStaleStatusConfirmationResponseCannotUpdateAfterDisconnect]' started.
+Test Case '-[AEDResponseTests.AppStoreArchitectureTests testStaleStatusConfirmationResponseCannotUpdateAfterDisconnect]' passed (0.025 seconds).
+Test Case '-[AEDResponseTests.AppStoreArchitectureTests testStaleTerminalAssignmentUpdateDoesNotPauseNewerActiveRevision]' started.
+Test Case '-[AEDResponseTests.AppStoreArchitectureTests testStaleTerminalAssignmentUpdateDoesNotPauseNewerActiveRevision]' passed (0.014 seconds).
+Test Case '-[AEDResponseTests.AppStoreArchitectureTests testTerminalAssignmentUpdatedPausesCurrentResponderDraftUntilRest]' started.
+Test Case '-[AEDResponseTests.AppStoreArchitectureTests testTerminalAssignmentUpdatedPausesCurrentResponderDraftUntilRest]' passed (0.014 seconds).
+Test Case '-[AEDResponseTests.AppStoreArchitectureTests testTerminalEventDrainsLateBatchWithoutChangingStandbyMode]' started.
+Test Case '-[AEDResponseTests.AppStoreArchitectureTests testTerminalEventDrainsLateBatchWithoutChangingStandbyMode]' passed (0.014 seconds).
+Test Case '-[AEDResponseTests.AppStoreArchitectureTests testTerminalSocketQueuesImmediateRestoreWhileInitialRestoreIsInFlight]' started.
+Test Case '-[AEDResponseTests.AppStoreArchitectureTests testTerminalSocketQueuesImmediateRestoreWhileInitialRestoreIsInFlight]' passed (0.041 seconds).
+Test Case '-[AEDResponseTests.AppStoreArchitectureTests testTestHostProductionEnvironmentCannotStartAnyLiveTransport]' started.
+Test Case '-[AEDResponseTests.AppStoreArchitectureTests testTestHostProductionEnvironmentCannotStartAnyLiveTransport]' passed (0.003 seconds).
+Test Case '-[AEDResponseTests.AppStoreArchitectureTests testUnauthenticatedStoreDoesNotStartBusinessServices]' started.
+Test Case '-[AEDResponseTests.AppStoreArchitectureTests testUnauthenticatedStoreDoesNotStartBusinessServices]' passed (0.002 seconds).
+Test Case '-[AEDResponseTests.AppStoreArchitectureTests testUnconfirmedCloseSocketHintPausesWithoutSealingUntilRestWindowArrives]' started.
+Test Case '-[AEDResponseTests.AppStoreArchitectureTests testUnconfirmedCloseSocketHintPausesWithoutSealingUntilRestWindowArrives]' passed (0.038 seconds).
+Test Case '-[AEDResponseTests.AppStoreArchitectureTests testUnconfirmedEndCannotBeBypassedByLogout]' started.
+Test Case '-[AEDResponseTests.AppStoreArchitectureTests testUnconfirmedEndCannotBeBypassedByLogout]' passed (0.029 seconds).
+Test Case '-[AEDResponseTests.AppStoreArchitectureTests testUnconfirmedPatientHintIsDiscardedByInitialRestSnapshot]' started.
+Test Case '-[AEDResponseTests.AppStoreArchitectureTests testUnconfirmedPatientHintIsDiscardedByInitialRestSnapshot]' passed (0.028 seconds).
+Test Case '-[AEDResponseTests.AppStoreArchitectureTests testWhenInUseLocationCannotOpenBusinessGate]' started.
+Test Case '-[AEDResponseTests.AppStoreArchitectureTests testWhenInUseLocationCannotOpenBusinessGate]' passed (0.003 seconds).
+Test Suite 'AppStoreArchitectureTests' passed at 2026-09-13 19:38:46.751.
+	 Executed 95 tests, with 0 failures (0 unexpected) in 8.955 (9.013) seconds
+Test Suite 'AuthenticationArchitectureTests' started at 2026-09-13 19:38:46.752.
+Test Case '-[AEDResponseTests.AuthenticationArchitectureTests testAgreementPersistenceIsPartitionedByBackendUserId]' started.
+Test Case '-[AEDResponseTests.AuthenticationArchitectureTests testAgreementPersistenceIsPartitionedByBackendUserId]' passed (0.027 seconds).
+Test Case '-[AEDResponseTests.AuthenticationArchitectureTests testAppleLoginCannotSubmitWithoutPreparedChallenge]' started.
+Test Case '-[AEDResponseTests.AuthenticationArchitectureTests testAppleLoginCannotSubmitWithoutPreparedChallenge]' passed (0.017 seconds).
+Test Case '-[AEDResponseTests.AuthenticationArchitectureTests testAppleLoginUsesInjectedAuthPortAndPersistsSession]' started.
+Test Case '-[AEDResponseTests.AuthenticationArchitectureTests testAppleLoginUsesInjectedAuthPortAndPersistsSession]' passed (0.013 seconds).
+Test Case '-[AEDResponseTests.AuthenticationArchitectureTests testApplePreparationUsesUnauthenticatedCanonicalEndpoint]' started.
+Test Case '-[AEDResponseTests.AuthenticationArchitectureTests testApplePreparationUsesUnauthenticatedCanonicalEndpoint]' passed (0.020 seconds).
+Test Case '-[AEDResponseTests.AuthenticationArchitectureTests testAuthClientUsesCanonicalBodiesAndAccountBearerForBootstrap]' started.
+Test Case '-[AEDResponseTests.AuthenticationArchitectureTests testAuthClientUsesCanonicalBodiesAndAccountBearerForBootstrap]' passed (0.013 seconds).
+Test Case '-[AEDResponseTests.AuthenticationArchitectureTests testColdStartRefreshKeepsIdentityAndBusinessGatesClosedUntilSuccess]' started.
+Test Case '-[AEDResponseTests.AuthenticationArchitectureTests testColdStartRefreshKeepsIdentityAndBusinessGatesClosedUntilSuccess]' passed (0.015 seconds).
+Test Case '-[AEDResponseTests.AuthenticationArchitectureTests testConcurrentExpiredBootstrapRequestsShareAccountRefreshAndDeviceRotation]' started.
+Test Case '-[AEDResponseTests.AuthenticationArchitectureTests testConcurrentExpiredBootstrapRequestsShareAccountRefreshAndDeviceRotation]' passed (0.130 seconds).
+Test Case '-[AEDResponseTests.AuthenticationArchitectureTests testDeviceBindingConflictRequiresSpecificContract]' started.
+Test Case '-[AEDResponseTests.AuthenticationArchitectureTests testDeviceBindingConflictRequiresSpecificContract]' passed (0.001 seconds).
+Test Case '-[AEDResponseTests.AuthenticationArchitectureTests testKeychainSessionCreateAndUpdateRoundTrip]' started.
+Test Case '-[AEDResponseTests.AuthenticationArchitectureTests testKeychainSessionCreateAndUpdateRoundTrip]' passed (0.039 seconds).
+Test Case '-[AEDResponseTests.AuthenticationArchitectureTests testLogoutClearsSessionAndStopsBusinessServices]' started.
+Test Case '-[AEDResponseTests.AuthenticationArchitectureTests testLogoutClearsSessionAndStopsBusinessServices]' passed (0.006 seconds).
+Test Case '-[AEDResponseTests.AuthenticationArchitectureTests testLogoutInvalidatesInFlightColdStartRefresh]' started.
+Test Case '-[AEDResponseTests.AuthenticationArchitectureTests testLogoutInvalidatesInFlightColdStartRefresh]' passed (0.013 seconds).
+Test Case '-[AEDResponseTests.AuthenticationArchitectureTests testNearExpiryAccountTokenRefreshesBeforeDeviceBootstrapAndPersistsRotation]' started.
+Test Case '-[AEDResponseTests.AuthenticationArchitectureTests testNearExpiryAccountTokenRefreshesBeforeDeviceBootstrapAndPersistsRotation]' passed (0.002 seconds).
+Test Case '-[AEDResponseTests.AuthenticationArchitectureTests testOldAppleLoginCannotReplaceNewerSessionAfterLogout]' started.
+Test Case '-[AEDResponseTests.AuthenticationArchitectureTests testOldAppleLoginCannotReplaceNewerSessionAfterLogout]' passed (0.013 seconds).
+Test Case '-[AEDResponseTests.AuthenticationArchitectureTests testOnboardingPermissionResultAfterLogoutCannotSaveConsent]' started.
+Test Case '-[AEDResponseTests.AuthenticationArchitectureTests testOnboardingPermissionResultAfterLogoutCannotSaveConsent]' passed (0.014 seconds).
+Test Case '-[AEDResponseTests.AuthenticationArchitectureTests testOrdinaryBuildRejectsPersistedControlledTestIdentity]' started.
+Test Case '-[AEDResponseTests.AuthenticationArchitectureTests testOrdinaryBuildRejectsPersistedControlledTestIdentity]' passed (0.002 seconds).
+Test Case '-[AEDResponseTests.AuthenticationArchitectureTests testRejectedAccountGetsStableSeparateDeviceAndPairWithoutReplacingLegacy]' started.
+Test Case '-[AEDResponseTests.AuthenticationArchitectureTests testRejectedAccountGetsStableSeparateDeviceAndPairWithoutReplacingLegacy]' passed (0.012 seconds).
+Test Suite 'AuthenticationArchitectureTests' passed at 2026-09-13 19:38:47.094.
+	 Executed 16 tests, with 0 failures (0 unexpected) in 0.335 (0.343) seconds
+Test Suite 'ResponderExitTests' started at 2026-09-13 19:38:47.095.
+Test Case '-[AEDResponseTests.ResponderExitTests testAllRescueCancellationFlowsCanRequireThreeClicksWithoutSoleResponderWording]' started.
+Test Case '-[AEDResponseTests.ResponderExitTests testAllRescueCancellationFlowsCanRequireThreeClicksWithoutSoleResponderWording]' passed (0.001 seconds).
+Test Case '-[AEDResponseTests.ResponderExitTests testBackendSoleRequirementStaysStickyAgainstStaleN]' started.
+Test Case '-[AEDResponseTests.ResponderExitTests testBackendSoleRequirementStaysStickyAgainstStaleN]' passed (0.001 seconds).
+Test Case '-[AEDResponseTests.ResponderExitTests testCancelResetsSequenceAndInvalidatesStalePrompt]' started.
+Test Case '-[AEDResponseTests.ResponderExitTests testCancelResetsSequenceAndInvalidatesStalePrompt]' passed (0.001 seconds).
+Test Case '-[AEDResponseTests.ResponderExitTests testInvalidResponderCountCannotSubmit]' started.
+Test Case '-[AEDResponseTests.ResponderExitTests testInvalidResponderCountCannotSubmit]' passed (0.000 seconds).
+Test Case '-[AEDResponseTests.ResponderExitTests testMultiResponderUsesOneConfirmationWithoutSoleFlag]' started.
+Test Case '-[AEDResponseTests.ResponderExitTests testMultiResponderUsesOneConfirmationWithoutSoleFlag]' passed (0.000 seconds).
+Test Case '-[AEDResponseTests.ResponderExitTests testOrdinaryExitOmitsSoleResponderFlagAndTrueIsEncoded]' started.
+Test Case '-[AEDResponseTests.ResponderExitTests testOrdinaryExitOmitsSoleResponderFlagAndTrueIsEncoded]' passed (0.004 seconds).
+Test Case '-[AEDResponseTests.ResponderExitTests testSoleResponderRequiresThreeExplicitClicksAndOpeningDoesNotCount]' started.
+Test Case '-[AEDResponseTests.ResponderExitTests testSoleResponderRequiresThreeExplicitClicksAndOpeningDoesNotCount]' passed (0.001 seconds).
+Test Suite 'ResponderExitTests' passed at 2026-09-13 19:38:47.105.
+	 Executed 7 tests, with 0 failures (0 unexpected) in 0.008 (0.010) seconds
+Test Suite 'AEDResponseTests.xctest' passed at 2026-09-13 19:38:47.105.
+	 Executed 118 tests, with 0 failures (0 unexpected) in 9.298 (9.367) seconds
+Test Suite 'Selected tests' passed at 2026-09-13 19:38:47.105.
+	 Executed 118 tests, with 0 failures (0 unexpected) in 9.298 (9.371) seconds
+2026-09-13 19:38:47.563 xcodebuild[29880:21160530] [MT] IDETestOperationsObserverDebug: 59.068 elapsed -- Testing started completed.
+2026-09-13 19:38:47.563 xcodebuild[29880:21160530] [MT] IDETestOperationsObserverDebug: 0.000 sec, +0.000 sec -- start
+2026-09-13 19:38:47.563 xcodebuild[29880:21160530] [MT] IDETestOperationsObserverDebug: 59.068 sec, +59.068 sec -- end
+
+Test session results, code coverage, and logs:
+	/tmp/aedresponse-smoke/iphone/Logs/Test/Test-AEDResponseUnitTests-2026.09.13_19-37-28-+0800.xcresult
+
+** TEST SUCCEEDED **
+
+Testing started

@@ -1,0 +1,51 @@
+{
+  "devicesAndConfigurations": [
+    {
+      "device": {
+        "architecture": "arm64",
+        "deviceId": "[REDACTED_ENVIRONMENT]",
+        "deviceName": "[REDACTED_ENVIRONMENT]",
+        "modelName": "iPhone 17 Pro",
+        "osBuildNumber": "23E254a",
+        "osVersion": "26.4.1",
+        "platform": "iOS Simulator"
+      },
+      "expectedFailures": 0,
+      "failedTests": 1,
+      "passedTests": 161,
+      "skippedTests": 0,
+      "testPlanConfiguration": {
+        "configurationId": "1",
+        "configurationName": "Test Scheme Action"
+      }
+    }
+  ],
+  "environmentDescription": "AEDResponseTestHost · Built with macOS 26.5.2",
+  "expectedFailures": 0,
+  "failedTests": 1,
+  "finishTime": 1792952592.916,
+  "passedTests": 161,
+  "result": "Failed",
+  "skippedTests": 0,
+  "startTime": 1792952368.512,
+  "statistics": [],
+  "testFailures": [
+    {
+      "failureText": "failed - 等待异步 REST 对账超时。",
+      "targetName": "AEDResponseTests",
+      "testIdentifier": 29,
+      "testIdentifierString": "AppStoreArchitectureTests/testConnectAndLocationChangesPublishStrictResponderPositionThroughRest()",
+      "testIdentifierURL": "test://com.apple.xcode/AEDResponse/AEDResponseTests/AppStoreArchitectureTests/testConnectAndLocationChangesPublishStrictResponderPositionThroughRest",
+      "testName": "testConnectAndLocationChangesPublishStrictResponderPositionThroughRest()"
+    }
+  ],
+  "title": "Test - AEDResponseTestHost",
+  "topInsights": [
+    {
+      "category": "Longest Test Runs",
+      "impact": "48% of duration",
+      "text": "3 longest test runs with outlier durations exceeding 2.63s (three standard deviations)"
+    }
+  ],
+  "totalTestCount": 162
+}

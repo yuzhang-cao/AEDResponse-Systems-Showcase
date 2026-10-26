@@ -1,0 +1,36 @@
+{
+  "devicesAndConfigurations": [
+    {
+      "device": {
+        "architecture": "arm64",
+        "deviceId": "[REDACTED_ENVIRONMENT]",
+        "deviceName": "[REDACTED_ENVIRONMENT]",
+        "modelName": "iPhone 17 Pro",
+        "osBuildNumber": "23F77",
+        "osVersion": "26.5",
+        "platform": "iOS Simulator"
+      },
+      "expectedFailures": 0,
+      "failedTests": 0,
+      "passedTests": 5,
+      "skippedTests": 0,
+      "testPlanConfiguration": {
+        "configurationId": "1",
+        "configurationName": "Test Scheme Action"
+      }
+    }
+  ],
+  "environmentDescription": "AEDResponseTestHost · Built with macOS 26.5.2",
+  "expectedFailures": 0,
+  "failedTests": 0,
+  "finishTime": 1789819650.974,
+  "passedTests": 5,
+  "result": "Passed",
+  "skippedTests": 0,
+  "startTime": 1789819458.979,
+  "statistics": [],
+  "testFailures": [],
+  "title": "Test - AEDResponseTestHost",
+  "topInsights": [],
+  "totalTestCount": 5
+}

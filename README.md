@@ -4,6 +4,12 @@ Selected, runnable code from a graduation project on location-driven volunteer c
 
 This is a research/engineering prototype. It is not an operational emergency service, clinical validation, or learned embodied-intelligence policy.
 
+## Research evidence archive
+
+The [Chinese research evidence index](research-evidence/2026-10-26/README.md) collects sanitized historical reports, performance observations, failed and rerun test results, archived test sources, and offline UI screenshots. Start with its evidence boundaries and [Deep Research prompt](research-evidence/2026-10-26/DEEP_RESEARCH_PROMPT.md) when assessing whether this project supports a research proposal. [Download the evidence ZIP](https://github.com/yuzhang-cao/AEDResponse-Systems-Showcase/archive/refs/heads/main.zip).
+
+Historical artifacts and archived tests are reference material; they are separate from the runnable showcase below. No claim of research novelty or clinical effectiveness is made.
+
 ## Core code
 
 | Area | Implementation | Tests |
@@ -37,6 +43,6 @@ swift test
 
 Backend tests and the demo block network access and use synthetic fixtures. Current local test counts and the published baseline are recorded in [validation.json](docs/validation.json).
 
-Production deployment files, signing material, live data, device logs, runtime databases, internal handoffs, and the original repository history are excluded. The selected code demonstrates sensor-driven systems and distributed-device coordination; it does not implement robot actuation, SLAM, policy learning, or vision-language-action models.
+Production deployment files, signing material, private live data, runtime databases, raw private device archives, and the original repository history are excluded. The research evidence archive includes reviewed, sanitized copies of historical reports, handoffs and selected logs, with exclusions and transformations documented. The selected code demonstrates sensor-driven systems and distributed-device coordination; it does not implement robot actuation, SLAM, policy learning, or vision-language-action models.
 
 The preparation used AI assistance for review, correctness fixes, extraction, tests, and this English presentation. Physical Watch behavior, real emergency calls, APNs delivery, clinical effectiveness, production capacity, and public deployment are not claimed.

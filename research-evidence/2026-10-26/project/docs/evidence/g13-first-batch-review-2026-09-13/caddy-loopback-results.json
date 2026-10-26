@@ -1,0 +1,14 @@
+[
+  {
+    "spoof": "198.51.100.123",
+    "xff": "127.0.0.1",
+    "proto": "http",
+    "peer": "[REDACTED_ENVIRONMENT]"
+  },
+  {
+    "spoof": "203.0.113.42, 192.0.2.7",
+    "xff": "127.0.0.1",
+    "proto": "http",
+    "peer": "[REDACTED_ENVIRONMENT]"
+  }
+]

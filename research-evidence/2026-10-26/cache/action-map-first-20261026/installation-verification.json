@@ -1,0 +1,31 @@
+{
+  "date": "2026-10-26",
+  "version": "2.0",
+  "build": "14",
+  "bundle_identifier": "dev.codex.aedresponse",
+  "device": "iPhone 17 Pro",
+  "device_identifier": "[REDACTED_ENVIRONMENT]",
+  "installation": "success",
+  "transport": "existing paired CoreDevice localNetwork tunnel",
+  "before": {
+    "version": "2.0",
+    "build": "13"
+  },
+  "independent_after_readback": {
+    "version": "2.0",
+    "build": "14"
+  },
+  "existing_developer_services_available_before_install": true,
+  "separate_ddi_download_or_mount_command_executed": false,
+  "uninstall_executed": false,
+  "data_clear_executed": false,
+  "app_launch_executed": false,
+  "watch_device_installation_verified": false,
+  "evidence": [
+    "device-connection-details.json",
+    "installed-before-coredevice.json",
+    "install.json",
+    "install.log",
+    "installed-after.json"
+  ]
+}

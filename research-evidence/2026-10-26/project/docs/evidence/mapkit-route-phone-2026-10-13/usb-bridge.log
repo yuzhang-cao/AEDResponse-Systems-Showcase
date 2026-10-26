@@ -1,0 +1,26 @@
+{"transport": "USB_FILE_BRIDGE", "kind": "READY", "pid": 40606, "bundle": "dev.codex.aedresponse.routeacceptance", "eventID": "REDACTED-ID-0029", "maxSeconds": 1600, "evidence": "USB bridge; does not prove direct iPhone HTTP connectivity"}
+{"transport": "USB_FILE_BRIDGE", "kind": "WAITING_FOR_USB_REQUEST"}
+{"transport": "USB_FILE_BRIDGE", "kind": "FORWARDED", "id": "REDACTED-ID-0034", "method": "POST", "status": 200}
+{"transport": "USB_FILE_BRIDGE", "kind": "RESPONSE_UPLOADED", "id": "REDACTED-ID-0034", "status": 200}
+{"transport": "USB_FILE_BRIDGE", "kind": "FORWARDED", "id": "REDACTED-ID-0035", "method": "GET", "status": 200}
+{"transport": "USB_FILE_BRIDGE", "kind": "RESPONSE_UPLOADED", "id": "REDACTED-ID-0035", "status": 200}
+{"transport": "USB_FILE_BRIDGE", "kind": "FORWARDED", "id": "REDACTED-ID-0036", "method": "POST", "status": 200}
+{"transport": "USB_FILE_BRIDGE", "kind": "RESPONSE_UPLOADED", "id": "REDACTED-ID-0036", "status": 200}
+{"transport": "USB_FILE_BRIDGE", "kind": "FORWARDED", "id": "REDACTED-ID-0037", "method": "PUT", "status": 200}
+{"transport": "USB_FILE_BRIDGE", "kind": "RESPONSE_UPLOADED", "id": "REDACTED-ID-0037", "status": 200}
+{"transport": "USB_FILE_BRIDGE", "kind": "FORWARDED", "id": "REDACTED-ID-0038", "method": "POST", "status": 200}
+{"transport": "USB_FILE_BRIDGE", "kind": "RESPONSE_UPLOADED", "id": "REDACTED-ID-0038", "status": 200}
+{"transport": "USB_FILE_BRIDGE", "kind": "FORWARDED", "id": "REDACTED-ID-0039", "method": "GET", "status": 200}
+{"transport": "USB_FILE_BRIDGE", "kind": "RESPONSE_UPLOADED", "id": "REDACTED-ID-0039", "status": 200}
+{"transport": "USB_FILE_BRIDGE", "kind": "FORWARDED", "id": "REDACTED-ID-0040", "method": "POST", "status": 200}
+{"transport": "USB_FILE_BRIDGE", "kind": "RESPONSE_UPLOADED", "id": "REDACTED-ID-0040", "status": 200}
+{"transport": "USB_FILE_BRIDGE", "kind": "FORWARDED", "id": "REDACTED-ID-0041", "method": "PUT", "status": 200}
+{"transport": "USB_FILE_BRIDGE", "kind": "RESPONSE_UPLOADED", "id": "REDACTED-ID-0041", "status": 200}
+{"transport": "USB_FILE_BRIDGE", "kind": "FORWARDED", "id": "REDACTED-ID-0042", "method": "POST", "status": 200}
+{"transport": "USB_FILE_BRIDGE", "kind": "RESPONSE_UPLOADED", "id": "REDACTED-ID-0042", "status": 200}
+{"transport": "USB_FILE_BRIDGE", "kind": "FORWARDED", "id": "REDACTED-ID-0043", "method": "POST", "status": 200}
+{"transport": "USB_FILE_BRIDGE", "kind": "RESPONSE_UPLOADED", "id": "REDACTED-ID-0043", "status": 200}
+{"transport": "USB_FILE_BRIDGE", "kind": "FORWARDED", "id": "REDACTED-ID-0044", "method": "POST", "status": 200}
+{"transport": "USB_FILE_BRIDGE", "kind": "RESPONSE_UPLOADED", "id": "REDACTED-ID-0044", "status": 200}
+{"transport": "USB_FILE_BRIDGE", "kind": "WAITING_FOR_USB_REQUEST"}
+{"transport": "USB_FILE_BRIDGE", "kind": "STOPPED", "reason": "signal", "uniqueRequests": 11}

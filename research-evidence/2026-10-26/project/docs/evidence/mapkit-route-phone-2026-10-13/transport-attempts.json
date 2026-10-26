@@ -1,0 +1,26 @@
+{
+  "lan": {
+    "status": "failed_before_route_calculation",
+    "userReportedError": "NSURLErrorDomain/-1004",
+    "sameWiFiConfirmed": true,
+    "localNetworkPermissionConfirmed": true,
+    "backendReceivedPhoneRequest": false,
+    "macEndpointReachable": true,
+    "applicationFirewallAllowsActualNode": true,
+    "rootCause": "not established"
+  },
+  "usb": {
+    "status": "passed_with_user_confirmed_route_ui",
+    "bundle": "dev.codex.aedresponse.routeacceptance",
+    "version": "1.0",
+    "build": "2",
+    "houseArrestDocumentsAccess": true,
+    "signatureVerified": true,
+    "usesDDI": false,
+    "usesSimulator": false,
+    "transportBoundary": "USB file bridge forwards phone-produced route distances to actual isolated backend",
+    "routeSubmissionsChecked": 2,
+    "backendStopped": true,
+    "bridgeStopped": true
+  }
+}

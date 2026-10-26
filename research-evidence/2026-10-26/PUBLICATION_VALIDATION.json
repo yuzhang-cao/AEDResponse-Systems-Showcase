@@ -1,0 +1,30 @@
+{
+  "scope": "Publication integrity only; historical tests were not rerun",
+  "source_artifacts": 574,
+  "published_hash_checks_passed": 574,
+  "json_files_parsed": 91,
+  "jsonl_files_parsed": 2,
+  "performance_numeric_comparisons": [
+    {
+      "path": "cache/performance-fix-20261004/perf-baseline.json",
+      "numeric_fields_preserved": 385,
+      "rows": 4
+    },
+    {
+      "path": "cache/performance-fix-20261004/perf-candidate.json",
+      "numeric_fields_preserved": 385,
+      "rows": 4
+    },
+    {
+      "path": "cache/performance-fix-20261004/perf-candidate-final.json",
+      "numeric_fields_preserved": 385,
+      "rows": 4
+    }
+  ],
+  "xcresult_summary_counts_preserved": 8,
+  "screenshots_visually_reviewed": 22,
+  "corrupted_hash_markers": 0,
+  "privacy_review": "passed_independent_review_of_574_source_artifacts",
+  "reviewed_png_count": 22,
+  "signing_fingerprints_redacted": 20
+}
